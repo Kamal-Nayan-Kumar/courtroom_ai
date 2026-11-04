@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { Scale, ArrowRight, ShieldCheck, Heart } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 
 export function CtaFooter() {
   const footerLinks = {
@@ -76,12 +77,6 @@ export function CtaFooter() {
                 <span>Upload Case Memorial</span>
               </a>
             </div>
-
-            <div className="mt-6 flex items-center justify-center gap-6 text-xs text-zinc-500 font-mono-code">
-              <span>✓ No credit card required</span>
-              <span>✓ Instant access to 24 cases</span>
-              <span>✓ BNS 2023 certified</span>
-            </div>
           </div>
         </div>
 
@@ -90,8 +85,14 @@ export function CtaFooter() {
           {/* Brand Info (Span 2 on mobile, 1 on desktop) */}
           <div className="col-span-2 md:col-span-4 lg:col-span-1 space-y-3">
             <div className="flex items-center gap-2.5">
-              <div className="w-7 h-7 rounded-lg bg-zinc-950 text-white flex items-center justify-center shadow-xs">
-                <Scale className="w-3.5 h-3.5 text-amber-400" />
+              <div className="w-7 h-7 rounded-lg overflow-hidden flex items-center justify-center shadow-xs bg-black">
+                <Image
+                  src="/logo_icon.png"
+                  alt="Courtroom AI"
+                  width={28}
+                  height={28}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <span className="font-bold text-sm tracking-tight text-zinc-950">
                 Courtroom AI
@@ -103,7 +104,7 @@ export function CtaFooter() {
             </p>
             <div className="flex items-center gap-1.5 text-zinc-500 font-mono-code text-[11px] pt-1">
               <ShieldCheck className="w-3.5 h-3.5 text-blue-900" />
-              <span>Adalat AI Platform · v1.0</span>
+              <span>Courtroom AI Platform · v1.0</span>
             </div>
           </div>
 
@@ -174,7 +175,7 @@ export function CtaFooter() {
 
         {/* Bottom Sub-footer */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-3">
-          <p>© 2026 Courtroom AI (Adalat AI). Built for the Indian Legal Ecosystem.</p>
+          <p>© 2026 Courtroom AI. Built for the Indian Legal Ecosystem.</p>
           <p className="flex items-center gap-1">
             <span>Crafted with devotion for Indian law students &amp; advocates</span>
           </p>

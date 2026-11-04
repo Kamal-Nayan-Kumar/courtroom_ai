@@ -19,7 +19,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Courtroom AI (Adalat AI) · Multi-Agent Indian Courtroom Simulator",
+  title: "Courtroom AI · Multi-Agent Indian Courtroom Simulator",
   description:
     "Master the Indian courtroom before you step inside. Practice moot court trials and real cases with autonomous Judge, Opposing Counsel, and Witness AIs powered by BNS, BNSS, and BSA precedents.",
 };

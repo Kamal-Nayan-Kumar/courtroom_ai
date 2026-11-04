@@ -1,18 +1,9 @@
 "use client";
 
 import React from "react";
-import { ArrowRight, BookOpen, Sparkles, CheckCircle2 } from "lucide-react";
+import { ArrowRight, BookOpen, Sparkles } from "lucide-react";
 
 export function HeroSection() {
-  const institutionalPillars = [
-    "NLSIU Bengaluru",
-    "NALSAR Hyderabad",
-    "WBNUJS Kolkata",
-    "NLU Delhi",
-    "Campus Law Centre (DU)",
-    "ILC Symbiosis",
-  ];
-
   return (
     <section className="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden">
       {/* Background Subtle Ambience */}
@@ -25,10 +16,10 @@ export function HeroSection() {
           <span className="flex h-2 w-2 rounded-full bg-amber-500 ring-4 ring-amber-100 group-hover:scale-110 transition-transform" />
           <span className="text-[12px] sm:text-[13px] font-medium text-zinc-800 flex items-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5 text-amber-500 inline" />
-            <span>Introducing Adalat 1.0</span>
+            <span>Introducing Courtroom AI 1.0</span>
             <span className="text-zinc-400">·</span>
             <span className="text-zinc-600 font-normal">
-              Proactive Multi-Agent Moot & Trial Simulator
+              Proactive Multi-Agent Moot &amp; Trial Simulator
             </span>
           </span>
           <ArrowRight className="w-3 h-3 text-zinc-400 group-hover:translate-x-0.5 transition-transform" />
@@ -69,23 +60,11 @@ export function HeroSection() {
           </a>
         </div>
 
-        {/* Trust Badges & Law Schools */}
+        {/* Trust Bar below CTAs */}
         <div className="mt-12 sm:mt-16 pt-8 border-t border-zinc-200/80">
-          <p className="text-xs uppercase tracking-wider font-semibold text-zinc-500 mb-4">
-            Built for Law Students (NLUs & Law Colleges), Moot Court Societies & Junior Advocates across India
+          <p className="text-xs uppercase tracking-wider font-semibold text-zinc-500">
+            Built for Law Students (NLUs &amp; Law Colleges), Moot Court Societies &amp; Junior Advocates across India
           </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5 text-xs text-zinc-600 font-medium">
-            {institutionalPillars.map((institution) => (
-              <div
-                key={institution}
-                className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white border border-zinc-200/60 shadow-2xs hover:border-zinc-300 transition-colors"
-              >
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-900/70" />
-                <span>{institution}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

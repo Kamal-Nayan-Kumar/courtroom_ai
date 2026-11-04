@@ -612,7 +612,7 @@ export function CourtroomSimulatorMockup() {
             <div
               className={`${
                 mobilePaneTab === "transcript" ? "flex" : "hidden"
-              } lg:flex lg:col-span-4 bg-white flex-col p-4 text-xs`}
+              } lg:flex lg:col-span-4 bg-white flex-col justify-between p-4 text-xs h-full`}
             >
               {/* Header */}
               <div className="flex items-center justify-between pb-3 border-b border-zinc-200">
@@ -626,7 +626,7 @@ export function CourtroomSimulatorMockup() {
               </div>
 
               {/* Chat Stream Area */}
-              <div className="flex-1 overflow-y-auto my-3 pr-1 space-y-3 max-h-[360px]">
+              <div className="flex-1 overflow-y-auto my-3 pr-1 space-y-3 min-h-[300px]">
                 {transcripts.map((msg) => {
                   const isJudge = msg.speakerRole === "judge";
                   const isUser = msg.speakerRole === role;
@@ -638,9 +638,9 @@ export function CourtroomSimulatorMockup() {
                       key={msg.id}
                       className={`p-2.5 rounded-lg border text-xs transition-all ${
                         isJudge
-                          ? "bg-zinc-900 text-white border-zinc-800"
+                          ? "bg-amber-50/70 border-amber-300/80 text-zinc-950 border-l-4 border-l-amber-600 shadow-2xs"
                           : isUser
-                          ? "bg-amber-50/70 border-amber-200 text-zinc-900"
+                          ? "bg-amber-50/50 border-amber-200 text-zinc-900"
                           : isPros
                           ? "bg-blue-50/60 border-blue-200 text-zinc-900"
                           : "bg-zinc-50 border-zinc-200 text-zinc-900"
@@ -650,7 +650,7 @@ export function CourtroomSimulatorMockup() {
                         <div className="flex items-center gap-1.5">
                           <span
                             className={`font-semibold text-[11px] ${
-                              isJudge ? "text-amber-400" : "text-zinc-950"
+                              isJudge ? "text-amber-900 font-bold" : "text-zinc-950"
                             }`}
                           >
                             [{msg.speaker}]
@@ -658,7 +658,7 @@ export function CourtroomSimulatorMockup() {
                           {msg.citation && (
                             <span
                               className={`text-[9.5px] font-mono-code ${
-                                isJudge ? "text-zinc-400" : "text-zinc-500"
+                                isJudge ? "text-amber-800/80" : "text-zinc-500"
                               }`}
                             >
                               · {msg.citation}
@@ -667,7 +667,7 @@ export function CourtroomSimulatorMockup() {
                         </div>
                         <span
                           className={`text-[10px] font-mono-code ${
-                            isJudge ? "text-zinc-400" : "text-zinc-400"
+                            isJudge ? "text-amber-800/70" : "text-zinc-400"
                           }`}
                         >
                           {msg.timestamp}
@@ -676,7 +676,7 @@ export function CourtroomSimulatorMockup() {
 
                       <p
                         className={`text-[11.5px] leading-relaxed ${
-                          isJudge ? "text-zinc-200" : "text-zinc-800"
+                          isJudge ? "text-zinc-900 font-medium" : "text-zinc-800"
                         }`}
                       >
                         {msg.content}
@@ -700,8 +700,8 @@ export function CourtroomSimulatorMockup() {
                 })}
               </div>
 
-              {/* Action Bar & Quick Triggers */}
-              <div className="pt-2 border-t border-zinc-200 space-y-2">
+              {/* Action Bar & Quick Triggers pinned to bottom */}
+              <div className="mt-auto pt-3 border-t border-zinc-200 space-y-2">
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={handleRaiseObjection}

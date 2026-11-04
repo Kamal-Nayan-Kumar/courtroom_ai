@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { Scale, ArrowRight, Menu, X, ShieldCheck } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Menu, X } from "lucide-react";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -17,27 +18,23 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-zinc-200/80 bg-[#FAFAFA]/90 backdrop-blur-md transition-all">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        {/* Brand Logo & Subtle Badge */}
+        {/* Brand Logo */}
         <div className="flex items-center gap-3">
           <a href="#" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-lg bg-zinc-950 flex items-center justify-center text-white shadow-sm transition-transform group-hover:scale-105">
-              <Scale className="w-4 h-4 text-amber-400 stroke-[2.2]" />
+            <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center shadow-xs transition-transform group-hover:scale-105 bg-black">
+              <Image
+                src="/logo_icon.png"
+                alt="Courtroom AI Logo"
+                width={32}
+                height={32}
+                className="w-full h-full object-cover"
+                priority
+              />
             </div>
-            <div className="flex items-baseline gap-1.5">
-              <span className="font-semibold text-lg tracking-tight text-zinc-950">
-                Courtroom AI
-              </span>
-              <span className="text-[11px] font-medium text-zinc-500 hidden sm:inline">
-                (Adalat AI)
-              </span>
-            </div>
+            <span className="font-bold text-lg tracking-tight text-zinc-950">
+              Courtroom AI
+            </span>
           </a>
-
-          {/* Indian Legal System Status Pill */}
-          <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-zinc-100 border border-zinc-200/90 text-[11px] text-zinc-700 font-mono-code font-medium">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span>IN · BNS / BNSS Ready</span>
-          </div>
         </div>
 
         {/* Center Desktop Navigation */}
@@ -90,12 +87,8 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-zinc-200 bg-white px-4 pt-2 pb-5 space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-mono-code text-zinc-700">
-            <ShieldCheck className="w-3.5 h-3.5 text-blue-900" />
-            <span>Updated with Bharatiya Nyaya Sanhita 2023</span>
-          </div>
-          <div className="flex flex-col space-y-2 pt-2">
+        <div className="md:hidden border-b border-zinc-200 bg-white px-4 pt-3 pb-5 space-y-3">
+          <div className="flex flex-col space-y-2 pt-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}

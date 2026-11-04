@@ -36,7 +36,7 @@ export function AutonomousAgentsSection() {
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-xs font-mono-code font-medium mb-3">
             <Cpu className="w-3.5 h-3.5 text-zinc-900" />
-            <span>Multi-Agent Orchestration · LangGraph</span>
+            <span>Multi-Agent Orchestration</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-950">
             Meet the Autonomous Courtroom Agents
@@ -57,26 +57,28 @@ export function AutonomousAgentsSection() {
                 onClick={() => setActiveAgentId(agent.id)}
                 className={`p-3.5 rounded-xl border text-left transition-all flex flex-col justify-between ${
                   isSelected
-                    ? "bg-zinc-950 text-white border-zinc-950 shadow-md ring-2 ring-zinc-900/10"
+                    ? "bg-amber-50/90 text-zinc-950 border-amber-400 shadow-xs ring-2 ring-amber-400/25"
                     : "bg-[#FAFAFA] hover:bg-zinc-100 text-zinc-900 border-zinc-200/90"
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
                   <div
-                    className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                      isSelected ? "bg-zinc-800" : "bg-white border border-zinc-200"
+                    className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${
+                      isSelected
+                        ? "bg-amber-100/90 border border-amber-300"
+                        : "bg-white border border-zinc-200"
                     }`}
                   >
                     {agentIcons[agent.id]}
                   </div>
                   {isSelected && (
-                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                    <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
                   )}
                 </div>
                 <div>
                   <div
                     className={`text-[11px] font-mono-code ${
-                      isSelected ? "text-zinc-400" : "text-zinc-500"
+                      isSelected ? "text-amber-800 font-semibold" : "text-zinc-500"
                     }`}
                   >
                     {agent.role.replace("The ", "")}
@@ -156,12 +158,12 @@ export function AutonomousAgentsSection() {
                 </blockquote>
               </div>
 
-              {/* LangGraph Decision / Logic Hook */}
+              {/* Autonomous Decision / Logic Hook */}
               <div className="p-5 rounded-xl bg-zinc-950 text-white shadow-xs font-mono-code text-xs">
                 <div className="flex items-center justify-between text-[11px] text-zinc-400 pb-2 border-b border-zinc-800 mb-3">
                   <div className="flex items-center gap-2">
                     <Code2 className="w-3.5 h-3.5 text-amber-400" />
-                    <span className="text-zinc-200 font-medium">LangGraph Agent Policy Node</span>
+                    <span className="text-zinc-200 font-medium">Autonomous Agent Policy Node</span>
                   </div>
                   <span className="text-[10px] text-zinc-500">Autonomous Evaluation</span>
                 </div>
