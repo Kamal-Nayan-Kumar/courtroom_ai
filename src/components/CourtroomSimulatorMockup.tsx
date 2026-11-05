@@ -164,41 +164,41 @@ export function CourtroomSimulatorMockup() {
         {/* Browser Shell / Courtroom Window */}
         <div className="rounded-xl border border-zinc-200 bg-white shadow-xl overflow-hidden">
           {/* Top Window Bar */}
-          <div className="bg-zinc-950 text-white px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs border-b border-zinc-800">
+          <div className="bg-zinc-900 text-white px-4 py-2.5 flex items-center justify-between gap-3 text-xs border-b border-zinc-800">
             {/* Left Window Dots & Case Title */}
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+                <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
               </div>
-              <div className="h-4 w-px bg-zinc-800 hidden sm:block" />
-              <div className="flex items-center gap-2 font-mono-code">
-                <span className="font-semibold text-zinc-100 tracking-tight">
+              <div className="h-4 w-px bg-zinc-700 hidden sm:block" />
+              <div className="flex items-center gap-2 font-mono">
+                <span className="font-bold text-white tracking-tight">
                   {DEFAULT_CASE_FILE.caseNumber}
                 </span>
-                <span className="text-zinc-500 hidden sm:inline">·</span>
-                <span className="text-zinc-300 truncate max-w-[200px] sm:max-w-xs font-normal">
+                <span className="text-zinc-400 hidden sm:inline">·</span>
+                <span className="text-zinc-200 truncate max-w-xs font-medium">
                   {DEFAULT_CASE_FILE.title}
                 </span>
               </div>
             </div>
 
             {/* Right Status Controls */}
-            <div className="flex items-center gap-2 sm:gap-3">
-              <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-zinc-800/80 border border-zinc-700 text-zinc-300 font-mono-code text-[11px]">
+            <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-zinc-800 border border-zinc-600 text-zinc-100 font-mono text-[11px]">
                 <Clock className="w-3 h-3 text-amber-400" />
                 <span>{formatTimer(seconds)}</span>
               </div>
 
               <div
-                className={`flex items-center gap-1.5 px-2 sm:px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-semibold border ${
+                className={`flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold border ${
                   role === "defense"
-                    ? "bg-amber-950/60 text-amber-300 border-amber-800/80"
-                    : "bg-blue-950/60 text-blue-300 border-blue-800/80"
+                    ? "bg-amber-400 text-zinc-950 border-amber-300 shadow-2xs"
+                    : "bg-blue-400 text-zinc-950 border-blue-300 shadow-2xs"
                 }`}
               >
-                <Shield className="w-3 h-3" />
+                <Shield className="w-3 h-3 text-zinc-950" />
                 <span>
                   {role === "defense" ? "Defense Counsel" : "Public Prosecutor"}
                 </span>

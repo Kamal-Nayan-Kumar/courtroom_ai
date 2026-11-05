@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -36,7 +37,7 @@ export default function RootLayout({
       style={{ colorScheme: "light" }}
     >
       <body className="min-h-full flex flex-col bg-[#FAFAFA] text-zinc-900 font-sans selection:bg-amber-100 selection:text-amber-900">
-        {children}
+        <TooltipProvider delayDuration={150}>{children}</TooltipProvider>
       </body>
     </html>
   );

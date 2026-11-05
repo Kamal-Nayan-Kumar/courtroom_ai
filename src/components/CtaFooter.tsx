@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 
 export function CtaFooter() {
@@ -63,13 +64,13 @@ export function CtaFooter() {
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5">
-              <a
-                href="#simulation"
+              <Link
+                href="/signup"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5"
               >
                 <span>Start Practicing Free</span>
                 <ArrowRight className="w-4 h-4 text-zinc-300" />
-              </a>
+              </Link>
               <a
                 href="#workflow"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-zinc-100 hover:bg-zinc-200/80 text-zinc-800 font-medium text-sm transition-colors"
