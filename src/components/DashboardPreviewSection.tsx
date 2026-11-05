@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import {
   LayoutDashboard,
   Briefcase,
@@ -14,6 +15,7 @@ import {
   ChevronRight,
   Shield,
   Search,
+  ArrowRight,
 } from "lucide-react";
 import { DASHBOARD_METRICS, RECENT_CASES } from "../data/courtroomData";
 import { DashboardCaseRow } from "../types/courtroom";
@@ -51,6 +53,15 @@ export function DashboardPreviewSection() {
             Measure your trial analytics, bench persuasion ratings, objection hit-rates,
             and keep an organized digital chamber of all your moot memorials and case briefs.
           </p>
+          <div className="mt-6 flex items-center justify-center gap-3">
+            <Link
+              href="/dashboard"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-950 text-white text-xs font-semibold hover:bg-zinc-800 transition-all shadow-xs"
+            >
+              <span>Launch Full Chamber Dashboard</span>
+              <ArrowRight className="w-3.5 h-3.5 text-zinc-300" />
+            </Link>
+          </div>
         </div>
 
         {/* Dashboard Frame Window */}
@@ -88,10 +99,10 @@ export function DashboardPreviewSection() {
                       </div>
                       {item.count && (
                         <span
-                          className={`text-[10px] px-1.5 py-0.2 rounded font-mono-code ${
+                          className={`text-[10px] px-1.5 py-0.5 rounded font-mono ${
                             activeSidebarItem === item.label
-                              ? "bg-zinc-800 text-zinc-300"
-                              : "bg-zinc-200 text-zinc-700"
+                              ? "bg-white/20 text-white font-bold"
+                              : "bg-zinc-200 text-zinc-800 font-semibold"
                           }`}
                         >
                           {item.count}

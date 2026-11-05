@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight, Menu, X } from "lucide-react";
 
 export function Navbar() {
@@ -11,7 +12,7 @@ export function Navbar() {
     { label: "Simulation", href: "#simulation" },
     { label: "Multi-Agent Engine", href: "#agents" },
     { label: "Case Prep", href: "#workflow" },
-    { label: "Dashboard", href: "#dashboard" },
+    { label: "Dashboard", href: "/dashboard" },
     { label: "FAQ", href: "#faq" },
   ];
 
@@ -52,12 +53,12 @@ export function Navbar() {
 
         {/* Right CTAs */}
         <div className="hidden sm:flex items-center gap-2.5">
-          <a
-            href="#dashboard"
+          <Link
+            href="/login"
             className="text-[13px] font-medium text-zinc-700 hover:text-zinc-950 px-3 py-1.5 rounded-md hover:bg-zinc-100/80 transition-colors"
           >
-            Sign In
-          </a>
+            Chamber Login
+          </Link>
           <a
             href="#simulation"
             className="inline-flex items-center gap-1.5 text-[13px] font-medium text-white bg-zinc-950 hover:bg-zinc-800 px-3.5 py-1.5 rounded-md shadow-sm transition-all hover:shadow hover:-translate-y-0.5"

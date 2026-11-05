@@ -159,15 +159,17 @@ export function AutonomousAgentsSection() {
               </div>
 
               {/* Autonomous Decision / Logic Hook */}
-              <div className="p-5 rounded-xl bg-zinc-950 text-white shadow-xs font-mono-code text-xs">
-                <div className="flex items-center justify-between text-[11px] text-zinc-400 pb-2 border-b border-zinc-800 mb-3">
+              <div className="p-5 rounded-xl bg-zinc-900 text-white shadow-md font-mono text-xs border border-zinc-800">
+                <div className="flex items-center justify-between text-xs text-zinc-300 pb-2.5 border-b border-zinc-700/80 mb-3">
                   <div className="flex items-center gap-2">
-                    <Code2 className="w-3.5 h-3.5 text-amber-400" />
-                    <span className="text-zinc-200 font-medium">Autonomous Agent Policy Node</span>
+                    <Code2 className="w-4 h-4 text-amber-400" />
+                    <span className="text-zinc-100 font-semibold">Autonomous Agent Policy Node</span>
                   </div>
-                  <span className="text-[10px] text-zinc-500">Autonomous Evaluation</span>
+                  <span className="text-[11px] font-mono font-medium text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800">
+                    Live Evaluation
+                  </span>
                 </div>
-                <pre className="text-zinc-300 whitespace-pre-wrap leading-relaxed text-[11px]">
+                <pre className="text-emerald-300 whitespace-pre-wrap leading-relaxed text-xs font-mono">
                   {activeAgent.reasoningSnippet}
                 </pre>
               </div>
