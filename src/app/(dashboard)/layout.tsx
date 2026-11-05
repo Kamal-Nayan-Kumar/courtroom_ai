@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { usePathname } from "next/navigation";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { DashboardProvider, useDashboard } from "@/context/DashboardContext";
 import { AppSidebar } from "@/components/dashboard/AppSidebar";
@@ -25,6 +26,18 @@ function NotificationToast() {
 }
 
 function DashboardShell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const isCourtroom = pathname?.includes("/courtroom");
+
+  if (isCourtroom) {
+    return (
+      <div className="h-screen w-full overflow-hidden bg-[#F7F7F5] flex flex-col">
+        {children}
+        <NotificationToast />
+      </div>
+    );
+  }
+
   return (
     <SidebarProvider defaultOpen={true}>
       <div className="min-h-screen flex w-full bg-[#FAFAFA]">
@@ -61,7 +74,9 @@ export default function DashboardLayout({
 }) {
   return (
     <DashboardProvider>
-      <DashboardShell>{children}</DashboardShell>
+      <React.Suspense fallback={<div className="min-h-screen bg-[#FAFAFA]" />}>
+        <DashboardShell>{children}</DashboardShell>
+      </React.Suspense>
     </DashboardProvider>
   );
 }
