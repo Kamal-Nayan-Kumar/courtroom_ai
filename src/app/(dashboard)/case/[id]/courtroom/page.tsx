@@ -56,28 +56,24 @@ export default function CourtroomArenaPage() {
 
   // Switch counsel perspective
   const handleRoleToggle = () => {
-    setCurrentRole((prev) => {
-      const nextRole = prev === "defense" ? "prosecution" : "defense";
-      showNotification(
-        `Switched perspective to ${
-          nextRole === "defense" ? "Defense Counsel" : "Public Prosecutor"
-        }. Multi-agent bus updated.`
-      );
-      return nextRole;
-    });
+    const nextRole = currentRole === "defense" ? "prosecution" : "defense";
+    setCurrentRole(nextRole);
+    showNotification(
+      `Switched perspective to ${
+        nextRole === "defense" ? "Defense Counsel" : "Public Prosecutor"
+      }. Multi-agent bus updated.`
+    );
   };
 
   // Co-Counsel AI toggle
   const handleCoCounselToggle = () => {
-    setCoCounselEnabled((prev) => {
-      const next = !prev;
-      showNotification(
-        next
-          ? "Co-Counsel AI whispers set to Proactive."
-          : "Co-Counsel AI muted for Strict Trial Mode."
-      );
-      return next;
-    });
+    const next = !coCounselEnabled;
+    setCoCounselEnabled(next);
+    showNotification(
+      next
+        ? "Co-Counsel AI whispers set to Proactive."
+        : "Co-Counsel AI muted for Strict Trial Mode."
+    );
   };
 
   // Select desk in 2D courtroom -> Highlight & Inspect
