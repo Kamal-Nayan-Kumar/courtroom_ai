@@ -27,6 +27,7 @@ import {
   TranscriptItem,
 } from "@/types/courtroomArena";
 import { useDashboard } from "@/context/DashboardContext";
+import { SPEAKER_META } from "@/components/courtroom/speakerMeta";
 
 export default function CourtroomArenaPage() {
   const { showNotification } = useDashboard();
@@ -90,7 +91,7 @@ export default function CourtroomArenaPage() {
     // Add transcript notice
     const newEntry: TranscriptItem = {
       id: `notice-${Date.now()}`,
-      speaker: "Court Stenographer",
+      speaker: SPEAKER_META.clerk.label,
       speakerRole: "clerk",
       content: `[ Exhibit on Record: ${exhibit.label} (${exhibit.name}) presented before Hon'ble Justice V. Gopalan ]`,
       timestamp: new Date().toLocaleTimeString([], {
@@ -126,9 +127,7 @@ export default function CourtroomArenaPage() {
     const objectionItem: TranscriptItem = {
       id: `obj-${Date.now()}`,
       speaker:
-        currentRole === "defense"
-          ? "YOU (Defense Counsel)"
-          : "YOU (Public Prosecutor)",
+        SPEAKER_META[currentRole === "defense" ? "defense" : "prosecutor"].label,
       speakerRole: currentRole === "defense" ? "defense" : "prosecutor",
       content: ground.suggestedSpeech,
       timestamp,
@@ -145,11 +144,11 @@ export default function CourtroomArenaPage() {
       const isSustained = ground.section.includes("63") || ground.section.includes("146");
       const judgeItem: TranscriptItem = {
         id: `ruling-${Date.now()}`,
-        speaker: "Hon'ble Justice V. Gopalan (Judge AI)",
+        speaker: SPEAKER_META.judge.label,
         speakerRole: "judge",
         content: isSustained
-          ? `🔨 OBJECTION SUSTAINED. The ${ground.label} is well-taken under ${ground.act} ${ground.section}. The record is struck from the active deposition.`
-          : `🔨 OBJECTION OVERRULED. The question is relevant to test the witness's credit under Section 148 BSA. Witness shall answer.`,
+          ? `OBJECTION SUSTAINED. The ${ground.label} is well-taken under ${ground.act} ${ground.section}. The record is struck from the active deposition.`
+          : `OBJECTION OVERRULED. The question is relevant to test the witness's credit under Section 148 BSA. Witness shall answer.`,
         timestamp: new Date().toLocaleTimeString([], {
           hour: "2-digit",
           minute: "2-digit",
@@ -183,9 +182,7 @@ export default function CourtroomArenaPage() {
     const userMessage: TranscriptItem = {
       id: `user-${Date.now()}`,
       speaker:
-        currentRole === "defense"
-          ? "YOU (Defense Counsel)"
-          : "YOU (Public Prosecutor)",
+        SPEAKER_META[currentRole === "defense" ? "defense" : "prosecutor"].label,
       speakerRole: currentRole === "defense" ? "defense" : "prosecutor",
       content: userText,
       timestamp,
@@ -213,7 +210,7 @@ export default function CourtroomArenaPage() {
 
         const witnessResponse: TranscriptItem = {
           id: `resp-w-${Date.now()}`,
-          speaker: "PW-1 Dr. Rajesh Kulkarni (Witness AI)",
+          speaker: SPEAKER_META.witness.label,
           speakerRole: "witness",
           content:
             "Counsel, as I stated, the police constable delivered the drive without a spot cryptographic seal. While the SHA-256 match confirmed the file was not altered in our lab vault, I cannot scientifically vouch for the 105-minute transit window...",
@@ -245,7 +242,7 @@ export default function CourtroomArenaPage() {
         // Bench responds
         const judgeResponse: TranscriptItem = {
           id: `resp-j-${Date.now()}`,
-          speaker: "Hon'ble Justice V. Gopalan (Judge AI)",
+          speaker: SPEAKER_META.judge.label,
           speakerRole: "judge",
           content:
             "Counsel, the Bench has noted your submission on the custodial gap. Public Prosecutor, you have 2 minutes to produce the contemporaneous spot hash receipt under Section 63(4) BSA, failing which Exhibit A shall stand excluded.",
@@ -262,7 +259,7 @@ export default function CourtroomArenaPage() {
   };
 
   return (
-    <div className="h-screen w-screen overflow-hidden flex flex-col bg-[#F7F7F5] select-none">
+    <div className="h-screen w-screen overflow-hidden flex flex-col bg-white select-none">
       {/* 1. TOP COURTROOM SESSION BAR */}
       <CourtroomTopBar
         currentRole={currentRole}
@@ -307,7 +304,7 @@ export default function CourtroomArenaPage() {
         />
 
         {/* PANE 3: Live Multi-Agent Streaming Transcript & Advocate Controls */}
-        <section className="w-80 md:w-96 xl:w-104 shrink-0 border-l border-zinc-200 bg-white flex flex-col h-full overflow-hidden">
+        <section className="w-96 shrink-0 border-l border-zinc-200 bg-white flex flex-col h-full overflow-hidden">
           <TranscriptPanel transcript={transcript} />
           <AdvocateConsole
             inputValue={inputValue}

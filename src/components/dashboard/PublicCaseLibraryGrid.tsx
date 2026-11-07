@@ -21,12 +21,10 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { useDashboard } from "@/context/DashboardContext";
 import { PUBLIC_CASE_LIBRARY } from "@/data/dashboardData";
 import { PublicPracticeCase } from "@/types/dashboard";
 
 export function PublicCaseLibraryGrid() {
-  const { openNewCaseModal } = useDashboard();
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>("all");
 
   const filteredCases = PUBLIC_CASE_LIBRARY.filter((item) => {
@@ -191,12 +189,14 @@ export function PublicCaseLibraryGrid() {
               </div>
 
               <Button
+                asChild
                 size="sm"
-                onClick={() => openNewCaseModal(item)}
                 className="h-8 text-xs bg-zinc-950 text-white hover:bg-zinc-800 shadow-2xs font-medium"
               >
-                <span>Practice This Case</span>
-                <ArrowRight className="size-3 ml-1" />
+                <a href="/case/402/courtroom">
+                  <span>Practice This Case</span>
+                  <ArrowRight className="size-3 ml-1" />
+                </a>
               </Button>
             </CardFooter>
           </Card>
