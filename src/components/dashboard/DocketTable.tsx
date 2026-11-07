@@ -180,36 +180,36 @@ export function DocketTable() {
                   className="hover:bg-zinc-50/70 transition-colors border-b border-zinc-100 group"
                 >
                   {/* Column 1: Docket & Case Title */}
-                  <TableCell className="py-3.5">
-                    <div className="flex flex-col gap-1">
+                  <TableCell className="py-4">
+                    <div className="flex flex-col gap-1.5">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-[11px] font-semibold text-zinc-900 bg-zinc-100 px-1.5 py-0.5 rounded border border-zinc-200">
+                        <span className="font-mono text-xs font-medium text-zinc-800 bg-zinc-100 px-2 py-0.5 rounded border border-zinc-200">
                           {item.caseNumber}
                         </span>
                         <Badge
                           variant="outline"
-                          className="text-[9.5px] py-0 px-1.5 text-zinc-600 bg-zinc-50 border-zinc-200"
+                          className="text-xs py-0.5 px-2 text-zinc-600 bg-zinc-50 border-zinc-200"
                         >
                           {item.category}
                         </Badge>
                       </div>
-                      <span className="font-semibold text-xs text-zinc-950 group-hover:text-blue-900 transition-colors">
+                      <span className="font-semibold text-sm text-zinc-950 group-hover:text-blue-900 transition-colors">
                         {item.title}
                       </span>
-                      <span className="text-[10.5px] text-zinc-500 truncate">
+                      <span className="text-xs text-zinc-500 truncate">
                         {item.court}
                       </span>
                     </div>
                   </TableCell>
 
                   {/* Column 2: Statutes Involved */}
-                  <TableCell className="py-3.5">
-                    <div className="flex flex-wrap gap-1">
+                  <TableCell className="py-4">
+                    <div className="flex flex-wrap gap-1.5">
                       {item.statutes.map((s) => (
                         <Badge
                           key={s.section}
                           variant="outline"
-                          className={`text-[10px] font-mono py-0.5 px-1.5 ${getStatuteBadgeStyle(s.code)}`}
+                          className={`text-xs font-mono py-0.5 px-2 ${getStatuteBadgeStyle(s.code)}`}
                           title={`${s.code} ${s.section}: ${s.name}`}
                         >
                           {s.code} {s.section}
@@ -219,70 +219,70 @@ export function DocketTable() {
                   </TableCell>
 
                   {/* Column 3: Your Role */}
-                  <TableCell className="py-3.5">
+                  <TableCell className="py-4">
                     {item.role === "defense" ? (
                       <Badge
                         variant="outline"
-                        className="text-[11px] font-medium bg-blue-50/80 text-blue-900 border-blue-200 flex items-center gap-1.5 w-fit py-0.5 px-2"
+                        className="text-xs font-medium bg-amber-50/80 text-amber-900 border-amber-200 flex items-center gap-1.5 w-fit py-1 px-2.5"
                       >
-                        <Shield className="size-3 text-blue-700" />
+                        <Shield className="size-3.5 text-amber-700" />
                         <span>Defense Counsel</span>
                       </Badge>
                     ) : (
                       <Badge
                         variant="outline"
-                        className="text-[11px] font-medium bg-amber-50/80 text-amber-900 border-amber-200 flex items-center gap-1.5 w-fit py-0.5 px-2"
+                        className="text-xs font-medium bg-blue-50/80 text-blue-900 border-blue-200 flex items-center gap-1.5 w-fit py-1 px-2.5"
                       >
-                        <Scale className="size-3 text-amber-700" />
+                        <Scale className="size-3.5 text-blue-700" />
                         <span>Public Prosecutor</span>
                       </Badge>
                     )}
                   </TableCell>
 
                   {/* Column 4: Trial Stage & Progress */}
-                  <TableCell className="py-3.5">
+                  <TableCell className="py-4">
                     <div className="flex flex-col gap-1.5">
-                      <div className="flex items-center justify-between text-[11px]">
+                      <div className="flex items-center justify-between text-xs">
                         <span className="font-medium text-zinc-800 truncate">
                           {item.stageLabel}
                         </span>
-                        <span className="font-mono text-[10.5px] text-zinc-500">
+                        <span className="font-mono text-xs text-zinc-500">
                           {item.progressPercent}%
                         </span>
                       </div>
                       <Progress
                         value={item.progressPercent}
-                        className="h-1.5 bg-zinc-100"
+                        className="h-2 bg-zinc-100"
                       />
                     </div>
                   </TableCell>
 
                   {/* Column 5: Judge AI Score */}
-                  <TableCell className="py-3.5 text-center">
+                  <TableCell className="py-4 text-center">
                     {item.judgeScore !== null ? (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-950 font-mono font-bold text-xs">
-                        <Award className="size-3 text-amber-600" />
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-950 font-mono font-bold text-xs">
+                        <Award className="size-3.5 text-amber-600" />
                         {item.judgeScore} / 10
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1 text-[11px] text-zinc-400 font-mono">
-                        <Clock className="size-3" />
+                      <span className="inline-flex items-center gap-1 text-xs text-zinc-400 font-mono">
+                        <Clock className="size-3.5" />
                         In Progress
                       </span>
                     )}
                   </TableCell>
 
                   {/* Column 6: Action */}
-                  <TableCell className="py-3.5 text-right">
+                  <TableCell className="py-4 text-right">
                     <Button
                       asChild
                       variant="outline"
                       size="sm"
-                      className="h-8 text-xs font-medium border-zinc-300 hover:border-zinc-950 hover:bg-zinc-950 hover:text-white transition-all shadow-2xs"
+                      className="h-8 text-xs font-semibold border-zinc-300 hover:border-zinc-950 hover:bg-zinc-950 hover:text-white transition-all shadow-2xs px-3"
                     >
                       <Link href={item.id === "case-402" ? "/case/402/prep" : "/#simulation"}>
                         <span>{getActionButtonText(item.stage)}</span>
-                        <ArrowRight className="size-3 ml-1" />
+                        <ArrowRight className="size-3.5 ml-1" />
                       </Link>
                     </Button>
                   </TableCell>

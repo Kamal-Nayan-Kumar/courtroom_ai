@@ -5,10 +5,16 @@ import { ArrowRight, BookOpen, Sparkles } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden">
-      {/* Background Subtle Ambience */}
+    <section className="relative pt-10 pb-8 md:pt-16 md:pb-10 overflow-hidden">
+      {/* Background Subtle Ambience & Balanced Extreme Warm Gradients */}
       <div className="absolute inset-0 bg-grid-pattern opacity-60 pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-64 bg-gradient-to-b from-amber-50/40 via-blue-50/20 to-transparent blur-3xl pointer-events-none -z-10" />
+
+      {/* Left Extreme Balanced Warm Yellowish Fluid Gradient */}
+      <div className="absolute top-1/4 -left-32 w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-amber-300/25 via-amber-200/15 to-transparent blur-3xl pointer-events-none -z-10" />
+
+      {/* Right Extreme Balanced Warm Yellowish Fluid Gradient */}
+      <div className="absolute top-1/4 -right-32 w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tl from-amber-300/25 via-amber-200/15 to-transparent blur-3xl pointer-events-none -z-10" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative text-center">
         {/* Announcement Pill */}
@@ -61,7 +67,7 @@ export function HeroSection() {
         </div>
 
         {/* Trust Bar below CTAs */}
-        <div className="mt-12 sm:mt-16 pt-8 border-t border-zinc-200/80">
+        <div className="mt-8 sm:mt-10 pt-6 border-t border-zinc-200/80">
           <p className="text-xs uppercase tracking-wider font-semibold text-zinc-500">
             Built for Law Students (NLUs &amp; Law Colleges), Moot Court Societies &amp; Junior Advocates across India
           </p>

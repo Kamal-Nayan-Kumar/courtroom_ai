@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { FileText, Scale, Users } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CaseHeaderSticky } from "@/components/prep/CaseHeaderSticky";
 import { CaseFileChronologyTab } from "@/components/prep/CaseFileChronologyTab";
@@ -104,23 +105,26 @@ export default function CasePrepStudioPage() {
             <TabsList className="bg-zinc-100 p-1 rounded-xl border border-zinc-200/80 h-auto flex flex-nowrap shrink-0">
               <TabsTrigger
                 value="case-file"
-                className="text-xs font-semibold px-3.5 py-1.5 rounded-lg data-[state=active]:bg-white data-[state=active]:text-zinc-950 data-[state=active]:shadow-2xs shrink-0"
+                className="text-xs font-semibold px-3.5 py-1.5 rounded-lg data-[state=active]:bg-white data-[state=active]:text-zinc-950 data-[state=active]:shadow-2xs shrink-0 flex items-center gap-1.5"
               >
-                <span>🗂️ 1. Case File, FIR & Chronology</span>
+                <FileText className="size-3.5 text-zinc-500" />
+                <span>1. Case File &amp; Chronology</span>
               </TabsTrigger>
 
               <TabsTrigger
                 value="rag-research"
-                className="text-xs font-semibold px-3.5 py-1.5 rounded-lg data-[state=active]:bg-white data-[state=active]:text-zinc-950 data-[state=active]:shadow-2xs shrink-0"
+                className="text-xs font-semibold px-3.5 py-1.5 rounded-lg data-[state=active]:bg-white data-[state=active]:text-zinc-950 data-[state=active]:shadow-2xs shrink-0 flex items-center gap-1.5"
               >
-                <span>⚖️ 2. RAG Legal Research & Precedent Builder</span>
+                <Scale className="size-3.5 text-zinc-500" />
+                <span>2. RAG Precedent Builder</span>
               </TabsTrigger>
 
               <TabsTrigger
                 value="witness-lab"
-                className="text-xs font-semibold px-3.5 py-1.5 rounded-lg data-[state=active]:bg-white data-[state=active]:text-zinc-950 data-[state=active]:shadow-2xs shrink-0"
+                className="text-xs font-semibold px-3.5 py-1.5 rounded-lg data-[state=active]:bg-white data-[state=active]:text-zinc-950 data-[state=active]:shadow-2xs shrink-0 flex items-center gap-1.5"
               >
-                <span>🎯 3. Witness AI Coaching & Trap Simulator</span>
+                <Users className="size-3.5 text-zinc-500" />
+                <span>3. Witness Coaching Simulator</span>
               </TabsTrigger>
             </TabsList>
           </div>

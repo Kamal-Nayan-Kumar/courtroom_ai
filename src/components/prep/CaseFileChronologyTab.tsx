@@ -86,7 +86,7 @@ export function CaseFileChronologyTab({
         pinnedAt: "Just now",
       };
       onPinFact(newFact);
-      onNotify(`📌 Pinned Paragraph ${para.paraNumber} to Courtroom Trial Brief.`);
+      onNotify(`Pinned Paragraph ${para.paraNumber} to Courtroom Trial Brief.`);
     }
   };
 
@@ -163,7 +163,7 @@ export function CaseFileChronologyTab({
                   <FileText className="size-4 text-emerald-700 shrink-0" />
                   <span className="truncate">{docName}</span>
                 </div>
-                <Badge className="bg-emerald-700 text-white text-[9px] font-mono">
+                <Badge className="bg-emerald-700 text-white text-xs font-mono">
                   RAG Indexed
                 </Badge>
               </div>
@@ -204,11 +204,11 @@ export function CaseFileChronologyTab({
                     <span className="font-semibold text-zinc-900 font-mono text-[11px]">
                       {fact.sourceDocTitle} · P{fact.paraNumber}
                     </span>
-                    <Badge variant="outline" className="text-[9px] font-mono bg-white border-amber-300 text-amber-900">
+                    <Badge variant="outline" className="text-xs font-mono bg-white border-amber-300 text-amber-900">
                       {fact.statuteTag}
                     </Badge>
                   </div>
-                  <p className="text-[11px] text-zinc-700 line-clamp-2 leading-relaxed">
+                  <p className="text-xs text-zinc-700 line-clamp-2 leading-relaxed">
                     {fact.text}
                   </p>
                 </div>
@@ -229,11 +229,11 @@ export function CaseFileChronologyTab({
                   <span className="font-mono text-xs font-semibold text-zinc-500 uppercase">
                     Authentic Trial Record
                   </span>
-                  <Badge variant="outline" className="text-[10px] font-mono bg-zinc-100">
+                  <Badge variant="outline" className="text-xs font-mono bg-zinc-100">
                     {selectedDoc.officerOrBench}
                   </Badge>
                 </div>
-                <CardTitle className="text-lg font-bold text-zinc-950 font-serif mt-1">
+                <CardTitle className="text-lg font-bold text-zinc-950 font-sans mt-1">
                   {selectedDoc.title}
                 </CardTitle>
                 <CardDescription className="text-xs text-zinc-600 mt-1">

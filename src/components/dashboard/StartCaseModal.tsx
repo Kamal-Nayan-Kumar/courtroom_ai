@@ -108,7 +108,7 @@ export function StartCaseModal() {
                 <Gavel className="size-4" />
               </div>
               <div>
-                <DialogTitle className="text-base font-bold text-zinc-950 font-serif">
+                <DialogTitle className="text-base font-bold text-zinc-950 font-sans">
                   Initiate New Trial Session
                 </DialogTitle>
                 <DialogDescription className="text-xs text-zinc-500">
@@ -319,7 +319,7 @@ export function StartCaseModal() {
                       )}
                     </div>
                     <h4 className="text-sm font-bold text-zinc-950">
-                      ⚖️ Public Prosecutor (State)
+                      Public Prosecutor (State)
                     </h4>
                     <p className="text-xs text-zinc-600 mt-2 leading-relaxed">
                       Present state charges, lead examination-in-chief of prosecution witnesses, establish chain of custody, and prove guilt beyond reasonable doubt.
@@ -350,7 +350,7 @@ export function StartCaseModal() {
                       )}
                     </div>
                     <h4 className="text-sm font-bold text-zinc-950">
-                      🛡️ Defense Counsel (Accused)
+                      Defense Counsel (Accused)
                     </h4>
                     <p className="text-xs text-zinc-600 mt-2 leading-relaxed">
                       Challenge evidence admissibility, cross-examine hostile and police witnesses, impeach digital hash delays, and protect constitutional rights.
@@ -381,7 +381,7 @@ export function StartCaseModal() {
                       : "bg-amber-50 text-amber-900 border-amber-200"
                   }
                 >
-                  {selectedRole === "defense" ? "🛡️ Defense Counsel" : "⚖️ Public Prosecutor"}
+                  {selectedRole === "defense" ? "Defense Counsel" : "Public Prosecutor"}
                 </Badge>
               </div>
 

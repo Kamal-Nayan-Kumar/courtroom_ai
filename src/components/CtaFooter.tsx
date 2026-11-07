@@ -46,9 +46,9 @@ export function CtaFooter() {
           <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-amber-100/40 blur-3xl pointer-events-none -z-10" />
 
           <div className="relative max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-xs font-mono-code font-medium mb-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-xs font-medium mb-4">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Free Student &amp; Advocate Access Open</span>
+              <span>Free Simulator Access for Advocates, Students &amp; Moot Teams</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-950 leading-tight">

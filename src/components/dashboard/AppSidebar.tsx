@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   LayoutDashboard,
@@ -8,6 +9,7 @@ import {
   Library,
   Users,
   Scale,
+  Gavel,
   Settings,
   HelpCircle,
   Plus,
@@ -67,7 +69,7 @@ export function AppSidebar() {
       title: "Active Cases",
       icon: Briefcase,
       href: "/dashboard#cases-table",
-      badge: "3",
+      badge: null,
       action: () => {
         setActiveItem("Active Cases");
         const el = document.getElementById("cases-table");
@@ -78,7 +80,7 @@ export function AppSidebar() {
       title: "Public Case Docket",
       icon: Library,
       href: "/dashboard#library-grid",
-      badge: "6 Cases",
+      badge: null,
       action: () => {
         setActiveItem("Public Case Docket");
         const el = document.getElementById("library-grid");
@@ -89,7 +91,7 @@ export function AppSidebar() {
       title: "Witness Prep Lab",
       icon: Users,
       href: "/case/402/prep",
-      badge: "1 Pending",
+      badge: null,
       action: () => {
         setActiveItem("Witness Prep Lab");
       },
@@ -102,6 +104,15 @@ export function AppSidebar() {
       action: () => {
         setActiveItem("Bare Acts & Precedents");
         setIsStatuteMapperOpen(true);
+      },
+    },
+    {
+      title: "Live Courtroom",
+      icon: Gavel,
+      href: "/case/402/courtroom",
+      badge: null,
+      action: () => {
+        setActiveItem("Live Courtroom");
       },
     },
   ];
@@ -133,15 +144,22 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="icon" variant="inset" className="border-r border-zinc-200/80 bg-[#FCFCFC]">
       {/* Sidebar Header */}
-      <SidebarHeader className="p-3 border-b border-zinc-200/70">
-        <div className="flex items-center justify-between gap-2">
-          <Link href="/dashboard" className="flex items-center gap-2.5 overflow-hidden">
-            <div className="size-8 rounded-lg bg-zinc-950 text-white flex items-center justify-center shrink-0 shadow-xs">
-              <Scale className="size-4 text-zinc-100" />
+      <SidebarHeader className="p-3 group-data-[collapsible=icon]:p-2 border-b border-zinc-200/70">
+        <div className="flex items-center justify-between gap-2 group-data-[collapsible=icon]:justify-center">
+          <Link href="/dashboard" className="flex items-center gap-2.5 overflow-hidden group-data-[collapsible=icon]:justify-center">
+            <div className="size-8 rounded-lg overflow-hidden flex items-center justify-center shrink-0 shadow-xs bg-black">
+              <Image
+                src="/logo_icon.png"
+                alt="Courtroom AI Logo"
+                width={32}
+                height={32}
+                className="w-full h-full object-cover"
+                priority
+              />
             </div>
             <div className="flex flex-col truncate leading-tight group-data-[collapsible=icon]:hidden">
               <span className="font-semibold text-sm tracking-tight text-zinc-950">Courtroom AI</span>
-              <span className="text-[10px] font-mono font-medium text-zinc-500 tracking-wider">BNS / BNSS / BSA</span>
+              <span className="text-[11px] font-medium text-zinc-500">Chamber Suite</span>
             </div>
           </Link>
         </div>
@@ -179,7 +197,7 @@ export function AppSidebar() {
                       tooltip={item.title}
                       className={`h-9 text-xs font-medium transition-colors ${
                         isActive
-                          ? "bg-zinc-950 text-white hover:bg-zinc-900 hover:text-white font-semibold shadow-2xs"
+                          ? "!bg-zinc-950 !text-white hover:!bg-zinc-900 hover:!text-white font-semibold shadow-2xs"
                           : "text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100"
                       }`}
                     >
@@ -187,19 +205,19 @@ export function AppSidebar() {
                         <Link
                           href={item.href}
                           onClick={item.action}
-                          className="w-full flex items-center gap-2.5 px-2"
+                          className="w-full flex items-center gap-2.5 px-2 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0"
                         >
-                          <IconComponent className={`size-4 shrink-0 ${isActive ? "text-white" : "text-zinc-500"}`} />
-                          <span className="truncate">{item.title}</span>
+                          <IconComponent className={`size-4 shrink-0 ${isActive ? "!text-white" : "text-zinc-500"}`} />
+                          <span className="truncate group-data-[collapsible=icon]:hidden">{item.title}</span>
                         </Link>
                       ) : (
                         <button
                           type="button"
                           onClick={item.action}
-                          className="w-full flex items-center gap-2.5 px-2"
+                          className="w-full flex items-center gap-2.5 px-2 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0"
                         >
-                          <IconComponent className={`size-4 shrink-0 ${isActive ? "text-white" : "text-zinc-500"}`} />
-                          <span className="truncate">{item.title}</span>
+                          <IconComponent className={`size-4 shrink-0 ${isActive ? "!text-white" : "text-zinc-500"}`} />
+                          <span className="truncate group-data-[collapsible=icon]:hidden">{item.title}</span>
                         </button>
                       )}
                     </SidebarMenuButton>
@@ -306,7 +324,8 @@ export function AppSidebar() {
               <DropdownMenuTrigger asChild>
                 <button
                   type="button"
-                  className="w-full flex items-center justify-between p-1.5 rounded-lg border border-zinc-200/80 bg-white hover:bg-zinc-50 transition-colors text-left group-data-[collapsible=icon]:justify-center"
+                  title="Adv. Kamal Nayan"
+                  className="w-full flex items-center justify-between p-1.5 rounded-lg border border-zinc-200/80 bg-white hover:bg-zinc-50 transition-colors text-left group-data-[collapsible=icon]:w-9 group-data-[collapsible=icon]:h-9 group-data-[collapsible=icon]:p-0 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:mx-auto"
                 >
                   <div className="flex items-center gap-2.5 overflow-hidden">
                     <Avatar className="size-7 border border-zinc-200 shrink-0">
@@ -335,12 +354,12 @@ export function AppSidebar() {
                 <DropdownMenuLabel className="p-2 font-normal">
                   <div className="flex flex-col gap-1">
                     <p className="text-xs font-bold text-zinc-950">{ADVOCATE_PROFILE.name}</p>
-                    <p className="text-[11px] text-zinc-500 font-mono">{ADVOCATE_PROFILE.designation}</p>
+                    <p className="text-xs text-zinc-500 font-sans">{ADVOCATE_PROFILE.designation}</p>
                     <div className="mt-1 flex items-center gap-1.5">
-                      <Badge variant="outline" className="text-[10px] bg-amber-50 text-amber-800 border-amber-200 font-mono">
+                      <Badge variant="outline" className="text-xs bg-amber-50 text-amber-800 border-amber-200 font-sans font-medium">
                         {ADVOCATE_PROFILE.tier}
                       </Badge>
-                      <Badge variant="outline" className="text-[10px] bg-emerald-50 text-emerald-800 border-emerald-200 font-mono">
+                      <Badge variant="outline" className="text-xs bg-emerald-50 text-emerald-800 border-emerald-200 font-sans font-medium">
                         Verified Bar
                       </Badge>
                     </div>

@@ -89,7 +89,7 @@ export const CASE_DOSSIER_DOCUMENTS: CaseDossierDocument[] = [
     id: "doc-ex-a",
     title: "Exhibit A: Hotel Lobby CCTV Footage Log",
     documentType: "digital-evidence",
-    badgeText: "⚠️ BSA Sec 63(4) Hash Mismatch",
+    badgeText: "BSA Sec 63(4) Hash Mismatch",
     badgeVariant: "destructive",
     filingDate: "16 Aug 2026",
     officerOrBench: "State Cyber Lab · SHA-256 Vault",
