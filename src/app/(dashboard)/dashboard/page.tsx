@@ -45,7 +45,7 @@ export default function DashboardPage() {
             </span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-zinc-950 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-bold font-sans text-zinc-950 tracking-tight">
             Good Morning, Counsel.
           </h1>
 

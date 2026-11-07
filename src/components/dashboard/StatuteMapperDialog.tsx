@@ -54,8 +54,8 @@ export function StatuteMapperDialog() {
               <ArrowRightLeft className="size-4 text-blue-100" />
             </div>
             <div>
-              <DialogTitle className="text-base font-bold text-zinc-950 font-serif">
-                BNS ↔ IPC & Criminal Law Transition Navigator
+              <DialogTitle className="text-base font-bold text-zinc-950 font-sans">
+                BNS ↔ IPC &amp; Criminal Law Transition Navigator
               </DialogTitle>
               <DialogDescription className="text-xs text-zinc-500">
                 Instant statutory cross-walk between BNS 2023, BNSS 2023, BSA 2023 and legacy IPC, CrPC, IEA.

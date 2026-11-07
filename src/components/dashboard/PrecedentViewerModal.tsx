@@ -38,8 +38,8 @@ export function PrecedentViewerModal() {
               <BookOpen className="size-4 text-blue-100" />
             </div>
             <div>
-              <DialogTitle className="text-base font-bold text-zinc-950 font-serif">
-                Co-Counsel Precedent Brief & Case Law RAG
+              <DialogTitle className="text-base font-bold text-zinc-950 font-sans">
+                Co-Counsel Precedent Brief &amp; Case Law RAG
               </DialogTitle>
               <DialogDescription className="text-xs text-zinc-500">
                 Indexed Supreme Court Precedents on Digital Evidence, Remand, and Admissibility.
@@ -57,7 +57,7 @@ export function PrecedentViewerModal() {
             >
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h4 className="text-xs font-bold text-zinc-950 font-serif leading-snug">
+                  <h4 className="text-xs font-bold text-zinc-950 font-sans leading-snug">
                     {p.caseTitle}
                   </h4>
                   <div className="text-[11px] font-mono text-zinc-600 mt-0.5">

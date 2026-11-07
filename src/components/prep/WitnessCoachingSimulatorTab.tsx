@@ -322,7 +322,7 @@ export function WitnessCoachingSimulatorTab({
 
             <div className="p-2 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-950 flex items-center gap-2 text-[11px] font-medium">
               <Lock className="size-3.5 text-emerald-700 shrink-0" />
-              <span>🔒 Strict Case-RAG Isolation (Cannot hallucinate external facts)</span>
+              <span>Strict Case-RAG Isolation (Zero Hallucination)</span>
             </div>
           </CardContent>
         </Card>
@@ -479,7 +479,7 @@ export function WitnessCoachingSimulatorTab({
                 className="p-3 rounded-xl border border-zinc-200 bg-zinc-50/50 hover:bg-white transition-all flex flex-col gap-2 shadow-2xs"
               >
                 <div className="flex items-center justify-between">
-                  <Badge variant="outline" className="text-[9.5px] font-mono bg-white text-zinc-800 border-zinc-200">
+                  <Badge variant="outline" className="text-xs font-mono bg-white text-zinc-800 border-zinc-200">
                     {trap.probability}% Probability
                   </Badge>
                   <span className="text-[10px] font-semibold text-amber-900">
@@ -554,7 +554,7 @@ export function WitnessCoachingSimulatorTab({
               className="h-7 px-2 text-[10.5px] border-amber-300 bg-amber-50 text-amber-900 hover:bg-amber-100 shrink-0 font-medium"
             >
               <Flame className="size-3 mr-1 text-amber-600" />
-              <span>{isSimulatingStress ? "Running Stress..." : "⚡ Stress-Test"}</span>
+              <span>{isSimulatingStress ? "Running Stress..." : "Stress-Test"}</span>
             </Button>
           </CardHeader>
 

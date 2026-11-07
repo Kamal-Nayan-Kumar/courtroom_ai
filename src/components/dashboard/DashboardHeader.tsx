@@ -35,27 +35,9 @@ export function DashboardHeader() {
 
   return (
     <header className="sticky top-0 z-30 flex h-14 shrink-0 items-center justify-between gap-4 border-b border-zinc-200/80 bg-white/95 px-4 backdrop-blur-md transition-all">
-      {/* Left: Sidebar trigger, separator, breadcrumbs */}
+      {/* Left: Sidebar trigger */}
       <div className="flex items-center gap-3">
         <SidebarTrigger className="-ml-1 text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100" />
-        <Separator orientation="vertical" className="h-4 bg-zinc-200" />
-        <Breadcrumb className="hidden sm:block">
-          <BreadcrumbList className="text-xs">
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/dashboard" className="text-zinc-500 hover:text-zinc-900 font-medium">
-                Chamber
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator>
-              <ChevronRight className="size-3 text-zinc-400" />
-            </BreadcrumbSeparator>
-            <BreadcrumbItem>
-              <BreadcrumbPage className="font-semibold text-zinc-900">
-                Overview & Docket
-              </BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
       </div>
 
       {/* Center: Global Search Bar trigger (Cmd+K) */}

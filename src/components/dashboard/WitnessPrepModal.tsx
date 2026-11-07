@@ -59,7 +59,7 @@ export function WitnessPrepModal() {
                 <Users className="size-4 text-purple-200" />
               </div>
               <div>
-                <DialogTitle className="text-base font-bold text-zinc-950 font-serif">
+                <DialogTitle className="text-base font-bold text-zinc-950 font-sans">
                   Adversarial Witness Coaching Lab
                 </DialogTitle>
                 <DialogDescription className="text-xs text-zinc-500">
@@ -68,7 +68,7 @@ export function WitnessPrepModal() {
               </div>
             </div>
 
-            <Badge variant="outline" className="text-[10px] font-mono bg-rose-50 text-rose-800 border-rose-200">
+            <Badge variant="outline" className="text-xs font-mono bg-rose-50 text-rose-800 border-rose-200">
               Vulnerability: High
             </Badge>
           </div>

@@ -114,7 +114,7 @@ export function RagLegalResearchTab({
               <div className="flex items-center gap-2 p-1.5 px-2.5 rounded-lg border border-zinc-200/80 bg-zinc-50/80 text-xs">
                 <Zap className="size-3.5 text-amber-600" />
                 <span className="font-medium text-zinc-800">Bare Acts RAG (BNS/BSA)</span>
-                <Badge variant="outline" className="text-[9px] font-mono bg-white text-emerald-700 border-emerald-200">
+                <Badge variant="outline" className="text-xs font-mono bg-white text-emerald-700 border-emerald-200">
                   12ms
                 </Badge>
                 <Switch
@@ -128,7 +128,7 @@ export function RagLegalResearchTab({
               <div className="flex items-center gap-2 p-1.5 px-2.5 rounded-lg border border-zinc-200/80 bg-zinc-50/80 text-xs">
                 <Building2 className="size-3.5 text-blue-800" />
                 <span className="font-medium text-zinc-800">SC Landmark RAG (pgvector)</span>
-                <Badge variant="outline" className="text-[9px] font-mono bg-white text-emerald-700 border-emerald-200">
+                <Badge variant="outline" className="text-xs font-mono bg-white text-emerald-700 border-emerald-200">
                   38ms
                 </Badge>
                 <Switch
@@ -142,7 +142,7 @@ export function RagLegalResearchTab({
               <div className="flex items-center gap-2 p-1.5 px-2.5 rounded-lg border border-zinc-200/80 bg-zinc-50/80 text-xs">
                 <Globe className="size-3.5 text-purple-700" />
                 <span className="font-medium text-zinc-800">Live Web Search (Firecrawl)</span>
-                <Badge variant="outline" className="text-[9px] font-mono bg-white text-purple-800 border-purple-200">
+                <Badge variant="outline" className="text-xs font-mono bg-white text-purple-800 border-purple-200">
                   Write-Through Cache
                 </Badge>
                 <Switch
@@ -199,13 +199,14 @@ export function RagLegalResearchTab({
                           </Badge>
                         )}
                         {auth.sourceType === "firecrawl-web" && (
-                          <Badge variant="outline" className="text-[10px] font-mono bg-purple-50 text-purple-900 border-purple-200">
-                            🌐 Fetched via Firecrawl & Auto-Indexed
+                          <Badge variant="outline" className="text-xs font-mono bg-purple-50 text-purple-900 border-purple-200 flex items-center gap-1">
+                            <Globe className="size-3 text-purple-700" />
+                            <span>Fetched via Firecrawl &amp; Auto-Indexed</span>
                           </Badge>
                         )}
                       </div>
 
-                      <CardTitle className="text-sm font-bold text-zinc-950 font-serif mt-1">
+                      <CardTitle className="text-base font-bold text-zinc-950 font-sans mt-1">
                         {auth.title}
                       </CardTitle>
 
@@ -319,7 +320,7 @@ export function RagLegalResearchTab({
                     className="p-2.5 rounded-lg border border-amber-200/70 bg-amber-50/30 text-xs flex flex-col gap-1"
                   >
                     <div className="flex items-center justify-between">
-                      <Badge variant="outline" className="text-[9px] font-mono bg-white text-amber-900 border-amber-300">
+                      <Badge variant="outline" className="text-xs font-mono bg-white text-amber-900 border-amber-300">
                         {obj.statute}
                       </Badge>
                       <span className="text-[10px] font-mono text-zinc-500">Auto-Armed</span>
@@ -387,7 +388,7 @@ export function RagLegalResearchTab({
                       <span className="font-bold text-emerald-950 text-[11px]">
                         {trialBrief.generatedTheory.title}
                       </span>
-                      <Badge className="bg-emerald-700 text-white text-[9px] font-mono">
+                      <Badge className="bg-emerald-700 text-white text-xs font-mono">
                         RAG Synthesized
                       </Badge>
                     </div>

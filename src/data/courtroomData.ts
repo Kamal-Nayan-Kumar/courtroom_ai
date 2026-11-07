@@ -209,7 +209,7 @@ export const COURTROOM_AGENTS: CourtroomAgentInfo[] = [
     reasoningSnippet:
       "MATCH: Witness testimony timestamp != Exhibit B tower ping -> GENERATE prompt card with precise impeachment citation.",
     sampleDialogue:
-      "“💡 Note: The witness stated he reached the spot at 11:15 PM, but Exhibit D shows the first call to 112 was logged at 11:42 PM. Ask him to explain the 27-minute gap.”",
+      "“Note: The witness stated he reached the spot at 11:15 PM, but Exhibit D shows the first call to 112 was logged at 11:42 PM. Ask him to explain the 27-minute gap.”",
     statuteFocus: "BNS, BNSS, BSA Cross-Correlation & Case Law",
   },
   {

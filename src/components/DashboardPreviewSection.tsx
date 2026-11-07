@@ -206,7 +206,7 @@ export function DashboardPreviewSection() {
 
                   <div className="overflow-x-auto rounded-xl border border-zinc-200 bg-white">
                     <table className="w-full text-left text-xs">
-                      <thead className="bg-zinc-50/80 text-zinc-500 font-mono-code uppercase text-[10.5px] border-b border-zinc-200">
+                      <thead className="bg-zinc-50/80 text-zinc-600 font-sans uppercase text-xs border-b border-zinc-200">
                         <tr>
                           <th className="py-3 px-3.5 font-semibold">Case Title &amp; Forum</th>
                           <th className="py-3 px-3 font-semibold">Role</th>
@@ -280,7 +280,7 @@ export function DashboardPreviewSection() {
               {/* Bottom Quick Callout */}
               <div className="mt-6 pt-4 border-t border-zinc-100 flex flex-wrap items-center justify-between text-xs text-zinc-500 gap-2">
                 <span>All evidence data encrypted under Indian Digital Personal Data Protection Act standards.</span>
-                <span className="font-mono-code text-zinc-700">Sync: Real-time Cloud Vault</span>
+                <span className="font-sans font-medium text-zinc-700">Sync: Real-time Cloud Vault</span>
               </div>
             </div>
           </div>

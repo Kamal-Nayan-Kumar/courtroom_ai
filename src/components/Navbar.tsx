@@ -21,7 +21,7 @@ export function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         {/* Brand Logo */}
         <div className="flex items-center gap-3">
-          <a href="#" className="flex items-center gap-2.5 group">
+          <Link href="/" className="flex items-center gap-2.5 group">
             <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center shadow-xs transition-transform group-hover:scale-105 bg-black">
               <Image
                 src="/logo_icon.png"
@@ -35,7 +35,7 @@ export function Navbar() {
             <span className="font-bold text-lg tracking-tight text-zinc-950">
               Courtroom AI
             </span>
-          </a>
+          </Link>
         </div>
 
         {/* Center Desktop Navigation */}
@@ -102,20 +102,21 @@ export function Navbar() {
             ))}
           </div>
           <div className="pt-2 flex flex-col gap-2">
-            <a
-              href="#dashboard"
+            <Link
+              href="/login"
               onClick={() => setMobileMenuOpen(false)}
               className="w-full text-center py-2 text-sm font-medium text-zinc-800 border border-zinc-200 rounded-md hover:bg-zinc-50"
             >
               Sign In
-            </a>
-            <a
-              href="#simulation"
+            </Link>
+            <Link
+              href="/#simulation"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-center py-2 text-sm font-medium text-white bg-zinc-950 rounded-md"
+              className="w-full text-center py-2 text-sm font-medium text-white bg-zinc-950 rounded-md inline-flex items-center justify-center gap-1.5"
             >
-              Enter Courtroom -&gt;
-            </a>
+              <span>Enter Courtroom</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
         </div>
       )}

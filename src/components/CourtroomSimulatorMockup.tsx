@@ -132,7 +132,7 @@ export function CourtroomSimulatorMockup() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-blue-50 border border-blue-200/80 text-blue-900 text-xs font-mono-code font-medium mb-2.5">
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-blue-50 border border-blue-200/80 text-blue-900 text-xs font-sans font-medium mb-2.5">
               <Scale className="w-3.5 h-3.5" />
               <span>Interactive Session Prototype</span>
             </div>
@@ -241,13 +241,13 @@ export function CourtroomSimulatorMockup() {
             </button>
           </div>
 
-          {/* 3-Pane Body Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[580px] divide-y lg:divide-y-0 lg:divide-x divide-zinc-200">
-            {/* LEFT PANE: Case File & Prep (25% on desktop, lg:col-span-3) */}
+          {/* 3-Pane Body Grid, fixed height so transcripts scroll inside instead of stretching the window */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 h-auto lg:h-[660px] divide-y lg:divide-y-0 lg:divide-x divide-zinc-200 max-h-[660px]">
+            {/* LEFT PANE: Case File & Prep, fixed height with internal scroll */}
             <div
               className={`${
                 mobilePaneTab === "brief" ? "flex" : "hidden"
-              } lg:flex lg:col-span-3 bg-zinc-50/50 flex-col p-4 text-xs`}
+              } lg:flex lg:col-span-3 bg-zinc-50/50 flex-col p-4 text-xs min-h-0 lg:h-full lg:max-h-[660px] overflow-hidden`}
             >
               <div className="flex items-center justify-between pb-3 border-b border-zinc-200">
                 <div className="flex items-center gap-1.5 font-semibold text-zinc-900 uppercase tracking-wider text-[11px]">
@@ -427,11 +427,11 @@ export function CourtroomSimulatorMockup() {
               </div>
             </div>
 
-            {/* CENTER PANE: 2D Indian Courtroom Schematic (45% on desktop, lg:col-span-5) */}
+            {/* CENTER PANE: 2D Indian Courtroom Schematic, fixed height, neat and clean */}
             <div
               className={`${
                 mobilePaneTab === "courtroom" ? "flex" : "hidden"
-              } lg:flex lg:col-span-5 bg-[#FAF9F5] p-4 flex-col justify-between relative overflow-hidden`}
+              } lg:flex lg:col-span-5 bg-zinc-50 p-4 flex-col relative overflow-hidden min-h-0 lg:h-full lg:max-h-[660px]`}
             >
               {/* Bench Header / 2D Layout Title */}
               <div className="flex items-center justify-between pb-2 border-b border-zinc-200/80">
@@ -445,17 +445,17 @@ export function CourtroomSimulatorMockup() {
                 </div>
               </div>
 
-              {/* 2D Architectural Schematic Canvas */}
-              <div className="my-auto py-4 space-y-4">
-                {/* 1. Elevated Judge Bench (Top Center) */}
-                <div className="relative mx-auto max-w-xs p-3 rounded-xl bg-white border-2 border-zinc-800 shadow-md text-center transition-all">
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-zinc-900 text-amber-300 text-[10px] font-semibold tracking-wider uppercase border border-zinc-700">
+              {/* 2D Architectural Schematic Canvas, scrolls internally so the pane never grows */}
+              <div className="flex-1 py-3 space-y-3 overflow-y-auto min-h-0 pr-0.5">
+                {/* 1. Elevated Judge Bench, static header pill above the card so nothing overlaps */}
+                <div className="mx-auto max-w-xs text-center">
+                  <div className="inline-block px-3 py-1 rounded-full bg-zinc-900 text-amber-300 text-[11px] font-bold tracking-wider uppercase border border-zinc-700 mb-2">
                     Hon&apos;ble Judge Bench
                   </div>
-
-                  <div className="flex items-center justify-center gap-2 mt-1">
+                  <div className="p-3.5 rounded-xl bg-white border border-zinc-300 shadow-xs text-center transition-all">
+                  <div className="flex items-center justify-center gap-2.5">
                     <div className="relative">
-                      <div className="w-9 h-9 rounded-full bg-zinc-900 text-white flex items-center justify-center font-serif text-sm font-bold shadow-xs">
+                      <div className="w-10 h-10 rounded-full bg-zinc-900 text-white flex items-center justify-center font-serif text-sm font-bold shadow-xs">
                         J
                       </div>
                       {isJudgeSpeaking && (
@@ -466,45 +466,46 @@ export function CourtroomSimulatorMockup() {
                       )}
                     </div>
                     <div className="text-left">
-                      <p className="text-xs font-bold text-zinc-950">
+                      <p className="text-sm font-bold text-zinc-950">
                         Justice S. K. Deshmukh
                       </p>
-                      <p className="text-[10px] text-zinc-500 flex items-center gap-1">
-                        <Volume2 className="w-2.5 h-2.5 text-amber-600" />
+                      <p className="text-xs text-zinc-500 flex items-center gap-1">
+                        <Volume2 className="w-3 h-3 text-amber-600" />
                         <span>{isJudgeSpeaking ? "Ruling on submission..." : "Listening intently..."}</span>
                       </p>
                     </div>
                   </div>
 
                   {judgeReaction && (
-                    <div className="mt-2 text-[10px] font-mono-code bg-amber-50 text-amber-900 p-1.5 rounded border border-amber-200">
+                    <div className="mt-2 text-xs font-mono bg-amber-50 text-amber-900 p-2 rounded-md border border-amber-200">
                       {judgeReaction}
                     </div>
                   )}
+                  </div>
                 </div>
 
                 {/* Gavel Connector Lines (Subtle Courtroom Floor Markings) */}
-                <div className="flex justify-center items-center gap-8 text-[10px] text-zinc-400 font-mono-code">
+                <div className="flex justify-center items-center gap-8 text-xs text-zinc-400 font-mono">
                   <div className="h-4 w-px bg-zinc-300" />
                   <span>[ TRIAL FLOOR · BAR AREA ]</span>
                   <div className="h-4 w-px bg-zinc-300" />
                 </div>
 
                 {/* 2. Witness Box ( कटघरा ) - Middle Center */}
-                <div className="mx-auto max-w-sm p-3 rounded-lg bg-white border border-zinc-300/90 shadow-xs text-center relative group">
+                <div className="mx-auto max-w-sm p-3.5 rounded-xl bg-white border border-zinc-300 shadow-xs text-center relative group">
                   <div className="flex items-center justify-center gap-2">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-zinc-100 text-zinc-800 border border-zinc-200">
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded bg-zinc-100 text-zinc-800 border border-zinc-200">
                       कटघरा · Witness Box
                     </span>
-                    <span className="text-xs font-semibold text-zinc-900">
+                    <span className="text-sm font-bold text-zinc-900">
                       PW-1: Dr. N. Kulkarni
                     </span>
                   </div>
-                  <p className="text-[11px] text-zinc-500 mt-1">
+                  <p className="text-xs text-zinc-600 mt-1">
                     Senior Cyber Forensic Examiner · Under Cross-Examination
                   </p>
-                  <div className="mt-2 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-red-50 text-red-700 text-[10px] font-medium border border-red-200/70">
-                    <AlertCircle className="w-3 h-3" />
+                  <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-50 text-red-700 text-xs font-medium border border-red-200/70">
+                    <AlertCircle className="w-3.5 h-3.5" />
                     <span>Conceded hash delay discrepancy</span>
                   </div>
                 </div>
@@ -513,60 +514,60 @@ export function CourtroomSimulatorMockup() {
                 <div className="grid grid-cols-2 gap-3 pt-2">
                   {/* Prosecution Desk */}
                   <div
-                    className={`p-3 rounded-xl border transition-all ${
+                    className={`p-3.5 rounded-xl border transition-all ${
                       role === "prosecution"
-                        ? "bg-blue-50/80 border-blue-600 ring-2 ring-blue-500/20 shadow-md"
+                        ? "bg-blue-50/90 border-blue-900 ring-2 ring-blue-900/20 shadow-md"
                         : "bg-white border-zinc-200 opacity-80"
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-blue-900">
+                      <span className="text-xs font-bold uppercase tracking-wider text-blue-950">
                         Prosecution Desk
                       </span>
                       {role === "prosecution" ? (
-                        <span className="px-1.5 py-0.5 rounded bg-blue-600 text-white text-[9px] font-bold">
+                        <span className="px-2 py-0.5 rounded bg-blue-900 text-white text-xs font-bold">
                           YOU
                         </span>
                       ) : (
-                        <span className="px-1.5 py-0.5 rounded bg-zinc-100 text-zinc-600 text-[9px] font-semibold">
+                        <span className="px-2 py-0.5 rounded bg-zinc-100 text-zinc-600 text-xs font-semibold">
                           AI AGENT
                         </span>
                       )}
                     </div>
-                    <p className="text-xs font-semibold text-zinc-900">
+                    <p className="text-sm font-semibold text-zinc-950">
                       Public Prosecutor Salve
                     </p>
-                    <p className="text-[10.5px] text-zinc-500 mt-0.5">
+                    <p className="text-xs text-zinc-600 mt-0.5">
                       Arguing electronic custody chain
                     </p>
                   </div>
 
                   {/* Defense Desk */}
                   <div
-                    className={`p-3 rounded-xl border transition-all ${
+                    className={`p-3.5 rounded-xl border transition-all ${
                       role === "defense"
-                        ? "bg-amber-50/80 border-amber-600 ring-2 ring-amber-500/20 shadow-md"
+                        ? "bg-amber-50/90 border-amber-600 ring-2 ring-amber-500/20 shadow-md"
                         : "bg-white border-zinc-200 opacity-80"
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-amber-900">
+                      <span className="text-xs font-bold uppercase tracking-wider text-amber-950">
                         Defense Desk
                       </span>
                       {role === "defense" ? (
-                        <span className="px-1.5 py-0.5 rounded bg-amber-600 text-white text-[9px] font-bold">
+                        <span className="px-2 py-0.5 rounded bg-amber-600 text-white text-xs font-bold">
                           YOU
                         </span>
                       ) : (
-                        <span className="px-1.5 py-0.5 rounded bg-zinc-100 text-zinc-600 text-[9px] font-semibold">
+                        <span className="px-2 py-0.5 rounded bg-zinc-100 text-zinc-600 text-xs font-semibold">
                           AI AGENT
                         </span>
                       )}
                     </div>
-                    <p className="text-xs font-semibold text-zinc-900">
+                    <p className="text-sm font-semibold text-zinc-950">
                       Defense Advocate (You)
                     </p>
-                    <p className="text-[10.5px] text-zinc-500 mt-0.5">
+                    <p className="text-xs text-zinc-600 mt-0.5">
                       Challenging 63(4) BSA certificate
                     </p>
                   </div>
@@ -574,45 +575,45 @@ export function CourtroomSimulatorMockup() {
               </div>
 
               {/* Floating Co-Counsel AI Pop-up Card */}
-              <div className="mt-3 p-3 rounded-xl border border-amber-300 bg-amber-50/95 shadow-sm text-xs relative backdrop-blur-xs">
+              <div className="mt-3 p-3.5 rounded-xl border border-amber-300 bg-amber-50/95 shadow-sm text-xs relative backdrop-blur-xs">
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex items-center gap-1.5">
                     <div className="w-5 h-5 rounded-full bg-amber-500 text-white flex items-center justify-center">
                       <Sparkles className="w-3 h-3" />
                     </div>
-                    <span className="font-bold text-amber-950 text-[11px] uppercase tracking-wide">
+                    <span className="font-bold text-amber-950 text-xs uppercase tracking-wide">
                       Co-Counsel AI Whisper · Adv. Saathi
                     </span>
                   </div>
-                  <span className="px-1.5 py-0.5 rounded bg-amber-200/80 text-amber-900 text-[10px] font-mono-code font-semibold">
+                  <span className="px-2 py-0.5 rounded bg-amber-200/80 text-amber-950 text-xs font-mono font-semibold">
                     {activeHint.statuteCitation}
                   </span>
                 </div>
 
-                <p className="text-zinc-800 text-[11.5px] mt-2 leading-relaxed">
+                <p className="text-zinc-800 text-xs mt-2 leading-relaxed">
                   {activeHint.hint}
                 </p>
 
                 <div className="mt-2.5 pt-2 border-t border-amber-200/70 flex items-center justify-between gap-2">
-                  <span className="text-[10.5px] text-amber-900 font-medium truncate max-w-[240px]">
+                  <span className="text-xs text-amber-950 font-medium truncate max-w-[240px]">
                     Recommendation: Impeach hash integrity
                   </span>
                   <button
                     onClick={handleApplyCoCounselHint}
-                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-amber-600 hover:bg-amber-700 text-white text-[11px] font-semibold shadow-2xs transition-colors shrink-0"
+                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold shadow-2xs transition-colors shrink-0"
                   >
                     <span>Use Argument</span>
-                    <ChevronRight className="w-3 h-3" />
+                    <ChevronRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </div>
             </div>
 
-            {/* RIGHT PANE: Live Streaming Multi-Agent Transcript (30% on desktop, lg:col-span-4) */}
+            {/* RIGHT PANE: Live Streaming Multi-Agent Transcript, fixed height with internal scroll */}
             <div
               className={`${
                 mobilePaneTab === "transcript" ? "flex" : "hidden"
-              } lg:flex lg:col-span-4 bg-white flex-col justify-between p-4 text-xs h-full`}
+              } lg:flex lg:col-span-4 bg-white flex-col p-4 text-xs h-full min-h-0 lg:max-h-[660px] overflow-hidden`}
             >
               {/* Header */}
               <div className="flex items-center justify-between pb-3 border-b border-zinc-200">
@@ -625,8 +626,8 @@ export function CourtroomSimulatorMockup() {
                 </span>
               </div>
 
-              {/* Chat Stream Area */}
-              <div className="flex-1 overflow-y-auto my-3 pr-1 space-y-3 min-h-[300px]">
+              {/* Chat Stream Area — scrolls inside the fixed-height pane instead of stretching it */}
+              <div className="flex-1 overflow-y-auto my-3 pr-1 space-y-3 min-h-0">
                 {transcripts.map((msg) => {
                   const isJudge = msg.speakerRole === "judge";
                   const isUser = msg.speakerRole === role;
@@ -649,7 +650,7 @@ export function CourtroomSimulatorMockup() {
                       <div className="flex items-center justify-between mb-1 gap-2">
                         <div className="flex items-center gap-1.5">
                           <span
-                            className={`font-semibold text-[11px] ${
+                            className={`font-semibold text-xs ${
                               isJudge ? "text-amber-900 font-bold" : "text-zinc-950"
                             }`}
                           >
@@ -657,7 +658,7 @@ export function CourtroomSimulatorMockup() {
                           </span>
                           {msg.citation && (
                             <span
-                              className={`text-[9.5px] font-mono-code ${
+                              className={`text-xs font-mono ${
                                 isJudge ? "text-amber-800/80" : "text-zinc-500"
                               }`}
                             >
@@ -666,7 +667,7 @@ export function CourtroomSimulatorMockup() {
                           )}
                         </div>
                         <span
-                          className={`text-[10px] font-mono-code ${
+                          className={`text-xs font-mono ${
                             isJudge ? "text-amber-800/70" : "text-zinc-400"
                           }`}
                         >
@@ -705,9 +706,10 @@ export function CourtroomSimulatorMockup() {
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={handleRaiseObjection}
-                    className="flex-1 py-1 px-2 rounded border border-red-200 bg-red-50 hover:bg-red-100 text-red-700 text-[10.5px] font-semibold text-center transition-colors"
+                    className="flex-1 py-1 px-2 rounded border border-red-200 bg-red-50 hover:bg-red-100 text-red-700 text-[11px] font-semibold text-center transition-colors flex items-center justify-center gap-1"
                   >
-                    ⚡ Raise Objection
+                    <AlertCircle className="size-3 text-red-600 shrink-0" />
+                    <span>Raise Objection</span>
                   </button>
                   <button
                     onClick={() =>
@@ -749,7 +751,7 @@ export function CourtroomSimulatorMockup() {
                     </button>
                   </div>
                 </form>
-                <p className="text-[10px] text-zinc-500 text-center font-mono-code">
+                <p className="text-xs text-zinc-500 text-center font-sans">
                   Press Enter to submit · Agents evaluate admissibility in real-time
                 </p>
               </div>

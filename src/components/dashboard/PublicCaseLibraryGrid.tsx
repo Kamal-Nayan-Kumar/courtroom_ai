@@ -126,49 +126,49 @@ export function PublicCaseLibraryGrid() {
             key={item.id}
             className="bg-white border-zinc-200/90 shadow-2xs hover:shadow-xs transition-all flex flex-col justify-between group hover:border-zinc-300"
           >
-            <CardHeader className="p-4 pb-2">
-              <div className="flex items-center justify-between gap-2 mb-1.5">
-                <span className="font-mono text-[10.5px] font-semibold text-zinc-500 uppercase tracking-wider">
+            <CardHeader className="p-4 sm:p-5 pb-2">
+              <div className="flex items-center justify-between gap-2 mb-2">
+                <span className="font-mono text-xs font-semibold text-zinc-500 uppercase tracking-wider">
                   {item.citation}
                 </span>
                 <Badge
                   variant="outline"
-                  className={`text-[10px] font-mono py-0.5 px-2 ${getDifficultyBadge(item.difficulty)}`}
+                  className={`text-xs font-mono py-0.5 px-2.5 ${getDifficultyBadge(item.difficulty)}`}
                 >
                   {item.difficulty}
                 </Badge>
               </div>
 
-              <CardTitle className="text-sm font-bold text-zinc-950 group-hover:text-blue-900 transition-colors leading-snug">
+              <CardTitle className="text-base font-bold text-zinc-950 group-hover:text-blue-900 transition-colors leading-snug">
                 {item.title}
               </CardTitle>
 
-              <div className="text-[11px] font-medium text-zinc-500 mt-1 flex items-center gap-1.5">
-                <Scale className="size-3 text-zinc-400" />
+              <div className="text-xs font-medium text-zinc-500 mt-1 flex items-center gap-1.5">
+                <Scale className="size-3.5 text-zinc-400 shrink-0" />
                 <span className="truncate">{item.court}</span>
               </div>
             </CardHeader>
 
-            <CardContent className="p-4 pt-1 pb-3 flex-1 flex flex-col justify-between gap-3">
-              <p className="text-xs text-zinc-600 leading-relaxed line-clamp-3">
+            <CardContent className="p-4 sm:p-5 pt-1 pb-3 flex-1 flex flex-col justify-between gap-3.5">
+              <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed line-clamp-3">
                 {item.summary}
               </p>
 
               {/* Theme & Statutes */}
-              <div className="flex flex-col gap-2 pt-2 border-t border-zinc-100">
-                <div className="flex items-center justify-between text-[11px]">
+              <div className="flex flex-col gap-2 pt-2.5 border-t border-zinc-100">
+                <div className="flex items-center justify-between text-xs">
                   <span className="font-semibold text-zinc-700">Core Issue:</span>
                   <span className="text-zinc-600 text-right truncate max-w-[200px]">
                     {item.keyTheme}
                   </span>
                 </div>
 
-                <div className="flex flex-wrap gap-1">
+                <div className="flex flex-wrap gap-1.5">
                   {item.statuteBadges.map((badge) => (
                     <Badge
                       key={badge}
                       variant="outline"
-                      className="text-[10px] font-mono py-0 px-1.5 bg-zinc-50 text-zinc-700 border-zinc-200"
+                      className="text-xs font-mono py-0.5 px-2 bg-zinc-50 text-zinc-700 border-zinc-200"
                     >
                       {badge}
                     </Badge>
@@ -177,15 +177,15 @@ export function PublicCaseLibraryGrid() {
               </div>
             </CardContent>
 
-            <CardFooter className="p-4 pt-2 border-t border-zinc-100 flex items-center justify-between bg-zinc-50/40 rounded-b-xl">
-              <div className="flex items-center gap-2 text-[11px] text-zinc-500 font-mono">
+            <CardFooter className="p-4 sm:p-5 pt-2.5 border-t border-zinc-100 flex items-center justify-between bg-zinc-50/40 rounded-b-xl">
+              <div className="flex items-center gap-2.5 text-xs text-zinc-500 font-mono">
                 <span className="flex items-center gap-1">
-                  <Clock className="size-3" />
+                  <Clock className="size-3.5" />
                   {item.estimatedMinutes}m
                 </span>
                 <span>·</span>
                 <span className="flex items-center gap-1">
-                  <Users className="size-3" />
+                  <Users className="size-3.5" />
                   {item.practiceCount} runs
                 </span>
               </div>
