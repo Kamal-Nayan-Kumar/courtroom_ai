@@ -29,13 +29,11 @@ export default function CasePrepStudioPage() {
   const [isGeneratingTheory, setIsGeneratingTheory] = useState<boolean>(false);
 
   const handleRoleToggle = () => {
-    setCurrentRole((prev) => {
-      const nextRole = prev === "defense" ? "prosecution" : "defense";
-      showNotification(
-        `Switched perspective to ${nextRole === "defense" ? "Defense Counsel" : "Public Prosecutor"}. Strategies updated.`
-      );
-      return nextRole;
-    });
+    const nextRole = currentRole === "defense" ? "prosecution" : "defense";
+    setCurrentRole(nextRole);
+    showNotification(
+      `Switched perspective to ${nextRole === "defense" ? "Defense Counsel" : "Public Prosecutor"}. Strategies updated.`
+    );
   };
 
   const handlePinFact = (fact: PinnedTrialFact) => {
