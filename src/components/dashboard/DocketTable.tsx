@@ -274,17 +274,32 @@ export function DocketTable() {
 
                   {/* Column 6: Action */}
                   <TableCell className="py-4 text-right">
-                    <Button
-                      asChild
-                      variant="outline"
-                      size="sm"
-                      className="h-8 text-xs font-semibold border-zinc-300 hover:border-zinc-950 hover:bg-zinc-950 hover:text-white transition-all shadow-2xs px-3"
-                    >
-                      <Link href={item.id === "case-402" ? "/case/402/prep" : "/#simulation"}>
-                        <span>{getActionButtonText(item.stage)}</span>
-                        <ArrowRight className="size-3.5 ml-1" />
-                      </Link>
-                    </Button>
+                    <div className="flex items-center justify-end gap-2">
+                      {item.stage === "case-prep" ? (
+                        <Button
+                          asChild
+                          variant="outline"
+                          size="sm"
+                          className="h-8 text-xs font-semibold border-zinc-300 hover:border-zinc-950 hover:bg-zinc-50 transition-all shadow-2xs px-3"
+                        >
+                          <Link href="/case/402/prep">
+                            <span>Prepare Case</span>
+                            <ArrowRight className="size-3.5 ml-1" />
+                          </Link>
+                        </Button>
+                      ) : null}
+                      <Button
+                        asChild
+                        variant="outline"
+                        size="sm"
+                        className="h-8 text-xs font-semibold border-zinc-300 hover:border-zinc-950 hover:bg-zinc-950 hover:text-white transition-all shadow-2xs px-3"
+                      >
+                        <Link href="/case/402/courtroom">
+                          <span>{getActionButtonText(item.stage)}</span>
+                          <ArrowRight className="size-3.5 ml-1" />
+                        </Link>
+                      </Button>
+                    </div>
                   </TableCell>
                 </TableRow>
               ))

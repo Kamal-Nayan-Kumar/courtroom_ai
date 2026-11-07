@@ -13,7 +13,7 @@ import {
 export const INITIAL_TRANSCRIPT: TranscriptItem[] = [
   {
     id: "turn-1",
-    speaker: "Adv. M. Deshpande (Prosecutor AI)",
+    speaker: "Prosecutor",
     speakerRole: "prosecutor",
     content:
       "My Lord, the prosecution now relies on Exhibit A, the CCTV footage extracted from the Colaba Junction DVR. We submit this footage through witness PW-1 Dr. Kulkarni, who personally analyzed the secondary hash extract under Section 63 BSA.",
@@ -23,7 +23,7 @@ export const INITIAL_TRANSCRIPT: TranscriptItem[] = [
   },
   {
     id: "turn-2",
-    speaker: "PW-1 Dr. Rajesh Kulkarni (Witness AI)",
+    speaker: "Witness",
     speakerRole: "witness",
     content:
       "Yes, My Lord. I received the pen-drive containing the MP4 export from the investigating officer and performed a SHA-256 cryptographic checksum matching the optical hash.",
@@ -33,7 +33,7 @@ export const INITIAL_TRANSCRIPT: TranscriptItem[] = [
   },
   {
     id: "turn-3",
-    speaker: "YOU (Defense Counsel)",
+    speaker: "Defense",
     speakerRole: "defense",
     content:
       "Dr. Kulkarni, look at Station Diary Entry #42 and IO Patil's seizure memo. The DVR was seized at 21:30 HRS, but your inward register logs receipt at 23:15 HRS. Where was this unsealed pen-drive during that unexplained 105-minute gap?",
@@ -43,7 +43,7 @@ export const INITIAL_TRANSCRIPT: TranscriptItem[] = [
   },
   {
     id: "turn-4",
-    speaker: "Adv. M. Deshpande (Prosecutor AI)",
+    speaker: "Prosecutor",
     speakerRole: "prosecutor",
     content:
       "⚡ OBJECTION! My Lord, learned Defense Counsel is badgering the expert witness on clerical Panchnama entries already annexed and verified by the investigating agency.",
@@ -53,17 +53,17 @@ export const INITIAL_TRANSCRIPT: TranscriptItem[] = [
   },
   {
     id: "turn-5",
-    speaker: "Hon'ble Justice V. Gopalan (Judge AI)",
+    speaker: "Judge",
     speakerRole: "judge",
     content:
-      "🔨 OBJECTION OVERRULED. The chain of digital custody under Section 63 BSA goes to the root of admissibility. Witness PW-1 is directed to answer the question.",
+      "OBJECTION OVERRULED. The chain of digital custody under Section 63 BSA goes to the root of admissibility. Witness PW-1 is directed to answer the question.",
     timestamp: "10:15:14",
     citation: "Ruling: Admissibility Threshold · Arjun Panditrao Khotkar (2020)",
     kind: "ruling",
   },
   {
     id: "turn-6",
-    speaker: "PW-1 Dr. Rajesh Kulkarni (Witness AI)",
+    speaker: "Witness",
     speakerRole: "witness",
     content:
       "My Lord, I... I only verified the hash value after the pen-drive reached the Kalina lab at 11:45 PM. The drive was transported in a standard police envelope without an independent electronic tamper-evident seal...",
