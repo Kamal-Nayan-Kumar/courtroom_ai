@@ -132,3 +132,17 @@ NEON_AUTH_BASE_URL, NEON_AUTH_COOKIE_SECRET, DATABASE_URL, GROQ_API_KEY, OPENROU
 
 ### Still needs user keys
 - .env.local: GROQ_API_KEY, OPENROUTER_API_KEY, FIRECRAWL_API_KEY, HF_TOKEN. Then live E2E: auth click-through, courtroom turn stream, verdict, RAG ask, backfill.
+
+## Rounds 4+ closed (this session)
+- Courtroom speech (done): Web Speech mic wired to stdin (input) + read-back synthesis; used in prep/coach contexts where applicable.
+- Debate/meta (done): transcript streaming, reasoning chips, persona modal, verdict rubric.
+- Access control (done): Neon Auth, proxy guards, 401 paths verified.
+- Corpus (in progress): 8,520 chunks ingested; backfill running locally (500/8,520 at last check). Vector search fills as embeddings land. Keyword RAG works now.
+- Sessions dashboard (done for data, partial UI): recent sessions + scores stored; dashboard shows KPIs + practice cases + recent verdicts.
+
+## What remains (in order)
+1. Finish backfill (local CPU, no key needed). Check count before any vector claim.
+2. RAG ask with usedVector:true end-to-end (needs auth cookie; verify in browser).
+3. Ensemble/rag-with-web toggle in prep (Firecrawl live).
+4. HF ingest larger (currently 200+200 rows; raise when ready).
+5. Prod moves: Vercel deploy, NEXT_PUBLIC_APP_URL, OAuth provider in console (Google), Sarvam TTS if voice v2 wanted.

@@ -59,7 +59,8 @@ let embedPipe: any = null;
 
 async function getEmbedPipe() {
   if (!embedPipe) {
-    const { pipeline } = await import("@huggingface/transformers");
+    // Loaded lazily so Vercel builds skip the native ONNX binary.
+    const { pipeline } = await import("@huggingface/transformers" as never);
     embedPipe = await pipeline("feature-extraction", "Xenova/nomic-embed-text-v1");
   }
   return embedPipe;

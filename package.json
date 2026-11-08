@@ -9,7 +9,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@huggingface/transformers": "^3.1.2",
     "@neon/auth": "^0.8.2",
     "@neondatabase/serverless": "^1.2.0",
     "class-variance-authority": "^0.7.1",
