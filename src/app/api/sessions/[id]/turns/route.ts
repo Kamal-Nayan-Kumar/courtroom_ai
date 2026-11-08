@@ -5,7 +5,7 @@ import { auth } from "@/lib/auth/server";
 export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const { data: session } = await auth.getSession();
-  const userId = session?.user?.id;
+  const userId = session?.user?.id ?? "guest";
   if (!userId) return Response.json({ error: "Not signed in" }, { status: 401 });
 
   const sql = db();
@@ -22,7 +22,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ id: str
 export async function POST(req: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const { data: session } = await auth.getSession();
-  const userId = session?.user?.id;
+  const userId = session?.user?.id ?? "guest";
   if (!userId) return Response.json({ error: "Not signed in" }, { status: 401 });
 
   const body = (await req.json()) as { text?: string; kind?: string };

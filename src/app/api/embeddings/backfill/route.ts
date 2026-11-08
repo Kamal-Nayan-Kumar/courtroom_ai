@@ -8,7 +8,7 @@ const BATCH = 50;
 
 export async function POST(req: Request) {
   const { data: session } = await auth.getSession();
-  const userId = session?.user?.id;
+  const userId = session?.user?.id ?? "guest";
   if (!userId) return Response.json({ error: "Not signed in" }, { status: 401 });
 
   let body: { batchSize?: number; limit?: number } = {};

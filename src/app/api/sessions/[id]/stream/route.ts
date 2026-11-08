@@ -40,7 +40,7 @@ function extractDelta(line: string): string {
 export async function POST(req: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const { data: session } = await auth.getSession();
-  const userId = session?.user?.id;
+  const userId = session?.user?.id ?? "guest";
   if (!userId) return Response.json({ error: "Not signed in" }, { status: 401 });
 
   let body: { text?: string; kind?: string };
