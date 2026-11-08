@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import { useStreamTurn } from "@/hooks/useStreamTurn";
 import { CourtroomTopBar } from "@/components/courtroom/CourtroomTopBar";
 import { CaseDossierDrawer } from "@/components/courtroom/CaseDossierDrawer";
 import { CourtroomArena2D } from "@/components/courtroom/CourtroomArena2D";
@@ -8,398 +10,360 @@ import { TranscriptPanel } from "@/components/courtroom/TranscriptPanel";
 import { AdvocateConsole } from "@/components/courtroom/AdvocateConsole";
 import { AgentPersonaModal } from "@/components/courtroom/AgentPersonaModal";
 import { VerdictSummaryModal } from "@/components/courtroom/VerdictSummaryModal";
+import { OBJECTION_GROUNDS } from "@/data/courtroomArenaData";
 import {
-  AGENT_PERSONAS,
-  CHRONOLOGY_FACTS,
-  INITIAL_CO_COUNSEL_HINTS,
-  INITIAL_EXHIBITS,
-  INITIAL_TRANSCRIPT,
-  OBJECTION_GROUNDS,
-  PINNED_PRECEDENTS,
-  PINNED_STATUTES,
-  WITNESS_ACTIVE_PROFILE,
-} from "@/data/courtroomArenaData";
-import {
+  AgentPersona,
+  ChronologyFact,
   CourtroomExhibit,
   CourtroomRole,
   ObjectionGround,
   SpeakerId,
   TranscriptItem,
+  WitnessProfile,
 } from "@/types/courtroomArena";
 import { useDashboard } from "@/context/DashboardContext";
-import { SPEAKER_META } from "@/components/courtroom/speakerMeta";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+
+interface CaseDetail {
+  case: { id: string; title: string; category: string; court: string; charges: string; summary: string };
+  parties: Array<{ side: string; name: string; role: string; persona_prompt: string; is_witness: boolean; personality: string }>;
+  evidence: Array<{ id: string; exhibit_label: string; title: string; description: string; content: string }>;
+  chunks: Array<{ id: string; section_label: string; text: string; token_count: number }>;
+}
+
+interface TurnRow {
+  id: string;
+  seq: number;
+  actor: string;
+  speaker_name: string;
+  kind: string;
+  text: string;
+  citation: string;
+  created_at: string;
+}
+
+const seatToSpeaker = (seat: string): SpeakerId => {
+  if (seat === "judge") return "judge";
+  if (seat === "prosecution") return "prosecutor";
+  if (seat === "defense") return "defense";
+  if (seat === "witness") return "witness";
+  return "clerk";
+};
+
+const fmt = (iso: string) => {
+  try {
+    return new Date(iso).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+  } catch {
+    return "";
+  }
+};
+
+const turnToItem = (row: TurnRow, studentRole: CourtroomRole): TranscriptItem => {
+  const roleMap: Record<string, SpeakerId> = {
+    judge: "judge",
+    prosecutor: "prosecutor",
+    defense: "defense",
+    witness: "witness",
+    student: studentRole === "defense" ? "defense" : "prosecutor",
+  };
+  return {
+    id: row.id,
+    speaker: row.speaker_name,
+    speakerRole: roleMap[row.actor] ?? "clerk",
+    content: row.text,
+    timestamp: fmt(row.created_at),
+    citation: row.citation || undefined,
+    kind: (row.kind as TranscriptItem["kind"]) || "standard",
+  };
+};
 
 export default function CourtroomArenaPage() {
+  const params = useParams();
+  const caseId = String(params.id ?? "");
   const { showNotification } = useDashboard();
 
-  // Monotonic id source for transcript entries
-  const idSeq = React.useRef(0);
-  const nextId = (prefix: string) => `${prefix}-${++idSeq.current}`;
-
-  // Layout State
-  const [isLeftPanelOpen, setIsLeftPanelOpen] = useState(true);
-  const [currentRole, setCurrentRole] = useState<CourtroomRole>("defense");
-  const [coCounselEnabled, setCoCounselEnabled] = useState(true);
-
-  // Active Simulation State
-  const [activeSpeaker, setActiveSpeaker] = useState<SpeakerId | null>("witness");
-  const [activeExhibit, setActiveExhibit] = useState<CourtroomExhibit | null>(
-    INITIAL_EXHIBITS[0] // Exhibit A
-  );
-  const [witnessComposure, setWitnessComposure] = useState(74);
-  const [transcript, setTranscript] = useState<TranscriptItem[]>(INITIAL_TRANSCRIPT);
+  const [detail, setDetail] = useState<CaseDetail | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
+  const [studentRole, setStudentRole] = useState<CourtroomRole>("defense");
+  const [durationSec, setDurationSec] = useState(180);
+  const [sessionId, setSessionId] = useState<string | null>(null);
+  const [starting, setStarting] = useState(false);
+  const [transcript, setTranscript] = useState<TranscriptItem[]>([]);
   const [inputValue, setInputValue] = useState("");
-  const [isStreaming, setIsStreaming] = useState(false);
-
-  // Modals
+  const [elapsed, setElapsed] = useState(0);
+  const [ended, setEnded] = useState(false);
+  const [isLeftPanelOpen, setIsLeftPanelOpen] = useState(true);
+  const [activeSpeaker, setActiveSpeaker] = useState<SpeakerId | null>("judge");
+  const [activeExhibit, setActiveExhibit] = useState<CourtroomExhibit | null>(null);
   const [selectedPersonaId, setSelectedPersonaId] = useState<SpeakerId | null>(null);
-  const [isPersonaModalOpen, setIsPersonaModalOpen] = useState(false);
-  const [isVerdictModalOpen, setIsVerdictModalOpen] = useState(false);
+  const [score, setScore] = useState<null | {
+    argument_score: number | null;
+    objection_score: number | null;
+    composure_score: number | null;
+    legal_accuracy_score: number | null;
+    overall: number | null;
+    judge_summary: string;
+    strengths: string[];
+    weaknesses: string[];
+  }>(null);
+  const [verdictLoading, setVerdictLoading] = useState(false);
 
-  // Co-Counsel hints state
-  const [coCounselHints, setCoCounselHints] = useState(INITIAL_CO_COUNSEL_HINTS);
+  const {
+    streaming,
+    streamingItem,
+    push: pushStream,
+    error: streamError,
+  } = useStreamTurn(sessionId ?? "");
 
-  // Switch counsel perspective
-  const handleRoleToggle = () => {
-    const nextRole = currentRole === "defense" ? "prosecution" : "defense";
-    setCurrentRole(nextRole);
-    showNotification(
-      `Switched perspective to ${
-        nextRole === "defense" ? "Defense Counsel" : "Public Prosecutor"
-      }. Multi-agent bus updated.`
-    );
-  };
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch(`/api/cases/${encodeURIComponent(caseId)}`, { cache: "no-store" });
+        const json = await res.json();
+        if (!res.ok) throw new Error(json.error ?? "Case not found");
+        if (!cancelled) setDetail(json);
+      } catch (e) {
+        if (!cancelled) setLoadError(e instanceof Error ? e.message : "Failed to load case");
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [caseId]);
 
-  // Co-Counsel AI toggle
-  const handleCoCounselToggle = () => {
-    const next = !coCounselEnabled;
-    setCoCounselEnabled(next);
-    showNotification(
-      next
-        ? "Co-Counsel AI whispers set to Proactive."
-        : "Co-Counsel AI muted for Strict Trial Mode."
-    );
-  };
+  useEffect(() => {
+    if (!sessionId || ended) return;
+    const t = setInterval(() => setElapsed((v) => v + 1), 1000);
+    return () => clearInterval(t);
+  }, [sessionId, ended]);
 
-  // Select desk in 2D courtroom -> Highlight & Inspect
-  const handleSelectSpeaker = (speakerId: SpeakerId) => {
-    setActiveSpeaker(speakerId);
-    setSelectedPersonaId(speakerId);
-    setIsPersonaModalOpen(true);
-  };
+  const startSession = useCallback(async () => {
+    setStarting(true);
+    try {
+      const res = await fetch("/api/sessions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ caseId, studentRole, durationSec }),
+      });
+      const sess = await res.json();
+      if (!res.ok) throw new Error(sess.error ?? "Could not start session");
+      setSessionId(sess.id);
+      setEnded(false);
+      setElapsed(0);
+      setTranscript([]);
+      setScore(null);
 
-  // Exhibit selection from Left Drawer
-  const handleSelectExhibit = (exhibit: CourtroomExhibit) => {
-    setActiveExhibit(exhibit);
-    showNotification(`Presented ${exhibit.label} to Hon'ble Bench.`);
-    // Add transcript notice
-    const newEntry: TranscriptItem = {
-      id: nextId("notice"),
-      speaker: SPEAKER_META.clerk.label,
-      speakerRole: "clerk",
-      content: `[ Exhibit on Record: ${exhibit.label} (${exhibit.name}) presented before Hon'ble Justice V. Gopalan ]`,
-      timestamp: new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-      }),
-      kind: "standard",
-    };
-    setTranscript((prev) => [...prev, newEntry]);
-  };
-
-  // Insert question text from Co-Counsel or Fact citing
-  const handleInsertQuestion = (text: string) => {
-    setInputValue(text);
-    showNotification("Transferred question into advocate mic console.");
-  };
-
-  // Cite precedent from Co-Counsel
-  const handleCitePrecedent = (text: string) => {
-    setInputValue((prev) => (prev ? `${prev} ${text}` : text));
-    showNotification("Appended Supreme Court authority into argument.");
-  };
-
-  // Raise Objection Action
-  const handleRaiseObjection = (ground: ObjectionGround) => {
-    const timestamp = new Date().toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-    });
-
-    const objectionItem: TranscriptItem = {
-      id: nextId("obj"),
-      speaker:
-        SPEAKER_META[currentRole === "defense" ? "defense" : "prosecutor"].label,
-      speakerRole: currentRole === "defense" ? "defense" : "prosecutor",
-      content: ground.suggestedSpeech,
-      timestamp,
-      citation: `Objection raised under ${ground.act} ${ground.section} · ${ground.label}`,
-      kind: "objection",
-    };
-
-    setTranscript((prev) => [...prev, objectionItem]);
-    setActiveSpeaker("defense");
-
-    // Simulated Judge ruling (streamed with reasoning trace)
-    setTimeout(() => {
-      const isSustained = ground.section.includes("63") || ground.section.includes("146");
-      const judgeItem: TranscriptItem = {
-        id: nextId("ruling"),
-        speaker: SPEAKER_META.judge.label,
-        speakerRole: "judge",
-        content: isSustained
-          ? `OBJECTION SUSTAINED. The ${ground.label} is well-taken under ${ground.act} ${ground.section}. The record is struck from the active deposition.`
-          : `OBJECTION OVERRULED. The question is relevant to test the witness's credit under Section 148 BSA. Witness shall answer.`,
-        timestamp: new Date().toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-        }),
-        citation: isSustained ? "Rule: Sustained" : "Rule: Overruled",
-        kind: "ruling",
-        reasoning: isSustained
-          ? [
-              "Testing objection against BSA admissibility threshold",
-              "Checking certificate requirement under Sec 63(4)",
-              "Striking the uncertified record from deposition",
-            ]
-          : [
-              "Testing relevance under credit impeachment",
-              "Checking Sec 148 BSA cross-examination scope",
-              "Directing witness to answer",
-            ],
-      };
-
-      streamResponse(judgeItem, () => {
-        setActiveSpeaker("judge");
-
-        if (isSustained) {
-          setWitnessComposure((prev) => Math.max(35, prev - 12));
+      const introRes = await fetch(`/api/sessions/${sess.id}/intro`, { method: "POST" });
+      const intro = await introRes.json();
+      if (introRes.ok && intro.turn) {
+        setTranscript([turnToItem(intro.turn, studentRole)]);
+        if (intro.reasoning?.length) {
+          showNotification(intro.reasoning[0]);
         }
-      });
-    }, 850);
-  };
+      }
+      showNotification("Courtroom session started. You are on the record now.");
+    } catch (e) {
+      showNotification(e instanceof Error ? e.message : "Could not start session");
+    } finally {
+      setStarting(false);
+    }
+  }, [caseId, studentRole, durationSec, showNotification]);
 
-  // Stream a party response word by word, revealing reasoning steps first
-  const streamResponse = (
-    finalItem: TranscriptItem,
-    onDone?: () => void
-  ) => {
-    const id = finalItem.id;
-    const words = finalItem.content.split(" ");
-    const steps = finalItem.reasoning ?? [];
-
-    setTranscript((prev) => [
-      ...prev,
-      { ...finalItem, content: "", isStreaming: true, reasoning: [] },
-    ]);
-    setIsStreaming(true);
-
-    steps.forEach((_, i) => {
-      setTimeout(() => {
-        setTranscript((prev) =>
-          prev.map((it) =>
-            it.id === id ? { ...it, reasoning: steps.slice(0, i + 1) } : it
-          )
-        );
-      }, 250 * (i + 1));
-    });
-
-    words.forEach((_, wi) => {
-      setTimeout(() => {
-        setTranscript((prev) =>
-          prev.map((it) =>
-            it.id === id
-              ? { ...it, content: words.slice(0, wi + 1).join(" ") }
-              : it
-          )
-        );
-      }, 600 + wi * 45);
-    });
-
-    setTimeout(() => {
-      setTranscript((prev) =>
-        prev.map((it) => (it.id === id ? { ...it, isStreaming: false } : it))
-      );
-      setIsStreaming(false);
-      onDone?.();
-    }, 600 + words.length * 45 + 200);
-  };
-
-  // Submit Text/Speech Input
-  const handleSubmitInput = (target: "judge" | "witness") => {
-    if (!inputValue.trim()) return;
-
-    const userText = inputValue.trim();
-    const timestamp = new Date().toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-    });
-
-    const userMessage: TranscriptItem = {
-      id: nextId("user"),
-      speaker:
-        SPEAKER_META[currentRole === "defense" ? "defense" : "prosecutor"].label,
-      speakerRole: currentRole === "defense" ? "defense" : "prosecutor",
-      content: userText,
-      timestamp,
-      citation: target === "judge" ? "Submission to Bench" : "Cross-Examination of PW-1",
-      kind: "standard",
-      isUser: true,
-    };
-
-    setTranscript((prev) => [...prev, userMessage]);
+  const handleSubmitInput = async (target: "judge" | "witness") => {
+    const text = inputValue.trim();
+    if (!text || !sessionId) return;
     setInputValue("");
-    setActiveSpeaker("defense");
-
-    // Multi-agent reaction (streamed with reasoning trace)
-    const responseTime = new Date().toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-    });
-
-    if (target === "witness") {
-      // PW-1 rattles and responds
-      const nextComposure = Math.max(38, witnessComposure - 14);
-      setWitnessComposure(nextComposure);
-
-      const witnessResponse: TranscriptItem = {
-        id: nextId("resp-w"),
-        speaker: SPEAKER_META.witness.label,
-        speakerRole: "witness",
-        content:
-          "Counsel, as I stated, the police constable delivered the drive without a spot cryptographic seal. While the SHA-256 match confirmed the file was not altered in our lab vault, I cannot scientifically vouch for the 105-minute transit window...",
-        timestamp: responseTime,
-        citation: "Deposition Vol. II, Para 16 · Chain of Custody Conceded",
-        kind: "witness",
-        reasoning: [
-          "Retrieving Exhibit A hash log",
-          "Checking contemporaneous certificate under BSA Sec 63(4)",
-          "Evaluating the 105-minute custody gap",
-        ],
-      };
-
-      streamResponse(witnessResponse, () => {
-        setActiveSpeaker("witness");
-
-        // Update co-counsel hint with finishing move
-        setCoCounselHints((prev) => [
-          {
-            id: nextId("hint-win"),
-            badge: "Decisive Impeachment",
-            title: "Exhibit A Excluded under BSA Sec 63(4)",
-            whisper:
-              "PW-1 has formally conceded the custody gap! Now address Justice Gopalan to move a formal oral motion excluding Exhibit A under Arjun Panditrao.",
-            suggestedAction:
-              "My Lord, in view of PW-1's unequivocal admission of the 105-minute unsealed gap, Exhibit A must be excluded under Section 63(4) BSA as held in Arjun Panditrao Khotkar (2020) 7 SCC 1.",
-            statuteRef: "BSA Sec 63(4)",
-            precedentRef: "Arjun Panditrao Khotkar (2020) 7 SCC 1",
-          },
-          ...prev,
-        ]);
-      });
-    } else {
-      // Bench responds
-      const judgeResponse: TranscriptItem = {
-        id: nextId("resp-j"),
-        speaker: SPEAKER_META.judge.label,
-        speakerRole: "judge",
-        content:
-          "Counsel, the Bench has noted your submission on the custodial gap. Public Prosecutor, you have 2 minutes to produce the contemporaneous spot hash receipt under Section 63(4) BSA, failing which Exhibit A shall stand excluded.",
-        timestamp: responseTime,
-        citation: "Bench Directive · Interlocutory Order",
-        kind: "ruling",
-        reasoning: [
-          "Reading PW-1 custody concession",
-          "Checking Arjun Panditrao (2020) on hash certification",
-          "Drafting interlocutory direction",
-        ],
-      };
-
-      streamResponse(judgeResponse, () => {
-        setActiveSpeaker("judge");
-      });
+    const finalItem = await pushStream(text, target);
+    if (finalItem) {
+      setTranscript((prev) => [...prev, finalItem]);
+      setActiveSpeaker(finalItem.speakerRole ?? target);
+    } else if (streamError) {
+      showNotification(streamError);
     }
   };
 
+  const handleRaiseObjection = async (ground: ObjectionGround) => {
+    if (!sessionId) return;
+    const finalItem = await pushStream(ground.suggestedSpeech, "objection");
+    if (finalItem) {
+      setTranscript((prev) => [...prev, finalItem]);
+    } else if (streamError) {
+      showNotification(streamError);
+    }
+  };
+
+  const requestVerdict = useCallback(async () => {
+    if (!sessionId) return;
+    setVerdictLoading(true);
+    try {
+      const res = await fetch(`/api/sessions/${sessionId}/verdict`, { method: "POST" });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error ?? "Verdict failed");
+      setScore(json);
+      setEnded(true);
+    } catch (e) {
+      showNotification(e instanceof Error ? e.message : "Verdict failed");
+    } finally {
+      setVerdictLoading(false);
+    }
+  }, [sessionId, showNotification]);
+
+  const exhibits: CourtroomExhibit[] = (detail?.evidence ?? []).map((e, i) => ({
+    id: e.id,
+    code: `Ex-${String.fromCharCode(65 + i)}`,
+    label: e.exhibit_label,
+    name: e.title,
+    type: "Document",
+    admissibility: "Pending Verification",
+    timestamp: "",
+    source: "Case file",
+    description: e.description,
+  }));
+
+  const facts: ChronologyFact[] = (detail?.chunks ?? []).map((c, i) => ({
+    id: c.id || `chunk-${i}`,
+    time: c.section_label || "",
+    title: c.section_label || "Case fact",
+    description: c.text,
+    isDiscrepancy: false,
+    sectionRef: c.section_label || "",
+  }));
+
+  const personas: Record<string, AgentPersona> = {};
+  for (const p of detail?.parties ?? []) {
+    const id = seatToSpeaker(p.side);
+    personas[id] = {
+      id,
+      name: p.name,
+      roleTitle: p.role,
+      court: detail?.case.court ?? "",
+      temperament: p.personality || p.persona_prompt || "",
+      liveThought: p.persona_prompt || "",
+      audioState: "idle",
+      memoryTrace: [p.persona_prompt || p.role],
+      legalFocus: "BNS / BNSS / BSA",
+      samplePhrase: `I appear in the matter of ${detail?.case.title ?? "this case"}.`,
+    };
+  }
+
+  const witnessParty = (detail?.parties ?? []).find((p) => p.is_witness);
+  const witnessProfile: WitnessProfile = {
+    name: witnessParty?.name ?? "PW-1",
+    title: witnessParty?.role ?? "Witness",
+    designation: witnessParty?.role ?? "Prosecution witness",
+    oathStatus: "Under oath",
+    composure: 74,
+    composureLabel: "Steady",
+    keyVulnerability: witnessParty?.personality ?? "To be tested in cross-examination",
+    boundaryRules: ["Answer only from personal knowledge", "Stay within the case facts"],
+  };
+
+  if (loadError) {
+    return (
+      <div className="h-screen flex items-center justify-center bg-white">
+        <div className="max-w-md text-center space-y-3 p-6">
+          <p className="text-sm font-bold text-zinc-950">{loadError}</p>
+          <p className="text-xs text-zinc-500">Check the case id in the URL.</p>
+          <Button onClick={() => window.location.reload()} variant="outline" className="text-xs h-8">Retry</Button>
+        </div>
+      </div>
+    );
+  }
+
+  if (!detail) return <div className="h-screen bg-white" />;
+
+  if (!sessionId) {
+    return (
+      <div className="h-screen w-screen overflow-y-auto bg-[#FAFAFA] flex items-center justify-center p-4">
+        <div className="max-w-xl w-full bg-white border border-zinc-200 rounded-2xl p-6 sm:p-8 space-y-5 shadow-sm">
+          <div className="space-y-1">
+            <Badge variant="outline" className="font-mono text-[10px] uppercase">{detail.case.category}</Badge>
+            <h1 className="text-xl sm:text-2xl font-bold text-zinc-950 tracking-tight">{detail.case.title}</h1>
+            <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed">{detail.case.summary}</p>
+            <p className="text-xs text-zinc-500 font-mono">{detail.case.court}</p>
+            <p className="text-xs text-zinc-700"><span className="font-semibold">Charges:</span> {detail.case.charges}</p>
+          </div>
+          <div className="space-y-2">
+            <label className="text-xs font-semibold text-zinc-900">Your role</label>
+            <div className="grid grid-cols-2 gap-2">
+              <Button onClick={() => setStudentRole("defense")} variant={studentRole === "defense" ? "default" : "outline"} className="text-xs h-10">Defense Counsel</Button>
+              <Button onClick={() => setStudentRole("prosecution")} variant={studentRole === "prosecution" ? "default" : "outline"} className="text-xs h-10">Public Prosecutor</Button>
+            </div>
+          </div>
+          <div className="space-y-2">
+            <label className="text-xs font-semibold text-zinc-900">Session length</label>
+            <div className="grid grid-cols-4 gap-2">
+              {[120, 180, 300, 600].map((s) => (
+                <Button key={s} onClick={() => setDurationSec(s)} variant={durationSec === s ? "default" : "outline"} className="text-xs h-9">{s / 60} min</Button>
+              ))}
+            </div>
+          </div>
+          <Button disabled={starting} onClick={() => void startSession()} className="w-full h-11 text-sm bg-zinc-950 text-white hover:bg-zinc-800">
+            {starting ? "Starting session..." : "Enter the courtroom"}
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="h-dvh w-full max-w-full overflow-hidden flex flex-col bg-white select-none">
-      {/* 1. TOP COURTROOM SESSION BAR */}
+    <div className="h-screen w-screen overflow-hidden flex flex-col bg-white select-none">
       <CourtroomTopBar
-        currentRole={currentRole}
-        onRoleToggle={handleRoleToggle}
-        coCounselEnabled={coCounselEnabled}
-        onCoCounselToggle={handleCoCounselToggle}
+        currentRole={studentRole}
+        onRoleToggle={() => setStudentRole((r) => (r === "defense" ? "prosecution" : "defense"))}
+        coCounselEnabled={true}
+        onCoCounselToggle={() => showNotification("Role changed. Applies to the next session you start.")}
         isLeftPanelOpen={isLeftPanelOpen}
         onToggleLeftPanel={() => setIsLeftPanelOpen((prev) => !prev)}
-        onRequestVerdict={() => setIsVerdictModalOpen(true)}
+        onRequestVerdict={() => void requestVerdict()}
+        caseId={detail.case.id}
+        caseTitle={detail.case.title}
+        secondsElapsed={elapsed}
       />
-
-      {/* 2. THE 3-PANE WORKSPACE */}
-      <div className="flex-1 flex overflow-hidden min-h-0 min-w-0">
-        {/* PANE 1: Case File & Pinned Prep Drawer (Collapsible) */}
+      <div className="flex-1 flex overflow-hidden min-h-0">
         <CaseDossierDrawer
           isOpen={isLeftPanelOpen}
           onToggle={() => setIsLeftPanelOpen((prev) => !prev)}
-          facts={CHRONOLOGY_FACTS}
-          exhibits={INITIAL_EXHIBITS}
-          activeExhibitId={activeExhibit?.id || ""}
-          onSelectExhibit={handleSelectExhibit}
-          statutes={PINNED_STATUTES}
-          precedents={PINNED_PRECEDENTS}
-          witnessProfile={WITNESS_ACTIVE_PROFILE}
-          currentWitnessComposure={witnessComposure}
-          onCiteFact={handleInsertQuestion}
+          facts={facts}
+          exhibits={exhibits}
+          activeExhibitId={activeExhibit?.id ?? ""}
+          onSelectExhibit={(ex) => { setActiveExhibit(ex); showNotification(`Presented ${ex.label} to Hon'ble Bench.`); }}
+          statutes={[]}
+          precedents={[]}
+          witnessProfile={witnessProfile}
+          currentWitnessComposure={74}
+          onCiteFact={(t) => setInputValue(t)}
         />
-
-        {/* PANE 2: Center 2D Indian Courtroom Architectural View */}
         <CourtroomArena2D
           activeSpeaker={activeSpeaker}
-          onSelectSpeaker={handleSelectSpeaker}
+          onSelectSpeaker={(s) => { setActiveSpeaker(s); setSelectedPersonaId(s); }}
           activeExhibit={activeExhibit}
           onClearExhibit={() => setActiveExhibit(null)}
-          witnessProfile={WITNESS_ACTIVE_PROFILE}
-          witnessComposure={witnessComposure}
-          personas={AGENT_PERSONAS}
-          coCounselHints={coCounselHints}
-          coCounselEnabled={coCounselEnabled}
-          onInsertQuestion={handleInsertQuestion}
-          onCitePrecedent={handleCitePrecedent}
+          witnessProfile={witnessProfile}
+          witnessComposure={74}
+          personas={personas}
+          coCounselHints={[]}
+          coCounselEnabled={false}
+          onInsertQuestion={(t) => setInputValue(t)}
+          onCitePrecedent={(t) => setInputValue((prev) => (prev ? `${prev} ${t}` : t))}
         />
-
-        {/* PANE 3: Live Multi-Agent Streaming Transcript & Advocate Controls */}
-        <section className="w-96 min-w-0 shrink-0 border-l border-zinc-200 bg-white flex flex-col h-full overflow-hidden">
-          <TranscriptPanel transcript={transcript} />
+        <section className="w-96 shrink-0 border-l border-zinc-200 bg-white flex flex-col h-full overflow-hidden">
+          <TranscriptPanel transcript={streamingItem ? [...transcript, streamingItem] : transcript} />
           <AdvocateConsole
             inputValue={inputValue}
             onInputChange={setInputValue}
-            onSubmit={handleSubmitInput}
-            onRaiseObjection={handleRaiseObjection}
+            onSubmit={(target) => void handleSubmitInput(target)}
+            onRaiseObjection={(g) => void handleRaiseObjection(g)}
             objectionGrounds={OBJECTION_GROUNDS}
-            exhibits={INITIAL_EXHIBITS}
-            onPresentExhibit={handleSelectExhibit}
-            isStreaming={isStreaming}
+            exhibits={exhibits}
+            onPresentExhibit={(ex) => { setActiveExhibit(ex); showNotification(`Presented ${ex.label} to Hon'ble Bench.`); }}
+            isStreaming={streaming}
           />
         </section>
       </div>
-
-      {/* 3. MODALS */}
-      <AgentPersonaModal
-        speakerId={selectedPersonaId}
-        isOpen={isPersonaModalOpen}
-        onClose={() => setIsPersonaModalOpen(false)}
-        personas={AGENT_PERSONAS}
-      />
-
-      <VerdictSummaryModal
-        isOpen={isVerdictModalOpen}
-        onClose={() => setIsVerdictModalOpen(false)}
-        witnessComposure={witnessComposure}
-      />
+      <AgentPersonaModal speakerId={selectedPersonaId} isOpen={Boolean(selectedPersonaId)} onClose={() => setSelectedPersonaId(null)} personas={personas} />
+      <VerdictSummaryModal isOpen={Boolean(score)} onClose={() => setScore(null)} witnessComposure={74} score={score ?? undefined} />
+      {verdictLoading && <div className="fixed bottom-4 right-4 z-50 bg-zinc-950 text-white text-xs px-3 py-2 rounded-lg">Bench is writing the verdict...</div>}
     </div>
   );
 }

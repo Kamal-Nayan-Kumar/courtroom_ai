@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Hand,
   FolderOpen,
@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/popover";
 import { Badge } from "@/components/ui/badge";
 import { CourtroomExhibit, ObjectionGround } from "@/types/courtroomArena";
+import { useSpeech } from "@/hooks/useSpeech";
 
 interface AdvocateConsoleProps {
   inputValue: string;
@@ -41,10 +42,18 @@ export function AdvocateConsole({
   isStreaming,
 }: AdvocateConsoleProps) {
   const [target, setTarget] = useState<"judge" | "witness">("witness");
-  const [isMicActive, setIsMicActive] = useState<boolean>(false);
   const [isObjectionPopoverOpen, setIsObjectionPopoverOpen] = useState(false);
   const [isExhibitPopoverOpen, setIsExhibitPopoverOpen] = useState(false);
   const [isStatutePopoverOpen, setIsStatutePopoverOpen] = useState(false);
+  const [interim, setInterim] = useState("");
+
+  const inputRef = useRef(inputValue);
+  useEffect(() => {
+    inputRef.current = inputValue;
+  }, [inputValue]);
+
+  const { isListening, isRecognitionSupported, startListening, stopListening } =
+    useSpeech();
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -56,17 +65,20 @@ export function AdvocateConsole({
   };
 
   const handleToggleMic = () => {
-    if (!isMicActive) {
-      setIsMicActive(true);
-      setTimeout(() => {
-        onInputChange(
-          "Dr. Kulkarni, did you personally inspect the physical optical drive at the police station before it was sent to Kalina?"
-        );
-        setIsMicActive(false);
-      }, 1400);
-    } else {
-      setIsMicActive(false);
+    if (isListening) {
+      stopListening();
+      setInterim("");
+      return;
     }
+    startListening({
+      onFinal: (text) => {
+        const base = inputRef.current;
+        const needsSpace =
+          base.length > 0 && !/\s$/.test(base) && !text.startsWith(" ");
+        onInputChange(needsSpace ? `${base} ${text}` : `${base}${text}`);
+      },
+      onInterim: (text) => setInterim(text),
+    });
   };
 
   const commonStatutes = [
@@ -279,16 +291,18 @@ export function AdvocateConsole({
           onChange={(e) => onInputChange(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder={
-            target === "witness"
-              ? "Put cross-examination question to PW-1..."
-              : "Address Hon'ble Bench..."
+            interim
+              ? interim
+              : target === "witness"
+                ? "Put cross-examination question to PW-1..."
+                : "Address Hon'ble Bench..."
           }
           className="resize-none text-xs bg-white border-zinc-300 focus-visible:ring-1 focus-visible:ring-zinc-400/60 focus-visible:border-zinc-400 placeholder:text-zinc-400 h-20 w-full min-w-0"
         />
         <div className="flex items-center justify-between gap-2 mt-2 min-w-0">
           <span className="text-[11px] text-zinc-400 truncate">
             Enter to send
-            {isMicActive ? " · Recording..." : ""}
+            {isListening ? " · Recording..." : ""}
           </span>
           <div className="flex items-center gap-1.5 shrink-0">
             <Button
@@ -296,8 +310,15 @@ export function AdvocateConsole({
               variant="ghost"
               size="sm"
               onClick={handleToggleMic}
-              title={isMicActive ? "Stop" : "Mic"}
-              className={`h-8 w-8 p-0 ${isMicActive ? "bg-zinc-900 text-white" : "text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100"}`}
+              disabled={!isRecognitionSupported}
+              title={
+                !isRecognitionSupported
+                  ? "Speech recognition not supported in this browser"
+                  : isListening
+                    ? "Stop"
+                    : "Mic"
+              }
+              className={`h-8 w-8 p-0 ${isListening ? "bg-zinc-900 text-white" : "text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100"}`}
             >
               <Mic className="size-4" />
             </Button>

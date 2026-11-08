@@ -24,14 +24,29 @@ interface VerdictSummaryModalProps {
   isOpen: boolean;
   onClose: () => void;
   witnessComposure: number;
+  score?: {
+    argument_score: number | null;
+    objection_score: number | null;
+    composure_score: number | null;
+    legal_accuracy_score: number | null;
+    overall: number | null;
+    judge_summary: string;
+    strengths: string[];
+    weaknesses: string[];
+  } | null;
 }
 
 export function VerdictSummaryModal({
   isOpen,
   onClose,
   witnessComposure,
+  score,
 }: VerdictSummaryModalProps) {
   const isExcluded = witnessComposure <= 65;
+  const overall = score?.overall ?? null;
+  const summary = score?.judge_summary ?? "The bench has recorded your submissions.";
+  const strengths = score?.strengths ?? [];
+  const weaknesses = score?.weaknesses ?? [];
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
@@ -68,7 +83,7 @@ export function VerdictSummaryModal({
               </Badge>
             </div>
             <p className="text-[11.5px] leading-relaxed font-medium">
-              Exhibit A (CCTV Footage) is rendered <strong className="font-bold underline">INADMISSIBLE</strong> under Section 63(4) BSA. Prosecution failed to establish contemporaneous hash certification or explain the 105-minute transit gap.
+              {summary}
             </p>
           </div>
 
@@ -79,7 +94,7 @@ export function VerdictSummaryModal({
                 Bench Conviction Score
               </span>
               <span className="text-lg font-bold text-zinc-950 font-mono block my-0.5">
-                9.2 / 10
+                {overall ?? '–'} / 10
               </span>
               <span className="text-[10px] text-emerald-700 font-medium">
                 Top 3% of advocates
@@ -91,7 +106,7 @@ export function VerdictSummaryModal({
                 Witness Impeachment
               </span>
               <span className="text-lg font-bold text-zinc-950 font-mono block my-0.5">
-                {100 - witnessComposure}%
+                {score?.composure_score ?? '–'} / 10
               </span>
               <span className="text-[10px] text-zinc-600 font-medium">
                 PW-1 rattled on hash
@@ -103,7 +118,7 @@ export function VerdictSummaryModal({
                 Statutory Precision
               </span>
               <span className="text-lg font-bold text-zinc-950 font-mono block my-0.5">
-                98%
+                {score?.legal_accuracy_score ?? '–'} / 10
               </span>
               <span className="text-[10px] text-zinc-600 font-medium">
                 Arjun Panditrao cited

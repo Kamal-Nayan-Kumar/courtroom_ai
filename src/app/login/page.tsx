@@ -4,16 +4,14 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowRight, ArrowLeft, Info } from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-
-const DEMO_EMAIL = "advocate.nayan@gmail.com";
-const DEMO_PASSWORD = "Demo@1234";
+import { authClient } from "@/lib/auth/client";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -21,23 +19,37 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [resetMessage, setResetMessage] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      if (rememberMe) localStorage.setItem("courtroom-ai-demo", "1");
+    try {
+      const { error: signInError } = await authClient.signIn.email({ email, password });
+      if (signInError) {
+        setError(signInError.message || "Sign in failed. Check your email and password.");
+        return;
+      }
+      if (rememberMe) localStorage.setItem("courtroom-ai-session", "remember");
       router.push("/dashboard");
-    }, 400);
+      router.refresh();
+    } catch {
+      setError("Sign in failed. Try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleDemoLogin = () => {
-    setEmail(DEMO_EMAIL);
-    setPassword(DEMO_PASSWORD);
-    localStorage.setItem("courtroom-ai-demo", "1");
-    router.push("/dashboard");
+  const handleGoogle = async () => {
+    setError(null);
+    try {
+      const { error: socialError } = await authClient.signIn.social({ provider: "google" });
+      if (socialError) setError(socialError.message || "Google sign in is not configured yet.");
+    } catch {
+      setError("Google sign in is not configured yet.");
+    }
   };
 
   return (
@@ -108,7 +120,7 @@ export default function LoginPage() {
             <Button
               type="button"
               variant="outline"
-              onClick={() => router.push("/dashboard")}
+              onClick={handleGoogle}
               className="w-full h-10 text-xs font-semibold border-zinc-200 hover:bg-zinc-50 text-zinc-800 shadow-2xs flex items-center justify-center gap-2"
             >
               <svg className="size-4" viewBox="0 0 24 24">
@@ -182,6 +194,12 @@ export default function LoginPage() {
               />
             </div>
 
+            {error && (
+              <div className="p-2.5 rounded-lg bg-red-50 border border-red-200 text-red-900 text-xs font-medium">
+                {error}
+              </div>
+            )}
+
             {resetMessage && (
               <div className="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-medium">
                 {resetMessage}
@@ -211,19 +229,6 @@ export default function LoginPage() {
               <ArrowRight className="size-3.5 ml-1.5" />
             </Button>
           </form>
-
-          <div className="rounded-xl border border-amber-200 bg-amber-50/70 p-3.5 flex items-center justify-between gap-3">
-            <div className="flex items-start gap-2">
-              <Info className="size-4 text-amber-700 mt-0.5 shrink-0" />
-              <div>
-                <p className="text-xs font-bold text-zinc-950">Demo account</p>
-                <p className="text-xs text-zinc-600 font-mono">{DEMO_EMAIL} · {DEMO_PASSWORD}</p>
-              </div>
-            </div>
-            <Button type="button" size="sm" onClick={handleDemoLogin} className="h-8 px-3 text-xs font-semibold bg-zinc-950 text-white hover:bg-zinc-800 shrink-0">
-              Enter demo chamber
-            </Button>
-          </div>
 
           <div className="text-center text-xs text-zinc-600">
             <span>Don&apos;t have a verified chamber profile? </span>

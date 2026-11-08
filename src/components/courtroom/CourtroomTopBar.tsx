@@ -33,6 +33,9 @@ interface CourtroomTopBarProps {
   isLeftPanelOpen: boolean;
   onToggleLeftPanel: () => void;
   onRequestVerdict: () => void;
+  caseId?: string;
+  caseTitle?: string;
+  secondsElapsed?: number;
 }
 
 export function CourtroomTopBar({
@@ -41,8 +44,15 @@ export function CourtroomTopBar({
   isLeftPanelOpen,
   onToggleLeftPanel,
   onRequestVerdict,
+  caseId,
+  caseTitle,
+  secondsElapsed: secondsElapsedProp,
 }: CourtroomTopBarProps) {
-  const [secondsElapsed, setSecondsElapsed] = useState(1122);
+  const [secondsElapsed, setSecondsElapsed] = useState(secondsElapsedProp ?? 0);
+
+  useEffect(() => {
+    setSecondsElapsed(secondsElapsedProp ?? 0);
+  }, [secondsElapsedProp]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -84,7 +94,7 @@ export function CourtroomTopBar({
             <AlertDialogFooter>
               <AlertDialogCancel>Stay</AlertDialogCancel>
               <AlertDialogAction asChild className="bg-zinc-950 text-white hover:bg-zinc-800">
-                <Link href="/case/402/prep">Exit to Prep Studio</Link>
+                <Link href={caseId ? `/case/${caseId}/prep` : "/dashboard"}>Exit to Prep Studio</Link>
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
@@ -100,8 +110,8 @@ export function CourtroomTopBar({
             CRL.A. 402/2026
           </Badge>
 
-          <span className="text-xs font-semibold text-zinc-900 truncate hidden lg:inline max-w-[220px]">
-            State of Maharashtra vs. Arjun Sharma
+          <span className="text-xs font-semibold text-zinc-900 truncate hidden lg:inline max-w-[320px]">
+            {caseTitle ?? "Courtroom Simulator"}
           </span>
         </div>
       </div>

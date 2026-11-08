@@ -12,6 +12,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
+import { authClient } from "@/lib/auth/client";
+
 export default function SignupPage() {
   const router = useRouter();
   const [fullName, setFullName] = useState("");
@@ -19,15 +21,40 @@ export default function SignupPage() {
   const [password, setPassword] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      localStorage.setItem("courtroom-ai-demo", "1");
+    try {
+      const { error: signUpError } = await authClient.signUp.email({
+        email,
+        password,
+        name: fullName,
+      });
+      if (signUpError) {
+        setError(signUpError.message || "Signup failed. Try a different email.");
+        return;
+      }
+      localStorage.setItem("courtroom-ai-session", "remember");
       router.push("/dashboard");
-    }, 400);
+      router.refresh();
+    } catch {
+      setError("Signup failed. Try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleGoogle = async () => {
+    setError(null);
+    try {
+      const { error: socialError } = await authClient.signIn.social({ provider: "google" });
+      if (socialError) setError(socialError.message || "Google sign in is not configured yet.");
+    } catch {
+      setError("Google sign in is not configured yet.");
+    }
   };
 
   return (
@@ -98,7 +125,7 @@ export default function SignupPage() {
             <Button
               type="button"
               variant="outline"
-              onClick={() => router.push("/dashboard")}
+              onClick={handleGoogle}
               className="w-full h-10 text-xs font-semibold border-zinc-200 hover:bg-zinc-50 text-zinc-800 shadow-2xs flex items-center justify-center gap-2"
             >
               <svg className="size-4" viewBox="0 0 24 24">
@@ -175,6 +202,12 @@ export default function SignupPage() {
                 className="h-10 text-xs bg-zinc-50/60 border-zinc-200 focus-visible:ring-zinc-950"
               />
             </div>
+
+            {error && (
+              <div className="p-2.5 rounded-lg bg-red-50 border border-red-200 text-red-900 text-xs font-medium">
+                {error}
+              </div>
+            )}
 
             <div className="flex items-start gap-2 pt-1">
               <Checkbox
