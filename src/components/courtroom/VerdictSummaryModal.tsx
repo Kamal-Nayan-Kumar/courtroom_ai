@@ -35,18 +35,18 @@ export function VerdictSummaryModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="max-w-xl bg-white p-6 border-zinc-200 shadow-2xl select-none">
+      <DialogContent className="w-full sm:max-w-2xl max-h-[90vh] overflow-y-auto bg-white p-6 border-zinc-200 shadow-2xl select-none">
         <DialogHeader className="pb-3 border-b border-zinc-100 pr-10">
-          <div className="flex items-center gap-3">
+          <div className="flex items-start gap-3 min-w-0">
             <div className="size-10 rounded-xl bg-zinc-950 text-white flex items-center justify-center shrink-0">
               <Gavel className="size-5 text-amber-400" />
             </div>
             <div className="min-w-0 pr-4">
-              <DialogTitle className="text-sm sm:text-base font-bold text-zinc-950 font-serif tracking-wide leading-tight">
+              <DialogTitle className="text-sm sm:text-base font-bold text-zinc-950 font-serif tracking-wide leading-tight break-words whitespace-normal">
                 Sessions Court · Interlocutory Appraisal
               </DialogTitle>
-              <DialogDescription className="text-xs text-zinc-500 font-mono mt-0.5 truncate">
-                Coram: Hon'ble Justice V. Gopalan · CRL.A. 402/2026
+              <DialogDescription className="text-xs text-zinc-500 font-mono mt-0.5 break-words whitespace-normal">
+                Coram: Hon&apos;ble Justice V. Gopalan · CRL.A. 402/2026
               </DialogDescription>
             </div>
           </div>
@@ -114,7 +114,7 @@ export function VerdictSummaryModal({
           {/* Detailed Judicial Assessment */}
           <div className="space-y-2 p-3.5 rounded-lg border border-zinc-200 bg-zinc-50/50">
             <div className="font-semibold text-zinc-900 text-xs">
-              Hon'ble Bench Strategic Observations:
+              Hon&apos;ble Bench Strategic Observations:
             </div>
             <div className="space-y-1.5 text-[11px] text-zinc-700">
               <div className="flex items-start gap-1.5">
@@ -126,7 +126,7 @@ export function VerdictSummaryModal({
               <div className="flex items-start gap-1.5">
                 <CheckCircle2 className="size-3.5 text-emerald-600 shrink-0 mt-0.5" />
                 <span>
-                  <strong>Timely Precedent Reliance:</strong> Invoking <em>Arjun Panditrao (2020)</em> directly foreclosed the Public Prosecutor's reliance on secondary hash validity.
+                  <strong>Timely Precedent Reliance:</strong> Invoking <em>Arjun Panditrao (2020)</em> directly foreclosed the Public Prosecutor&apos;s reliance on secondary hash validity.
                 </span>
               </div>
               <div className="flex items-start gap-1.5">

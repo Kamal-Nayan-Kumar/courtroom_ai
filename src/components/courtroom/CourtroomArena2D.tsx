@@ -55,23 +55,24 @@ export function CourtroomArena2D({
     setHintIndex((prev) => (prev + 1) % coCounselHints.length);
   };
 
-  const cardStyle = (active: boolean) =>
+  const cardStyle = (active: boolean, role: SpeakerId) =>
     active
       ? "bg-zinc-900 text-white border-zinc-900"
-      : "bg-white text-zinc-900 border-zinc-200 hover:border-zinc-300";
+      : `${SPEAKER_META[role].theme.card} text-zinc-900`;
 
   return (
-    <main className="flex-1 flex flex-col h-full relative overflow-hidden bg-zinc-50 select-none">
+    <main className="flex-1 flex flex-col h-full relative overflow-hidden bg-dot-pattern select-none">
       <div className="flex-1 overflow-y-auto p-4 sm:p-6 flex flex-col justify-between gap-4 max-w-4xl mx-auto w-full">
         <div className="w-full flex justify-center">
           <div
             onClick={() => onSelectSpeaker("judge")}
             className={`w-full max-w-lg rounded-lg border p-4 transition-all cursor-pointer ${cardStyle(
-              activeSpeaker === "judge"
+              activeSpeaker === "judge",
+              "judge"
             )}`}
           >
             <div className="flex items-center gap-2">
-              <JudgeIcon className="size-4" />
+              <JudgeIcon className={`size-4 ${activeSpeaker === "judge" ? "text-white" : SPEAKER_META.judge.theme.icon}`} />
               <span className="text-xs font-semibold">{SPEAKER_META.judge.label}</span>
             </div>
             <div className={`text-xs mt-1 ${activeSpeaker === "judge" ? "text-zinc-300" : "text-zinc-500"}`}>Sessions Court</div>
@@ -110,11 +111,12 @@ export function CourtroomArena2D({
           <div
             onClick={() => onSelectSpeaker("witness")}
             className={`w-full max-w-md rounded-lg border p-3.5 transition-all cursor-pointer ${cardStyle(
-              activeSpeaker === "witness"
+              activeSpeaker === "witness",
+              "witness"
             )}`}
           >
             <div className="text-xs font-semibold mb-2 flex items-center gap-1.5">
-              <WitnessIcon className="size-3.5" />
+              <WitnessIcon className={`size-3.5 ${activeSpeaker === "witness" ? "text-white" : SPEAKER_META.witness.theme.icon}`} />
               {SPEAKER_META.witness.label}
             </div>
             <div className={`text-[11px] mb-2 truncate ${activeSpeaker === "witness" ? "text-zinc-300" : "text-zinc-500"}`}>PW-1</div>
@@ -136,11 +138,12 @@ export function CourtroomArena2D({
           <div
             onClick={() => onSelectSpeaker("prosecutor")}
             className={`rounded-lg border p-3 transition-all cursor-pointer ${cardStyle(
-              activeSpeaker === "prosecutor"
+              activeSpeaker === "prosecutor",
+              "prosecutor"
             )}`}
           >
             <div className="text-xs font-semibold mb-2 flex items-center gap-1.5">
-              <ProsecutorIcon className="size-3.5" />
+              <ProsecutorIcon className={`size-3.5 ${activeSpeaker === "prosecutor" ? "text-white" : SPEAKER_META.prosecutor.theme.icon}`} />
               {SPEAKER_META.prosecutor.label}
             </div>
             <div className={`text-[11px] ${activeSpeaker === "prosecutor" ? "text-zinc-300" : "text-zinc-500"}`}>
@@ -151,11 +154,12 @@ export function CourtroomArena2D({
           <div
             onClick={() => onSelectSpeaker("defense")}
             className={`rounded-lg border p-3 transition-all cursor-pointer ${cardStyle(
-              activeSpeaker === "defense"
+              activeSpeaker === "defense",
+              "defense"
             )}`}
           >
             <div className="text-xs font-semibold mb-2 flex items-center gap-1.5">
-              <DefenseIcon className="size-3.5" />
+              <DefenseIcon className={`size-3.5 ${activeSpeaker === "defense" ? "text-white" : SPEAKER_META.defense.theme.icon}`} />
               {SPEAKER_META.defense.label}
             </div>
             <div className={`text-[11px] ${activeSpeaker === "defense" ? "text-zinc-300" : "text-zinc-500"}`}>

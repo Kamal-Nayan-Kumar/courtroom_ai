@@ -12,6 +12,17 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { CourtroomRole } from "@/types/courtroomArena";
 
 interface CourtroomTopBarProps {
@@ -52,17 +63,32 @@ export function CourtroomTopBar({
   return (
     <header className="h-12 shrink-0 border-b bg-white px-3 flex items-center justify-between gap-2 select-none z-20">
       <div className="flex items-center gap-2 shrink-0">
-        <Button
-          asChild
-          variant="ghost"
-          size="sm"
-          className="h-8 px-2 text-xs text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 shrink-0 gap-1.5"
-        >
-          <Link href="/case/402/prep">
-            <ArrowLeft className="size-3.5" />
-            <span>Exit</span>
-          </Link>
-        </Button>
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="h-8 px-2 text-xs text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 shrink-0 gap-1.5"
+            >
+              <ArrowLeft className="size-3.5" />
+              <span>Exit</span>
+            </Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent className="max-w-sm">
+            <AlertDialogHeader>
+              <AlertDialogTitle>Exit the courtroom?</AlertDialogTitle>
+              <AlertDialogDescription>
+                Your current cross-examination session will be paused. You can resume it from the Chamber Docket.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Stay</AlertDialogCancel>
+              <AlertDialogAction asChild className="bg-zinc-950 text-white hover:bg-zinc-800">
+                <Link href="/case/402/prep">Exit to Prep Studio</Link>
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
 
         <div className="h-4 w-px bg-zinc-200 shrink-0" />
 

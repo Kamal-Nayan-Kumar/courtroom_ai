@@ -97,13 +97,13 @@ export function AdvocateConsole({
   ];
 
   return (
-    <div className="border-t border-zinc-200 p-3 bg-white flex flex-col gap-2.5 shrink-0 select-none">
-      <div className="flex items-center gap-2">
-        <div className="flex items-center gap-1 bg-zinc-100 p-0.5 rounded-lg text-[11px] font-medium">
+    <div className="border-t border-zinc-200 p-3 bg-white flex flex-col gap-2.5 shrink-0 select-none min-w-0">
+      <div className="flex items-center gap-1.5 flex-wrap min-w-0">
+        <div className="flex items-center gap-1 bg-zinc-100 p-0.5 rounded-lg text-[11px] font-medium shrink-0">
           <button
             type="button"
             onClick={() => setTarget("witness")}
-            className={`px-2 py-0.5 rounded transition-all ${
+            className={`px-2 py-0.5 rounded transition-all whitespace-nowrap ${
               target === "witness"
                 ? "bg-white text-zinc-950 shadow-2xs font-semibold"
                 : "text-zinc-600 hover:text-zinc-900"
@@ -114,7 +114,7 @@ export function AdvocateConsole({
           <button
             type="button"
             onClick={() => setTarget("judge")}
-            className={`px-2 py-0.5 rounded transition-all ${
+            className={`px-2 py-0.5 rounded transition-all whitespace-nowrap ${
               target === "judge"
                 ? "bg-white text-zinc-950 shadow-2xs font-semibold"
                 : "text-zinc-600 hover:text-zinc-900"
@@ -124,8 +124,6 @@ export function AdvocateConsole({
           </button>
         </div>
 
-        <div className="flex-1" />
-
         <Popover
           open={isObjectionPopoverOpen}
           onOpenChange={setIsObjectionPopoverOpen}
@@ -134,11 +132,11 @@ export function AdvocateConsole({
             <Button
               variant="outline"
               size="sm"
-              className="h-8 px-2 text-xs gap-1.5"
+              className="h-8 px-1.5 text-[11px] gap-1 shrink-0 whitespace-nowrap"
             >
-              <Hand className="size-3" />
+              <Hand className="size-3 shrink-0" />
               <span>Objection</span>
-              <ChevronDown className="size-2.5 text-zinc-400" />
+              <ChevronDown className="size-2.5 text-zinc-400 shrink-0" />
             </Button>
           </PopoverTrigger>
           <PopoverContent
@@ -184,11 +182,11 @@ export function AdvocateConsole({
             <Button
               variant="outline"
               size="sm"
-              className="h-8 px-2 text-xs gap-1.5"
+              className="h-8 px-1.5 text-[11px] gap-1 shrink-0 whitespace-nowrap"
             >
-              <FolderOpen className="size-3" />
+              <FolderOpen className="size-3 shrink-0" />
               <span>Exhibit</span>
-              <ChevronDown className="size-2.5 text-zinc-400" />
+              <ChevronDown className="size-2.5 text-zinc-400 shrink-0" />
             </Button>
           </PopoverTrigger>
           <PopoverContent
@@ -237,11 +235,11 @@ export function AdvocateConsole({
             <Button
               variant="outline"
               size="sm"
-              className="h-8 px-2 text-xs gap-1.5"
+              className="h-8 px-1.5 text-[11px] gap-1 shrink-0 whitespace-nowrap"
             >
-              <Scale className="size-3" />
+              <Scale className="size-3 shrink-0" />
               <span>Statute</span>
-              <ChevronDown className="size-2.5 text-zinc-400" />
+              <ChevronDown className="size-2.5 text-zinc-400 shrink-0" />
             </Button>
           </PopoverTrigger>
           <PopoverContent
@@ -285,14 +283,14 @@ export function AdvocateConsole({
               ? "Put cross-examination question to PW-1..."
               : "Address Hon'ble Bench..."
           }
-          className="resize-none text-xs bg-white border-zinc-300 focus-visible:ring-zinc-900 placeholder:text-zinc-400 h-20"
+          className="resize-none text-xs bg-white border-zinc-300 focus-visible:ring-1 focus-visible:ring-zinc-400/60 focus-visible:border-zinc-400 placeholder:text-zinc-400 h-20 w-full min-w-0"
         />
-        <div className="flex items-center justify-between mt-2">
-          <span className="text-[11px] text-zinc-400">
+        <div className="flex items-center justify-between gap-2 mt-2 min-w-0">
+          <span className="text-[11px] text-zinc-400 truncate">
             Enter to send
             {isMicActive ? " · Recording..." : ""}
           </span>
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 shrink-0">
             <Button
               type="button"
               variant="ghost"

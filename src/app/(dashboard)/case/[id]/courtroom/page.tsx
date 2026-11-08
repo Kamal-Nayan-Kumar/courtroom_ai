@@ -32,6 +32,10 @@ import { SPEAKER_META } from "@/components/courtroom/speakerMeta";
 export default function CourtroomArenaPage() {
   const { showNotification } = useDashboard();
 
+  // Monotonic id source for transcript entries
+  const idSeq = React.useRef(0);
+  const nextId = (prefix: string) => `${prefix}-${++idSeq.current}`;
+
   // Layout State
   const [isLeftPanelOpen, setIsLeftPanelOpen] = useState(true);
   const [currentRole, setCurrentRole] = useState<CourtroomRole>("defense");
@@ -90,7 +94,7 @@ export default function CourtroomArenaPage() {
     showNotification(`Presented ${exhibit.label} to Hon'ble Bench.`);
     // Add transcript notice
     const newEntry: TranscriptItem = {
-      id: `notice-${Date.now()}`,
+      id: nextId("notice"),
       speaker: SPEAKER_META.clerk.label,
       speakerRole: "clerk",
       content: `[ Exhibit on Record: ${exhibit.label} (${exhibit.name}) presented before Hon'ble Justice V. Gopalan ]`,
@@ -125,7 +129,7 @@ export default function CourtroomArenaPage() {
     });
 
     const objectionItem: TranscriptItem = {
-      id: `obj-${Date.now()}`,
+      id: nextId("obj"),
       speaker:
         SPEAKER_META[currentRole === "defense" ? "defense" : "prosecutor"].label,
       speakerRole: currentRole === "defense" ? "defense" : "prosecutor",
@@ -137,13 +141,12 @@ export default function CourtroomArenaPage() {
 
     setTranscript((prev) => [...prev, objectionItem]);
     setActiveSpeaker("defense");
-    setIsStreaming(true);
 
-    // Simulated Judge ruling after 800ms
+    // Simulated Judge ruling (streamed with reasoning trace)
     setTimeout(() => {
       const isSustained = ground.section.includes("63") || ground.section.includes("146");
       const judgeItem: TranscriptItem = {
-        id: `ruling-${Date.now()}`,
+        id: nextId("ruling"),
         speaker: SPEAKER_META.judge.label,
         speakerRole: "judge",
         content: isSustained
@@ -156,16 +159,73 @@ export default function CourtroomArenaPage() {
         }),
         citation: isSustained ? "Rule: Sustained" : "Rule: Overruled",
         kind: "ruling",
+        reasoning: isSustained
+          ? [
+              "Testing objection against BSA admissibility threshold",
+              "Checking certificate requirement under Sec 63(4)",
+              "Striking the uncertified record from deposition",
+            ]
+          : [
+              "Testing relevance under credit impeachment",
+              "Checking Sec 148 BSA cross-examination scope",
+              "Directing witness to answer",
+            ],
       };
 
-      setTranscript((prev) => [...prev, judgeItem]);
-      setActiveSpeaker("judge");
-      setIsStreaming(false);
+      streamResponse(judgeItem, () => {
+        setActiveSpeaker("judge");
 
-      if (isSustained) {
-        setWitnessComposure((prev) => Math.max(35, prev - 12));
-      }
+        if (isSustained) {
+          setWitnessComposure((prev) => Math.max(35, prev - 12));
+        }
+      });
     }, 850);
+  };
+
+  // Stream a party response word by word, revealing reasoning steps first
+  const streamResponse = (
+    finalItem: TranscriptItem,
+    onDone?: () => void
+  ) => {
+    const id = finalItem.id;
+    const words = finalItem.content.split(" ");
+    const steps = finalItem.reasoning ?? [];
+
+    setTranscript((prev) => [
+      ...prev,
+      { ...finalItem, content: "", isStreaming: true, reasoning: [] },
+    ]);
+    setIsStreaming(true);
+
+    steps.forEach((_, i) => {
+      setTimeout(() => {
+        setTranscript((prev) =>
+          prev.map((it) =>
+            it.id === id ? { ...it, reasoning: steps.slice(0, i + 1) } : it
+          )
+        );
+      }, 250 * (i + 1));
+    });
+
+    words.forEach((_, wi) => {
+      setTimeout(() => {
+        setTranscript((prev) =>
+          prev.map((it) =>
+            it.id === id
+              ? { ...it, content: words.slice(0, wi + 1).join(" ") }
+              : it
+          )
+        );
+      }, 600 + wi * 45);
+    });
+
+    setTimeout(() => {
+      setTranscript((prev) =>
+        prev.map((it) => (it.id === id ? { ...it, isStreaming: false } : it))
+      );
+      setIsStreaming(false);
+      onDone?.();
+    }, 600 + words.length * 45 + 200);
   };
 
   // Submit Text/Speech Input
@@ -180,7 +240,7 @@ export default function CourtroomArenaPage() {
     });
 
     const userMessage: TranscriptItem = {
-      id: `user-${Date.now()}`,
+      id: nextId("user"),
       speaker:
         SPEAKER_META[currentRole === "defense" ? "defense" : "prosecutor"].label,
       speakerRole: currentRole === "defense" ? "defense" : "prosecutor",
@@ -188,45 +248,48 @@ export default function CourtroomArenaPage() {
       timestamp,
       citation: target === "judge" ? "Submission to Bench" : "Cross-Examination of PW-1",
       kind: "standard",
+      isUser: true,
     };
 
     setTranscript((prev) => [...prev, userMessage]);
     setInputValue("");
     setActiveSpeaker("defense");
-    setIsStreaming(true);
 
-    // Multi-agent reaction
-    setTimeout(() => {
-      const responseTime = new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-      });
+    // Multi-agent reaction (streamed with reasoning trace)
+    const responseTime = new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
 
-      if (target === "witness") {
-        // PW-1 rattles and responds
-        const nextComposure = Math.max(38, witnessComposure - 14);
-        setWitnessComposure(nextComposure);
+    if (target === "witness") {
+      // PW-1 rattles and responds
+      const nextComposure = Math.max(38, witnessComposure - 14);
+      setWitnessComposure(nextComposure);
 
-        const witnessResponse: TranscriptItem = {
-          id: `resp-w-${Date.now()}`,
-          speaker: SPEAKER_META.witness.label,
-          speakerRole: "witness",
-          content:
-            "Counsel, as I stated, the police constable delivered the drive without a spot cryptographic seal. While the SHA-256 match confirmed the file was not altered in our lab vault, I cannot scientifically vouch for the 105-minute transit window...",
-          timestamp: responseTime,
-          citation: "Deposition Vol. II, Para 16 · Chain of Custody Conceded",
-          kind: "witness",
-        };
+      const witnessResponse: TranscriptItem = {
+        id: nextId("resp-w"),
+        speaker: SPEAKER_META.witness.label,
+        speakerRole: "witness",
+        content:
+          "Counsel, as I stated, the police constable delivered the drive without a spot cryptographic seal. While the SHA-256 match confirmed the file was not altered in our lab vault, I cannot scientifically vouch for the 105-minute transit window...",
+        timestamp: responseTime,
+        citation: "Deposition Vol. II, Para 16 · Chain of Custody Conceded",
+        kind: "witness",
+        reasoning: [
+          "Retrieving Exhibit A hash log",
+          "Checking contemporaneous certificate under BSA Sec 63(4)",
+          "Evaluating the 105-minute custody gap",
+        ],
+      };
 
-        setTranscript((prev) => [...prev, witnessResponse]);
+      streamResponse(witnessResponse, () => {
         setActiveSpeaker("witness");
-        setIsStreaming(false);
 
         // Update co-counsel hint with finishing move
         setCoCounselHints((prev) => [
           {
-            id: `hint-win-${Date.now()}`,
+            id: nextId("hint-win"),
             badge: "Decisive Impeachment",
             title: "Exhibit A Excluded under BSA Sec 63(4)",
             whisper:
@@ -238,28 +301,33 @@ export default function CourtroomArenaPage() {
           },
           ...prev,
         ]);
-      } else {
-        // Bench responds
-        const judgeResponse: TranscriptItem = {
-          id: `resp-j-${Date.now()}`,
-          speaker: SPEAKER_META.judge.label,
-          speakerRole: "judge",
-          content:
-            "Counsel, the Bench has noted your submission on the custodial gap. Public Prosecutor, you have 2 minutes to produce the contemporaneous spot hash receipt under Section 63(4) BSA, failing which Exhibit A shall stand excluded.",
-          timestamp: responseTime,
-          citation: "Bench Directive · Interlocutory Order",
-          kind: "ruling",
-        };
+      });
+    } else {
+      // Bench responds
+      const judgeResponse: TranscriptItem = {
+        id: nextId("resp-j"),
+        speaker: SPEAKER_META.judge.label,
+        speakerRole: "judge",
+        content:
+          "Counsel, the Bench has noted your submission on the custodial gap. Public Prosecutor, you have 2 minutes to produce the contemporaneous spot hash receipt under Section 63(4) BSA, failing which Exhibit A shall stand excluded.",
+        timestamp: responseTime,
+        citation: "Bench Directive · Interlocutory Order",
+        kind: "ruling",
+        reasoning: [
+          "Reading PW-1 custody concession",
+          "Checking Arjun Panditrao (2020) on hash certification",
+          "Drafting interlocutory direction",
+        ],
+      };
 
-        setTranscript((prev) => [...prev, judgeResponse]);
+      streamResponse(judgeResponse, () => {
         setActiveSpeaker("judge");
-        setIsStreaming(false);
-      }
-    }, 850);
+      });
+    }
   };
 
   return (
-    <div className="h-screen w-screen overflow-hidden flex flex-col bg-white select-none">
+    <div className="h-dvh w-full max-w-full overflow-hidden flex flex-col bg-white select-none">
       {/* 1. TOP COURTROOM SESSION BAR */}
       <CourtroomTopBar
         currentRole={currentRole}
@@ -272,7 +340,7 @@ export default function CourtroomArenaPage() {
       />
 
       {/* 2. THE 3-PANE WORKSPACE */}
-      <div className="flex-1 flex overflow-hidden min-h-0">
+      <div className="flex-1 flex overflow-hidden min-h-0 min-w-0">
         {/* PANE 1: Case File & Pinned Prep Drawer (Collapsible) */}
         <CaseDossierDrawer
           isOpen={isLeftPanelOpen}
@@ -304,7 +372,7 @@ export default function CourtroomArenaPage() {
         />
 
         {/* PANE 3: Live Multi-Agent Streaming Transcript & Advocate Controls */}
-        <section className="w-96 shrink-0 border-l border-zinc-200 bg-white flex flex-col h-full overflow-hidden">
+        <section className="w-96 min-w-0 shrink-0 border-l border-zinc-200 bg-white flex flex-col h-full overflow-hidden">
           <TranscriptPanel transcript={transcript} />
           <AdvocateConsole
             inputValue={inputValue}

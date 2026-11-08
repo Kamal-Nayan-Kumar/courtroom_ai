@@ -70,7 +70,6 @@ export const INITIAL_TRANSCRIPT: TranscriptItem[] = [
     timestamp: "10:15:32",
     citation: "Deposition Concession · Vulnerability Triggered",
     kind: "witness",
-    isStreaming: true,
   },
 ];
 
