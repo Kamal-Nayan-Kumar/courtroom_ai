@@ -44,17 +44,17 @@ export function AgentPersonaModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="max-w-lg bg-white p-5 border-zinc-200 shadow-xl select-none">
+      <DialogContent className="w-full sm:max-w-2xl max-h-[90vh] overflow-y-auto bg-white p-5 border-zinc-200 shadow-xl select-none">
         <DialogHeader className="pb-3 border-b border-zinc-100 pr-8">
           <div className="flex items-center gap-2.5">
             <div className="size-9 rounded-lg bg-zinc-100 border border-zinc-200 flex items-center justify-center shrink-0">
               {getIcon()}
             </div>
             <div className="min-w-0">
-              <DialogTitle className="text-base font-bold text-zinc-950 truncate">
+              <DialogTitle className="text-base font-bold text-zinc-950 break-words whitespace-normal">
                 {persona.name}
               </DialogTitle>
-              <DialogDescription className="text-xs text-zinc-500 font-mono truncate">
+              <DialogDescription className="text-xs text-zinc-500 font-mono break-words whitespace-normal">
                 {persona.roleTitle} · {persona.court}
               </DialogDescription>
             </div>

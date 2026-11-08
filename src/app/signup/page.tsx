@@ -42,9 +42,12 @@ export default function SignupPage() {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
-        <p className="relative z-10 text-white/85 text-sm leading-relaxed font-medium max-w-sm">
-          Prepare in silence. Argue with confidence in the courtroom.
-        </p>
+        <blockquote className="relative z-10 max-w-lg -mb-1 pb-3">
+          <span aria-hidden="true" className="mb-5 block h-1 w-16 rounded-full bg-amber-400" />
+          <p className="font-editorial text-3xl sm:text-4xl leading-snug text-white drop-shadow-lg">
+            Prepare in silence. Argue with confidence in the courtroom.
+          </p>
+        </blockquote>
       </div>
 
       {/* RIGHT COLUMN: Registration Form */}

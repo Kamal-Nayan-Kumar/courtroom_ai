@@ -13,6 +13,8 @@ export interface TranscriptItem {
   citation?: string;
   kind: MessageKind;
   isStreaming?: boolean;
+  isUser?: boolean;
+  reasoning?: string[];
 }
 
 export interface CourtroomExhibit {

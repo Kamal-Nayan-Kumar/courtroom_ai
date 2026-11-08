@@ -72,8 +72,9 @@ body {
 }
 
 .bg-dot-pattern {
-  background-size: 16px 16px;
-  background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+  background-color: #f4f4f5;
+  background-size: 18px 18px;
+  background-image: radial-gradient(rgba(82, 82, 91, 0.3) 1.2px, transparent 1.2px);
 }
 
 /* Subtle scrollbars for realistic preview panes */
