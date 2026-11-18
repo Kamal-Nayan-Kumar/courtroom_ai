@@ -1,0 +1,11 @@
+\contentsline {table}{\numberline {1}{\ignorespaces Functional and non-functional requirements.}}{3}{}%
+\contentsline {table}{\numberline {2}{\ignorespaces Core data entities used by Courtroom AI.}}{6}{}%
+\contentsline {table}{\numberline {3}{\ignorespaces Landmark 2024 judgments ingested as legal-reference documents.}}{6}{}%
+\contentsline {table}{\numberline {4}{\ignorespaces Real cases used in the short demonstration.}}{7}{}%
+\contentsline {table}{\numberline {5}{\ignorespaces Important application endpoints.}}{10}{}%
+\contentsline {table}{\numberline {6}{\ignorespaces End-to-end demonstration checks.}}{15}{}%
+\contentsline {table}{\numberline {7}{\ignorespaces Retrieval ablation, global scope. ``doc'' = right document matter; ``gold'' = right document plus paragraph anchor overlap (Jaccard$\ge $0.5), computed only over questions with a non-empty gold set.}}{16}{}%
+\contentsline {table}{\numberline {8}{\ignorespaces Invented-specifics scan on the final build (\texttt {data/eval/specifics\_scan.json}). Eight detail-probing turns across both playable cases, checked with the same module the application uses at runtime.}}{18}{}%
+\contentsline {table}{\numberline {9}{\ignorespaces Faithfulness on the final build (20 questions, \texttt {data/eval/faithfulness.json}).}}{19}{}%
+\contentsline {table}{\numberline {10}{\ignorespaces Fixes applied this session. ``Before'' and ``after'' are measured from the same live endpoint reruns.}}{21}{}%
+\contentsline {table}{\numberline {11}{\ignorespaces Regression suite actually executed against the running application. Output is reproduced verbatim in the appendix and re-run on every verification pass.}}{23}{}%

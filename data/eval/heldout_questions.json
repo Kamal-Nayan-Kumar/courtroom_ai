@@ -1,0 +1,489 @@
+[
+  {
+    "id": "ho-sita-01",
+    "question": "When, according to the majority in Sita Soren, is the offence of bribery complete under the Prevention of Corruption Act?",
+    "expected_judgment": "Sita Soren v. Union of India",
+    "expected_citation": "2024 INSC 161",
+    "expected_paragraph": "Para 12",
+    "category": "Criminal Liability & Bribery",
+    "source_hint": "chunks labelled '2024 INSC 161 | Para 12' - majority holding on when the act is complete",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-sita-02",
+    "question": "What did the 7-judge bench hold about whether a Member of Parliament who accepts a bribe but does not cast the promised vote is immune from prosecution?",
+    "expected_judgment": "Sita Soren v. Union of India",
+    "expected_citation": "2024 INSC 161",
+    "expected_paragraph": "Metadata",
+    "category": "Legislative Privileges",
+    "source_hint": "majority overruling the anomalous result of P.V. Narasimha Rao: bribe accepted = offence even without voting",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-sita-03",
+    "question": "Which constitutional article grants Members of Parliament immunity for votes cast, and how does the Court read the phrase 'in respect of anything said'?",
+    "expected_judgment": "Sita Soren v. Union of India",
+    "expected_citation": "2024 INSC 161",
+    "expected_paragraph": "Para 128",
+    "category": "Constitutional Interpretation",
+    "source_hint": "chunks discussing the UK privilege struggle and the scope of Art.105(2)/194(2)",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-sita-04",
+    "question": "According to Sita Soren, can a lawmaker be prosecuted under the Prevention of Corruption Act despite parliamentary privilege?",
+    "expected_judgment": "Sita Soren v. Union of India",
+    "expected_citation": "2024 INSC 161",
+    "expected_paragraph": "Para 12",
+    "category": "Criminal Law",
+    "source_hint": "majority reasoning on bribe-takers' prosecution",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-sita-05",
+    "question": "Which earlier five-judge bench decision did Sita Soren overrule, and on what reasoning does the seven-judge bench justify reconsideration?",
+    "expected_judgment": "Sita Soren v. Union of India",
+    "expected_citation": "2024 INSC 161",
+    "expected_paragraph": "Metadata",
+    "category": "Constitutional Law",
+    "source_hint": "overruling of P.V. Narasimha Rao (1998)",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-sita-06",
+    "question": "In Sita Soren, how does the judgment treat the rule of law relative to parliament's claim to exclusive power?",
+    "expected_judgment": "Sita Soren v. Union of India",
+    "expected_citation": "2024 INSC 161",
+    "expected_paragraph": "Metadata",
+    "category": "Constitutional Law",
+    "source_hint": "majority on rule of law and judicial review of parliament disciplinary powers",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-bilkis-01",
+    "question": "Which State is the appropriate government to consider remission for the 2002 Bilkis Bano convicts, and why?",
+    "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+    "expected_citation": "2024 INSC 24",
+    "expected_paragraph": "Metadata",
+    "category": "Remission & Jurisdiction",
+    "source_hint": "the Court's reasoning that Gujarat was not the appropriate government (trial in Mumbai)",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-bilkis-02",
+    "question": "On what grounds did the Supreme Court hold the Gujarat government's remission orders dated 10.08.2022 were vitiated?",
+    "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+    "expected_citation": "2024 INSC 24",
+    "expected_paragraph": "Metadata",
+    "category": "Fraud & Vitiation",
+    "source_hint": "chunks on misrepresentation of the 13.05.2022 order",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-bilkis-03",
+    "question": "What did the Court say about the jail committees and state actors who supported premature release?",
+    "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+    "expected_citation": "2024 INSC 24",
+    "expected_paragraph": "Metadata",
+    "category": "Remission & Jurisdiction",
+    "source_hint": "references to the District and Sessions Judge / Jail Advisory Committee roles",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-bilkis-04",
+    "question": "What minimum term of imprisonment does Section 433-A of the CrPC impose before remitting a life-sentence prisoner?",
+    "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+    "expected_citation": "2024 INSC 24",
+    "expected_paragraph": "Metadata",
+    "category": "Statutory Interpretation",
+    "source_hint": "chunks quoting Section 433-A (fourteen years)",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-bilkis-05",
+    "question": "How does the Court treat the fact that the remission was granted despite the High Court having denied it?",
+    "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+    "expected_citation": "2024 INSC 24",
+    "expected_paragraph": "Metadata",
+    "category": "Fraud & Vitiation",
+    "source_hint": "chunks discussing mechanical manner of granting remission after contrary High Court orders",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-bilkis-06",
+    "question": "What is the role of Article 161 of the Constitution in confirming that the appropriate government for remission is a state power?",
+    "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+    "expected_citation": "2024 INSC 24",
+    "expected_paragraph": "Metadata",
+    "category": "Constitutional Law",
+    "source_hint": "remission by Governor under Art.161 context",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-sukanya-01",
+    "question": "Which provisions of state prison manuals did the Court declare unconstitutional in Sukanya Shantha, and on what basis?",
+    "expected_judgment": "Sukanya Shantha v. Union of India",
+    "expected_citation": "2024 INSC 753",
+    "expected_paragraph": "Metadata",
+    "category": "Prison Reform",
+    "source_hint": "caste-based segregation and division of labour in prisons; Articles 14, 15, 17, 21, 23",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-sukanya-02",
+    "question": "Which statute governs prison administration at the Union level according to the judgment, and what must States change?",
+    "expected_judgment": "Sukanya Shantha v. Union of India",
+    "expected_citation": "2024 INSC 753",
+    "expected_paragraph": "Metadata",
+    "category": "Prison Reform",
+    "source_hint": "Model Prison Manual 2016 / direction for States to amend within three months",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-sukanya-03",
+    "question": "How does the judgment treat the classification of De-notified Tribes as 'habitual offenders' in prison contexts?",
+    "expected_judgment": "Sukanya Shantha v. Union of India",
+    "expected_citation": "2024 INSC 753",
+    "expected_paragraph": "Metadata",
+    "category": "Discrimination",
+    "source_hint": "Denotified Tribes and Criminal Tribes Act legacy",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-sukanya-04",
+    "question": "What constitutional principle does Article 17 of the Constitution contribute to the judgment's analysis?",
+    "expected_judgment": "Sukanya Shantha v. Union of India",
+    "expected_citation": "2024 INSC 753",
+    "expected_paragraph": "Metadata",
+    "category": "Constitutional Interpretation",
+    "source_hint": "Article 17 - abolition of untouchability",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-sukanya-05",
+    "question": "Did the Court leave any role for the legal services authority in monitoring prisons? If so, what role?",
+    "expected_judgment": "Sukanya Shantha v. Union of India",
+    "expected_citation": "2024 INSC 753",
+    "expected_paragraph": "Metadata",
+    "category": "Prison Reform",
+    "source_hint": "sections discussing role of Legal Service Authorities",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-sukanya-06",
+    "question": "Which five Articles of the Constitution are cited in the case as violated by caste-based discrimination inside prisons?",
+    "expected_judgment": "Sukanya Shantha v. Union of India",
+    "expected_citation": "2024 INSC 753",
+    "expected_paragraph": "Metadata",
+    "category": "Constitutional Interpretation",
+    "source_hint": "Articles 14, 15, 17, 21, 23 cited by the petitioners",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-bonds-01",
+    "question": "Which Article of the Constitution did the Court hold violated by the Electoral Bonds Scheme?",
+    "expected_judgment": "Association for Democratic Reforms v. Union of India",
+    "expected_citation": "2024 INSC 113",
+    "expected_paragraph": "Metadata",
+    "category": "Constitutional Law",
+    "source_hint": "Article 19(1)(a) right to information clause",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-bonds-02",
+    "question": "What did the Court hold about amendments to the Finance Act and Companies Act regarding anonymous donations?",
+    "expected_judgment": "Association for Democratic Reforms v. Union of India",
+    "expected_citation": "2024 INSC 113",
+    "expected_paragraph": "Metadata",
+    "category": "Constitutional Law",
+    "source_hint": "the corresponding Finance Act and Companies Act amendments struck down",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-bonds-03",
+    "question": "What did the Court say about unlimited corporate funding to political parties and the guard against foreign influence?",
+    "expected_judgment": "Association for Democratic Reforms v. Union of India",
+    "expected_citation": "2024 INSC 113",
+    "expected_paragraph": "Metadata",
+    "category": "Constitutional Law",
+    "source_hint": "struck down unlimited corporate funding / foreign funding clauses",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-bonds-04",
+    "question": "How did the Court balance the voter's right to information against donor anonymity demands?",
+    "expected_judgment": "Association for Democratic Reforms v. Union of India",
+    "expected_citation": "2024 INSC 113",
+    "expected_paragraph": "Metadata",
+    "category": "Constitutional Law",
+    "source_hint": "least-restrictive-means test applied",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-bonds-05",
+    "question": "Which constitutional doctrine does the case use to reconcile anonymity claims and the transparency demand?",
+    "expected_judgment": "Association for Democratic Reforms v. Union of India",
+    "expected_citation": "2024 INSC 113",
+    "expected_paragraph": "Metadata",
+    "category": "Constitutional Law",
+    "source_hint": "proportionality test applied by the Constitution Bench",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-bonds-06",
+    "question": "What did the Court hold about black money claims and whether restrictions on anonymous funding reduce it?",
+    "expected_judgment": "Association for Democratic Reforms v. Union of India",
+    "expected_citation": "2024 INSC 113",
+    "expected_paragraph": "Metadata",
+    "category": "Constitutional Law",
+    "source_hint": "reference to lack of evidence about black money routed through bonds",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-delhi-01",
+    "question": "Under BNS \u00a7 61(2), what does the prosecution need to prove for criminal conspiracy, and how does it relate to the substantive offence?",
+    "expected_judgment": "State v. Arvind Kejriwal \u2014 2022 Delhi Liquor Policy Case",
+    "expected_citation": "BNS \u00a7 61(2)",
+    "expected_paragraph": "Metadata",
+    "category": "Substantive Criminal Law",
+    "source_hint": "section text on agreement to commit illegal act",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-delhi-02",
+    "question": "What does BSA \u00a7 63 require for secondary evidence of an electronic record under the current law on admissibility?",
+    "expected_judgment": "State v. Arvind Kejriwal \u2014 2022 Delhi Liquor Policy Case",
+    "expected_citation": "BSA \u00a7 63",
+    "expected_paragraph": "Metadata",
+    "category": "Evidence Law",
+    "source_hint": "electronic record section 63(4) certificate requirement",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-delhi-03",
+    "question": "According to the case, how many summons did the Enforcement Directorate issue, and on what ground did it ultimately arrest Kejriwal?",
+    "expected_judgment": "State v. Arvind Kejriwal \u2014 2022 Delhi Liquor Policy Case",
+    "expected_citation": "Case fact",
+    "expected_paragraph": "Metadata",
+    "category": "Case Facts",
+    "source_hint": "case fact chunks in corpus",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-delhi-04",
+    "question": "How does PMLA \u00a7 3 define money laundering according to the corpus, and what maximum punishment does it prescribe?",
+    "expected_judgment": "State v. Arvind Kejriwal \u2014 2022 Delhi Liquor Policy Case",
+    "expected_citation": "PMLA \u00a7 3",
+    "expected_paragraph": "Metadata",
+    "category": "Substantive Criminal Law",
+    "source_hint": "PMLA \u00a7 3 chunk: rigorous imprisonment up to 7 years",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-delhi-05",
+    "question": "What was the bail posture of Kejriwal in the CBI and ED cases as reflected in the indexed case facts?",
+    "expected_judgment": "State v. Arvind Kejriwal \u2014 2022 Delhi Liquor Policy Case",
+    "expected_citation": "Case fact",
+    "expected_paragraph": "Metadata",
+    "category": "Case Facts",
+    "source_hint": "case fact chronology (CBI bail vs ED interim bail)",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-delhi-06",
+    "question": "What does the corpus say about trial court bail granted on 20 June 2024 and the subsequent Delhi High Court stay the next day?",
+    "expected_judgment": "State v. Arvind Kejriwal \u2014 2022 Delhi Liquor Policy Case",
+    "expected_citation": "Case fact",
+    "expected_paragraph": "Metadata",
+    "category": "Case Facts",
+    "source_hint": "bail order chronology fact chunks",
+    "needs_human_review": true
+  },
+  {
+    "id": "ho-para-sita-01",
+    "question": "A political party leader accepts an envelope of cash in exchange for ensuring their party members abstain from voting on a no-confidence motion. Does parliamentary privilege protect this from prosecution?",
+    "expected_judgment": "Sita Soren v. Union of India",
+    "expected_citation": "2024 INSC 161",
+    "expected_paragraph": "Para 12",
+    "category": "Criminal Liability & Bribery",
+    "source_hint": "rejected immunity defence applies where bribe accepted to abstain; Para 12 text",
+    "needs_human_review": true,
+    "paraphrase": true
+  },
+  {
+    "id": "ho-para-sita-02",
+    "question": "A minister accepts money shortly before a parliamentary matter is voted on. What does acceptance of cash in relation to a vote imply for the law's response?",
+    "expected_judgment": "Sita Soren v. Union of India",
+    "expected_citation": "2024 INSC 161",
+    "expected_paragraph": "Para 12",
+    "category": "Criminal Liability & Bribery",
+    "source_hint": "bribery for raising questions; same principle as abstention",
+    "needs_human_review": true,
+    "paraphrase": true
+  },
+  {
+    "id": "ho-para-bilkis-01",
+    "question": "Tell me who may decide whether someone can leave the prison early when custody was shifted to another authority's jurisdiction.",
+    "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+    "expected_citation": "2024 INSC 24",
+    "expected_paragraph": "Metadata",
+    "category": "Remission & Jurisdiction",
+    "source_hint": "appropriate government is state where sentence was pronounced, not place of imprisonment",
+    "needs_human_review": true,
+    "paraphrase": true
+  },
+  {
+    "id": "ho-para-bilkis-02",
+    "question": "When a board sentences a person for murder, then shortens the term without consulting the court, what result does the legal system enforce?",
+    "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+    "expected_citation": "2024 INSC 24",
+    "expected_paragraph": "Metadata",
+    "category": "Fraud & Vitiation",
+    "source_hint": "sentence reduction without consulting convicting judge = no valid remission; judgment discusses this",
+    "needs_human_review": true,
+    "paraphrase": true
+  },
+  {
+    "id": "ho-para-sukanya-01",
+    "question": "If a prison keeps its kitchens by caste \u2014 cooks from one community, cleaners from another \u2014 which constitutionally guaranteed rights are violated?",
+    "expected_judgment": "Sukanya Shantha v. Union of India",
+    "expected_citation": "2024 INSC 753",
+    "expected_paragraph": "Metadata",
+    "category": "Prison Reform",
+    "source_hint": "caste-based kitchen duties violate Arts 14, 15, 17, 21, 23",
+    "needs_human_review": true,
+    "paraphrase": true
+  },
+  {
+    "id": "ho-para-sukanya-02",
+    "question": "A prison labels a prisoner as belonging to a community known for hereditary criminal habits and segregates them separately. What is the constitutional problem with that classification?",
+    "expected_judgment": "Sukanya Shantha v. Union of India",
+    "expected_citation": "2024 INSC 753",
+    "expected_paragraph": "Metadata",
+    "category": "Discrimination",
+    "source_hint": "Denotified Tribes classification violates Art 15(2-c-r); caste discrimination prohibited",
+    "needs_human_review": true,
+    "paraphrase": true
+  },
+  {
+    "id": "ho-para-bonds-01",
+    "question": "If a citizen wants a record showing who donated to which political party and the government refuses disclosure on privacy grounds, what right does the citizen have, and why?",
+    "expected_judgment": "Association for Democratic Reforms v. Union of India",
+    "expected_citation": "2024 INSC 113",
+    "expected_paragraph": "Metadata",
+    "category": "Constitutional Law",
+    "source_hint": "voter right to information under Art 19(1)(a) overrides donor anonymity",
+    "needs_human_review": true,
+    "paraphrase": true
+  },
+  {
+    "id": "ho-para-bonds-02",
+    "question": "A company proposes unlimited donations to a political party without naming itself. Does the ruling protect that arrangement, and why?",
+    "expected_judgment": "Association for Democratic Reforms v. Union of India",
+    "expected_citation": "2024 INSC 113",
+    "expected_paragraph": "Metadata",
+    "category": "Constitutional Law",
+    "source_hint": "unlimited corporate donations struck down; removal of limits unconstitutional",
+    "needs_human_review": true,
+    "paraphrase": true
+  },
+  {
+    "id": "ho-para-delhi-01",
+    "question": "A civil servant is arrested without a warrant merely because an officer suspects corruption. Does this by itself mean corruption occurred, or does it merely start a legal matter?",
+    "expected_judgment": "State v. Arvind Kejriwal \u2014 2022 Delhi Liquor Policy Case",
+    "expected_citation": "BNS \u00a7 61(2)",
+    "expected_paragraph": "Metadata",
+    "category": "Substantive Criminal Law",
+    "source_hint": "BNS \u00a7 61(2) agreement + intent to commit illegal act is complete before target offence",
+    "needs_human_review": true,
+    "paraphrase": true
+  },
+  {
+    "id": "ho-para-delhi-02",
+    "question": "A mobile-phone handset that stores messages is sought as evidence, with no accompanying certificate from the person responsible for its management \u2014 can secondary evidence of those messages be admitted?",
+    "expected_judgment": "State v. Arvind Kejriwal \u2014 2022 Delhi Liquor Policy Case",
+    "expected_citation": "BSA \u00a7 63",
+    "expected_paragraph": "Metadata",
+    "category": "Evidence Law",
+    "source_hint": "BSA \u00a7 63(4) certificate necessary for secondary evidence of electronic record",
+    "needs_human_review": true,
+    "paraphrase": true
+  },
+  {
+    "id": "ho-mh-01",
+    "question": "Under Section 432 CrPC, what are the TWO conditions for the government to grant premature release? If the court finds both were ignored in the 10.08.2022 remission order, what is the legal consequence?",
+    "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+    "expected_citation": "2024 INSC 24",
+    "expected_paragraph": "Metadata",
+    "category": "Multi-hop",
+    "source_hint": "432 CrPC mechanical/consideration; court had said release would be invalid",
+    "needs_human_review": true,
+    "multi_hop": true
+  },
+  {
+    "id": "ho-mh-02",
+    "question": "If a BJP MP had taken a bribe in relation to a no-confidence motion in March 2014 and cast his vote after receiving the bribe, and the government claimed Article 105(2) protects him, what would the seven-judge bench conclude about prosecution under Section 7 PC Act?",
+    "expected_judgment": "Sita Soren v. Union of India",
+    "expected_citation": "2024 INSC 161",
+    "expected_paragraph": "Metadata",
+    "category": "Multi-hop",
+    "source_hint": "acceptance of bribe = offence; Article 105(2) does not bar prosecution",
+    "needs_human_review": true,
+    "multi_hop": true
+  },
+  {
+    "id": "ho-mh-03",
+    "question": "Section 3 PMLA defines money laundering as dealing in proceeds of crime. The Delhi liquor policy case documents purchases of liquor using shell companies. Which PMLA provision applies, and what does the prosecution have to demonstrate about the 'proceeds' element?",
+    "expected_judgment": "State v. Arvind Kejriwal \u2014 2022 Delhi Liquor Policy Case",
+    "expected_citation": "PMLA \u00a7 3",
+    "expected_paragraph": "Metadata",
+    "category": "Multi-hop",
+    "source_hint": "PMLA \u00a7 3 'proceeds of crime' = proceeds from predicate scheduled offence",
+    "needs_human_review": true,
+    "multi_hop": true
+  },
+  {
+    "id": "ho-mh-04",
+    "question": "In Sukanya Shantha, court held Article 17 abolished untouchability. How does Article 17 relate to prisons \u2014 and which three other Articles does it connect with in striking down discriminatory practices?",
+    "expected_judgment": "Sukanya Shantha v. Union of India",
+    "expected_citation": "2024 INSC 753",
+    "expected_paragraph": "Metadata",
+    "category": "Statute-lookup",
+    "source_hint": "Art 17 (untouchability) combined with Arts 14 (equality), 21 (right to life), 23 (begar)",
+    "needs_human_review": true,
+    "multi_hop": true
+  },
+  {
+    "id": "ho-no-01",
+    "question": "What is the date of birth of the lead petitioner in Sita Soren v. Union of India?",
+    "expected_judgment": "Sita Soren v. Union of India",
+    "expected_citation": "2024 INSC 161",
+    "expected_paragraph": "Metadata",
+    "category": "Not in corpus \u2014 date of birth is not recorded",
+    "source_hint": "not in corpus; system should say so",
+    "needs_human_review": true,
+    "unanswerable": true
+  },
+  {
+    "id": "ho-no-02",
+    "question": "Which law firm argued on behalf of the State of Gujarat in the Bilkis Bano remission matter before the Supreme Court?",
+    "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+    "expected_citation": "2024 INSC 24",
+    "expected_paragraph": "Metadata",
+    "category": "Not in corpus \u2014 counsel details not recorded",
+    "source_hint": "counsel names not in corpus",
+    "needs_human_review": true,
+    "unanswerable": true
+  },
+  {
+    "id": "ho-no-03",
+    "question": "What was the final retail price of the 5029.01 crore scandal cases in the Delhi excise policy case?",
+    "expected_judgment": "State v. Arvind Kejriwal \u2014 2022 Delhi Liquor Policy Case",
+    "expected_citation": "Case fact",
+    "expected_paragraph": "Metadata",
+    "category": "Not in corpus \u2014 case documents don't record this amount",
+    "source_hint": "not in corpus; revenue figure is not recorded",
+    "needs_human_review": true,
+    "unanswerable": true
+  }
+]

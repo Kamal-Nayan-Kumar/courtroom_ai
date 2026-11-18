@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -48,18 +48,7 @@ export function CourtroomTopBar({
   caseTitle,
   secondsElapsed: secondsElapsedProp,
 }: CourtroomTopBarProps) {
-  const [secondsElapsed, setSecondsElapsed] = useState(secondsElapsedProp ?? 0);
-
-  useEffect(() => {
-    setSecondsElapsed(secondsElapsedProp ?? 0);
-  }, [secondsElapsedProp]);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setSecondsElapsed((prev) => prev + 1);
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
+  const secondsElapsed = secondsElapsedProp ?? 0;
 
   const formatTimer = (totalSec: number) => {
     const hrs = Math.floor(totalSec / 3600);

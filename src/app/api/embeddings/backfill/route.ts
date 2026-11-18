@@ -4,7 +4,7 @@ import { embed, EMBED_DIM } from "@/lib/llm";
 
 export const maxDuration = 300;
 
-const BATCH = 50;
+const BATCH = 15;
 
 export async function POST(req: Request) {
   const { data: session } = await auth.getSession();
@@ -17,7 +17,7 @@ export async function POST(req: Request) {
   } catch {
     body = {};
   }
-  const batchSize = Math.min(200, Math.max(1, Math.floor(body.batchSize ?? BATCH) || BATCH));
+  const batchSize = Math.min(20, Math.max(1, Math.floor(body.batchSize ?? BATCH) || BATCH));
   const limit = body.limit != null ? Math.max(0, Math.floor(body.limit)) : null;
 
   const sql = db();

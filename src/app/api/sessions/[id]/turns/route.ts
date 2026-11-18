@@ -1,5 +1,6 @@
 import { db } from "@/lib/db";
 import { auth } from "@/lib/auth/server";
+import { isSessionExpired } from "@/lib/session-expiry";
 
 
 export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
@@ -12,6 +13,10 @@ export async function GET(_req: Request, { params }: { params: Promise<{ id: str
   const [sess] = await sql`SELECT * FROM sessions WHERE id = ${id} LIMIT 1`;
   if (!sess || sess.user_id !== userId) return Response.json({ error: "Session not found" }, { status: 404 });
   if (sess.status === "ended") return Response.json({ error: "Session ended" }, { status: 409 });
+  if (isSessionExpired(sess)) {
+    await sql`UPDATE sessions SET status = 'ended', ended_at = NOW() WHERE id = ${id} AND status = 'live'`;
+    return Response.json({ error: "Session time limit reached", code: "SESSION_EXPIRED" }, { status: 409 });
+  }
 
   const turns = await sql`
     SELECT * FROM session_turns WHERE session_id = ${id} ORDER BY seq ASC
@@ -34,6 +39,10 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
   const [sess] = await sql`SELECT * FROM sessions WHERE id = ${id} LIMIT 1`;
   if (!sess || sess.user_id !== userId) return Response.json({ error: "Session not found" }, { status: 404 });
   if (sess.status === "ended") return Response.json({ error: "Session ended" }, { status: 409 });
+  if (isSessionExpired(sess)) {
+    await sql`UPDATE sessions SET status = 'ended', ended_at = NOW() WHERE id = ${id} AND status = 'live'`;
+    return Response.json({ error: "Session time limit reached", code: "SESSION_EXPIRED" }, { status: 409 });
+  }
 
   const [maxSeq] = await sql`
     SELECT COALESCE(MAX(seq), 0)::int AS max_seq FROM session_turns WHERE session_id = ${id}

@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 import { useDashboard } from "@/context/DashboardContext";
+import { WitnessPrepQueueCard } from "@/components/dashboard/WitnessPrepQueueCard";
 
 interface CaseDetail {
   case: { id: string; title: string; category: string; court: string; charges: string; summary: string };
@@ -20,11 +21,16 @@ interface CaseDetail {
 interface ChatMsg {
   role: "user" | "assistant";
   text: string;
+  sources?: string[];
 }
 
-export default function CasePrepStudioPage() {
+export default function CasePrepStudioPage(props?: {
+  caseId?: string;
+  initialTab?: string;
+}) {
   const params = useParams();
-  const caseId = String(params.id ?? "");
+  const rawId = props?.caseId || (params?.id ? String(params.id) : "");
+  const caseId = rawId && rawId !== "undefined" ? rawId : "delhi-liquor-2022";
   let showNotification: ((msg: string) => void) | null = null;
   try {
     showNotification = useDashboard().showNotification;
@@ -33,7 +39,7 @@ export default function CasePrepStudioPage() {
   }
   const [detail, setDetail] = useState<CaseDetail | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState("case-file");
+  const [activeTab, setActiveTab] = useState(props?.initialTab || "case-file");
 
   const [question, setQuestion] = useState("");
   const [chat, setChat] = useState<ChatMsg[]>([]);
@@ -88,9 +94,13 @@ export default function CasePrepStudioPage() {
     let cancelled = false;
     (async () => {
       try {
+        if (!caseId) return;
         const res = await fetch(`/api/cases/${encodeURIComponent(caseId)}`, { cache: "no-store" });
         const json = await res.json();
         if (!res.ok) throw new Error(json.error ?? "Case not found");
+        if (!json || !json.case || !Array.isArray(json.parties)) {
+          throw new Error("Invalid case data structure");
+        }
         if (!cancelled) setDetail(json);
       } catch (e) {
         if (!cancelled) setLoadError(e instanceof Error ? e.message : "Failed to load case");
@@ -113,7 +123,14 @@ export default function CasePrepStudioPage() {
       });
       const json = await res.json();
       if (!res.ok) throw new Error(json.error ?? "Research failed");
-      setChat((prev) => [...prev, { role: "assistant", text: json.answer }]);
+      setChat((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          text: json.answer,
+          sources: (json.sources ?? []).map((source: { section_label?: string }) => source.section_label).filter(Boolean),
+        },
+      ]);
     } catch (e) {
       setChat((prev) => [...prev, { role: "assistant", text: e instanceof Error ? e.message : "Research failed." }]);
     } finally {
@@ -146,9 +163,11 @@ export default function CasePrepStudioPage() {
       <div className="p-10 text-center text-sm text-zinc-600">{loadError}</div>
     );
   }
-  if (!detail) return <div className="p-10 text-sm text-zinc-500">Loading case file...</div>;
+  if (!detail || !detail.case || !Array.isArray(detail.parties)) {
+    return <div className="p-10 text-sm text-zinc-500">Loading case file...</div>;
+  }
 
-  const witnesses = detail.parties.filter((p) => p.is_witness);
+  const witnesses = (detail.parties ?? []).filter((p) => p.is_witness);
 
   return (
     <div className="p-4 sm:p-6 lg:p-8 max-w-[1400px] mx-auto flex flex-col gap-6">
@@ -221,8 +240,13 @@ export default function CasePrepStudioPage() {
               {chat.length === 0 && <p className="text-xs text-zinc-500">Ask about statutes, case facts, or strategy. Answers cite the indexed corpus.</p>}
               {chat.map((m, i) => (
                 <div key={i} className={`text-xs p-2.5 rounded-lg ${m.role === "user" ? "bg-zinc-950 text-white" : "bg-zinc-50 border border-zinc-200 text-zinc-800"}`}>
-                  <p className="leading-relaxed whitespace-pre-wrap">{m.text}</p>
-                </div>
+                   <p className="leading-relaxed whitespace-pre-wrap">{m.text}</p>
+                   {m.sources?.length ? (
+                     <p className="mt-2 border-t border-zinc-200 pt-1.5 text-[10px] text-zinc-500">
+                       Sources: {m.sources.join(" · ")}
+                     </p>
+                   ) : null}
+                 </div>
               ))}
             </div>
             <div className="flex gap-2">
@@ -252,7 +276,8 @@ export default function CasePrepStudioPage() {
           </div>
         </TabsContent>
 
-        <TabsContent value="witness-lab" className="focus-visible:outline-none space-y-3">
+        <TabsContent value="witness-lab" className="focus-visible:outline-none space-y-4">
+          <WitnessPrepQueueCard />
           <div className="grid md:grid-cols-2 gap-4">
             {witnesses.map((w) => {
               const thread = witnessThreads[w.name] ?? [];

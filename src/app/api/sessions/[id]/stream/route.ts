@@ -1,6 +1,8 @@
 import { db } from "@/lib/db";
 import { auth } from "@/lib/auth/server";
-import { GROQ_PRIMARY, OPENROUTER_FALLBACK } from "@/lib/llm";
+import { GROQ_PRIMARY, OPENROUTER_FALLBACK, chat } from "@/lib/llm";
+import { findGroundingViolations, describeViolations } from "@/lib/grounding";
+import { isSessionExpired } from "@/lib/session-expiry";
 
 export const maxDuration = 60;
 
@@ -71,6 +73,10 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
   const [sess] = await sql`SELECT * FROM sessions WHERE id = ${id} LIMIT 1`;
   if (!sess || sess.user_id !== userId) return Response.json({ error: "Session not found" }, { status: 404 });
   if (sess.status === "ended") return Response.json({ error: "Session ended" }, { status: 409 });
+  if (isSessionExpired(sess)) {
+    await sql`UPDATE sessions SET status = 'ended', ended_at = NOW() WHERE id = ${id} AND status = 'live'`;
+    return Response.json({ error: "Session time limit reached", code: "SESSION_EXPIRED" }, { status: 409 });
+  }
 
   const responder: Responder = kind === "judge" || kind === "objection" ? "judge" : "witness";
   const studentKind = kind === "objection" ? "objection" : "standard";
@@ -102,8 +108,8 @@ ${text}`;
 
   const system =
     responder === "judge"
-      ? `You are ${judgeName}. Respond to the student's last submission in an Indian courtroom. 2-4 sentences in plain courtroom tone. ${kind === "objection" ? "Rule on the objection. Start with OBJECTION SUSTAINED or OBJECTION OVERRULED and give a one-sentence reason." : "Give a short bench response / direction."} Cite one real statute or precedent briefly by number. No fake statutes.`
-      : `You are ${witness?.name ?? "PW-1"}, ${witness?.role ?? "witness"}. Personality: ${witness?.personality ?? ""}. Answer the counsel's last question truthfully to the case facts, in character as a witness under oath in an Indian court. 3-5 sentences, natural hesitation allowed, one realistic detail. No fake statutes.`;
+      ? `You are ${judgeName}. Respond to the student's last submission in an Indian courtroom. 2-4 sentences in plain courtroom tone. ${kind === "objection" ? "Rule on the objection. Start with OBJECTION SUSTAINED or OBJECTION OVERRULED and give a one-sentence reason citing ONLY material present in the brief, or say the objection fails for lack of foundation in the record." : "Give a short bench response / direction grounded in the brief."} Do NOT cite a statute or precedent not in the brief. Do NOT invent paragraph, section, page or date references. No fake statutes.`
+      : `You are ${witness?.name ?? "PW-1"}, ${witness?.role ?? "witness"}. Personality: ${witness?.personality ?? ""}. Answer the counsel's last question truthfully to the case facts, in character as a witness under oath in an Indian court. 3-5 sentences. STRICT RULE: answer ONLY from the case brief below — do NOT invent any date, diary entry, paragraph number, page number, section number, or proper name that is not in the brief. If the brief does not contain the specific detail asked, say "The record does not state that". One realistic detail allowed ONLY if supported by the brief. No fake statutes.`;
 
   const messages = [
     { role: "system", content: system },
@@ -127,7 +133,9 @@ ${text}`;
           messages,
           stream: true,
           max_tokens: 700,
-          temperature: responder === "judge" ? 0.5 : 0.7,
+          // Low temperature for courtroom turns: free-form generation here is the
+          // main source of invented specifics (measured in docs/EVIDENCE.md).
+          temperature: 0.2,
         }),
       });
       if (res.ok && res.body) {
@@ -215,6 +223,45 @@ ${text}`;
       }
 
       const cleanText = fullText.trim() || "(no response generated)";
+
+      // Grounding check: the turn may only assert specifics that appear in the
+      // case brief it was given. If it does not, repair once and mark the turn.
+      const briefText = caseBrief;
+      let groundingViolations = findGroundingViolations(cleanText, briefText);
+      let finalText = cleanText;
+      let correctionNote: string | null = null;
+      if (groundingViolations.length) {
+        try {
+          const repaired = await chat({
+            messages: [
+              {
+                role: "system",
+                content:
+                  system +
+                  "\n\nYour previous answer asserted material that is NOT in the case brief: " +
+                  describeViolations(groundingViolations) +
+                  ". Rewrite it using ONLY what the case brief states. If the brief does not contain the specific, say that the record does not state it. Do not cite anything not in the brief.",
+              },
+              { role: "user", content: caseBrief },
+            ],
+            maxTokens: 700,
+            temperature: 0,
+          });
+          const repairedViolations = findGroundingViolations(repaired, briefText);
+          if (repairedViolations.length < groundingViolations.length) {
+            finalText = repaired.trim();
+            groundingViolations = repairedViolations;
+          }
+        } catch {
+          /* keep original */
+        }
+        if (groundingViolations.length) {
+          correctionNote = "This turn asserted material outside the case record and was withheld.";
+          console.warn(`[stream] grounding violation on session ${id}: ${describeViolations(groundingViolations)}`);
+          finalText =
+            "I cannot answer that from the record before me. The case file does not contain those particulars, so I decline to state them.";
+        }
+      }
       let turn: unknown;
       try {
         const [maxSeq2] = await sql`
@@ -236,7 +283,7 @@ ${text}`;
           speaker_name: aiSpeakerName,
           kind: aiKind,
           text: cleanText,
-          citation: aiCitation,
+          citation: groundingViolations.length ? `${aiCitation} (grounding flagged)` : aiCitation,
           created_at: new Date().toISOString(),
         };
       }

@@ -1,0 +1,1256 @@
+{
+  "metadata": {
+    "dataset_name": "Courtroom AI Legal Evaluation Dataset (IndicLegalQA Benchmark)",
+    "source_reference": "PMC12166829 (Mendeley Data CC BY 4.0) & Supreme Court of India",
+    "evaluation_date": "2026-11-13T20:01:02.581Z",
+    "embedding_model": "qwen/qwen3-embedding-8b",
+    "embedding_dimensions": 4096,
+    "total_questions": 30,
+    "judgments_evaluated": [
+      "Sita Soren v. Union of India (2024 INSC 161)",
+      "Bilkis Yakub Rasool v. Union of India (2024 INSC 24)",
+      "Sukanya Shantha v. Union of India (2024 INSC 753)",
+      "Association for Democratic Reforms v. Union of India (2024 INSC 113)",
+      "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case"
+    ]
+  },
+  "metrics": {
+    "precision_at_5": 0.7133,
+    "recall_at_5": 1,
+    "recall_at_10": 1,
+    "mrr_at_10": 0.9611,
+    "citation_accuracy": 0.9333
+  },
+  "detailed_results": [
+    {
+      "id": "sita-01",
+      "question": "Does parliamentary privilege under Article 105(2) or 194(2) grant immunity to a legislator from prosecution for taking a bribe to cast a vote?",
+      "expected_judgment": "Sita Soren v. Union of India",
+      "expected_citation": "2024 INSC 161",
+      "expected_paragraph": "Para 12",
+      "category": "Legislative Privileges",
+      "retrieval_rank": 1,
+      "p_at_5": 1,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "2024 INSC 161 | Para 12",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.8076
+        },
+        {
+          "section_label": "2024 INSC 161 | troubled by legal prosecution alleging that he had been paid",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.7826
+        },
+        {
+          "section_label": "2024 INSC 161 | Legislative Assembly, as the case may be, can claim immunity",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.7559
+        },
+        {
+          "section_label": "2024 INSC 161 | itself neither be questioned nor proceeded against in a cour",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.7531
+        },
+        {
+          "section_label": "2024 INSC 161 | Para 105",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.7523
+        }
+      ]
+    },
+    {
+      "id": "sita-02",
+      "question": "Did the 7-judge Constitution Bench in Sita Soren overrule the majority decision in PV Narasimha Rao v. State?",
+      "expected_judgment": "Sita Soren v. Union of India",
+      "expected_citation": "2024 INSC 161",
+      "expected_paragraph": "Para 12-14",
+      "category": "Legislative Privileges",
+      "retrieval_rank": 1,
+      "p_at_5": 1,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "2024 INSC 161 | it must be placed before a larger bench of three judges of t",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.6974
+        },
+        {
+          "section_label": "2024 INSC 161 | of a decision rendered by a co-ordinate bench",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.6607
+        },
+        {
+          "section_label": "2024 INSC 161 | the considered view that the correctness of the view of the",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.6403
+        },
+        {
+          "section_label": "2024 INSC 161 | seven judges",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.6347
+        },
+        {
+          "section_label": "2024 INSC 161 | 134 of 135 PART J 190",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.6325
+        }
+      ]
+    },
+    {
+      "id": "sita-03",
+      "question": "When does the criminal offence of bribery become complete for a Member of Parliament or Legislative Assembly under the Prevention of Corruption Act?",
+      "expected_judgment": "Sita Soren v. Union of India",
+      "expected_citation": "2024 INSC 161",
+      "expected_paragraph": "Para 12",
+      "category": "Criminal Liability & Bribery",
+      "retrieval_rank": 1,
+      "p_at_5": 1,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "2024 INSC 161 | the function of a member to speak or vote in the House",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.7536
+        },
+        {
+          "section_label": "2024 INSC 161 | of an agreement to commit the offence of bribery and the per",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.7064
+        },
+        {
+          "section_label": "2024 INSC 161 | of the House to discipline its members are different; 188",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.7001
+        },
+        {
+          "section_label": "2024 INSC 161 | on decisions which have been subsequently diluted even in th",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.6902
+        },
+        {
+          "section_label": "2024 INSC 161 | processes the ration card application on time, the offence o",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.6822
+        }
+      ]
+    },
+    {
+      "id": "sita-04",
+      "question": "How does the Supreme Court interpret the phrase 'in respect of anything said or any vote given' in Article 105(2)?",
+      "expected_judgment": "Sita Soren v. Union of India",
+      "expected_citation": "2024 INSC 161",
+      "expected_paragraph": "Para 12",
+      "category": "Constitutional Interpretation",
+      "retrieval_rank": 1,
+      "p_at_5": 1,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "2024 INSC 161 | of a provision of the Constitution, it must interpret the te",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.8434
+        },
+        {
+          "section_label": "2024 INSC 161 | namely its tether to the collective functioning of the House",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.775
+        },
+        {
+          "section_label": "2024 INSC 161 | inside the House or committee when the occasion arose",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.7615
+        },
+        {
+          "section_label": "2024 INSC 161 | itself neither be questioned nor proceeded against in a cour",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.7555
+        },
+        {
+          "section_label": "2024 INSC 161 | Article 105 reads as follows: 38 PART F publication by or un",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.7526
+        }
+      ]
+    },
+    {
+      "id": "sita-05",
+      "question": "What is the relationship between legislative privileges and the rule of law in parliamentary democracy according to Sita Soren?",
+      "expected_judgment": "Sita Soren v. Union of India",
+      "expected_citation": "2024 INSC 161",
+      "expected_paragraph": "Metadata",
+      "category": "Constitutional Law",
+      "retrieval_rank": 1,
+      "p_at_5": 1,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "2024 INSC 161 | Para 1935",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.5888
+        },
+        {
+          "section_label": "2024 INSC 161 | supports the claim that the privileges which accrue to membe",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.5534
+        },
+        {
+          "section_label": "2024 INSC 161 | to the rule of law; 16",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.5387
+        },
+        {
+          "section_label": "2024 INSC 161 | privileges as well as the jurisprudence of this Court establ",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.5355
+        },
+        {
+          "section_label": "2024 INSC 161 | privilege in India and the UK entails that (a) it is fundame",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.5311
+        }
+      ]
+    },
+    {
+      "id": "sita-06",
+      "question": "Can an MP or MLA claim constitutional immunity from criminal trial under the Prevention of Corruption Act 1988?",
+      "expected_judgment": "Sita Soren v. Union of India",
+      "expected_citation": "2024 INSC 161",
+      "expected_paragraph": "Para 12",
+      "category": "Criminal Law",
+      "retrieval_rank": 1,
+      "p_at_5": 1,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "2024 INSC 161 | the High Court of Delhi to quash the charges",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.8072
+        },
+        {
+          "section_label": "2024 INSC 161 | Legislative Assembly, as the case may be, can claim immunity",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.6549
+        },
+        {
+          "section_label": "2024 INSC 161 | nor the alleged bribe-givers enjoyed the protection of Artic",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.643
+        },
+        {
+          "section_label": "2024 INSC 161 | for a violation of the criminal law which may arise independ",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.6358
+        },
+        {
+          "section_label": "2024 INSC 161 | the correctness of 15 (2018) 7 SCC 1",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.6316
+        }
+      ]
+    },
+    {
+      "id": "bilkis-01",
+      "question": "Which government is the 'appropriate government' under Section 432 of the CrPC to grant remission to convicts?",
+      "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+      "expected_citation": "2024 INSC 24",
+      "expected_paragraph": "Para 1-5",
+      "category": "Remission & Jurisdiction",
+      "retrieval_rank": 1,
+      "p_at_5": 1,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "2024 INSC 24 | the remission application was the one which was in vogue at",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.8899
+        },
+        {
+          "section_label": "2024 INSC 24 | 50",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.8791
+        },
+        {
+          "section_label": "2024 INSC 24 | of Haryana , (2013) 2 SCC 452 (“Sangeet”), wherein this Cour",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.8552
+        },
+        {
+          "section_label": "2024 INSC 24 | of a State to a court in another State, it is Writ Petition",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.8463
+        },
+        {
+          "section_label": "2024 INSC 24 | 4 SCC 62 (“Thammanna”)",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.8426
+        }
+      ]
+    },
+    {
+      "id": "bilkis-02",
+      "question": "Did the State of Gujarat have territorial jurisdiction to remit the sentences of the 11 convicts in the Bilkis Bano case when trial occurred in Maharashtra?",
+      "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+      "expected_citation": "2024 INSC 24",
+      "expected_paragraph": "Para 1-5",
+      "category": "Remission of Sentences",
+      "retrieval_rank": 1,
+      "p_at_5": 1,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "2024 INSC 24 | right of the victim and the cry of the society at large have",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.6791
+        },
+        {
+          "section_label": "2024 INSC 24 | it is the State of Maharashtra, which had the jurisdiction t",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.654
+        },
+        {
+          "section_label": "2024 INSC 24 | release, he should be given the benefit thereof",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.627
+        },
+        {
+          "section_label": "2024 INSC 24 | Government but there cannot be a concurrent jurisdiction of",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.6225
+        },
+        {
+          "section_label": "2024 INSC 24 | of the Parliament is that the Government of the State within",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.6083
+        }
+      ]
+    },
+    {
+      "id": "bilkis-03",
+      "question": "What did the Supreme Court hold regarding fraud, suppression of material facts, and usurpation of power by the Gujarat government in granting premature release?",
+      "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+      "expected_citation": "2024 INSC 24",
+      "expected_paragraph": "Para 1-5",
+      "category": "Judicial Review",
+      "retrieval_rank": 1,
+      "p_at_5": 1,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "2024 INSC 24 | dated 01",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.583
+        },
+        {
+          "section_label": "2024 INSC 24 | the Constitution of India, seeking issuance of a writ, order",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.5393
+        },
+        {
+          "section_label": "2024 INSC 24 | of Home Affairs, Government of Gujarat, addressed a letter t",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.5317
+        },
+        {
+          "section_label": "2024 INSC 24 | issued by the Sessions Court, Gr",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.51
+        },
+        {
+          "section_label": "2024 INSC 24 | in the absence of there being any challenge, the order dated",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.5081
+        }
+      ]
+    },
+    {
+      "id": "bilkis-04",
+      "question": "How does Section 432(7) of the Code of Criminal Procedure define the jurisdiction for sentence remission based on the place of trial?",
+      "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+      "expected_citation": "2024 INSC 24",
+      "expected_paragraph": "Para 1-5",
+      "category": "Criminal Procedure",
+      "retrieval_rank": 1,
+      "p_at_5": 1,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "2024 INSC 24 | as to which State has the competency to pass an order of rem",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.694
+        },
+        {
+          "section_label": "2024 INSC 24 | 251 This clearly means that the place of occurrence of the i",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.6923
+        },
+        {
+          "section_label": "2024 INSC 24 | of the Parliament is that the Government of the State within",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.6904
+        },
+        {
+          "section_label": "2024 INSC 24 | of a State to a court in another State, it is Writ Petition",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.6761
+        },
+        {
+          "section_label": "2024 INSC 24 | remission",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.6598
+        }
+      ]
+    },
+    {
+      "id": "bilkis-05",
+      "question": "Did the Supreme Court direct the 11 released convicts in the Bilkis Yakub Rasool case to surrender back to jail?",
+      "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+      "expected_citation": "2024 INSC 24",
+      "expected_paragraph": "Para 1-5",
+      "category": "Sentencing & Enforcement",
+      "retrieval_rank": 1,
+      "p_at_5": 1,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "2024 INSC 24 | Page 250 of 251 directed to report to the concerned jail aut",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.6866
+        },
+        {
+          "section_label": "2024 INSC 24 | her head on a rock, her two minor brothers, two minor sister",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.5778
+        },
+        {
+          "section_label": "2024 INSC 24 | the Constitution of India, seeking issuance of a writ, order",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.5737
+        },
+        {
+          "section_label": "2024 INSC 24 | Metadata",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.5265
+        },
+        {
+          "section_label": "2024 INSC 24 | of Home Affairs, Government of Gujarat, addressed a letter t",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.4995
+        }
+      ]
+    },
+    {
+      "id": "bilkis-06",
+      "question": "What principles govern the exercise of judicial review over executive orders of premature release and remission under Article 142 and CrPC?",
+      "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+      "expected_citation": "2024 INSC 24",
+      "expected_paragraph": "Para 1-5",
+      "category": "Judicial Review",
+      "retrieval_rank": 1,
+      "p_at_5": 1,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "2024 INSC 24 | that is statutorily mandated to be considered and judicially",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.7025
+        },
+        {
+          "section_label": "2024 INSC 24 | to be good",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.6793
+        },
+        {
+          "section_label": "2024 INSC 24 | opinion",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.6663
+        },
+        {
+          "section_label": "2024 INSC 24 | process of grant of Writ Petition (Crl",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.6637
+        },
+        {
+          "section_label": "2024 INSC 24 | with Section 132 of the Code of Criminal Procedure was assai",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.6601
+        }
+      ]
+    },
+    {
+      "id": "sukanya-01",
+      "question": "Does the division of prison labor and menial tasks based on caste violate Article 14 and Article 15 of the Constitution of India?",
+      "expected_judgment": "Sukanya Shantha v. Union of India",
+      "expected_citation": "2024 INSC 753",
+      "expected_paragraph": "Para 4",
+      "category": "Prison Reforms & Caste Discrimination",
+      "retrieval_rank": 1,
+      "p_at_5": 1,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "2024 INSC 753 | unconstitutional practices, which are violative of Articles",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.7994
+        },
+        {
+          "section_label": "2024 INSC 753 | directions for repeal of the offending provisions in State p",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.7566
+        },
+        {
+          "section_label": "2024 INSC 753 | In fact, it suggests that the colonial administrators were o",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.7388
+        },
+        {
+          "section_label": "2024 INSC 753 | oppressed castes from exploitative practices, where their la",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.7351
+        },
+        {
+          "section_label": "2024 INSC 753 | Prison Manual 2016, which has been cited by the Union govern",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.731
+        }
+      ]
+    },
+    {
+      "id": "sukanya-02",
+      "question": "Did the Supreme Court strike down discriminatory provisions in state prison manuals dividing inmates by caste hierarchy?",
+      "expected_judgment": "Sukanya Shantha v. Union of India",
+      "expected_citation": "2024 INSC 753",
+      "expected_paragraph": "Para 4",
+      "category": "Fundamental Rights",
+      "retrieval_rank": 1,
+      "p_at_5": 1,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "2024 INSC 753 | 145 At the outset, we must clarify that the Prison Act 1984",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.636
+        },
+        {
+          "section_label": "2024 INSC 753 | directions for repeal of the offending provisions in State p",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.6235
+        },
+        {
+          "section_label": "2024 INSC 753 | The petitioner’s counsel have brought to the notice the obse",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.6185
+        },
+        {
+          "section_label": "2024 INSC 753 | of Denotified Tribes",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.6163
+        },
+        {
+          "section_label": "2024 INSC 753 | Schedule of the Constitution",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.6153
+        }
+      ]
+    },
+    {
+      "id": "sukanya-03",
+      "question": "How does untouchability under Article 17 apply to practices inside prisons, such as assigning cooking or sweeping based on caste?",
+      "expected_judgment": "Sukanya Shantha v. Union of India",
+      "expected_citation": "2024 INSC 753",
+      "expected_paragraph": "Para 4",
+      "category": "Article 17 & Untouchability",
+      "retrieval_rank": 1,
+      "p_at_5": 1,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "2024 INSC 753 | Besides, the division of work on the basis of caste is a pra",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.6391
+        },
+        {
+          "section_label": "2024 INSC 753 | those from marginalized communities are forced into undesira",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.595
+        },
+        {
+          "section_label": "2024 INSC 753 | for the petitioner have argued that the Manual does not refe",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.5941
+        },
+        {
+          "section_label": "2024 INSC 753 | or low-grade, upon the members of marginalized communities a",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.5935
+        },
+        {
+          "section_label": "2024 INSC 753 | directions for repeal of the offending provisions in State p",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.5922
+        }
+      ]
+    },
+    {
+      "id": "sukanya-04",
+      "question": "What fundamental rights do incarcerated prisoners retain under Article 21 of the Indian Constitution regarding human dignity?",
+      "expected_judgment": "Sukanya Shantha v. Union of India",
+      "expected_citation": "2024 INSC 753",
+      "expected_paragraph": "Para 4",
+      "category": "Article 21 & Human Dignity",
+      "retrieval_rank": 1,
+      "p_at_5": 1,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "2024 INSC 753 | Chunk 71",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.6699
+        },
+        {
+          "section_label": "2024 INSC 753 | 14 ), the lamps of freedom ( Article 19 ) and in the right t",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.6673
+        },
+        {
+          "section_label": "2024 INSC 753 | this Court upheld the constitutionally guaranteed fundamenta",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.6275
+        },
+        {
+          "section_label": "2024 INSC 753 | even prisoners are entitled to the right to dignity",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.6177
+        },
+        {
+          "section_label": "2024 INSC 753 | that every person, regardless of their background or identit",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.611
+        }
+      ]
+    },
+    {
+      "id": "sukanya-05",
+      "question": "What directions were issued to the Union and State governments regarding the Model Prison Manual and prison register caste columns?",
+      "expected_judgment": "Sukanya Shantha v. Union of India",
+      "expected_citation": "2024 INSC 753",
+      "expected_paragraph": "Para 4",
+      "category": "Prison Regulations",
+      "retrieval_rank": 1,
+      "p_at_5": 1,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "2024 INSC 753 | prisons other than the 4 PART II discrimination in kitchens,",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.661
+        },
+        {
+          "section_label": "2024 INSC 753 | in the prison manuals/Model Prison Manual shall be in accord",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.6492
+        },
+        {
+          "section_label": "2024 INSC 753 | all States and Union Territories (UTs) in May 2016 explicitl",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.6444
+        },
+        {
+          "section_label": "2024 INSC 753 | dated 10 May 2023 from Home Secretary, Government of India t",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.6257
+        },
+        {
+          "section_label": "2024 INSC 753 | Prison Manual 2016, which has been cited by the Union govern",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.6067
+        }
+      ]
+    },
+    {
+      "id": "sukanya-06",
+      "question": "Does stereotyping habituated or denotified tribes as habitual offenders violate the constitutional guarantee of equality in prisons?",
+      "expected_judgment": "Sukanya Shantha v. Union of India",
+      "expected_citation": "2024 INSC 753",
+      "expected_paragraph": "Para 4",
+      "category": "Equal Protection",
+      "retrieval_rank": 1,
+      "p_at_5": 1,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "2024 INSC 753 | unconstitutional practices, which are violative of Articles",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.6907
+        },
+        {
+          "section_label": "2024 INSC 753 | prisons other than the 4 PART II discrimination in kitchens,",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.6386
+        },
+        {
+          "section_label": "2024 INSC 753 | of Denotified Tribes",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.6006
+        },
+        {
+          "section_label": "2024 INSC 753 | 214, Tamil Nadu Prison Rules 1983 116 PART XIV women prisone",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.5956
+        },
+        {
+          "section_label": "2024 INSC 753 | with the power of the Constitution",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.5678
+        }
+      ]
+    },
+    {
+      "id": "adr-01",
+      "question": "Why was the Electoral Bonds Scheme 2018 declared unconstitutional by the Supreme Court Constitution Bench?",
+      "expected_judgment": "Association for Democratic Reforms v. Union of India",
+      "expected_citation": "2024 INSC 113",
+      "expected_paragraph": "Case fact",
+      "category": "Constitutional Law",
+      "retrieval_rank": 1,
+      "p_at_5": 0.2,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "Case fact",
+          "doc_title": "Association for Democratic Reforms v. Union of India — Electoral Bonds Case fact sheet",
+          "score": 0.7039
+        },
+        {
+          "section_label": "2024 INSC 753 | debarred from contesting elections",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.5463
+        },
+        {
+          "section_label": "2024 INSC 161 | to her own party",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.5188
+        },
+        {
+          "section_label": "2024 INSC 753 | before this Court in the above-mentioned suo motu writ petit",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.4824
+        },
+        {
+          "section_label": "2024 INSC 161 | Nayar (supra) do not constitute the ratio decidendi of the j",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.4808
+        }
+      ]
+    },
+    {
+      "id": "adr-02",
+      "question": "How does the voter's right to information under Article 19(1)(a) apply to political party funding and anonymous corporate donations?",
+      "expected_judgment": "Association for Democratic Reforms v. Union of India",
+      "expected_citation": "2024 INSC 113",
+      "expected_paragraph": "Constitution Art 19(1)(a)",
+      "category": "Article 19(1)(a)",
+      "retrieval_rank": 1,
+      "p_at_5": 0.2,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "Constitution Art 19(1)(a)",
+          "doc_title": "Association for Democratic Reforms v. Union of India — Electoral Bonds Case fact sheet",
+          "score": 0.6469
+        },
+        {
+          "section_label": "2024 INSC 161 | to her own party",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.4836
+        },
+        {
+          "section_label": "2024 INSC 161 | periodical referendum; or exercise of the right to vote, and",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.4637
+        },
+        {
+          "section_label": "2024 INSC 161 | were not covered by the anti-corruption statute",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.4529
+        },
+        {
+          "section_label": "2024 INSC 161 | of speech guaranteed to MLAs under Articles 194(1) and (2) i",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.4492
+        }
+      ]
+    },
+    {
+      "id": "adr-03",
+      "question": "Which amendments to Section 182 of the Companies Act 2013 regarding unlimited corporate donations were struck down?",
+      "expected_judgment": "Association for Democratic Reforms v. Union of India",
+      "expected_citation": "2024 INSC 113",
+      "expected_paragraph": "Case fact",
+      "category": "Corporate Political Funding",
+      "retrieval_rank": 1,
+      "p_at_5": 0.4,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "Case fact",
+          "doc_title": "Association for Democratic Reforms v. Union of India — Electoral Bonds Case fact sheet",
+          "score": 0.6555
+        },
+        {
+          "section_label": "2024 INSC 161 | suggested that certain additional privileges be granted to I",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.4277
+        },
+        {
+          "section_label": "Case fact",
+          "doc_title": "Association for Democratic Reforms v. Union of India — Electoral Bonds Case fact sheet",
+          "score": 0.4214
+        },
+        {
+          "section_label": "2024 INSC 161 | Para 9",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.3725
+        },
+        {
+          "section_label": "2024 INSC 161 | on decisions which have been subsequently diluted even in th",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.3614
+        }
+      ]
+    },
+    {
+      "id": "adr-04",
+      "question": "Who were the judges on the five-judge Constitution Bench that delivered the Electoral Bonds judgment in 2024 INSC 113?",
+      "expected_judgment": "Association for Democratic Reforms v. Union of India",
+      "expected_citation": "2024 INSC 113",
+      "expected_paragraph": "Case fact",
+      "category": "Bench Composition",
+      "retrieval_rank": 1,
+      "p_at_5": 0.2,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "Case fact",
+          "doc_title": "Association for Democratic Reforms v. Union of India — Electoral Bonds Case fact sheet",
+          "score": 0.5742
+        },
+        {
+          "section_label": "2024 INSC 161 | the considered view that the correctness of the view of the",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.5641
+        },
+        {
+          "section_label": "2024 INSC 161 | it must be placed before a larger bench of three judges of t",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.5589
+        },
+        {
+          "section_label": "2024 INSC 161 | Nayar (supra) do not constitute the ratio decidendi of the j",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.5421
+        },
+        {
+          "section_label": "2024 INSC 161 | of a decision rendered by a co-ordinate bench",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.52
+        }
+      ]
+    },
+    {
+      "id": "adr-05",
+      "question": "Did the Supreme Court reject the proportionality defence that donor privacy outweighs transparency in political party donations?",
+      "expected_judgment": "Association for Democratic Reforms v. Union of India",
+      "expected_citation": "2024 INSC 113",
+      "expected_paragraph": "Constitution Art 19(1)(a)",
+      "category": "Proportionality Test",
+      "retrieval_rank": 3,
+      "p_at_5": 0.2,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 0.3333333333333333,
+      "citation_hit_at_1": false,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "2024 INSC 161 | to her own party",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.5025
+        },
+        {
+          "section_label": "2024 INSC 161 | With the protection of parliamentary privilege, a legislator",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.4914
+        },
+        {
+          "section_label": "Constitution Art 19(1)(a)",
+          "doc_title": "Association for Democratic Reforms v. Union of India — Electoral Bonds Case fact sheet",
+          "score": 0.4769
+        },
+        {
+          "section_label": "2024 INSC 161 | Para 12",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.4417
+        },
+        {
+          "section_label": "2024 INSC 161 | of Article 105(2) represents the view of the majority of thr",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.4392
+        }
+      ]
+    },
+    {
+      "id": "adr-06",
+      "question": "What disclosure directions were given to the State Bank of India regarding purchaser and redemption details of electoral bonds?",
+      "expected_judgment": "Association for Democratic Reforms v. Union of India",
+      "expected_citation": "2024 INSC 113",
+      "expected_paragraph": "Case fact",
+      "category": "Electoral Transparency",
+      "retrieval_rank": 1,
+      "p_at_5": 0.4,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "Case fact",
+          "doc_title": "Association for Democratic Reforms v. Union of India — Electoral Bonds Case fact sheet",
+          "score": 0.4063
+        },
+        {
+          "section_label": "2024 INSC 161 | suggested that certain additional privileges be granted to I",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.3819
+        },
+        {
+          "section_label": "2024 INSC 24 | dated 13",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.3649
+        },
+        {
+          "section_label": "2024 INSC 161 | from a judgment dated 17 February 2014 of the High Court of",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.3578
+        },
+        {
+          "section_label": "2024 INSC 161 | to her own party",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.3577
+        }
+      ]
+    },
+    {
+      "id": "kejriwal-01",
+      "question": "What constitutes criminal conspiracy under Section 61(2) of the Bharatiya Nyaya Sanhita (BNS)?",
+      "expected_judgment": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case",
+      "expected_citation": "BNS § 61(2)",
+      "expected_paragraph": "BNS § 61(2)",
+      "category": "Criminal Conspiracy",
+      "retrieval_rank": 1,
+      "p_at_5": 0.2,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "BNS § 61(2)",
+          "doc_title": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case fact sheet",
+          "score": 0.5388
+        },
+        {
+          "section_label": "2024 INSC 161 | nor the alleged bribe-givers enjoyed the protection of Artic",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.4831
+        },
+        {
+          "section_label": "2024 INSC 161 | Para 9",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.4775
+        },
+        {
+          "section_label": "2024 INSC 161 | proceed, the charge against the bribe- givers of conspiracy",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.4295
+        },
+        {
+          "section_label": "2024 INSC 161 | It is trite law that illustrations appended to a section are",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.4247
+        }
+      ]
+    },
+    {
+      "id": "kejriwal-02",
+      "question": "What are the requirements for admissibility of electronic records under Section 63 of the Bharatiya Sakshya Adhiniyam (BSA)?",
+      "expected_judgment": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case",
+      "expected_citation": "BSA § 63",
+      "expected_paragraph": "BSA § 63",
+      "category": "Electronic Evidence",
+      "retrieval_rank": 1,
+      "p_at_5": 0.2,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "BSA § 63",
+          "doc_title": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case fact sheet",
+          "score": 0.654
+        },
+        {
+          "section_label": "2024 INSC 161 | of Article 105(2) represents the view of the majority of thr",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.4279
+        },
+        {
+          "section_label": "2024 INSC 24 | inasmuch as those were passed without consulting the Presidi",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.4165
+        },
+        {
+          "section_label": "2024 INSC 753 | recording of evidence",
+          "doc_title": "Sukanya Shantha v. Union of India — 2024 INSC 753",
+          "score": 0.4147
+        },
+        {
+          "section_label": "2024 INSC 24 | sub-section (2) of Section 432 of the CrPC ought to be read",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.4084
+        }
+      ]
+    },
+    {
+      "id": "kejriwal-03",
+      "question": "How is money laundering defined and punished under Section 3 of the Prevention of Corruption / PMLA framework?",
+      "expected_judgment": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case",
+      "expected_citation": "PMLA § 3",
+      "expected_paragraph": "PMLA § 3",
+      "category": "Money Laundering & PMLA",
+      "retrieval_rank": 1,
+      "p_at_5": 0.2,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "PMLA § 3",
+          "doc_title": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case fact sheet",
+          "score": 0.5756
+        },
+        {
+          "section_label": "2024 INSC 161 | and is not dependent on the performance of the illegal promi",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.5562
+        },
+        {
+          "section_label": "2024 INSC 161 | bribery by members of the legislature as a criminal offence",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.4969
+        },
+        {
+          "section_label": "2024 INSC 161 | rise to civil or criminal proceedings regardless of the inju",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.4619
+        },
+        {
+          "section_label": "2024 INSC 161 | question as to when the offence of bribery would be complete",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.4572
+        }
+      ]
+    },
+    {
+      "id": "kejriwal-04",
+      "question": "When was Arvind Kejriwal granted interim bail by the Supreme Court to campaign, and when did he surrender back to custody?",
+      "expected_judgment": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case",
+      "expected_citation": "Case fact",
+      "expected_paragraph": "Case fact",
+      "category": "Bail Chronology",
+      "retrieval_rank": 1,
+      "p_at_5": 0.8,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "Case fact",
+          "doc_title": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case fact sheet",
+          "score": 0.5139
+        },
+        {
+          "section_label": "2024 INSC 24 | jail and on the same day were released by the jail authoriti",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.4897
+        },
+        {
+          "section_label": "Case fact",
+          "doc_title": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case fact sheet",
+          "score": 0.423
+        },
+        {
+          "section_label": "Case fact",
+          "doc_title": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case fact sheet",
+          "score": 0.4022
+        },
+        {
+          "section_label": "Case fact",
+          "doc_title": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case fact sheet",
+          "score": 0.3748
+        }
+      ]
+    },
+    {
+      "id": "kejriwal-05",
+      "question": "How many summons were issued by the Enforcement Directorate prior to the arrest of the sitting Chief Minister in March 2024?",
+      "expected_judgment": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case",
+      "expected_citation": "Case fact",
+      "expected_paragraph": "Case fact",
+      "category": "ED Investigation",
+      "retrieval_rank": 1,
+      "p_at_5": 0.2,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 1,
+      "citation_hit_at_1": true,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "Case fact",
+          "doc_title": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case fact sheet",
+          "score": 0.5559
+        },
+        {
+          "section_label": "2024 INSC 161 | 134 of 135 PART J 190",
+          "doc_title": "Sita Soren v. Union of India — 2024 INSC 161",
+          "score": 0.4042
+        },
+        {
+          "section_label": "2024 INSC 24 | of 2022 Etc",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.3902
+        },
+        {
+          "section_label": "2024 INSC 24 | issued by the Sessions Court, Gr",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.3813
+        },
+        {
+          "section_label": "2024 INSC 24 | prisoner should not be released prematurely",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.3805
+        }
+      ]
+    },
+    {
+      "id": "kejriwal-06",
+      "question": "When did the Supreme Court grant bail in the parallel CBI excise policy investigation after five months of incarceration?",
+      "expected_judgment": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case",
+      "expected_citation": "Case fact",
+      "expected_paragraph": "Case fact",
+      "category": "CBI Investigation & Bail",
+      "retrieval_rank": 2,
+      "p_at_5": 0.2,
+      "r_at_5": 1,
+      "r_at_10": 1,
+      "mrr_at_10": 0.5,
+      "citation_hit_at_1": false,
+      "actual_retrieved_top5": [
+        {
+          "section_label": "2024 INSC 24 | of Convicts Policy of 1992",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.5602
+        },
+        {
+          "section_label": "Case fact",
+          "doc_title": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case fact sheet",
+          "score": 0.5571
+        },
+        {
+          "section_label": "2024 INSC 24 | jail and on the same day were released by the jail authoriti",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.549
+        },
+        {
+          "section_label": "2024 INSC 24 | carried out by a central investigation agency",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.5132
+        },
+        {
+          "section_label": "2024 INSC 24 | issued by the Sessions Court, Gr",
+          "doc_title": "Bilkis Yakub Rasool v. Union of India — 2024 INSC 24",
+          "score": 0.4632
+        }
+      ]
+    }
+  ]
+}

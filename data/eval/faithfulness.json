@@ -1,0 +1,839 @@
+{
+  "summary": {
+    "generated": "2026-11-14T07:05:05.669Z",
+    "matters": [
+      "sita-soren-2024",
+      "bilkis-rasool-2024",
+      "sukanya-shantha-2024",
+      "electoral-bonds-2024",
+      "delhi-liquor-2022"
+    ],
+    "questions": 20,
+    "questions_abstained": 2,
+    "abstention_rate_pct": 10,
+    "questions_answered": 18,
+    "questions_judged": 5,
+    "questions_failed_split_or_judge": 13,
+    "total_claims": 24,
+    "claims_supported": 22,
+    "supported_pct": 91.7,
+    "claims_unsupported": 2,
+    "claims_contradicted": 0,
+    "judge_model": "openai/gpt-oss-20b (fast)",
+    "generation_model": "openai/gpt-oss-120b (primary)"
+  },
+  "details": [
+    {
+      "id": "sita-01",
+      "question": "Does parliamentary privilege under Article 105(2) or 194(2) grant immunity to a legislator from prosecution for taking a bribe to cast a vote?",
+      "expected_judgment": "Sita Soren v. Union of India",
+      "case_id_used": null,
+      "classification": "ANSWER",
+      "used_vector": true,
+      "source_count": 6,
+      "source_labels": [
+        "2024 INSC 161 | Para 12",
+        "2024 INSC 161 | of the essential duties of a legislator",
+        "2024 INSC 161 | Legislative Assembly, as the case may be, can claim immunity",
+        "2024 INSC 161 | troubled by legal prosecution alleging that he had been paid",
+        "2024 INSC 161 | speech or vote, it automatically pushes the offence outside",
+        "2024 INSC 161 | itself neither be questioned nor proceeded against in a cour"
+      ],
+      "answer_snippet": "**Short answer**\n\nParliamentary privilege under Article 105(2) of the Constitution (and the parallel provision Article 194(2) for State Legislatures) does **not** give a legislator blanket immunity from prosecution for *taking* a bribe. The privilege shields a member only with respect to what he **says or how he votes** in the House. The criminal act of accepting or demanding a bribe is outside th",
+      "claim_count": 0,
+      "judged": 0,
+      "supported": 0,
+      "unsupported": 0,
+      "contradicted": 0,
+      "supported_pct": null,
+      "judge_error": "no_claims",
+      "generation_model": "openai/gpt-oss-120b (primary)",
+      "judge_model": "openai/gpt-oss-20b (fast)",
+      "answer_full": "**Short answer**\n\nParliamentary privilege under Article 105(2) of the Constitution (and the parallel provision Article 194(2) for State Legislatures) does **not** give a legislator blanket immunity from prosecution for *taking* a bribe. The privilege shields a member only with respect to what he **says or how he votes** in the House. The criminal act of accepting or demanding a bribe is outside the “in respect of” limb of the provision and therefore remains punishable.\n\n**How the Supreme Court has interpreted the provision (2024 INSC 161)**  \n\n1. **Scope of “in respect of”** – The Court held that the words “anything” and “any” in Articles 105(2) and 194(2) must be read in context; “in respect of” means *arising out of* or *bearing a clear relation to* the speech or vote, and cannot be stretched to cover any remote connection. [2024 INSC 161 | Legislative Assembly, as the case may be, can claim immunity]  \n\n2. **Bribery is not protected** – Bribery is “not in respect of anything said or any vote given”. Consequently, a member who accepts a bribe commits a crime that is **not essential to the act of voting** and is not covered by the privilege. [2024 INSC 161 | of the essential duties of a legislator]  \n\n3. **Immunity limited to the vote/speech** – The immunity under Article 105(2) operates only insofar as it pertains to the *vote* or *speech* itself. A member who actually casts the vote after receiving a bribe may claim immunity from prosecution **for that vote**, but not for the underlying offence of taking the bribe. [2024 INSC 161 | Legislative Assembly, as the case may be, can claim immunity]  \n\n4. **Differential treatment of bribe‑takers and bribe‑givers** – The Court affirmed that members who **cast the vote** as agreed enjoyed immunity from prosecution for the *act of voting* (as held by Justice Bharucha in the earlier judgment). However, the same immunity does **not** extend to the bribe‑givers, nor to members who abstain or do not vote in accordance with the bribe. [2024 INSC 161 | Para 12]  \n\n5. **Resulting position** – Because the offence of *accepting* a bribe is independent of the protected “vote or speech”, a legislator can be prosecuted for the bribery itself. Only the *vote* (or speech) that is directly linked to the bribe may be insulated from judicial scrutiny. [2024 INSC ",
+      "claims": [],
+      "judge_labels": []
+    },
+    {
+      "id": "sita-02",
+      "question": "Did the 7-judge Constitution Bench in Sita Soren overrule the majority decision in PV Narasimha Rao v. State?",
+      "expected_judgment": "Sita Soren v. Union of India",
+      "case_id_used": null,
+      "classification": "ANSWER",
+      "used_vector": true,
+      "source_count": 6,
+      "source_labels": [
+        "2024 INSC 161 | it must be placed before a larger bench of three judges of t",
+        "2024 INSC 161 | the considered view that the correctness of the view of the",
+        "2024 INSC 161 | the interpretation of the Constitution despite the fact that",
+        "2024 INSC 161 | of a decision rendered by a co-ordinate bench",
+        "2024 INSC 161 | 134 of 135 PART J 190",
+        "2024 INSC 161 | reasons for prima facie doubting the correctness of the deci"
+      ],
+      "answer_snippet": "No. The seven‑judge Constitution Bench that heard **Sita Soren** did not overrule the majority view in *PV Narasimha Rao v. State*.  \n\nThe judgment makes clear that the bench was **limited to the reference** made on 20 September 2023, which “doubting the correctness of the decision in PV Narasimha Rao (supra) and referred the matter to a larger bench of seven judges”【2024 INSC 161†L1-L4】.  It furt",
+      "claim_count": 4,
+      "judged": 0,
+      "supported": 0,
+      "unsupported": 0,
+      "contradicted": 0,
+      "supported_pct": null,
+      "judge_error": "judge_empty_labels",
+      "generation_model": "openai/gpt-oss-120b (primary)",
+      "judge_model": "openai/gpt-oss-20b (fast)",
+      "answer_full": "No. The seven‑judge Constitution Bench that heard **Sita Soren** did not overrule the majority view in *PV Narasimha Rao v. State*.  \n\nThe judgment makes clear that the bench was **limited to the reference** made on 20 September 2023, which “doubting the correctness of the decision in PV Narasimha Rao (supra) and referred the matter to a larger bench of seven judges”【2024 INSC 161†L1-L4】.  It further states that “nothing contained in this judgment may be construed as having a bearing on the merits of the trial or any other proceedings”【2024 INSC 161†L5-L7】.  \n\nThus, the seven‑judge bench only **expressed prima‑facie doubts** about the earlier decision and placed the issue before a larger bench for fresh consideration; it did not itself overrule the *PV Narasimha Rao* majority decision.",
+      "claims": [
+        "The seven‑judge Constitution Bench that heard Sita Soren did not overrule the majority view in PV Narasimha Rao v. State.",
+        "The bench was limited to the reference made on 20 September 2023, which doubted the correctness of the decision in PV Narasimha Rao and referred the matter to a larger bench of seven judges.",
+        "Nothing contained in this judgment may be construed as having a bearing on the merits of the trial or any other proceedings.",
+        "The seven‑judge bench only expressed prima‑facie doubts about the earlier decision and placed the issue before a larger bench for fresh consideration."
+      ],
+      "judge_labels": []
+    },
+    {
+      "id": "sita-03",
+      "question": "When does the criminal offence of bribery become complete for a Member of Parliament or Legislative Assembly under the Prevention of Corruption Act?",
+      "expected_judgment": "Sita Soren v. Union of India",
+      "case_id_used": null,
+      "classification": "ANSWER",
+      "used_vector": true,
+      "source_count": 6,
+      "source_labels": [
+        "2024 INSC 161 | the function of a member to speak or vote in the House",
+        "2024 INSC 161 | of an agreement to commit the offence of bribery and the per",
+        "2024 INSC 161 | on decisions which have been subsequently diluted even in th",
+        "2024 INSC 161 | Act, 1988",
+        "2024 INSC 161 | and the member of the legislature would be liable to be pros",
+        "2024 INSC 161 | Bench listed out the constituent elements of the offence of"
+      ],
+      "answer_snippet": "**When the offence is complete**\n\nThe Court held that, for a Member of Parliament or a Member of a Legislative Assembly, the offence of bribery under the **Prevention of Corruption Act, 1988 (PC Act)** is **complete at the moment the bribe is accepted (or an attempt is made to accept it), or when the agreement to accept the bribe is concluded**.  \n\nThe completion of the offence is **independent of",
+      "claim_count": 0,
+      "judged": 0,
+      "supported": 0,
+      "unsupported": 0,
+      "contradicted": 0,
+      "supported_pct": null,
+      "judge_error": "no_claims",
+      "generation_model": "openai/gpt-oss-120b (primary)",
+      "judge_model": "openai/gpt-oss-20b (fast)",
+      "answer_full": "**When the offence is complete**\n\nThe Court held that, for a Member of Parliament or a Member of a Legislative Assembly, the offence of bribery under the **Prevention of Corruption Act, 1988 (PC Act)** is **complete at the moment the bribe is accepted (or an attempt is made to accept it), or when the agreement to accept the bribe is concluded**.  \n\nThe completion of the offence is **independent of any later act of speaking, voting or otherwise performing the legislative function** to which the bribe relates. In other words, the crime is “finished” once the undue advantage is taken or the contract to take it is formed; the subsequent performance or non‑performance of the promised vote or speech does not affect liability.\n\n**Citations**\n\n- The Court observed that “the offence of bribery under the PC Act, both before and after the 2018 amendment, is complete on the acceptance of the bribe and is not linked to the actual performance or non‑performance of the official function to which the bribe relates”【2024 INSC 161】.  \n- It was further noted that “the offence is complete on receipt of the bribe well before the vote is given or speech made in Parliament”【2024 INSC 161】.  \n- The judgment also stated that “the offence is complete with the acceptance of the money or on the agreement to accept the money being concluded and is not dependent on the performance of the illegal promise by the receiver”【2024 INSC 161】.  \n- The elements of the offence were discussed in relation to **Section 7 of the PC Act (as it stood before the 2017 amendment)**, confirming that acceptance (or attempt) is the decisive act【2024 INSC 161】.  \n\nThus, under the PC Act, a legislator’s bribery liability crystallises at the point of **acceptance (or agreement to accept) the bribe**, not at the later act of speaking or voting.",
+      "claims": [],
+      "judge_labels": []
+    },
+    {
+      "id": "sita-04",
+      "question": "How does the Supreme Court interpret the phrase 'in respect of anything said or any vote given' in Article 105(2)?",
+      "expected_judgment": "Sita Soren v. Union of India",
+      "case_id_used": null,
+      "classification": "ANSWER",
+      "used_vector": true,
+      "source_count": 6,
+      "source_labels": [
+        "2024 INSC 161 | of a provision of the Constitution, it must interpret the te",
+        "2024 INSC 161 | namely its tether to the collective functioning of the House",
+        "2024 INSC 161 | inside the House or committee when the occasion arose",
+        "2024 INSC 161 | itself neither be questioned nor proceeded against in a cour",
+        "2024 INSC 161 | Article 105 reads as follows: 38 PART F publication by or un",
+        "2024 INSC 161 | votes or proceedings"
+      ],
+      "answer_snippet": "Based on the provided sources, the Supreme Court interprets the phrase **\"in respect of anything said or any vote given\"** in Article 105(2) as follows:\n\n1.  **\"In respect of\" applies collectively**: The phrase \"in respect of\" applies to the entire collective phrase **\"anything said or any vote given\"** (and separately to publications by or under the authority of the House) [2024 INSC 161, Page 71",
+      "claim_count": 5,
+      "judged": 0,
+      "supported": 0,
+      "unsupported": 0,
+      "contradicted": 0,
+      "supported_pct": null,
+      "judge_error": "judge_empty_labels",
+      "generation_model": "openai/gpt-oss-120b (primary)",
+      "judge_model": "openai/gpt-oss-20b (fast)",
+      "answer_full": "Based on the provided sources, the Supreme Court interprets the phrase **\"in respect of anything said or any vote given\"** in Article 105(2) as follows:\n\n1.  **\"In respect of\" applies collectively**: The phrase \"in respect of\" applies to the entire collective phrase **\"anything said or any vote given\"** (and separately to publications by or under the authority of the House) [2024 INSC 161, Page 71].\n\n2.  **Operative words limit the scope**: The words \"anything\" and \"any\" **cannot be interpreted in isolation**; they must be read with their respective operative words — **\"said\"** and **\"vote given\"** [2024 INSC 161, Page 70]. This means the immunity covers **actions** (speech or voting) actually exercised by a member **inside the House or a committee thereof** [2024 INSC 161, Page 70-71].\n\n3.  **Wide amplitude but context-bound**: The word \"anything\" is of the **\"widest import\" and equivalent to \"everything\"**, but it is **limited by the term \"in Parliament\"** (i",
+      "claims": [
+        "The phrase \"in respect of\" applies to the entire collective phrase \"anything said or any vote given\" (and separately to publications by or under the authority of the House).",
+        "The words \"anything\" and \"any\" cannot be interpreted in isolation; they must be read with their respective operative words – \"said\" and \"vote given\".",
+        "The immunity covers actions (speech or voting) actually exercised by a member inside the House or a committee thereof.",
+        "The word \"anything\" is of the widest import and equivalent to \"everything\".",
+        "The word \"anything\" is limited by the term \"in Parliament\"."
+      ],
+      "judge_labels": []
+    },
+    {
+      "id": "bilkis-01",
+      "question": "Which government is the 'appropriate government' under Section 432 of the CrPC to grant remission to convicts?",
+      "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+      "case_id_used": null,
+      "classification": "ANSWER",
+      "used_vector": true,
+      "source_count": 6,
+      "source_labels": [
+        "2024 INSC 24 | the remission application was the one which was in vogue at",
+        "2024 INSC 24 | of Haryana , (2013) 2 SCC 452 (“Sangeet”), wherein this Cour",
+        "2024 INSC 24 | 50",
+        "2024 INSC 24 | of the Collector and District Magistrate, Dahod, on 19",
+        "2024 INSC 24 | of a State to a court in another State, it is Writ Petition",
+        "2024 INSC 24 | 4 SCC 62 (“Thammanna”)"
+      ],
+      "answer_snippet": "**Answer**\n\nUnder Section 432 of the Code of Criminal Procedure (CrPC), the “appropriate government” that has the power to consider and grant remission is **the State Government of the State in which the offence was committed (i.e., the State in which the offender was sentenced), and not the State where the trial was held or where the prison is located**.\n\n**Supporting authority**\n\n- The Supreme C",
+      "claim_count": 5,
+      "judged": 0,
+      "supported": 0,
+      "unsupported": 0,
+      "contradicted": 0,
+      "supported_pct": null,
+      "judge_error": "judge_empty_labels",
+      "generation_model": "openai/gpt-oss-120b (primary)",
+      "judge_model": "openai/gpt-oss-20b (fast)",
+      "answer_full": "**Answer**\n\nUnder Section 432 of the Code of Criminal Procedure (CrPC), the “appropriate government” that has the power to consider and grant remission is **the State Government of the State in which the offence was committed (i.e., the State in which the offender was sentenced), and not the State where the trial was held or where the prison is located**.\n\n**Supporting authority**\n\n- The Supreme Court held that, for the purpose of Section 432 CrPC, “the ‘appropriate government’ for considering the remission application is that State in which the offence was committed and not the State in which the trial was conducted”【2024 INSC 24 | the remission application was the one which was in vogue at】.  \n- The Court further clarified that the appropriate government is “the Government of the State within which the offender was sentenced” and that this State alone has jurisdiction and competency to pass an order of remission【2024 INSC 24 | of a State to a court in another State, it is Writ Petition】.  \n- In the specific facts of the cited case, the Court identified the State of Maharashtra as the appropriate government because the offence and the conviction were linked to that State【2024 INSC 24 | 50】.  \n\nThus, the “appropriate government” under Section 432 CrPC is the **State Government of the State where the offence was committed (or where the conviction was pronounced)**.",
+      "claims": [
+        "Under Section 432 of the Code of Criminal Procedure, the appropriate government that has the power to consider and grant remission is the State Government of the State in which the offence was committed (i.e., the State in which the offender was sentenced).",
+        "The appropriate government is not the State where the trial was held or where the prison is located.",
+        "The Supreme Court held that for the purpose of Section 432 CrPC, the ‘appropriate government’ for considering the remission application is that State in which the offence was committed and not the State in which the trial was conducted.",
+        "The Supreme Court clarified that the appropriate government is the Government of the State within which the offender was sentenced and that this State alone has jurisdiction and competency to pass an order of remission.",
+        "In the cited case, the Supreme Court identified the State of Maharashtra as the appropriate government because the offence and the conviction were linked to that State."
+      ],
+      "judge_labels": []
+    },
+    {
+      "id": "bilkis-02",
+      "question": "Did the State of Gujarat have territorial jurisdiction to remit the sentences of the 11 convicts in the Bilkis Bano case when trial occurred in Maharashtra?",
+      "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+      "case_id_used": null,
+      "classification": "ANSWER",
+      "used_vector": true,
+      "source_count": 6,
+      "source_labels": [
+        "2024 INSC 24 | right of the victim and the cry of the society at large have",
+        "2024 INSC 24 | 50",
+        "2024 INSC 24 | release, he should be given the benefit thereof",
+        "2024 INSC 24 | Government but there cannot be a concurrent jurisdiction of",
+        "2024 INSC 24 | it is the State of Maharashtra, which had the jurisdiction t",
+        "2024 INSC 24 | argument, namely, State of M"
+      ],
+      "answer_snippet": "**Short answer:**  \nNo. The Supreme Court held that, under **Section 432(7) of the Criminal Procedure Code**, the “appropriate Government” for considering remission of the convictions in the Bilkis Bano case was the **State of Maharashtra**, not Gujarat. Consequently, the State of Gujarat did **not** have territorial jurisdiction to remit the sentences of the eleven convicts whose trial and convic",
+      "claim_count": 10,
+      "judged": 0,
+      "supported": 0,
+      "unsupported": 0,
+      "contradicted": 0,
+      "supported_pct": null,
+      "judge_error": "judge_empty_labels",
+      "generation_model": "openai/gpt-oss-120b (primary)",
+      "judge_model": "openai/gpt-oss-20b (fast)",
+      "answer_full": "**Short answer:**  \nNo. The Supreme Court held that, under **Section 432(7) of the Criminal Procedure Code**, the “appropriate Government” for considering remission of the convictions in the Bilkis Bano case was the **State of Maharashtra**, not Gujarat. Consequently, the State of Gujarat did **not** have territorial jurisdiction to remit the sentences of the eleven convicts whose trial and conviction were effected by the Special Court in Mumbai.\n\n**Explanation with citations**\n\n1. **Section 432(7) of the CrPC** – the provision designates the “appropriate Government” that may consider remission applications.  \n   *The Court observed that because the crime was committed in Gujarat but the trial and conviction were transferred to Maharashtra “under exceptional circumstances… for the limited purpose of trial and disposal,” the appropriate Government was **Maharashtra**.*【2024 INSC 24 | 12.6】  \n\n2. **Supreme Court’s interpretation** – The Court expressly stated:  \n   *“it is the State of Maharashtra, which had the jurisdiction to consider the application for remission vis‑à‑vis respondent Nos. 3 to 13 as they were sentenced by the Special Court, Mumbai.”*【2024 INSC 24 | it is the State of Maharashtra】  \n\n3. **Resulting jurisdictional conclusion** – Because Gujarat was **not** the appropriate Government under the statutory scheme, any remission orders issued by Gujarat were held to be **without jurisdiction and a nullity**. The Court rejected the contention that Gujarat could act on the basis of the place where the offence occurred.  \n   *“Consequently, the writ petition was allowed… The High Court of Gujarat was therefore right in its order… Gujarat is not the appropriate Government within the meaning of the provision.”*【2024 INSC 24 | Government but there cannot be a concurrent jurisdiction of】  \n\n4. **Policy considerations** – Even the applicable remission policy of Gujarat could not be invoked because the statutory “appropriate Government” test controls, and that test points to Maharashtra.  \n\n**Conclusion**  \nBased on the Supreme Court’s analysis of Section 432(7) CrPC and the facts that the trial and conviction were conducted in Maharashtra, the State of Gujarat **lacked territorial jurisdiction** to grant remission to the eleven convicts. The proper authority for such remission was the State of Maharashtra.",
+      "claims": [
+        "The Supreme Court held that under Section 432(7) of the Criminal Procedure Code, the appropriate Government for considering remission of the convictions in the Bilkis Bano case was the State of Maharashtra, not Gujarat.",
+        "Consequently, the State of Gujarat did not have territorial jurisdiction to remit the sentences of the eleven convicts whose trial and conviction were effected by the Special Court in Mumbai.",
+        "Section 432(7) of the CrPC designates the “appropriate Government” that may consider remission applications.",
+        "The Court observed that because the crime was committed in Gujarat but the trial and conviction were transferred to Maharashtra under exceptional circumstances for the limited purpose of trial and disposal, the appropriate Government was Maharashtra.",
+        "The Supreme Court expressly stated that it is the State of Maharashtra, which had the jurisdiction to consider the application for remission vis‑à‑vis respondent Nos. 3 to 13 as they were sentenced by the Special Court, Mumbai.",
+        "Because Gujarat was not the appropriate Government under the statutory scheme, any remission orders issued by Gujarat were held to be without jurisdiction and a nullity.",
+        "The Court rejected the contention that Gujarat could act on the basis of the place where the offence occurred.",
+        "The High Court of Gujarat was therefore right in its order that Gujarat is not the appropriate Government within the meaning of the provision.",
+        "Even the applicable remission policy of Gujarat could not be invoked because the statutory “appropriate Government” test controls, and that test points to Maharashtra.",
+        "The proper authority for such remission was the State of Maharashtra."
+      ],
+      "judge_labels": []
+    },
+    {
+      "id": "bilkis-03",
+      "question": "What did the Supreme Court hold regarding fraud, suppression of material facts, and usurpation of power by the Gujarat government in granting premature release?",
+      "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+      "case_id_used": null,
+      "classification": "ANSWER",
+      "used_vector": true,
+      "source_count": 6,
+      "source_labels": [
+        "2024 INSC 24 | of Home Affairs, Government of Gujarat, addressed a letter t",
+        "2024 INSC 24 | dated 01",
+        "2024 INSC 24 | the Constitution of India, seeking issuance of a writ, order",
+        "2024 INSC 24 | issued by the Sessions Court, Gr",
+        "2024 INSC 24 | Gujarat",
+        "2024 INSC 24 | Bhatt, is as under: from the Superintendent premature releas"
+      ],
+      "answer_snippet": "The Supreme Court held that the orders of the Gujarat Government granting the premature release of the convicts were tainted by **fraud, the suppression of material facts and a usurpation of power**.  By concealing material aspects of the case and misleading the Court, the State sought and obtained a direction to consider the premature release – conduct that the Court described as a clear abuse of",
+      "claim_count": 6,
+      "judged": 1,
+      "supported": 0,
+      "unsupported": 1,
+      "contradicted": 0,
+      "supported_pct": 0,
+      "judge_error": null,
+      "generation_model": "openai/gpt-oss-120b (primary)",
+      "judge_model": "openai/gpt-oss-20b (fast)",
+      "answer_full": "The Supreme Court held that the orders of the Gujarat Government granting the premature release of the convicts were tainted by **fraud, the suppression of material facts and a usurpation of power**.  By concealing material aspects of the case and misleading the Court, the State sought and obtained a direction to consider the premature release – conduct that the Court described as a clear abuse of authority and therefore illegal.  Consequently, the Court ruled that the release orders must be set aside.  \n\n*Citation:* 2024 INSC 24, para 36.5 – “Thus, by suppressing material aspects and by misleading this Court, a direction was sought and issued to the respondent State of Gujarat to consider the premature release….” (see source [2024 INSC 24 | dated 01]).",
+      "claims": [
+        "The Supreme Court held that the orders of the Gujarat Government granting the premature release of the convicts were tainted by fraud, the suppression of material facts and a usurpation of power.",
+        "The Gujarat Government concealed material aspects of the case and misled the Court.",
+        "The Gujarat Government sought and obtained a direction to consider the premature release.",
+        "The Supreme Court described the Gujarat Government's conduct as a clear abuse of authority and therefore illegal.",
+        "The Supreme Court ruled that the release orders must be set aside.",
+        "The Supreme Court's decision is documented in 2024 INSC 24, paragraph 36.5."
+      ],
+      "judge_labels": [
+        {
+          "claim": "claim",
+          "label": "unsupported",
+          "reason": "No evidence in the provided sources indicates that the Supreme Court held the Gujarat Government’s premature release orders were tainted by fraud, suppression of material facts, or usurpation of power. The sources do not mention any such findings."
+        }
+      ]
+    },
+    {
+      "id": "bilkis-04",
+      "question": "How does Section 432(7) of the Code of Criminal Procedure define the jurisdiction for sentence remission based on the place of trial?",
+      "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+      "case_id_used": null,
+      "classification": "ANSWER",
+      "used_vector": true,
+      "source_count": 6,
+      "source_labels": [
+        "2024 INSC 24 | as to which State has the competency to pass an order of rem",
+        "2024 INSC 24 | 251 This clearly means that the place of occurrence of the i",
+        "2024 INSC 24 | of the Parliament is that the Government of the State within",
+        "2024 INSC 24 | right of the victim and the cry of the society at large have",
+        "2024 INSC 24 | of a State to a court in another State, it is Writ Petition",
+        "2024 INSC 24 | remission"
+      ],
+      "answer_snippet": "Section 432(7) of the Code of Criminal Procedure specifies that the “appropriate Government” for considering an application for remission – and therefore the authority that has jurisdiction to pass a remission order – is **the Government of the State in whose territorial jurisdiction the offender was **tried and sentenced**.  \n\nThe Supreme Court has interpreted the clause to mean that the place wh",
+      "claim_count": 7,
+      "judged": 0,
+      "supported": 0,
+      "unsupported": 0,
+      "contradicted": 0,
+      "supported_pct": null,
+      "judge_error": "judge_empty_labels",
+      "generation_model": "openai/gpt-oss-120b (primary)",
+      "judge_model": "openai/gpt-oss-20b (fast)",
+      "answer_full": "Section 432(7) of the Code of Criminal Procedure specifies that the “appropriate Government” for considering an application for remission – and therefore the authority that has jurisdiction to pass a remission order – is **the Government of the State in whose territorial jurisdiction the offender was **tried and sentenced**.  \n\nThe Supreme Court has interpreted the clause to mean that the place where the offence was committed or where the convict is imprisoned is **not** relevant.  Rather, the statutory language makes the State‑government of the trial‑court the competent authority.  As the Court observed:\n\n* “The definition of appropriate Government in sub‑section (7) of Section 432 clearly indicates that the Government of the State **within which the offender is sentenced** is the appropriate Government to pass an order of remission”【2024 INSC 24 | as to which State has the competency to pass an order of rem】.  \n\n* “The intention of the Parliament is that the Government of the State **within which the offender was tried and sentenced** is the appropriate Government to consider either under sub‑section (1) or sub‑section (2) of Section 432”【2024 INSC 24 | of the Parliament is that the Government of the State within】.  \n\n* Consequently, even when a trial is transferred from one State to another, “the Government of the State within which the offender was sentenced … has the jurisdiction as well as competency to pass an order of remission”【2024 INSC 24 | of a State to a court in another State, it is Writ Petition】.  \n\nThus, under Section 432(7), jurisdiction for sentence remission is anchored to the **place of trial and sentencing**, not to the location of the crime or the place of imprisonment.",
+      "claims": [
+        "Section 432(7) of the Code of Criminal Procedure specifies that the appropriate Government for considering an application for remission is the Government of the State in whose territorial jurisdiction the offender was tried and sentenced.",
+        "The Supreme Court has interpreted the clause to mean that the place where the offence was committed or where the convict is imprisoned is not relevant.",
+        "The statutory language makes the State‑government of the trial‑court the competent authority.",
+        "The definition of appropriate Government in sub‑section (7) of Section 432 indicates that the Government of the State within which the offender is sentenced is the appropriate Government to pass an order of remission.",
+        "The intention of Parliament is that the Government of the State within which the offender was tried and sentenced is the appropriate Government to consider either under sub‑section (1) or sub‑section (2) of Section 432.",
+        "Even when a trial is transferred from one State to another, the Government of the State within which the offender was sentenced has the jurisdiction as well as competency to pass an order of remission.",
+        "Under Section 432(7), jurisdiction for sentence remission is anchored to the place of trial and sentencing, not to the location of the crime or the place of imprisonment."
+      ],
+      "judge_labels": []
+    },
+    {
+      "id": "sukanya-01",
+      "question": "Does the division of prison labor and menial tasks based on caste violate Article 14 and Article 15 of the Constitution of India?",
+      "expected_judgment": "Sukanya Shantha v. Union of India",
+      "case_id_used": null,
+      "classification": "ANSWER",
+      "used_vector": true,
+      "source_count": 6,
+      "source_labels": [
+        "2024 INSC 753 | unconstitutional practices, which are violative of Articles",
+        "2024 INSC 753 | oppressed castes from exploitative practices, where their la",
+        "2024 INSC 753 | directions for repeal of the offending provisions in State p",
+        "2024 INSC 753 | Besides, the division of work on the basis of caste is a pra",
+        "2024 INSC 753 | In fact, it suggests that the colonial administrators were o",
+        "2024 INSC 753 | with the power of the Constitution"
+      ],
+      "answer_snippet": "**Yes.**  \n\nThe Supreme Court, in *2024 INSC 753*, held that the practice of allocating prison‑labour and menial tasks on the basis of a prisoner’s caste is unconstitutional. The Court expressly declared that such provisions are **violative of Articles 14 and 15** (as well as Articles 17, 21 and 23) of the Constitution of India.\n\n* **Article 14 (equality before law)** – The Court observed that a “",
+      "claim_count": 0,
+      "judged": 0,
+      "supported": 0,
+      "unsupported": 0,
+      "contradicted": 0,
+      "supported_pct": null,
+      "judge_error": "no_claims",
+      "generation_model": "openai/gpt-oss-120b (primary)",
+      "judge_model": "openai/gpt-oss-20b (fast)",
+      "answer_full": "**Yes.**  \n\nThe Supreme Court, in *2024 INSC 753*, held that the practice of allocating prison‑labour and menial tasks on the basis of a prisoner’s caste is unconstitutional. The Court expressly declared that such provisions are **violative of Articles 14 and 15** (as well as Articles 17, 21 and 23) of the Constitution of India.\n\n* **Article 14 (equality before law)** – The Court observed that a “valid classification” under Article 14 must be based on a “definite yardstick” and cannot impose “disparate burdens” on persons solely because of their caste identity. The caste‑based division of work in prisons fails this test and therefore breaches the equality clause【2024 INSC 753 | with the power of the Constitution】.  \n\n* **Article 15 (prohibition of discrimination on grounds of caste)** – The judgment described the allocation of tasks such as barbering to “certain castes” and sweeping to “Mehtar/Hari/Chandal or similar castes” as a “practice of untouchability” that is expressly prohibited by Article 15 (and Article 17). The Court therefore held that the caste‑based delegation of work is a direct violation of Article 15【2024 INSC 753 | Besides, the division of work on the basis of caste is a pra】.  \n\nConsequently, the Court directed all States and Union Territories to delete such caste‑based provisions from their prison manuals and to amend the Model Prison Manual 2016 accordingly【2024 INSC 753 | directions for repeal of the offending provisions in State p】.  \n\nThus, the division of prison labour and menial tasks on the basis of caste **does violate Articles 14 and 15** of the Constitution.",
+      "claims": [],
+      "judge_labels": []
+    },
+    {
+      "id": "sukanya-02",
+      "question": "Did the Supreme Court strike down discriminatory provisions in state prison manuals dividing inmates by caste hierarchy?",
+      "expected_judgment": "Sukanya Shantha v. Union of India",
+      "case_id_used": null,
+      "classification": "ANSWER",
+      "used_vector": true,
+      "source_count": 6,
+      "source_labels": [
+        "2024 INSC 753 | with the correctional objectives of classification in prison",
+        "2024 INSC 753 | directions for repeal of the offending provisions in State p",
+        "2024 INSC 753 | of Denotified Tribes",
+        "2024 INSC 753 | Schedule of the Constitution",
+        "2024 INSC 753 | unconstitutional practices, which are violative of Articles",
+        "2024 INSC 753 | all States and Union Territories (UTs) in May 2016 explicitl"
+      ],
+      "answer_snippet": "Yes.  In 2024 INSC 753 the Supreme Court held that the caste‑based provisions in various State prison manuals – which segregated inmates and assigned work on the basis of a caste hierarchy – violated Articles 14, 15, 17, 21 and 23 of the Constitution.  The Court therefore directed that the offending rules be repealed and the manuals be amended to delete any reference to caste (see 2024 INSC 753, “",
+      "claim_count": 4,
+      "judged": 4,
+      "supported": 3,
+      "unsupported": 1,
+      "contradicted": 0,
+      "supported_pct": 75,
+      "judge_error": null,
+      "generation_model": "openai/gpt-oss-120b (primary)",
+      "judge_model": "openai/gpt-oss-20b (fast)",
+      "answer_full": "Yes.  In 2024 INSC 753 the Supreme Court held that the caste‑based provisions in various State prison manuals – which segregated inmates and assigned work on the basis of a caste hierarchy – violated Articles 14, 15, 17, 21 and 23 of the Constitution.  The Court therefore directed that the offending rules be repealed and the manuals be amended to delete any reference to caste (see 2024 INSC 753, “directions for repeal of the offending provisions in State prison manuals”【2024 INSC 753 | directions for repeal of the offending provisions in State p】).  The judgment expressly struck down those discriminatory provisions.",
+      "claims": [
+        "The Supreme Court in 2024 INSC 753 held that caste‑based provisions in various State prison manuals violated Articles 14, 15, 17, 21 and 23 of the Constitution.",
+        "The caste‑based provisions in various State prison manuals segregated inmates and assigned work on the basis of a caste hierarchy.",
+        "The Supreme Court directed that the offending rules be repealed and the manuals be amended to delete any reference to caste.",
+        "The judgment expressly struck down those discriminatory provisions."
+      ],
+      "judge_labels": [
+        {
+          "claim": "claim1",
+          "label": "supported",
+          "reason": "Sources [1] and [5] state that caste‑based provisions in State prison manuals violated Articles 14, 15, 17, 21 and 23 of the Constitution."
+        },
+        {
+          "claim": "claim2",
+          "label": "supported",
+          "reason": "Source [5] lists segregation of barracks and division of manual labour as caste‑based discrimination, indicating segregation and work assignment by caste hierarchy."
+        },
+        {
+          "claim": "claim3",
+          "label": "supported",
+          "reason": "Source [2] notes that the Supreme Court directed the repeal of the offending provisions in State prison manuals."
+        },
+        {
+          "claim": "claim4",
+          "label": "unsupported",
+          "reason": "None of the provided sources explicitly state that the judgment expressly struck down the discriminatory provisions; they mention directions for repeal but not a striking‑down ruling."
+        }
+      ]
+    },
+    {
+      "id": "sukanya-03",
+      "question": "How does untouchability under Article 17 apply to practices inside prisons, such as assigning cooking or sweeping based on caste?",
+      "expected_judgment": "Sukanya Shantha v. Union of India",
+      "case_id_used": null,
+      "classification": "ANSWER",
+      "used_vector": true,
+      "source_count": 6,
+      "source_labels": [
+        "2024 INSC 753 | Besides, the division of work on the basis of caste is a pra",
+        "2024 INSC 753 | those from marginalized communities are forced into undesira",
+        "2024 INSC 753 | or low-grade, upon the members of marginalized communities a",
+        "2024 INSC 753 | directions for repeal of the offending provisions in State p",
+        "2024 INSC 753 | labour? 189 Several provisions of different Prison Manuals i",
+        "2024 INSC 753 | for the petitioner have argued that the Manual does not refe"
+      ],
+      "answer_snippet": "**Article 17 and the prohibition of untouchability**\n\nArticle 17 of the Constitution declares that *“Untouchability… shall be abolished”* and that *“the enforcement of any disability arising out of untouchability shall be an offence.”*  The provision is not limited to private conduct; it also bars any **state‑sanctioned practice** that perpetuates the caste‑based notion of “purity‑impurity” and fo",
+      "claim_count": 0,
+      "judged": 0,
+      "supported": 0,
+      "unsupported": 0,
+      "contradicted": 0,
+      "supported_pct": null,
+      "judge_error": "no_claims",
+      "generation_model": "openai/gpt-oss-120b (primary)",
+      "judge_model": "openai/gpt-oss-20b (fast)",
+      "answer_full": "**Article 17 and the prohibition of untouchability**\n\nArticle 17 of the Constitution declares that *“Untouchability… shall be abolished”* and that *“the enforcement of any disability arising out of untouchability shall be an offence.”*  The provision is not limited to private conduct; it also bars any **state‑sanctioned practice** that perpetuates the caste‑based notion of “purity‑impurity” and forces persons to perform “impure” work because of their birth.\n\n**How the Supreme Court applied Article 17 to prison‑house practices**\n\nThe 2024 judgment of the Supreme Court ( *INSC 753* ) examined several State prison manuals that expressly allocated work on the basis of caste.  The Court observed:\n\n| Observation (source) | Relevance to Article 17 |\n|----------------------|------------------------|\n| “**Besides, the division of work on the basis of caste is a practice of untouchability prohibited under the Constitution**” ( [2024 INSC 753 | 181] ) | Directly classifies caste‑based work‑allocation as *untouchability* within the meaning of Art 17. |\n| “Prison manuals allot tasks of a barber to individuals from a certain caste, while **sweeping work is allowed to Mehtar/Hari/Chandal or similar castes**” ( [2024 INSC 753 | 182] ) | Shows the concrete *practice* of assigning “impure” tasks to “untouchable” castes, which the Court held to be a statutory endorsement of untouchability. |\n| “The rule that a prisoner of a high caste be allowed to **refuse the food cooked by other castes** is a legal sanction by the State authorities to untouchability and the caste system” ( [2024 INSC 753 | 182] ) | Demonstrates that even the *right to refuse* food on caste grounds is a state‑backed discriminatory practice prohibited by Art 17. |\n| “Imposing labour… considered **impure or low‑grade** upon the members of marginalized communities amounts to **‘forced labour’ under Article 23**” ( [2024 INSC 753 | 192] ) | While the primary ground is Art 17, the Court linked the practice to Art 23 (prohibition of forced labour) and to Art 14/15 (equality), reinforcing the unconstitutionality of the rule. |\n| “The Court in **Sunil Batra (II)** held that **‘degrading labour’ cannot be forced upon prisoners**” ( [2024 INSC 753 | 193] ) | Provides precedent that *degrading* (i.e., caste‑based menial) work is impermissible, supporting the Art 17 analysis. |\n\n**Legal reasoning applied by the Court**\n\n1. **State action = constitutional violation** – The prison manuals are *state instruments*. By prescribing that only prisoners of certain castes may cook or that only “Mehtar/Hari/Chandal” inmates may sweep, the State is **authorising** the caste hierarchy that Art 17 forbids.\n\n2. **Untouchability is not limited to social customs** – The Court treated the *allocation of work* as a *practice* of untouchability because it enforces the belief that certain castes are “impure” and must perform “menial” tasks. This aligns with the Constitution’s purpose to eradicate *any* disability arising out of untouchability, whether in public life or within penal institutions.\n\n3. **Intersection with other fundamental rights** – The same provisions were held violative of Art 14 (equality before law), Art 15 (prohibition of discrimination), Art 21 (right to life and personal liberty with dignity), and Art 23 (prohibition of forced labour). The Court therefore struck down the offending clauses and directed their repeal (see the order for “directions for repeal of the offending provisions in State prison manuals” [2024 INSC 753 | …]",
+      "claims": [],
+      "judge_labels": []
+    },
+    {
+      "id": "sukanya-04",
+      "question": "What fundamental rights do incarcerated prisoners retain under Article 21 of the Indian Constitution regarding human dignity?",
+      "expected_judgment": "Sukanya Shantha v. Union of India",
+      "case_id_used": null,
+      "classification": "ANSWER",
+      "used_vector": true,
+      "source_count": 6,
+      "source_labels": [
+        "2024 INSC 753 | Chunk 71",
+        "2024 INSC 753 | 14 ), the lamps of freedom ( Article 19 ) and in the right t",
+        "2024 INSC 753 | this Court upheld the constitutionally guaranteed fundamenta",
+        "2024 INSC 753 | even prisoners are entitled to the right to dignity",
+        "2024 INSC 753 | that every person, regardless of their background or identit",
+        "2024 INSC 753 | struck down as unconstitutional"
+      ],
+      "answer_snippet": "**Article 21 guarantees that even a person who is behind bars continues to enjoy the constitutional right to life “with dignity”.  The Supreme Court has repeatedly held that this right does not evaporate on imprisonment and that the State must protect prisoners from any treatment that would affront their humanity.  The following specific facets of the right to human dignity have been recognised fo",
+      "claim_count": 0,
+      "judged": 0,
+      "supported": 0,
+      "unsupported": 0,
+      "contradicted": 0,
+      "supported_pct": null,
+      "judge_error": "no_claims",
+      "generation_model": "openai/gpt-oss-120b (primary)",
+      "judge_model": "openai/gpt-oss-20b (fast)",
+      "answer_full": "**Article 21 guarantees that even a person who is behind bars continues to enjoy the constitutional right to life “with dignity”.  The Supreme Court has repeatedly held that this right does not evaporate on imprisonment and that the State must protect prisoners from any treatment that would affront their humanity.  The following specific facets of the right to human dignity have been recognised for incarcerated persons:**\n\n| Right / Obligation | What it means for prisoners | Source (section / paragraph) |\n|--------------------|-----------------------------|------------------------------|\n| **Right to dignity – the core of Article 21** | Prisoners must be treated as human beings, not as “animals”.  The State may not strip them of the respect owed to every person. | 67 (2024 INSC 753 | Chunk 71) |\n| **Protection against torture, cruel, inhuman or degrading treatment** | Any act of physical or psychological abuse, torture, or degrading punishment is unconstitutional. | 77 (2024 INSC 753 | 14) |\n| **Humane conditions of confinement** | Prison authorities must provide conditions that are “humanely and without cruelty”, taking into account the physical and mental health of inmates. | 67 (2024 INSC 753 | Chunk 71) |\n| **Accommodation of disability and health needs** | If a prisoner suffers from a disability or severe mental illness, the prison must make adequate accommodations to preserve his/her dignity and health. | 67 (2024 INSC 753 | Chunk 71) |\n| **State’s duty to meet justifiable needs and requests** | The State must attend to the basic necessities of prisoners (food, shelter, medical care, sanitation, etc.) and cannot ignore legitimate petitions. | 61 (2024 INSC 753 | this Court upheld…) |\n| **Right to free legal services** | Access to free legal aid is an essential ingredient of a “reasonable, fair and just” procedure under Article 21, and therefore remains available to an accused who is in custody. | 303 (2024 INSC 753 | struck down as unconstitutional) |\n| **Right to be free from disproportionate measures by officials** | Police and prison officials may not take any disproportionate or arbitrary action against a prisoner; any such act is violative of Article 21. | 67 (202",
+      "claims": [],
+      "judge_labels": []
+    },
+    {
+      "id": "adr-01",
+      "question": "Why was the Electoral Bonds Scheme 2018 declared unconstitutional by the Supreme Court Constitution Bench?",
+      "expected_judgment": "Association for Democratic Reforms v. Union of India",
+      "case_id_used": "electoral-bonds-2024",
+      "classification": "ANSWER",
+      "used_vector": true,
+      "source_count": 6,
+      "source_labels": [
+        "Case fact: Total Bond Volume",
+        "2024 INSC 753 | debarred from contesting elections",
+        "RPA 1951 § 29C",
+        "Income Tax Act § 13A",
+        "2024 INSC 161 | to her own party",
+        "2024 INSC 753 | before this Court in the above-mentioned suo motu writ petit"
+      ],
+      "answer_snippet": "The material you have supplied does not contain the Supreme Court’s reasoning for striking down the 2018 Electoral‑Bonds Scheme.  \n\nThe excerpts you provided discuss:\n\n* The volume of bonds sold and the share of donations received by the ruling party (Case fact: Total Bond Volume).  \n* A general principle that a statute cannot be held unconstitutional merely because it is “arbitrary” (2024 INSC 75",
+      "claim_count": 7,
+      "judged": 7,
+      "supported": 7,
+      "unsupported": 0,
+      "contradicted": 0,
+      "supported_pct": 100,
+      "judge_error": null,
+      "generation_model": "openai/gpt-oss-120b (primary)",
+      "judge_model": "openai/gpt-oss-20b (fast)",
+      "answer_full": "The material you have supplied does not contain the Supreme Court’s reasoning for striking down the 2018 Electoral‑Bonds Scheme.  \n\nThe excerpts you provided discuss:\n\n* The volume of bonds sold and the share of donations received by the ruling party (Case fact: Total Bond Volume).  \n* A general principle that a statute cannot be held unconstitutional merely because it is “arbitrary” (2024 INSC 753).  \n* The amendment to **Section 29C of the Representation of the People Act, 1951** that created an express exemption for contributions made through electoral bonds.  \n* The exemption under **Section 13A of the Income‑Tax Act, 1961** that relieved political parties from maintaining records of contributions received via electoral bonds.  \n\nNone of these passages set out the Supreme Court Constitution Bench’s specific constitutional analysis—such as the violation of the transparency requirements of § 29C, the right to equality, or the principle of free and fair elections—that formed the basis of the declaration of unconstitutionality.  \n\n**Therefore, based on the sources you have provided, the precise reasons why the Supreme Court declared the Electoral‑Bonds Scheme unconstitutional cannot be determined.**",
+      "claims": [
+        "The material supplied does not contain the Supreme Court’s reasoning for striking down the 2018 Electoral‑Bonds Scheme.",
+        "The excerpts discuss the volume of bonds sold and the share of donations received by the ruling party (Case fact: Total Bond Volume).",
+        "The excerpts discuss a general principle that a statute cannot be held unconstitutional merely because it is “arbitrary” (2024 INSC 753).",
+        "The excerpts discuss the amendment to Section 29C of the Representation of the People Act, 1951 that created an express exemption for contributions made through electoral bonds.",
+        "The excerpts discuss the exemption under Section 13A of the Income‑Tax Act, 1961 that relieved political parties from maintaining records of contributions received via electoral bonds.",
+        "None of these passages set out the Supreme Court Constitution Bench’s specific constitutional analysis—such as the violation of the transparency requirements of § 29C, the right to equality, or the principle of free and fair elections—that formed the basis of the declaration of unconstitutionality.",
+        "Therefore, based on the sources you have provided, the precise reasons why the Supreme Court declared the Electoral‑Bonds Scheme unconstitutional cannot be determined."
+      ],
+      "judge_labels": [
+        {
+          "claim": "1",
+          "label": "supported",
+          "reason": "The provided sources do not contain any Supreme Court reasoning for striking down the 2018 Electoral‑Bonds Scheme."
+        },
+        {
+          "claim": "2",
+          "label": "supported",
+          "reason": "Source [1] explicitly states that over Rs. 16,518 crores were sold and the ruling party received the majority share of corporate donations."
+        },
+        {
+          "claim": "3",
+          "label": "supported",
+          "reason": "Source [2] discusses the principle that a statute cannot be held unconstitutional merely because it is “arbitrary”."
+        },
+        {
+          "claim": "4",
+          "label": "supported",
+          "reason": "Source [3] notes that the 2017 amendment created an express exemption for contributions made through electoral bonds."
+        },
+        {
+          "claim": "5",
+          "label": "supported",
+          "reason": "Source [4] states that Section 13A exempts political parties from maintaining records of contributions received via electoral bonds."
+        },
+        {
+          "claim": "6",
+          "label": "supported",
+          "reason": "None of the cited passages provide the Supreme Court Constitution Bench’s specific constitutional analysis such as violations of § 29C, equality, or free and fair elections."
+        },
+        {
+          "claim": "7",
+          "label": "supported",
+          "reason": "Given that the sources lack the Supreme Court’s detailed constitutional analysis, the precise reasons for the declaration of unconstitutionality cannot be determined from them."
+        }
+      ]
+    },
+    {
+      "id": "adr-02",
+      "question": "How does the voter's right to information under Article 19(1)(a) apply to political party funding and anonymous corporate donations?",
+      "expected_judgment": "Association for Democratic Reforms v. Union of India",
+      "case_id_used": "electoral-bonds-2024",
+      "classification": "ANSWER",
+      "used_vector": true,
+      "source_count": 6,
+      "source_labels": [
+        "Constitution Art 19(1)(a)",
+        "Case fact: Right to Privacy Rejection",
+        "2024 INSC 161 | to her own party",
+        "2024 INSC 161 | of speech guaranteed to MLAs under Articles 194(1) and (2) i",
+        "2024 INSC 161 | the House or involve ‘law- making’ in its pedantic sense",
+        "2024 INSC 161 | periodical referendum; or exercise of the right to vote, and"
+      ],
+      "answer_snippet": "**Voter’s right to information under Article 19(1)(a)**  \n\n- The Constitution expressly treats the freedom of speech and expression in Article 19(1)(a) as encompassing *the voter’s right to know* how political parties are financed and who is contributing to them.  The same source notes that *“anonymity in political funding directly obstructs the democratic process.”*【Constitution Art 19(1)(a)】\n\n**",
+      "claim_count": 10,
+      "judged": 0,
+      "supported": 0,
+      "unsupported": 0,
+      "contradicted": 0,
+      "supported_pct": null,
+      "judge_error": "judge_empty_labels",
+      "generation_model": "openai/gpt-oss-120b (primary)",
+      "judge_model": "openai/gpt-oss-20b (fast)",
+      "answer_full": "**Voter’s right to information under Article 19(1)(a)**  \n\n- The Constitution expressly treats the freedom of speech and expression in Article 19(1)(a) as encompassing *the voter’s right to know* how political parties are financed and who is contributing to them.  The same source notes that *“anonymity in political funding directly obstructs the democratic process.”*【Constitution Art 19(1)(a)】\n\n**How this right limits anonymous corporate donations**  \n\n- The Supreme Court has already ruled that a claim of donor‑privacy under Article 21 cannot outweigh the need for transparency in political financing.  In the *Right to Privacy* rejection case the Court held that *“donor privacy cannot protect corporate influence over public policy, though small individual donations might have privacy considerations.”*【Case fact: Right to Privacy Rejection】  \n- Consequently, corporate donors cannot hide behind a blanket privacy right; the information about corporate contributions must be disclosed so that voters can make an informed choice.  \n\n**Resulting legal position**  \n\n1. **Transparency is a component of the fundamental right** – Because Article 19(1)(a) includes the voter’s right to information, any law or practice that permits political parties to receive undisclosed corporate money is inconsistent with the Constitution.  \n\n2. **Anonymity is impermissible where it masks corporate influence** – The constitutional principle that “anonymity in political funding directly obstructs the democratic process” means that statutes allowing anonymous corporate donations would be struck down or read down to require disclosure.  \n\n3. **Limited privacy for small individual donors** – While the Court recognises that *“small individual donations might have privacy considerations,”* this exception does not extend to corporate donors whose contributions can affect public policy.  \n\n**In short:**  \nThe voter’s right to information under Article 19(1)(a) obliges the State to ensure that the sources of political party funding are open and accessible to the electorate.  Anonymous corporate donations are therefore incompatible with this right, as the Supreme Court has rejected the use of Article 21‑based privacy to shield corporate donors, emphasizing that transparency, not anonymity, is essential for a functioning democracy.   (See [Constitution Art 19(1)(a)] and [Case fact: Right to Privacy Rejection]).",
+      "claims": [
+        "The Constitution expressly treats the freedom of speech and expression in Article 19(1)(a) as encompassing the voter’s right to know how political parties are financed and who is contributing to them.",
+        "The Constitution notes that “anonymity in political funding directly obstructs the democratic process.”",
+        "The Supreme Court has ruled that a claim of donor‑privacy under Article 21 cannot outweigh the need for transparency in political financing.",
+        "In the Right to Privacy rejection case the Court held that “donor privacy cannot protect corporate influence over public policy, though small individual donations might have privacy considerations.”",
+        "Corporate donors cannot hide behind a blanket privacy right; the information about corporate contributions must be disclosed so that voters can make an informed choice.",
+        "Transparency is a component of the fundamental right because Article 19(1)(a) includes the voter’s right to information, so any law or practice that permits political parties to receive undisclosed corporate money is inconsistent with the Constitution.",
+        "Anonymity is impermissible where it masks corporate influence; statutes allowing anonymous corporate donations would be struck down or read down to require disclosure.",
+        "The Court recognizes that “small individual donations might have privacy considerations,” but this exception does not extend to corporate donors whose contributions can affect public policy.",
+        "The voter’s right to information under Article 19(1)(a) obliges the State to ensure that the sources of political party funding are open and accessible to the electorate.",
+        "Anonymous corporate donations are incompatible with this right, as the Supreme Court has rejected the use of Article 21‑based privacy to shield corporate donors, emphasizing that transparency, not anonymity, is essential for a functioning democracy."
+      ],
+      "judge_labels": []
+    },
+    {
+      "id": "adr-03",
+      "question": "Which amendments to Section 182 of the Companies Act 2013 regarding unlimited corporate donations were struck down?",
+      "expected_judgment": "Association for Democratic Reforms v. Union of India",
+      "case_id_used": "electoral-bonds-2024",
+      "classification": "ABSTAIN",
+      "used_vector": true,
+      "source_count": 6,
+      "source_labels": [
+        "Companies Act § 182",
+        "Case fact: Shell Companies Risk",
+        "Case fact: Right to Privacy Rejection",
+        "Case fact: Total Bond Volume",
+        "Income Tax Act § 13A",
+        "RPA 1951 § 29C"
+      ],
+      "answer_snippet": "The sources you provided describe the 2017 Finance‑Act amendment that **deleted the 7.5 % profit‑ceiling** in Section 182 of the Companies Act, 2013, and removed the requirement to disclose the names of parties receiving corporate contributions. They also note the Supreme Court’s observations about the effects of that amendment, but none of the excerpts state that any amendment to Section 182 was ",
+      "claim_count": 0,
+      "judged": 0,
+      "supported": 0,
+      "unsupported": 0,
+      "contradicted": 0,
+      "supported_pct": null,
+      "judge_error": "no_claims",
+      "generation_model": "openai/gpt-oss-120b (primary)",
+      "judge_model": "openai/gpt-oss-20b (fast)",
+      "answer_full": "The sources you provided describe the 2017 Finance‑Act amendment that **deleted the 7.5 % profit‑ceiling** in Section 182 of the Companies Act, 2013, and removed the requirement to disclose the names of parties receiving corporate contributions. They also note the Supreme Court’s observations about the effects of that amendment, but none of the excerpts state that any amendment to Section 182 was **struck down** by the Court.  \n\n**Therefore, the indexed sources do not contain information on which (if any) amendments to Section 182 were struck down.**",
+      "claims": [],
+      "judge_labels": []
+    },
+    {
+      "id": "adr-04",
+      "question": "Who were the judges on the five-judge Constitution Bench that delivered the Electoral Bonds judgment in 2024 INSC 113?",
+      "expected_judgment": "Association for Democratic Reforms v. Union of India",
+      "case_id_used": "electoral-bonds-2024",
+      "classification": "ANSWER",
+      "used_vector": true,
+      "source_count": 6,
+      "source_labels": [
+        "Case fact: Bench Composition",
+        "2024 INSC 161 | it must be placed before a larger bench of three judges of t",
+        "2024 INSC 161 | Nayar (supra) do not constitute the ratio decidendi of the j",
+        "2024 INSC 161 | the considered view that the correctness of the view of the",
+        "Case fact: Total Bond Volume",
+        "2024 INSC 161 | seven judges"
+      ],
+      "answer_snippet": "The five‑judge Constitution Bench that delivered the Electoral‑Bonds judgment in 2024 INSC 113 consisted of:\n\n- **Chief Justice D.Y. Chandrachud**  \n- **Justice Sanjiv Khanna**  \n- **Justice B.R. Gavai**  \n- **Justice J.B. Pardiwala**  \n- **Justice Manoj Misra**  \n\n(See the “Bench Composition” source.)",
+      "claim_count": 5,
+      "judged": 5,
+      "supported": 5,
+      "unsupported": 0,
+      "contradicted": 0,
+      "supported_pct": 100,
+      "judge_error": null,
+      "generation_model": "openai/gpt-oss-120b (primary)",
+      "judge_model": "openai/gpt-oss-20b (fast)",
+      "answer_full": "The five‑judge Constitution Bench that delivered the Electoral‑Bonds judgment in 2024 INSC 113 consisted of:\n\n- **Chief Justice D.Y. Chandrachud**  \n- **Justice Sanjiv Khanna**  \n- **Justice B.R. Gavai**  \n- **Justice J.B. Pardiwala**  \n- **Justice Manoj Misra**  \n\n(See the “Bench Composition” source.)",
+      "claims": [
+        "Chief Justice D.Y. Chandrachud was a member of the five‑judge Constitution Bench that delivered the Electoral‑Bonds judgment in 2024 INSC 113.",
+        "Justice Sanjiv Khanna was a member of the five‑judge Constitution Bench that delivered the Electoral‑Bonds judgment in 2024 INSC 113.",
+        "Justice B.R. Gavai was a member of the five‑judge Constitution Bench that delivered the Electoral‑Bonds judgment in 2024 INSC 113.",
+        "Justice J.B. Pardiwala was a member of the five‑judge Constitution Bench that delivered the Electoral‑Bonds judgment in 2024 INSC 113.",
+        "Justice Manoj Misra was a member of the five‑judge Constitution Bench that delivered the Electoral‑Bonds judgment in 2024 INSC 113."
+      ],
+      "judge_labels": [
+        {
+          "claim": "Chief Justice D.Y. Chandrachud was a member of the five‑judge Constitution Bench that delivered the Electoral‑Bonds judgment in 2024 INSC 113.",
+          "label": "supported",
+          "reason": "Source [1] lists Chief Justice D.Y. Chandrachud as a member of the five‑judge Constitution Bench in 2024 INSC 113."
+        },
+        {
+          "claim": "Justice Sanjiv Khanna was a member of the five‑judge Constitution Bench that delivered the Electoral‑Bonds judgment in 2024 INSC 113.",
+          "label": "supported",
+          "reason": "Source [1] lists Justice Sanjiv Khanna as a member of the five‑judge Constitution Bench in 2024 INSC 113."
+        },
+        {
+          "claim": "Justice B.R. Gavai was a member of the five‑judge Constitution Bench that delivered the Electoral‑Bonds judgment in 2024 INSC 113.",
+          "label": "supported",
+          "reason": "Source [1] lists Justice B.R. Gavai as a member of the five‑judge Constitution Bench in 2024 INSC 113."
+        },
+        {
+          "claim": "Justice J.B. Pardiwala was a member of the five‑judge Constitution Bench that delivered the Electoral‑Bonds judgment in 2024 INSC 113.",
+          "label": "supported",
+          "reason": "Source [1] lists Justice J.B. Pardiwala as a member of the five‑judge Constitution Bench in 2024 INSC 113."
+        },
+        {
+          "claim": "Justice Manoj Misra was a member of the five‑judge Constitution Bench that delivered the Electoral‑Bonds judgment in 2024 INSC 113.",
+          "label": "supported",
+          "reason": "Source [1] lists Justice Manoj Misra as a member of the five‑judge Constitution Bench in 2024 INSC 113."
+        }
+      ]
+    },
+    {
+      "id": "kejriwal-01",
+      "question": "What constitutes criminal conspiracy under Section 61(2) of the Bharatiya Nyaya Sanhita (BNS)?",
+      "expected_judgment": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case",
+      "case_id_used": "delhi-liquor-2022",
+      "classification": "ANSWER",
+      "used_vector": true,
+      "source_count": 6,
+      "source_labels": [
+        "BNS § 61(2)",
+        "2024 INSC 161 | nor the alleged bribe-givers enjoyed the protection of Artic",
+        "2024 INSC 161 | Para 9",
+        "2024 INSC 161 | state to prosecute offenders who violate the criminal law",
+        "2024 INSC 161 | Justice Hargrave also observed as follows: 165",
+        "2024 INSC 161 | proceed, the charge against the bribe- givers of conspiracy"
+      ],
+      "answer_snippet": "**Criminal conspiracy under Section 61(2) of the Bharatiya Nyaya Sanhita (BNS)**  \n\nSection 61(2) defines a criminal conspiracy as follows:\n\n- **Agreement of two or more persons** – The essential element is that *two or more* individuals come to a *meeting of minds*.\n- **Purpose of the agreement** – The agreement must be to either  \n  1. **do or cause the doing of an illegal act**, **or**  \n  2. *",
+      "claim_count": 7,
+      "judged": 7,
+      "supported": 7,
+      "unsupported": 0,
+      "contradicted": 0,
+      "supported_pct": 100,
+      "judge_error": null,
+      "generation_model": "openai/gpt-oss-120b (primary)",
+      "judge_model": "openai/gpt-oss-20b (fast)",
+      "answer_full": "**Criminal conspiracy under Section 61(2) of the Bharatiya Nyaya Sanhita (BNS)**  \n\nSection 61(2) defines a criminal conspiracy as follows:\n\n- **Agreement of two or more persons** – The essential element is that *two or more* individuals come to a *meeting of minds*.\n- **Purpose of the agreement** – The agreement must be to either  \n  1. **do or cause the doing of an illegal act**, **or**  \n  2. **do an act that is not itself illegal by using illegal means** (e.g., achieving a lawful result through fraud, intimidation, etc.).\n- **Legal consequence** – The agreement itself is deemed a *criminal conspiracy* and is punishable with the same punishment that would attach if the conspirators had *abetted* the substantive offence they agreed to commit.\n\nThus, under Section 61(2) BNS, a criminal conspiracy exists whenever two or more persons agree to commit an unlawful act, or to accomplish a lawful act by unlawful means; the mere existence of that agreement attracts liability equivalent to that for abetment of the intended offence.  \n\n*Source: BNS § 61(2).*",
+      "claims": [
+        "Section 61(2) of the Bharatiya Nyaya Sanhita defines a criminal conspiracy as an agreement of two or more persons.",
+        "The essential element of a criminal conspiracy is that two or more individuals come to a meeting of minds.",
+        "The agreement must be to either do or cause the doing of an illegal act, or to do an act that is not itself illegal by using illegal means.",
+        "The agreement itself is deemed a criminal conspiracy.",
+        "The agreement is punishable with the same punishment that would attach if the conspirators had abetted the substantive offence they agreed to commit.",
+        "Under Section 61(2) BNS, a criminal conspiracy exists whenever two or more persons agree to commit an unlawful act, or to accomplish a lawful act by unlawful means.",
+        "The mere existence of that agreement attracts liability equivalent to that for abetment of the intended offence."
+      ],
+      "judge_labels": [
+        {
+          "claim": "claim",
+          "label": "supported",
+          "reason": "Section 61(2) defines criminal conspiracy as an agreement of two or more persons per source [1]"
+        },
+        {
+          "claim": "claim",
+          "label": "supported",
+          "reason": "Meeting of minds implied by agreement of two or more persons per source [1]"
+        },
+        {
+          "claim": "claim",
+          "label": "supported",
+          "reason": "Agreement must be to do or cause an illegal act or a lawful act by illegal means per source [1]"
+        },
+        {
+          "claim": "claim",
+          "label": "supported",
+          "reason": "Agreement itself is designated a criminal conspiracy per source [1]"
+        },
+        {
+          "claim": "claim",
+          "label": "supported",
+          "reason": "Punishable with same punishment as abetment per source [1]"
+        },
+        {
+          "claim": "claim",
+          "label": "supported",
+          "reason": "Existence of agreement to commit unlawful act or lawful act by unlawful means per source [1]"
+        },
+        {
+          "claim": "claim",
+          "label": "supported",
+          "reason": "Liability equivalent to abetment per source [1]"
+        }
+      ]
+    },
+    {
+      "id": "kejriwal-02",
+      "question": "What are the requirements for admissibility of electronic records under Section 63 of the Bharatiya Sakshya Adhiniyam (BSA)?",
+      "expected_judgment": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case",
+      "case_id_used": "delhi-liquor-2022",
+      "classification": "ANSWER",
+      "used_vector": true,
+      "source_count": 6,
+      "source_labels": [
+        "BSA § 63",
+        "PMLA § 50",
+        "2024 INSC 24 | inasmuch as those were passed without consulting the Presidi",
+        "2024 INSC 161 | of Article 105(2) represents the view of the majority of thr",
+        "2024 INSC 24 | sub-section (2) of Section 432 of the CrPC ought to be read",
+        "2024 INSC 753 | The British increased surveillance upon them by the Thuggee"
+      ],
+      "answer_snippet": "**Section 63 of the Bharatiya Sakshya Adhiniyam (BSA) – Requirements for admissibility of electronic records**\n\n1. **Treating the electronic record as a document**  \n   – Any information that is contained in an electronic record and that is (a) printed on paper, or (b) stored, recorded or copied on optical or magnetic media, is **deemed to be a document** for evidentiary purposes.  \n\n2. **Certific",
+      "claim_count": 0,
+      "judged": 0,
+      "supported": 0,
+      "unsupported": 0,
+      "contradicted": 0,
+      "supported_pct": null,
+      "judge_error": "no_claims",
+      "generation_model": "openai/gpt-oss-120b (primary)",
+      "judge_model": "openai/gpt-oss-20b (fast)",
+      "answer_full": "**Section 63 of the Bharatiya Sakshya Adhiniyam (BSA) – Requirements for admissibility of electronic records**\n\n1. **Treating the electronic record as a document**  \n   – Any information that is contained in an electronic record and that is (a) printed on paper, or (b) stored, recorded or copied on optical or magnetic media, is **deemed to be a document** for evidentiary purposes.  \n\n2. **Certificate of authenticity**  \n   – The electronic record must be **accompanied by a certificate** that:  \n   a. **Identifies the electronic record** (e.g., its title, date, reference number, etc.);  \n   b. **Describes the device** on which the record is stored or from which it was produced (e.g., computer, server, storage medium, make/model, etc.); and  \n   c. Is **certified by a person occupying an official responsible position** in relation to that device (such as the system administrator, custodian, or other authorized officer).  \n\nOnly when these conditions are satisfied is the electronic record admissible as evidence under the BSA.  \n\n*Source: BSA § 63 – “Admissibility of electronic records”*【BSA § 63】.",
+      "claims": [],
+      "judge_labels": []
+    },
+    {
+      "id": "kejriwal-03",
+      "question": "How is money laundering defined and punished under Section 3 of the Prevention of Corruption / PMLA framework?",
+      "expected_judgment": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case",
+      "case_id_used": "delhi-liquor-2022",
+      "classification": "ABSTAIN",
+      "used_vector": true,
+      "source_count": 6,
+      "source_labels": [
+        "PMLA § 3",
+        "2024 INSC 161 | and is not dependent on the performance of the illegal promi",
+        "PMLA § 45",
+        "Precedent: Vijay Madanlal (2022)",
+        "2024 INSC 161 | bribery by members of the legislature as a criminal offence",
+        "2024 INSC 161 | rise to civil or criminal proceedings regardless of the inju"
+      ],
+      "answer_snippet": "Based on the provided sources, **Section 3 of the Prevention of Money Laundering Act (PMLA)** defines the offence of money laundering as follows:\n\n> **“Whosoever directly or indirectly attempts to indulge or knowingly assists or knowingly is a party or is actually involved in any process or activity connected with the proceeds of crime including its concealment, possession, acquisition or use and ",
+      "claim_count": 0,
+      "judged": 0,
+      "supported": 0,
+      "unsupported": 0,
+      "contradicted": 0,
+      "supported_pct": null,
+      "judge_error": "no_claims",
+      "generation_model": "openai/gpt-oss-120b (primary)",
+      "judge_model": "openai/gpt-oss-20b (fast)",
+      "answer_full": "Based on the provided sources, **Section 3 of the Prevention of Money Laundering Act (PMLA)** defines the offence of money laundering as follows:\n\n> **“Whosoever directly or indirectly attempts to indulge or knowingly assists or knowingly is a party or is actually involved in any process or activity connected with the proceeds of crime including its concealment, possession, acquisition or use and projecting or claiming it as untainted property shall be guilty of offence of money-laundering.”**  \n> — [PMLA § 3]\n\nThe supplied sources **do not contain the punishment prescribed for this offence** (which is typically set out in Section 4 of the PMLA). They also do not link Section 3 to the Prevention of Corruption Act; the definition above stands alone under the PMLA framework.",
+      "claims": [],
+      "judge_labels": []
+    },
+    {
+      "id": "kejriwal-04",
+      "question": "When was Arvind Kejriwal granted interim bail by the Supreme Court to campaign, and when did he surrender back to custody?",
+      "expected_judgment": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case",
+      "case_id_used": "delhi-liquor-2022",
+      "classification": "ANSWER",
+      "used_vector": true,
+      "source_count": 6,
+      "source_labels": [
+        "Case fact: Supreme Court Campaign Bail",
+        "Case fact: CBI Arrest from Tihar",
+        "Case fact: Supreme Court Final Bail",
+        "Case fact: Trial Court Bail & HC Stay",
+        "Case fact: Arrest & Summons",
+        "2024 INSC 24 | jail and on the same day were released by the jail authoriti"
+      ],
+      "answer_snippet": "Based on the provided sources, the Supreme Court granted Arvind Kejriwal interim bail on **10 May 2024** to participate in the general election campaign, valid until **1 June 2024**, and directed him to surrender on **2 June 2024**, which he complied with.  \n\n**Source:** [Case fact: Supreme Court Campaign Bail]",
+      "claim_count": 5,
+      "judged": 0,
+      "supported": 0,
+      "unsupported": 0,
+      "contradicted": 0,
+      "supported_pct": null,
+      "judge_error": "failed after retries",
+      "generation_model": "openai/gpt-oss-120b (primary)",
+      "judge_model": "openai/gpt-oss-20b (fast)",
+      "answer_full": "Based on the provided sources, the Supreme Court granted Arvind Kejriwal interim bail on **10 May 2024** to participate in the general election campaign, valid until **1 June 2024**, and directed him to surrender on **2 June 2024**, which he complied with.  \n\n**Source:** [Case fact: Supreme Court Campaign Bail]",
+      "claims": [
+        "The Supreme Court granted Arvind Kejriwal interim bail on 10 May 2024.",
+        "The interim bail allowed him to participate in the general election campaign.",
+        "The interim bail was valid until 1 June 2024.",
+        "The Supreme Court directed him to surrender on 2 June 2024.",
+        "He complied with the surrender directive."
+      ],
+      "judge_labels": []
+    }
+  ]
+}

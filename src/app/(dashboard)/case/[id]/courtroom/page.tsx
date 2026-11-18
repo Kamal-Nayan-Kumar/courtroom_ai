@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import { useStreamTurn } from "@/hooks/useStreamTurn";
 import { CourtroomTopBar } from "@/components/courtroom/CourtroomTopBar";
@@ -108,6 +108,7 @@ export default function CourtroomArenaPage() {
     weaknesses: string[];
   }>(null);
   const [verdictLoading, setVerdictLoading] = useState(false);
+  const expiryRequested = useRef(false);
 
   const {
     streaming,
@@ -131,12 +132,6 @@ export default function CourtroomArenaPage() {
     return () => { cancelled = true; };
   }, [caseId]);
 
-  useEffect(() => {
-    if (!sessionId || ended) return;
-    const t = setInterval(() => setElapsed((v) => v + 1), 1000);
-    return () => clearInterval(t);
-  }, [sessionId, ended]);
-
   const startSession = useCallback(async () => {
     setStarting(true);
     try {
@@ -150,16 +145,16 @@ export default function CourtroomArenaPage() {
       setSessionId(sess.id);
       setEnded(false);
       setElapsed(0);
+      expiryRequested.current = false;
       setTranscript([]);
       setScore(null);
 
       const introRes = await fetch(`/api/sessions/${sess.id}/intro`, { method: "POST" });
       const intro = await introRes.json();
-      if (introRes.ok && intro.turn) {
+      if (!introRes.ok) throw new Error(intro.error ?? "Could not open the courtroom");
+      if (intro.turn) {
         setTranscript([turnToItem(intro.turn, studentRole)]);
-        if (intro.reasoning?.length) {
-          showNotification(intro.reasoning[0]);
-        }
+        if (intro.reasoning?.length) showNotification(intro.reasoning[0]);
       }
       showNotification("Courtroom session started. You are on the record now.");
     } catch (e) {
@@ -207,6 +202,21 @@ export default function CourtroomArenaPage() {
       setVerdictLoading(false);
     }
   }, [sessionId, showNotification]);
+
+  useEffect(() => {
+    if (!sessionId || ended) return;
+    const t = setInterval(() => {
+      setElapsed((current) => {
+        const next = current + 1;
+        if (next >= durationSec && !expiryRequested.current) {
+          expiryRequested.current = true;
+          void requestVerdict();
+        }
+        return next;
+      });
+    }, 1000);
+    return () => clearInterval(t);
+  }, [sessionId, ended, durationSec, requestVerdict]);
 
   const exhibits: CourtroomExhibit[] = (detail?.evidence ?? []).map((e, i) => ({
     id: e.id,
@@ -362,7 +372,15 @@ export default function CourtroomArenaPage() {
         </section>
       </div>
       <AgentPersonaModal speakerId={selectedPersonaId} isOpen={Boolean(selectedPersonaId)} onClose={() => setSelectedPersonaId(null)} personas={personas} />
-      <VerdictSummaryModal isOpen={Boolean(score)} onClose={() => setScore(null)} witnessComposure={74} score={score ?? undefined} />
+      <VerdictSummaryModal
+        isOpen={Boolean(score)}
+        onClose={() => setScore(null)}
+        witnessComposure={74}
+        caseTitle={detail.case.title}
+        courtName={detail.case.court}
+        judgeName={personas.judge?.name}
+        score={score ?? undefined}
+      />
       {verdictLoading && <div className="fixed bottom-4 right-4 z-50 bg-zinc-950 text-white text-xs px-3 py-2 rounded-lg">Bench is writing the verdict...</div>}
     </div>
   );

@@ -282,7 +282,7 @@ export function DocketTable() {
                           size="sm"
                           className="h-8 text-xs font-semibold border-zinc-300 hover:border-zinc-950 hover:bg-zinc-50 transition-all shadow-2xs px-3"
                         >
-                          <Link href="/case/402/prep">
+                          <Link href={`/case/${item.id === "case-184" ? "electoral-bonds-2024" : "delhi-liquor-2022"}/prep`}>
                             <span>Prepare Case</span>
                             <ArrowRight className="size-3.5 ml-1" />
                           </Link>
@@ -294,7 +294,7 @@ export function DocketTable() {
                         size="sm"
                         className="h-8 text-xs font-semibold border-zinc-300 hover:border-zinc-950 hover:bg-zinc-950 hover:text-white transition-all shadow-2xs px-3"
                       >
-                        <Link href="/case/402/courtroom">
+                        <Link href={`/case/${item.id === "case-184" ? "electoral-bonds-2024" : "delhi-liquor-2022"}/courtroom`}>
                           <span>{getActionButtonText(item.stage)}</span>
                           <ArrowRight className="size-3.5 ml-1" />
                         </Link>

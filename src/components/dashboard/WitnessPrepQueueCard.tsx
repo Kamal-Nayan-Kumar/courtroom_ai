@@ -117,7 +117,7 @@ export function WitnessPrepQueueCard() {
                       }`}
                     >
                       {task.actionType === "coach-witness" || task.actionType === "review-brief" ? (
-                        <Link href="/case/402/prep">
+                        <Link href="/case/delhi-liquor-2022/prep">
                           <span>{task.actionLabel}</span>
                           <ArrowRight className="size-3 ml-1" />
                         </Link>
@@ -149,7 +149,7 @@ export function WitnessPrepQueueCard() {
             size="sm"
             className="h-8 text-xs font-semibold bg-blue-900 hover:bg-blue-800 text-white shadow-2xs px-3.5"
           >
-            <Link href="/case/402/prep">
+            <Link href="/case/delhi-liquor-2022/prep">
               Launch Witness Lab
             </Link>
           </Button>
