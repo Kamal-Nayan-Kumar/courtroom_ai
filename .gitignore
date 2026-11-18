@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.neon
+
+# Large external datasets
+data/eval/IndicLegalQA_sample.json
+
+# Demo artifacts (screenshots, slides, scripts)
+/demo/
+

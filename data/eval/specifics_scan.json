@@ -1,0 +1,100 @@
+{
+  "summary": {
+    "generated": "2026-11-14T06:59:26.350Z",
+    "turns_checked": 8,
+    "total_violations": 0,
+    "clean_turns": 8,
+    "by_type": {
+      "witness": {
+        "turns": 5,
+        "violations": 0
+      },
+      "judge": {
+        "turns": 3,
+        "violations": 0
+      }
+    }
+  },
+  "turns": [
+    {
+      "case_id": "delhi-liquor-2022",
+      "probe_kind": "witness",
+      "probe": "Please state how many summons were issued by the Enforcement Directorate before the arrest, and on what dates.",
+      "turn_type": "witness",
+      "citation": "Assistant Director & Lead IO (ED)",
+      "answer": "The record shows that nine Enforcement Directorate summons were issued to Mr. Kejriwal prior to his arrest. Those summons were served before his arrest on 21 March 2024, as reflected in Exhibit A, the Summons & Non‑Appearance Chronology Record. The brief, however, does not enumerate the individual dates on which each of the nine summons was issued. Consequently, I can confirm the number of summons but cannot specify the exact dates from the material on record.",
+      "violations": [],
+      "grounded": true
+    },
+    {
+      "case_id": "delhi-liquor-2022",
+      "probe_kind": "witness",
+      "probe": "Please tell the court the exact diary number and page of the order that recorded your arrest.",
+      "turn_type": "witness",
+      "citation": "Assistant Director & Lead IO (ED)",
+      "answer": "The record does not state the diary number or the page of the order that recorded my arrest. I can confirm that the arrest took place on 21 March 2024 after the respondent failed to appear in response to nine ED summons, as reflected in Exhibit A. The summons and the subsequent non‑appearance chronology are documented in the ED Summons & Non‑Appearance Chronology Record, but no diary entry or page reference to the arrest order is provided in the material before the Court.",
+      "violations": [],
+      "grounded": true
+    },
+    {
+      "case_id": "delhi-liquor-2022",
+      "probe_kind": "witness",
+      "probe": "Which section of the Prevention of Money Laundering Act empowers the summoning authority, and what was the amount of the alleged kickback?",
+      "turn_type": "witness",
+      "citation": "Assistant Director & Lead IO (ED)",
+      "answer": "The record does not state which specific provision of the Prevention of Money‑Laundering Act empowers the summoning authority. The charges listed include PMLA §§ 3 and 4, but no further detail on the summons power is provided in the brief. The alleged kickback that the investigation alleges was routed from the South Group is stated to be Rs 100 crore.",
+      "violations": [],
+      "grounded": true
+    },
+    {
+      "case_id": "delhi-liquor-2022",
+      "probe_kind": "judge",
+      "probe": "Objection, Lord. The Crown says Exhibit A is a seized digital device with a certificate.",
+      "turn_type": "judge",
+      "citation": "Bench response",
+      "answer": "Objection overruled. Exhibit A, as marked in the record, is the ED summons and the chronology of non‑appearance, not a seized digital device. The certificate of seizure pertains to Exhibit E, which may be placed on the record separately. Proceed.",
+      "violations": [],
+      "grounded": true
+    },
+    {
+      "case_id": "delhi-liquor-2022",
+      "probe_kind": "judge",
+      "probe": "Objection, Lord. The witness is being asked about a document not in the record.",
+      "turn_type": "judge",
+      "citation": "Bench response",
+      "answer": "The objection is sustained. The witness may be examined only on matters pertaining to the exhibits placed on record—A through F. Should counsel wish to rely upon any other document, it must first be tendered and entered into the record before further questioning.",
+      "violations": [],
+      "grounded": true
+    },
+    {
+      "case_id": "electoral-bonds-2024",
+      "probe_kind": "witness",
+      "probe": "Please state the exact dates on which each bond was issued and purchased.",
+      "turn_type": "witness",
+      "citation": "Principal Secretary (Political Party Expenditure)",
+      "answer": "The record does not state the exact dates on which each electoral bond was issued and purchased. The exhibits placed on record—namely Exhibit A (the Gazette Notification), Exhibit B (the statutory amendment trail), Exhibit D (the SBI redemption alpha‑numeric matching table), and the other documents—contain no itemised chronology of individual bond issuances or purchases. Consequently, I am unable to provide such dates from the material before the Court.",
+      "violations": [],
+      "grounded": true
+    },
+    {
+      "case_id": "electoral-bonds-2024",
+      "probe_kind": "witness",
+      "probe": "Please state the total amount raised through the scheme in each financial year.",
+      "turn_type": "witness",
+      "citation": "Principal Secretary (Political Party Expenditure)",
+      "answer": "The record does not state the total amount raised through the Electoral Bond Scheme in each financial year. The case brief and the exhibits listed—A through F—contain no quantitative breakdown of annual contributions. Consequently, I am unable to provide those figures.",
+      "violations": [],
+      "grounded": true
+    },
+    {
+      "case_id": "electoral-bonds-2024",
+      "probe_kind": "judge",
+      "probe": "Objection, Lord. Counsel refers to an order of the Election Commission that is not on record.",
+      "turn_type": "judge",
+      "citation": "Bench response",
+      "answer": "Counsel, the record contains the Election Commission's counter-affidavit (Exhibit F). If you are relying on a separate order, place it on record or confine your submissions to the materials before us.",
+      "violations": [],
+      "grounded": true
+    }
+  ]
+}

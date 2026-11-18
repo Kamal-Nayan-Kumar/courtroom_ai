@@ -2,7 +2,12 @@ import { db } from "@/lib/db";
 
 
 export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+  let { id } = await params;
+  if (id === "402") id = "case-402";
+  if (id === "184" || id === "case-184") id = "electoral-bonds-2024";
+  if (id === "pub-1") id = "delhi-liquor-2022";
+  if (id === "pub-2") id = "case-402";
+  if (id === "pub-3" || id === "pub-4") id = "electoral-bonds-2024";
   const sql = db();
   const [caseRow] = await sql`SELECT * FROM cases WHERE id = ${id} LIMIT 1`;
   if (!caseRow) return Response.json({ error: "Case not found" }, { status: 404 });

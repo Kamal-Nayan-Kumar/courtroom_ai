@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS documents (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   case_id TEXT REFERENCES cases(id) ON DELETE SET NULL,
   owner_id TEXT,
-  kind TEXT NOT NULL CHECK (kind IN ('hf_seed','upload','fir','statute','judgment')),
+  kind TEXT NOT NULL CHECK (kind IN ('hf_seed','upload','fir','statute','judgment','legal_ref')),
   title TEXT NOT NULL,
   storage_url TEXT,
   status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending','indexed','failed')),
@@ -60,11 +60,15 @@ CREATE TABLE IF NOT EXISTS chunks (
   case_id TEXT REFERENCES cases(id) ON DELETE CASCADE,
   section_label TEXT NOT NULL DEFAULT '',
   text TEXT NOT NULL,
-  embedding vector(768),
+  embedding vector(4096),
   token_count INTEGER NOT NULL DEFAULT 0,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
-CREATE INDEX IF NOT EXISTS chunks_embedding_idx ON chunks USING ivfflat (embedding vector_cosine_ops) WITH (lists = 10);
+-- Note: 4096-dim vectors exceed pgvector's 2000-dim limit for HNSW/IVFFlat indexes.
+-- For datasets under ~10k chunks, sequential scan with cosine distance is efficient.
+-- For larger datasets, consider dimensionality reduction or halfvec indexing.
+-- CREATE INDEX IF NOT EXISTS chunks_embedding_idx ON chunks USING hnsw (embedding vector_cosine_ops);
+
 CREATE INDEX IF NOT EXISTS chunks_case_idx ON chunks (case_id);
 CREATE INDEX IF NOT EXISTS chunks_document_idx ON chunks (document_id);
 

@@ -1,14 +1,19 @@
 /*
  * Free-tier LLM layer. Groq primary (gpt-oss-120b / gpt-oss-20b), OpenRouter free fallback.
  * Server-only. Never called from the browser directly.
+ *
+ * Embedding has moved to src/lib/embed.ts (Qwen3-Embedding-8B via OpenRouter).
+ * The embed() and EMBED_DIM re-exports below maintain backward compatibility.
  */
 const GROQ_BASE = "https://api.groq.com/openai/v1/chat/completions";
 const OPENROUTER_BASE = "https://openrouter.ai/api/v1/chat/completions";
 
 export const GROQ_PRIMARY = "openai/gpt-oss-120b";
 export const GROQ_FAST = "openai/gpt-oss-20b";
-export const OPENROUTER_FALLBACK = "meta-llama/llama-3.3-70b-instruct:free";
-export const EMBED_DIM = 768;
+export const OPENROUTER_FALLBACK = "nvidia/nemotron-3-ultra-550b-a55b:free";
+
+// Re-export from the new embed module for backward compatibility.
+export { embed, EMBED_DIM } from "./embed";
 
 export interface ChatMessage {
   role: "system" | "user" | "assistant";
@@ -53,30 +58,4 @@ export async function chat(options: {
     return await call(OPENROUTER_BASE, orKey, OPENROUTER_FALLBACK, messages, maxTokens, temperature);
   }
   throw new Error("No LLM key configured. Set GROQ_API_KEY or OPENROUTER_API_KEY.");
-}
-
-let embedPipe: any = null;
-
-async function getEmbedPipe() {
-  if (!embedPipe) {
-    // Loaded via Function so Turbopack skips resolving the native ONNX package.
-    const load = Function("return import('@huggingface/transformers')") as () => Promise<any>;
-    const { pipeline } = await load();
-    embedPipe = await pipeline("feature-extraction", "Xenova/nomic-embed-text-v1");
-  }
-  return embedPipe;
-}
-
-export async function embed(texts: string[]): Promise<number[][]> {
-  const pipe = await getEmbedPipe();
-  const out: number[][] = [];
-  for (const t of texts) {
-    const res = await pipe(t, { pooling: "mean", normalize: true });
-    const vec = Array.from(res.data as Float32Array);
-    if (vec.length !== EMBED_DIM) {
-      console.warn(`[embed] dimension mismatch: got ${vec.length}, expected ${EMBED_DIM}`);
-    }
-    out.push(vec);
-  }
-  return out;
 }

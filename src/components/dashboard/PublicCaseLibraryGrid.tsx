@@ -193,7 +193,7 @@ export function PublicCaseLibraryGrid() {
                 size="sm"
                 className="h-8 text-xs bg-zinc-950 text-white hover:bg-zinc-800 shadow-2xs font-medium"
               >
-                <a href="/case/402/courtroom">
+                <a href={`/case/${item.id === "pub-3" || item.id === "pub-4" ? "electoral-bonds-2024" : "delhi-liquor-2022"}/courtroom`}>
                   <span>Practice This Case</span>
                   <ArrowRight className="size-3 ml-1" />
                 </a>

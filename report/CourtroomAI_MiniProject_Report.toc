@@ -1,0 +1,46 @@
+\contentsline {section}{List of Figures}{iii}{}%
+\contentsline {section}{List of Tables}{iv}{}%
+\contentsline {section}{\numberline {1}Introduction}{1}{}%
+\contentsline {subsection}{\numberline {1.1}Background}{1}{}%
+\contentsline {subsection}{\numberline {1.2}Problem Statement}{1}{}%
+\contentsline {subsection}{\numberline {1.3}Objectives}{1}{}%
+\contentsline {subsection}{\numberline {1.4}Scope}{2}{}%
+\contentsline {subsection}{\numberline {1.5}Functional and Non-Functional Requirements}{2}{}%
+\contentsline {section}{\numberline {2}Related Work}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Legal Information Retrieval}{3}{}%
+\contentsline {subsection}{\numberline {2.2}Retrieval-Augmented Generation}{3}{}%
+\contentsline {subsection}{\numberline {2.3}Conversational Agents for Education}{4}{}%
+\contentsline {subsection}{\numberline {2.4}Position of the Present Work}{4}{}%
+\contentsline {subsection}{\numberline {2.5}Data Science Perspective}{4}{}%
+\contentsline {subsection}{\numberline {2.6}Evaluation of Generated Output}{4}{}%
+\contentsline {section}{\numberline {3}Data and Methods}{5}{}%
+\contentsline {subsection}{\numberline {3.1}System Architecture}{5}{}%
+\contentsline {subsection}{\numberline {3.2}Legal Judgment Reference Corpus}{5}{}%
+\contentsline {subsection}{\numberline {3.3}Demonstration Cases}{7}{}%
+\contentsline {subsection}{\numberline {3.4}Data Preparation and Schema Design}{7}{}%
+\contentsline {subsection}{\numberline {3.5}Hybrid Retrieval Algorithm}{7}{}%
+\contentsline {subsection}{\numberline {3.6}Embedding Model and Migration}{9}{}%
+\contentsline {subsection}{\numberline {3.7}Prompt Construction}{10}{}%
+\contentsline {subsection}{\numberline {3.8}API and Component Design}{10}{}%
+\contentsline {subsection}{\numberline {3.9}Session State Machine}{11}{}%
+\contentsline {subsection}{\numberline {3.10}Security and Privacy Considerations}{11}{}%
+\contentsline {subsection}{\numberline {3.11}Scope and isolation}{11}{}%
+\contentsline {subsection}{\numberline {3.12}Courtroom Interaction and Streaming}{12}{}%
+\contentsline {subsection}{\numberline {3.13}Time-Bound Session Control}{12}{}%
+\contentsline {subsection}{\numberline {3.14}Verdict Evaluation}{12}{}%
+\contentsline {section}{\numberline {4}Results and Discussions}{13}{}%
+\contentsline {subsection}{\numberline {4.1}Functional Results}{13}{}%
+\contentsline {subsection}{\numberline {4.2}Legal Retrieval Evaluation}{13}{}%
+\contentsline {subsection}{\numberline {4.3}Faithfulness and Grounding Evaluation}{17}{}%
+\contentsline {subsection}{\numberline {4.4}Fixes and their Measured Effect}{20}{}%
+\contentsline {subsection}{\numberline {4.5}Fixes that Were Not Applied}{21}{}%
+\contentsline {subsection}{\numberline {4.6}Testing Methodology}{22}{}%
+\contentsline {subsection}{\numberline {4.7}Observed Results}{24}{}%
+\contentsline {subsection}{\numberline {4.8}Discussion of the Results}{24}{}%
+\contentsline {subsection}{\numberline {4.9}Preparation Interface}{24}{}%
+\contentsline {subsection}{\numberline {4.10}Courtroom Streaming and Feedback}{25}{}%
+\contentsline {subsection}{\numberline {4.11}Limitations}{26}{}%
+\contentsline {section}{\numberline {5}Conclusion}{29}{}%
+\contentsline {subsection}{\numberline {5.1}Future Enhancements}{30}{}%
+\contentsline {section}{Appendix A: Reproducibility}{31}{}%
+\contentsline {section}{Bibliography}{34}{}%

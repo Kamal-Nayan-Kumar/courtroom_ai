@@ -1,0 +1,242 @@
+[
+  {
+    "id": "sita-01",
+    "question": "Does parliamentary privilege under Article 105(2) or 194(2) grant immunity to a legislator from prosecution for taking a bribe to cast a vote?",
+    "expected_judgment": "Sita Soren v. Union of India",
+    "expected_citation": "2024 INSC 161",
+    "expected_paragraph": "Para 12",
+    "category": "Legislative Privileges"
+  },
+  {
+    "id": "sita-02",
+    "question": "Did the 7-judge Constitution Bench in Sita Soren overrule the majority decision in PV Narasimha Rao v. State?",
+    "expected_judgment": "Sita Soren v. Union of India",
+    "expected_citation": "2024 INSC 161",
+    "expected_paragraph": "Para 12-14",
+    "category": "Legislative Privileges"
+  },
+  {
+    "id": "sita-03",
+    "question": "When does the criminal offence of bribery become complete for a Member of Parliament or Legislative Assembly under the Prevention of Corruption Act?",
+    "expected_judgment": "Sita Soren v. Union of India",
+    "expected_citation": "2024 INSC 161",
+    "expected_paragraph": "Para 12",
+    "category": "Criminal Liability & Bribery"
+  },
+  {
+    "id": "sita-04",
+    "question": "How does the Supreme Court interpret the phrase 'in respect of anything said or any vote given' in Article 105(2)?",
+    "expected_judgment": "Sita Soren v. Union of India",
+    "expected_citation": "2024 INSC 161",
+    "expected_paragraph": "Para 12",
+    "category": "Constitutional Interpretation"
+  },
+  {
+    "id": "sita-05",
+    "question": "What is the relationship between legislative privileges and the rule of law in parliamentary democracy according to Sita Soren?",
+    "expected_judgment": "Sita Soren v. Union of India",
+    "expected_citation": "2024 INSC 161",
+    "expected_paragraph": "Metadata",
+    "category": "Constitutional Law"
+  },
+  {
+    "id": "sita-06",
+    "question": "Can an MP or MLA claim constitutional immunity from criminal trial under the Prevention of Corruption Act 1988?",
+    "expected_judgment": "Sita Soren v. Union of India",
+    "expected_citation": "2024 INSC 161",
+    "expected_paragraph": "Para 12",
+    "category": "Criminal Law"
+  },
+  {
+    "id": "bilkis-01",
+    "question": "Which government is the 'appropriate government' under Section 432 of the CrPC to grant remission to convicts?",
+    "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+    "expected_citation": "2024 INSC 24",
+    "expected_paragraph": "Para 1-5",
+    "category": "Remission & Jurisdiction"
+  },
+  {
+    "id": "bilkis-02",
+    "question": "Did the State of Gujarat have territorial jurisdiction to remit the sentences of the 11 convicts in the Bilkis Bano case when trial occurred in Maharashtra?",
+    "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+    "expected_citation": "2024 INSC 24",
+    "expected_paragraph": "Para 1-5",
+    "category": "Remission of Sentences"
+  },
+  {
+    "id": "bilkis-03",
+    "question": "What did the Supreme Court hold regarding fraud, suppression of material facts, and usurpation of power by the Gujarat government in granting premature release?",
+    "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+    "expected_citation": "2024 INSC 24",
+    "expected_paragraph": "Para 1-5",
+    "category": "Judicial Review"
+  },
+  {
+    "id": "bilkis-04",
+    "question": "How does Section 432(7) of the Code of Criminal Procedure define the jurisdiction for sentence remission based on the place of trial?",
+    "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+    "expected_citation": "2024 INSC 24",
+    "expected_paragraph": "Para 1-5",
+    "category": "Criminal Procedure"
+  },
+  {
+    "id": "bilkis-05",
+    "question": "Did the Supreme Court direct the 11 released convicts in the Bilkis Yakub Rasool case to surrender back to jail?",
+    "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+    "expected_citation": "2024 INSC 24",
+    "expected_paragraph": "Para 1-5",
+    "category": "Sentencing & Enforcement"
+  },
+  {
+    "id": "bilkis-06",
+    "question": "What principles govern the exercise of judicial review over executive orders of premature release and remission under Article 142 and CrPC?",
+    "expected_judgment": "Bilkis Yakub Rasool v. Union of India",
+    "expected_citation": "2024 INSC 24",
+    "expected_paragraph": "Para 1-5",
+    "category": "Judicial Review"
+  },
+  {
+    "id": "sukanya-01",
+    "question": "Does the division of prison labor and menial tasks based on caste violate Article 14 and Article 15 of the Constitution of India?",
+    "expected_judgment": "Sukanya Shantha v. Union of India",
+    "expected_citation": "2024 INSC 753",
+    "expected_paragraph": "Para 4",
+    "category": "Prison Reforms & Caste Discrimination"
+  },
+  {
+    "id": "sukanya-02",
+    "question": "Did the Supreme Court strike down discriminatory provisions in state prison manuals dividing inmates by caste hierarchy?",
+    "expected_judgment": "Sukanya Shantha v. Union of India",
+    "expected_citation": "2024 INSC 753",
+    "expected_paragraph": "Para 4",
+    "category": "Fundamental Rights"
+  },
+  {
+    "id": "sukanya-03",
+    "question": "How does untouchability under Article 17 apply to practices inside prisons, such as assigning cooking or sweeping based on caste?",
+    "expected_judgment": "Sukanya Shantha v. Union of India",
+    "expected_citation": "2024 INSC 753",
+    "expected_paragraph": "Para 4",
+    "category": "Article 17 & Untouchability"
+  },
+  {
+    "id": "sukanya-04",
+    "question": "What fundamental rights do incarcerated prisoners retain under Article 21 of the Indian Constitution regarding human dignity?",
+    "expected_judgment": "Sukanya Shantha v. Union of India",
+    "expected_citation": "2024 INSC 753",
+    "expected_paragraph": "Para 4",
+    "category": "Article 21 & Human Dignity"
+  },
+  {
+    "id": "sukanya-05",
+    "question": "What directions were issued to the Union and State governments regarding the Model Prison Manual and prison register caste columns?",
+    "expected_judgment": "Sukanya Shantha v. Union of India",
+    "expected_citation": "2024 INSC 753",
+    "expected_paragraph": "Para 4",
+    "category": "Prison Regulations"
+  },
+  {
+    "id": "sukanya-06",
+    "question": "Does stereotyping habituated or denotified tribes as habitual offenders violate the constitutional guarantee of equality in prisons?",
+    "expected_judgment": "Sukanya Shantha v. Union of India",
+    "expected_citation": "2024 INSC 753",
+    "expected_paragraph": "Para 4",
+    "category": "Equal Protection"
+  },
+  {
+    "id": "adr-01",
+    "question": "Why was the Electoral Bonds Scheme 2018 declared unconstitutional by the Supreme Court Constitution Bench?",
+    "expected_judgment": "Association for Democratic Reforms v. Union of India",
+    "expected_citation": "2024 INSC 113",
+    "expected_paragraph": "Case fact",
+    "category": "Constitutional Law"
+  },
+  {
+    "id": "adr-02",
+    "question": "How does the voter's right to information under Article 19(1)(a) apply to political party funding and anonymous corporate donations?",
+    "expected_judgment": "Association for Democratic Reforms v. Union of India",
+    "expected_citation": "2024 INSC 113",
+    "expected_paragraph": "Constitution Art 19(1)(a)",
+    "category": "Article 19(1)(a)"
+  },
+  {
+    "id": "adr-03",
+    "question": "Which amendments to Section 182 of the Companies Act 2013 regarding unlimited corporate donations were struck down?",
+    "expected_judgment": "Association for Democratic Reforms v. Union of India",
+    "expected_citation": "2024 INSC 113",
+    "expected_paragraph": "Case fact",
+    "category": "Corporate Political Funding"
+  },
+  {
+    "id": "adr-04",
+    "question": "Who were the judges on the five-judge Constitution Bench that delivered the Electoral Bonds judgment in 2024 INSC 113?",
+    "expected_judgment": "Association for Democratic Reforms v. Union of India",
+    "expected_citation": "2024 INSC 113",
+    "expected_paragraph": "Case fact",
+    "category": "Bench Composition"
+  },
+  {
+    "id": "adr-05",
+    "question": "Did the Supreme Court reject the proportionality defence that donor privacy outweighs transparency in political party donations?",
+    "expected_judgment": "Association for Democratic Reforms v. Union of India",
+    "expected_citation": "2024 INSC 113",
+    "expected_paragraph": "Constitution Art 19(1)(a)",
+    "category": "Proportionality Test"
+  },
+  {
+    "id": "adr-06",
+    "question": "What disclosure directions were given to the State Bank of India regarding purchaser and redemption details of electoral bonds?",
+    "expected_judgment": "Association for Democratic Reforms v. Union of India",
+    "expected_citation": "2024 INSC 113",
+    "expected_paragraph": "Case fact",
+    "category": "Electoral Transparency"
+  },
+  {
+    "id": "kejriwal-01",
+    "question": "What constitutes criminal conspiracy under Section 61(2) of the Bharatiya Nyaya Sanhita (BNS)?",
+    "expected_judgment": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case",
+    "expected_citation": "BNS § 61(2)",
+    "expected_paragraph": "BNS § 61(2)",
+    "category": "Criminal Conspiracy"
+  },
+  {
+    "id": "kejriwal-02",
+    "question": "What are the requirements for admissibility of electronic records under Section 63 of the Bharatiya Sakshya Adhiniyam (BSA)?",
+    "expected_judgment": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case",
+    "expected_citation": "BSA § 63",
+    "expected_paragraph": "BSA § 63",
+    "category": "Electronic Evidence"
+  },
+  {
+    "id": "kejriwal-03",
+    "question": "How is money laundering defined and punished under Section 3 of the Prevention of Corruption / PMLA framework?",
+    "expected_judgment": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case",
+    "expected_citation": "PMLA § 3",
+    "expected_paragraph": "PMLA § 3",
+    "category": "Money Laundering & PMLA"
+  },
+  {
+    "id": "kejriwal-04",
+    "question": "When was Arvind Kejriwal granted interim bail by the Supreme Court to campaign, and when did he surrender back to custody?",
+    "expected_judgment": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case",
+    "expected_citation": "Case fact",
+    "expected_paragraph": "Case fact",
+    "category": "Bail Chronology"
+  },
+  {
+    "id": "kejriwal-05",
+    "question": "How many summons were issued by the Enforcement Directorate prior to the arrest of the sitting Chief Minister in March 2024?",
+    "expected_judgment": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case",
+    "expected_citation": "Case fact",
+    "expected_paragraph": "Case fact",
+    "category": "ED Investigation"
+  },
+  {
+    "id": "kejriwal-06",
+    "question": "When did the Supreme Court grant bail in the parallel CBI excise policy investigation after five months of incarceration?",
+    "expected_judgment": "State v. Arvind Kejriwal — 2022 Delhi Liquor Policy Case",
+    "expected_citation": "Case fact",
+    "expected_paragraph": "Case fact",
+    "category": "CBI Investigation & Bail"
+  }
+]

@@ -24,6 +24,9 @@ interface VerdictSummaryModalProps {
   isOpen: boolean;
   onClose: () => void;
   witnessComposure: number;
+  caseTitle?: string;
+  courtName?: string;
+  judgeName?: string;
   score?: {
     argument_score: number | null;
     objection_score: number | null;
@@ -40,9 +43,11 @@ export function VerdictSummaryModal({
   isOpen,
   onClose,
   witnessComposure,
+  caseTitle,
+  courtName,
+  judgeName,
   score,
 }: VerdictSummaryModalProps) {
-  const isExcluded = witnessComposure <= 65;
   const overall = score?.overall ?? null;
   const summary = score?.judge_summary ?? "The bench has recorded your submissions.";
   const strengths = score?.strengths ?? [];
@@ -58,10 +63,11 @@ export function VerdictSummaryModal({
             </div>
             <div className="min-w-0 pr-4">
               <DialogTitle className="text-sm sm:text-base font-bold text-zinc-950 font-serif tracking-wide leading-tight break-words whitespace-normal">
-                Sessions Court · Interlocutory Appraisal
+                {courtName ?? "Court"} · Bench Appraisal
               </DialogTitle>
               <DialogDescription className="text-xs text-zinc-500 font-mono mt-0.5 break-words whitespace-normal">
-                Coram: Hon&apos;ble Justice V. Gopalan · CRL.A. 402/2026
+                {judgeName ? `Coram: ${judgeName}` : "Coram: Hon'ble Bench"}
+                {caseTitle ? ` · ${caseTitle}` : ""}
               </DialogDescription>
             </div>
           </div>
@@ -88,40 +94,64 @@ export function VerdictSummaryModal({
           </div>
 
           {/* Performance Metrics Cards */}
-          <div className="grid grid-cols-3 gap-2.5">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
             <div className="p-3 rounded-lg border border-zinc-200 bg-zinc-50/80 text-center">
               <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
-                Bench Conviction Score
+                Overall
               </span>
               <span className="text-lg font-bold text-zinc-950 font-mono block my-0.5">
                 {overall ?? '–'} / 10
               </span>
-              <span className="text-[10px] text-emerald-700 font-medium">
-                Top 3% of advocates
+              <span className="text-[10px] text-zinc-600 font-medium">
+                Bench score
               </span>
             </div>
 
             <div className="p-3 rounded-lg border border-zinc-200 bg-zinc-50/80 text-center">
               <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
-                Witness Impeachment
+                Argument
+              </span>
+              <span className="text-lg font-bold text-zinc-950 font-mono block my-0.5">
+                {score?.argument_score ?? '–'} / 10
+              </span>
+              <span className="text-[10px] text-zinc-600 font-medium">
+                Argument quality
+              </span>
+            </div>
+
+            <div className="p-3 rounded-lg border border-zinc-200 bg-zinc-50/80 text-center">
+              <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
+                Objection
+              </span>
+              <span className="text-lg font-bold text-zinc-950 font-mono block my-0.5">
+                {score?.objection_score ?? '–'} / 10
+              </span>
+              <span className="text-[10px] text-zinc-600 font-medium">
+                Objection handling
+              </span>
+            </div>
+
+            <div className="p-3 rounded-lg border border-zinc-200 bg-zinc-50/80 text-center">
+              <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
+                Composure
               </span>
               <span className="text-lg font-bold text-zinc-950 font-mono block my-0.5">
                 {score?.composure_score ?? '–'} / 10
               </span>
               <span className="text-[10px] text-zinc-600 font-medium">
-                PW-1 rattled on hash
+                Demeanour under pressure
               </span>
             </div>
 
-            <div className="p-3 rounded-lg border border-zinc-200 bg-zinc-50/80 text-center">
+            <div className="p-3 rounded-lg border border-zinc-200 bg-zinc-50/80 text-center sm:col-span-2">
               <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
-                Statutory Precision
+                Legal accuracy
               </span>
               <span className="text-lg font-bold text-zinc-950 font-mono block my-0.5">
                 {score?.legal_accuracy_score ?? '–'} / 10
               </span>
               <span className="text-[10px] text-zinc-600 font-medium">
-                Arjun Panditrao cited
+                Correctness of legal propositions
               </span>
             </div>
           </div>
@@ -129,27 +159,30 @@ export function VerdictSummaryModal({
           {/* Detailed Judicial Assessment */}
           <div className="space-y-2 p-3.5 rounded-lg border border-zinc-200 bg-zinc-50/50">
             <div className="font-semibold text-zinc-900 text-xs">
-              Hon&apos;ble Bench Strategic Observations:
+              Bench Observations:
             </div>
             <div className="space-y-1.5 text-[11px] text-zinc-700">
-              <div className="flex items-start gap-1.5">
-                <CheckCircle2 className="size-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Decisive Cross-Examination:</strong> Questioning PW-1 on the 105-minute gap between physical seizure and inward registration broke the chain of custody.
+              {strengths.map((s, i) => (
+                <div key={`s-${i}`} className="flex items-start gap-1.5">
+                  <CheckCircle2 className="size-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Strength:</strong> {s}
+                  </span>
+                </div>
+              ))}
+              {weaknesses.map((w, i) => (
+                <div key={`w-${i}`} className="flex items-start gap-1.5">
+                  <CheckCircle2 className="size-3.5 text-amber-600 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Weakness:</strong> {w}
+                  </span>
+                </div>
+              ))}
+              {strengths.length === 0 && weaknesses.length === 0 && (
+                <span className="text-zinc-500">
+                  The bench did not return separate strengths or weaknesses for this session.
                 </span>
-              </div>
-              <div className="flex items-start gap-1.5">
-                <CheckCircle2 className="size-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Timely Precedent Reliance:</strong> Invoking <em>Arjun Panditrao (2020)</em> directly foreclosed the Public Prosecutor&apos;s reliance on secondary hash validity.
-                </span>
-              </div>
-              <div className="flex items-start gap-1.5">
-                <CheckCircle2 className="size-3.5 text-amber-600 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Next Phase Recommendation:</strong> In Stage 3 (Defense Evidence), produce DW-1 to authenticate the 23:52 HRS UPI receipt under Section 11 BSA to complete the alibi.
-                </span>
-              </div>
+              )}
             </div>
           </div>
 

@@ -33,7 +33,7 @@ No prose outside the JSON.`,
       { role: "user", content: `Case: ${caseRow.title}\nCharges: ${caseRow.charges}\n\nTranscript:\n${transcript || "(no turns recorded)"}` },
     ],
     maxTokens: 900,
-    temperature: 0.3,
+    temperature: 0,
   });
   const v = safeJson(raw);
 

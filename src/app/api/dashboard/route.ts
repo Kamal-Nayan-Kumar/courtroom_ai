@@ -15,7 +15,8 @@ export async function GET() {
     JOIN sessions se ON se.id = s.session_id
     WHERE ${userId ?? ""} <> '' AND se.user_id = ${userId ?? ""}
   `;
-  const recentCases = await sql`SELECT * FROM cases ORDER BY seeded DESC, created_at DESC LIMIT 8`;
+  // Keep the guided demo focused on the two seeded real cases.
+  const recentCases = await sql`SELECT * FROM cases WHERE seeded = true ORDER BY created_at ASC LIMIT 2`;
   const recentSessions = userId
     ? await sql`
         SELECT se.id, se.case_id, se.student_role, se.started_at, se.status, s.overall, s.judge_summary

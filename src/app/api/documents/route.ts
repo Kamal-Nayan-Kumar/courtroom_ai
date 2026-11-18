@@ -1,6 +1,7 @@
 import { db } from "@/lib/db";
 import { auth } from "@/lib/auth/server";
 import { chunkText } from "@/lib/chunk";
+import { embed, EMBED_DIM } from "@/lib/embed";
 // pdf-parse ships no types, the runtime shape is a single function.
 // Import the lib entry directly to skip the package index.js debug harness
 // (it tries to read a test pdf when module.parent is unset, which breaks Turbopack).
@@ -100,15 +101,31 @@ export async function POST(req: Request) {
     RETURNING *
   `;
 
+  // Generate embeddings for the chunks using Qwen3-Embedding-8B
+  let vectors: number[][] = [];
+  try {
+    vectors = await embed(chunks.map((c) => c.text));
+  } catch (err) {
+    console.warn("[documents] failed to generate embeddings during upload:", err);
+  }
+
   for (let i = 0; i < chunks.length; i += 25) {
     const batch = chunks.slice(i, i + 25);
     await Promise.all(
-      batch.map(
-        (chunk) => sql`
-          INSERT INTO chunks (document_id, case_id, section_label, text, token_count)
-          VALUES (${document.id}, ${caseId}, ${""}, ${chunk.text}, ${chunk.tokenCount})
-        `
-      )
+      batch.map((chunk, bIdx) => {
+        const globalIdx = i + bIdx;
+        const vec = vectors[globalIdx];
+        const vecStr = vec && vec.length === EMBED_DIM ? `[${vec.join(",")}]` : null;
+        return vecStr
+          ? sql`
+              INSERT INTO chunks (document_id, case_id, section_label, text, token_count, embedding)
+              VALUES (${document.id}, ${caseId}, ${""}, ${chunk.text}, ${chunk.tokenCount}, ${vecStr}::vector)
+            `
+          : sql`
+              INSERT INTO chunks (document_id, case_id, section_label, text, token_count)
+              VALUES (${document.id}, ${caseId}, ${""}, ${chunk.text}, ${chunk.tokenCount})
+            `;
+      })
     );
   }
 

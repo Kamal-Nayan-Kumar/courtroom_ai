@@ -88,13 +88,13 @@ export function StartCaseModal() {
     showNotification(
       `Launching Courtroom AI with ${selectedRole === "defense" ? "Defense Counsel" : "Public Prosecutor"} role.`
     );
-    router.push("/#simulation");
+    router.push("/case/delhi-liquor-2022/courtroom");
   };
 
   const handleGoToWitnessPrep = () => {
     setIsNewCaseOpen(false);
-    showNotification("Redirecting to Pre-Trial Witness Prep Lab.");
-    router.push("/#workflow");
+    showNotification("Redirecting to Case Prep Studio.");
+    router.push("/case/delhi-liquor-2022/prep");
   };
 
   return (

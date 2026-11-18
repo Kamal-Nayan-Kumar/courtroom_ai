@@ -131,7 +131,7 @@ export function CaseHeaderSticky({
             size="sm"
             className="h-10 px-4 text-xs font-semibold bg-zinc-950 text-white hover:bg-zinc-800 shadow-md w-full"
           >
-            <Link href="/case/402/courtroom" className="flex items-center gap-2 justify-center">
+            <Link href="/case/delhi-liquor-2022/courtroom" className="flex items-center gap-2 justify-center">
               <span className="size-2 rounded-full bg-emerald-400 animate-pulse" />
               <span>Enter 2D Courtroom Session</span>
               <ArrowRight className="size-3.5 ml-0.5 text-zinc-300" />
