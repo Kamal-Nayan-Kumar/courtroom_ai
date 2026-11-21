@@ -42,7 +42,7 @@ An autonomous, multi-agent courtroom simulation and legal research platform tail
 
 ---
 
-## 📚 1. Legal Knowledge Base & Corpus (914 Chunks Across 5 Matters)
+## 📚 1. Legal Knowledge Base & Corpus (9,862 Chunks Across 16 Documents)
 
 The knowledge base is indexed with genuine legal reference documents and simulation trial dossiers (100% 4096-dim Qwen3 vectors, 0 skipped, 0 nulls):
 
@@ -53,6 +53,25 @@ The knowledge base is indexed with genuine legal reference documents and simulat
 | **3** | **Sita Soren v. Union of India (2024)** | `2024 INSC 161` (7-Judge Bench) | Legislative privileges (Articles 105/194), bribery criminal liability, overruling *P.V. Narasimha Rao*. | Full reported judgment | 236 |
 | **4** | **Bilkis Yakub Rasool v. Union of India (2024)** | `2024 INSC 24` (2-Judge Bench) | Remission of life sentences (Section 432 CrPC), appropriate government doctrine, judicial review. | Full reported judgment | 380 |
 | **5** | **Sukanya Shantha v. Union of India (2024)** | `2024 INSC 753` (2-Judge Bench) | Prison caste discrimination (Articles 14, 15, 17, 21), striking down discriminatory colonial manuals. | Full reported judgment | 286 |
+
+### Landmark Judgment Corpus (10 further Supreme Court judgments)
+
+Verbatim official judgment text sourced from Indian Kanoon (`scripts/extract-judgments.mjs`), chunked and embedded with the same Qwen3-Embedding-8B pipeline:
+
+| # | Judgment | Citation / Bench | Key Legal Topics | Chunks |
+|---|----------|------------------|------------------|:------:|
+| **6** | **Kesavananda Bharati Sripadagalvaru v. State of Kerala** | `AIR 1973 SC 1461` (13-Judge Constitution Bench) | Basic structure doctrine (Art. 368), parliamentary sovereignty, Arts. 13, 25, 32. | 3,549 |
+| **7** | **Additional District Magistrate, Jabalpur v. Shivakant Shukla** | `AIR 1976 SC 1207` (5-Judge Bench) | Habeas corpus during the Emergency, Art. 21, MISA detenues (overruled in 2021). | 1,151 |
+| **8** | **Maneka Gandhi v. Union of India** | `1978 AIR 597` (7-Judge Bench) | Art. 21 "procedure established by law", passport impoundment, natural justice. | 742 |
+| **9** | **Hussainara Khatoon v. Home Secretary, State of Bihar** | `1979 AIR 1360` (3-Judge Bench) | Undertrial prisoners, speedy trial, bail without sureties (Arts. 14, 21). | 61 |
+| **10** | **Vishaka v. State of Rajasthan** | `AIR 1997 SC 3011` (3-Judge Bench) | Sexual-harassment-at-workplace guidelines, Arts. 14, 15, 21, 32. | 33 |
+| **11** | **D.K. Basu v. State of West Bengal** | `AIR 1997 SC 610` (2-Judge Bench) | Arrest safeguards, custodial deaths, arrest memoranda (Arts. 21, 22; CrPC §§ 54, 55, 57, 167). | 95 |
+| **12** | **Shreya Singhal v. Union of India** | `2015 INSC 257` (2-Judge Bench) | Struck down IT Act § 66A, Art. 19(1)(a), intermediary takedown rules (§§ 69A, 79). | 239 |
+| **13** | **K.S. Puttaswamy (Retd.) v. Union of India** | `2017 INSC 801` (9-Judge Constitution Bench) | Right to privacy under Art. 21, overruling *M.P. Sharma* and *Kharak Singh*. | 1,214 |
+| **14** | **Mukesh v. State (NCT of Delhi)** | `2017 INSC 448` (3-Judge Bench) | Nirbhaya appeal: gang rape, death penalty, IPC §§ 302, 376A, 376D, 376E. | 844 |
+| **15** | **Navtej Singh Johar v. Union of India** | `2018 INSC 790` (5-Judge Constitution Bench) | Struck down IPC § 377, sexual orientation, Arts. 14, 15, 19, 21. | 999 |
+
+Re-run the pipeline with `node scripts/extract-judgments.mjs --only <id>` → `node scripts/ingest-judgments.mjs` → `node scripts/backfill-embeddings.mjs`, then check everything with `node scripts/verify-judgment-corpus.mjs`.
 
 ---
 
@@ -218,7 +237,7 @@ npm run dev
 
 ## ⚖️ Academic Limitations & Ethical Governance
 
-1. **Corpus Scope**: Currently indexed across five genuine legal matters (914 chunks); expanding to broader commercial and High Court jurisprudence is ongoing.
+1. **Corpus Scope**: Currently indexed across 16 documents — 13 verbatim Supreme Court judgments (including 10 landmark constitution-bench and civil/criminal precedents) and 3 trial dossiers, 9,862 chunks; expanding to broader commercial and High Court jurisprudence is ongoing.
 2. **Judicial Score Variance**: Automated Bench Appraisal scores exhibit a 1–2 point variance across repeated runs due to LLM sampling dynamics.
 3. **Faithfulness Evaluation**: Evaluated across a scoreable sample of $n=27$ turns.
 4. **Governance Disclaimer**: All judicial, witness, and opposing counsel personas are synthetic educational simulations. Courtroom AI is strictly an educational training sandbox for law students, **not legal advice**.

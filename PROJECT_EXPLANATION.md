@@ -15,7 +15,7 @@
 2. [The Pedagogical Problem & Research Motivation](#2-the-pedagogical-problem--research-motivation)
 3. [System Architecture & Engineering Stack](#3-system-architecture--engineering-stack)
 4. [Relational Data Model & State Machine](#4-relational-data-model--state-machine)
-5. [The Legal Knowledge Corpus (914 Chunks, 5 Matters)](#5-the-legal-knowledge-corpus-914-chunks-5-matters)
+5. [The Legal Knowledge Corpus (9,862 Chunks, 16 Documents)](#5-the-legal-knowledge-corpus-9862-chunks-16-documents)
 6. [Vector Representation & Qwen-3 Cloud Migration (4096-D)](#6-vector-representation--qwen-3-cloud-migration-4096-d)
 7. [Hybrid RAG Retrieval Engine & Cross-Case Scope Fix](#7-hybrid-rag-retrieval-engine--cross-case-scope-fix)
 8. [Anti-Hallucination Engineering: Negative Constraints](#8-anti-hallucination-engineering-negative-constraints)
@@ -151,9 +151,9 @@ A student practice session progresses through deterministic states:
 
 ---
 
-## 5. The Legal Knowledge Corpus (914 Chunks, 5 Matters)
+## 5. The Legal Knowledge Corpus (9,862 Chunks, 16 Documents)
 
-The knowledge base contains **914 indexed chunks** across five genuine legal matters (100% carrying valid 4096-dimensional Qwen3 embeddings):
+The knowledge base contains **9,862 indexed chunks** across 16 documents — 3 trial dossiers and 13 verbatim Supreme Court judgments (100% carrying valid 4096-dimensional Qwen3 embeddings):
 
 ### 1. Two Seeded Trial Simulation Matters (Playable Dossiers)
 - **State v. Arvind Kejriwal (Delhi Liquor Policy Trial, 2022-DLP-01)**:
@@ -164,7 +164,10 @@ The knowledge base contains **914 indexed chunks** across five genuine legal mat
   - *Domain*: Constitutional Law & Fundamental Rights.
   - *Statutory Focus*: Articles 14, 19(1)(a), voter right to information, corporate political contributions.
 
-### 2. Three Verbatim Supreme Court Reference Judgments
+### 2. Thirteen Verbatim Supreme Court Reference Judgments
+
+**Original three (2024 term):**
+
 - **Sita Soren v. Union of India (`2024 INSC 161`, 7-Judge Constitution Bench)**:
   - Overruled the 1998 *P.V. Narasimha Rao* precedent.
   - Held that parliamentary privilege under Articles 105(2) and 194(2) does not grant immunity to legislators who accept bribes to cast a vote or give a speech.
@@ -173,6 +176,21 @@ The knowledge base contains **914 indexed chunks** across five genuine legal mat
   - Clarified the "appropriate government" doctrine: the state where the trial was held (Maharashtra) has sole jurisdiction, holding Gujarat's remission orders null and void due to usurpation of power.
 - **Sukanya Shantha v. Union of India (`2024 INSC 753`, 2-Judge Bench)**:
   - Struck down discriminatory prison manual provisions across multiple states that assigned prison labor and barracks based on caste hierarchy as violating Articles 14, 15, 17, 21, and 23.
+
+**Ten landmark judgments drawn from the official Supreme Court record (Indian Kanoon carries the verbatim judgment text):**
+
+| Judgment | Citation | Bench | Holding |
+|---|---|---|---|
+| Kesavananda Bharati v. State of Kerala | `AIR 1973 SC 1461` | 13-Judge Constitution Bench | Established the **basic structure doctrine** — Parliament may amend the Constitution under Art. 368 but not its basic features. |
+| A.D.M. Jabalpur v. Shivakant Shukla | `AIR 1976 SC 1207` | 5-Judge Bench | Held no citizen could move court for habeas corpus during the Emergency; **overruled** by *Puttaswamy* in 2021. |
+| Maneka Gandhi v. Union of India | `1978 AIR 597` | 7-Judge Bench | Art. 21's "procedure established by law" must be fair, just and reasonable — passport impoundment struck down. |
+| Hussainara Khatoon v. Home Secretary, Bihar | `1979 AIR 1360` | 3-Judge Bench | Undertrial prisoners are entitled to a speedy trial; bail and legal aid as aspects of Art. 21. |
+| Vishaka v. State of Rajasthan | `AIR 1997 SC 3011` | 3-Judge Bench | Court-drawn **guidelines against sexual harassment at the workplace** pending legislation (Arts. 14, 15, 21, 32). |
+| D.K. Basu v. State of West Bengal | `AIR 1997 SC 610` | 2-Judge Bench | Binding **arrest safeguards** — memoranda, family notification, medical examination — against custodial death. |
+| Shreya Singhal v. Union of India | `2015 INSC 257` | 2-Judge Bench | Struck down **IT Act § 66A** and required reasoned orders for blocking under § 69A (Art. 19(1)(a)). |
+| K.S. Puttaswamy (Retd.) v. Union of India | `2017 INSC 801` | 9-Judge Constitution Bench | **Right to privacy** is an intrinsic part of life and liberty under Art. 21; overruled *M.P. Sharma* and *Kharak Singh*. |
+| Mukesh v. State (NCT of Delhi) | `2017 INSC 448` | 3-Judge Bench | Nirbhaya appeal — death sentences upheld for gang rape and murder (IPC §§ 302, 376A, 376D, 376E). |
+| Navtej Singh Johar v. Union of India | `2018 INSC 790` | 5-Judge Constitution Bench | Struck down **IPC § 377** — consensual intimacy between adults is protected under Arts. 14, 15, 19 and 21. |
 
 ---
 
@@ -366,7 +384,7 @@ When presenting Courtroom AI to evaluators, follow this exact sequential walkthr
 ## 15. Academic Limitations, Failure Modes & Governance
 
 Responsible AI demands transparent disclosure of current system boundaries:
-1. **Corpus Scope**: Currently indexed across five genuine legal matters (914 chunks). Expanding to commercial litigation and High Court records is ongoing.
+1. **Corpus Scope**: Currently indexed across 16 documents — 13 verbatim Supreme Court judgments (including 10 landmark precedents) and 3 trial dossiers, 9,862 chunks. Expanding to commercial litigation and High Court records is ongoing.
 2. **Judicial Score Variance**: Automated Bench Appraisal scores exhibit a 1–2 point variance across repeated runs on identical transcripts due to LLM sampling dynamics.
 3. **Faithfulness Sample**: Faithfulness evaluated on a bounded scoreable sample of $n=27$ turns.
 4. **Ethical Governance**: All judicial, witness, and counsel personas are synthetic educational simulations. Courtroom AI is strictly an educational training tool, **not legal advice**.

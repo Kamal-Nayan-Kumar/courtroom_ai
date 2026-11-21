@@ -82,6 +82,31 @@ const LABELLED_SET = {
     { q: "What are the legislative privileges regarding parliamentary speech?", expected: ["2024 INSC 161"], caseId: null },
     { q: "What are the rights of prisoners under Articles 14 and 21?", expected: ["2024 INSC 753"], caseId: null },
   ],
+  // Queries whose gold document is one of the ten landmark judgments added later.
+  // Kept in a separate bucket so __cross_case__ stays comparable with the
+  // baseline recorded in data/eval-results.json.
+  "__new_judgments__": [
+    { q: "Can Parliament alter the basic structure of the Constitution under Article 368?", expected: ["AIR 1973 SC 1461"] },
+    { q: "What is the basic structure doctrine of the Constitution?", expected: ["AIR 1973 SC 1461"] },
+    { q: "Could a citizen challenge his detention during the Emergency by filing habeas corpus?", expected: ["AIR 1976 SC 1207"] },
+    { q: "What did the Supreme Court hold about Article 21 during the Emergency?", expected: ["AIR 1976 SC 1207"] },
+    { q: "Does Article 21 require the procedure established by law to be fair, just and reasonable?", expected: ["1978 AIR 597"] },
+    { q: "On what grounds can the government impound a passport under natural justice?", expected: ["1978 AIR 597"] },
+    { q: "Are undertrial prisoners entitled to a speedy trial?", expected: ["1979 AIR 1360"] },
+    { q: "Can an accused be released on a personal bond without sureties?", expected: ["1979 AIR 1360"] },
+    { q: "What guidelines did the Supreme Court frame to prevent sexual harassment at the workplace?", expected: ["AIR 1997 SC 3011"] },
+    { q: "Who must constitute the internal complaint committee against workplace harassment?", expected: ["AIR 1997 SC 3011"] },
+    { q: "What safeguards must the police follow when arresting a person?", expected: ["AIR 1997 SC 610"] },
+    { q: "Must a friend or relative of an arrested person be informed about the arrest?", expected: ["AIR 1997 SC 610"] },
+    { q: "Is Section 66A of the Information Technology Act unconstitutional?", expected: ["2015 INSC 257"] },
+    { q: "Can the government block internet content without a reasoned order under Section 69A?", expected: ["2015 INSC 257"] },
+    { q: "Is the right to privacy a fundamental right protected by Article 21?", expected: ["2017 INSC 801"] },
+    { q: "Which earlier judgments did the nine-judge bench overrule on the question of privacy?", expected: ["2017 INSC 801"] },
+    { q: "What sentence did the Supreme Court confirm in the Nirbhaya gang rape appeal?", expected: ["2017 INSC 448"] },
+    { q: "Which sections of the Indian Penal Code were applied in the Nirbhaya case?", expected: ["2017 INSC 448"] },
+    { q: "Did the Supreme Court strike down Section 377 of the Indian Penal Code?", expected: ["2018 INSC 790"] },
+    { q: "Is consensual sex between adults protected under Articles 14, 15 and 21?", expected: ["2018 INSC 790"] },
+  ],
 };
 
 function keywordScore(text, terms) {
@@ -118,17 +143,32 @@ async function embedOne(text) {
   return vec;
 }
 
-async function keywordRetrieve(sql, caseId, question, limit) {
+// Keyword candidates are static for a given scope, so fetch each pool once
+// instead of re-downloading the corpus for every question. The unscoped pool
+// must cover the whole index: limiting it to the oldest N rows silently
+// excludes every judgment ingested later, which made keyword/hybrid settings
+// unable to retrieve them at all.
+const keywordPoolCache = new Map();
+
+async function keywordPool(sql, caseId) {
+  const key = caseId ?? "__all__";
+  if (keywordPoolCache.has(key)) return keywordPoolCache.get(key);
   const rows = caseId
     ? await sql`
         SELECT section_label, text FROM chunks
         WHERE case_id = ${caseId}
-        ORDER BY created_at ASC LIMIT 200
+        ORDER BY created_at ASC
       `
     : await sql`
         SELECT section_label, text FROM chunks
-        ORDER BY created_at ASC LIMIT 500
+        ORDER BY created_at ASC
       `;
+  keywordPoolCache.set(key, rows);
+  return rows;
+}
+
+async function keywordRetrieve(sql, caseId, question, limit) {
+  const rows = await keywordPool(sql, caseId);
   const terms = termsOf(question);
   const scored = rows.map((r) => ({
     section_label: String(r.section_label ?? ""),
@@ -229,17 +269,24 @@ async function main() {
   const perCase = {};
 
   for (const [caseId, items] of Object.entries(LABELLED_SET)) {
-    const effectiveCaseId = caseId === "__cross_case__" ? null : caseId;
-    const label = caseId === "__cross_case__" ? "cross-case (all judgments)" : caseId;
+    const isCrossCase = caseId.startsWith("__");
+    const effectiveCaseId = isCrossCase ? null : caseId;
+    const label = caseId === "__cross_case__"
+      ? "cross-case (all judgments)"
+      : isCrossCase
+        ? "cross-case (new landmark judgments)"
+        : caseId;
 
     const rows = effectiveCaseId
       ? await sql`
           SELECT section_label, text, embedding IS NOT NULL AS has_embedding
           FROM chunks WHERE case_id = ${effectiveCaseId}
         `
-      : await sql`
+      : // Whole corpus — this pool must not be truncated, or the metrics describe
+        // an arbitrary subset of the index rather than the index itself.
+        await sql`
           SELECT section_label, text, embedding IS NOT NULL AS has_embedding
-          FROM chunks LIMIT 1000
+          FROM chunks
         `;
     const embeddedCount = rows.filter((r) => r.has_embedding).length;
 

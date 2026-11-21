@@ -59,6 +59,15 @@ if (!OPENROUTER_API_KEY) {
 
 const sql = neon(DATABASE_URL);
 
+// An interrupted run is not a failure: rows keep embedding IS NULL and the next
+// run resumes exactly where this one stopped. Say so instead of dying silently.
+for (const signal of ["SIGINT", "SIGTERM"]) {
+  process.on(signal, () => {
+    console.log(`\n[backfill] ${signal} received — stopped cleanly. Re-run to resume the remaining chunks.`);
+    process.exit(130);
+  });
+}
+
 async function embedBatch(texts) {
   let lastError = null;
 
@@ -118,8 +127,14 @@ async function main() {
   let skipped = 0;
   let processed = 0;
 
+  const [stats] = await sql`
+    SELECT COUNT(*)::int AS total, COUNT(embedding)::int AS embedded FROM chunks
+  `;
   console.log(`[backfill] Qwen3-Embedding-8B via OpenRouter`);
   console.log(`[backfill] batchSize=${BATCH_SIZE} limit=${LIMIT ?? "all"} expectedDim=${EMBED_DIM}`);
+  console.log(
+    `[backfill] corpus=${stats.total} alreadyEmbedded=${stats.embedded} toEmbed=${Number(stats.total) - Number(stats.embedded)}`,
+  );
 
   for (;;) {
     const batch = await sql`
@@ -163,9 +178,16 @@ async function main() {
     }
 
     processed += batch.length;
-    console.log(`[backfill] batch done: processed=${processed} updated=${updated} skipped=${skipped}`);
+    const remaining = await sql`
+      SELECT COUNT(*)::int AS count FROM chunks WHERE embedding IS NULL
+    `;
+    const left = Number(remaining[0]?.count ?? 0);
+    console.log(
+      `[backfill] batch done: processed=${processed} updated=${updated} skipped=${skipped} remaining=${left}`,
+    );
 
     if (LIMIT != null && processed >= LIMIT) break;
+    if (left === 0) break;
 
     // Brief pause between batches to avoid rate limits
     await new Promise((r) => setTimeout(r, 500));
