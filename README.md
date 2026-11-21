@@ -119,6 +119,17 @@ WHERE (case_id = :active_case OR case_id IS NULL)
 ### Empirical Proof
 Querying *"Does parliamentary privilege protect a legislator who takes a bribe?"* inside the Delhi Liquor prep page retrieves **6/6 top chunks from *Sita Soren* (`2024 INSC 161`)** with **0.8255 cosine similarity** (previously 0 chunks).
 
+### Landmark-Judgment Practice Cases (`case-or-doc`)
+All ten landmark judgments are also playable practice dossiers. Each `SeedCase` in `src/lib/seed.ts` carries a `sourceDocTitle`; seeding resolves it to the judgment's `documents` row and stores it in `cases.source_document_id`. Research from a judgment prep page then uses:
+
+```sql
+WHERE embedding IS NOT NULL AND (case_id = :active_case OR document_id = :linked_judgment)
+```
+
+So asking about Complaints Committees from the *Vishaka* prep page grounds the answer in *Vishaka* plus that dossier's own exhibits, rather than the whole 9,862-chunk corpus. Cases with no linked judgment keep `case-or-null`. Judgment paragraphs are **not duplicated** — the 8,927 ingested chunks are reused by reference.
+
+The public library shows 16 cards: 10 judgment dossiers plus the 6 original fictional benchmarks. Friendly ids (`pub-1`…`pub-6`, `402`, `184`) resolve through `src/lib/caseAliases.ts`, shared by the library grid and the case/session API routes.
+
 ---
 
 ## 🛡️ 5. Anti-Hallucination & Evidentiary Fidelity

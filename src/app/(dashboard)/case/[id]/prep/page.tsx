@@ -16,6 +16,7 @@ interface CaseDetail {
   parties: Array<{ side: string; name: string; role: string; persona_prompt: string; is_witness: boolean; personality: string }>;
   evidence: Array<{ id: string; exhibit_label: string; title: string; description: string; content: string }>;
   chunks: Array<{ id: string; section_label: string; text: string; token_count: number }>;
+  linkedDocument?: { id: string; title: string; kind: string; chunkCount: number } | null;
 }
 
 interface ChatMsg {
@@ -203,6 +204,14 @@ export default function CasePrepStudioPage(props?: {
         </div>
 
         <TabsContent value="case-file" className="focus-visible:outline-none space-y-3">
+          {detail.linkedDocument && (
+            <div className="p-3 rounded-xl border border-amber-200 bg-amber-50/70 text-xs text-amber-900">
+              <span className="font-semibold">Research base:</span>{" "}
+              {detail.linkedDocument.title}
+              <span className="text-amber-700"> — {detail.linkedDocument.chunkCount.toLocaleString()} indexed paragraphs. </span>
+              Ask the research assistant to retrieve the full judgment.
+            </div>
+          )}
           <div className="grid md:grid-cols-2 gap-4">
             <div className="p-4 rounded-xl border border-zinc-200 bg-white space-y-2">
               <h2 className="text-sm font-bold text-zinc-950">Exhibits</h2>

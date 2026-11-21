@@ -6,6 +6,7 @@
  * Scope modes:
  *   case                — case_id = X only (current production behavior)
  *   case-or-null        — case_id = X OR case_id IS NULL (adds judgments)
+ *   case-or-doc         — case_id = X OR the case's linked judgment document
  *   global              — all chunks with embeddings (current eval behavior)
  */
 import { db, type Row } from "./db.ts";
@@ -28,12 +29,14 @@ async function embedCached(q: string, instructionPrefix?: string): Promise<numbe
   return v;
 }
 
-export type ScopeMode = "case" | "case-or-null" | "global";
+export type ScopeMode = "case" | "case-or-null" | "case-or-doc" | "global";
 
 export interface RetrieveOptions {
   question: string;
   caseId?: string | null;
   scope?: ScopeMode;
+  /** Document linked to the case (cases.source_document_id) for case-or-doc. */
+  documentId?: string | null;
   kwWeight?: number;
   cosineWeight?: number;
   limit?: number;
@@ -72,6 +75,7 @@ async function vectorCandidates(
   scope: ScopeMode,
   caseId: string | null | undefined,
   limit: number,
+  documentId?: string | null,
 ) {
   if (scope === "global") {
     return sql`
@@ -105,6 +109,28 @@ async function vectorCandidates(
       LIMIT ${limit}
     `;
   }
+  if (scope === "case-or-doc") {
+    // The case's own chunks plus the specific judgment it is built on. A case
+    // without a linked document falls back to the whole judgment pool.
+    if (documentId) {
+      return sql`
+        SELECT id, section_label, text, document_id,
+               1 - (embedding <=> ${vecStr}::vector) AS score
+        FROM chunks
+        WHERE embedding IS NOT NULL AND (case_id = ${caseId} OR document_id = ${documentId})
+        ORDER BY embedding <=> ${vecStr}::vector
+        LIMIT ${limit}
+      `;
+    }
+    return sql`
+      SELECT id, section_label, text, document_id,
+             1 - (embedding <=> ${vecStr}::vector) AS score
+      FROM chunks
+      WHERE embedding IS NOT NULL AND (case_id = ${caseId} OR case_id IS NULL)
+      ORDER BY embedding <=> ${vecStr}::vector
+      LIMIT ${limit}
+    `;
+  }
   // scope === "case"
   return sql`
     SELECT id, section_label, text, document_id,
@@ -121,6 +147,7 @@ async function keywordCandidates(
   scope: ScopeMode,
   caseId: string | null | undefined,
   minCandidates: number,
+  documentId?: string | null,
 ) {
   if (scope === "global") {
     return sql`
@@ -140,6 +167,20 @@ async function keywordCandidates(
       SELECT id, section_label, text, document_id FROM chunks
       WHERE case_id = ${caseId} OR case_id IS NULL
       ORDER BY created_at ASC LIMIT ${minCandidates}
+    `;
+  }
+  if (scope === "case-or-doc") {
+    // No LIMIT here: the pool is one case plus one judgment, and truncating it
+    // by created_at would drop exactly the chunks a keyword fallback needs.
+    if (documentId) {
+      return sql`
+        SELECT id, section_label, text, document_id FROM chunks
+        WHERE case_id = ${caseId} OR document_id = ${documentId}
+      `;
+    }
+    return sql`
+      SELECT id, section_label, text, document_id FROM chunks
+      WHERE case_id = ${caseId} OR case_id IS NULL
     `;
   }
   return sql`
@@ -174,6 +215,7 @@ export async function retrieve(opts: RetrieveOptions) {
     minCandidates = 100,
     mode = "hybrid",
     instructionPrefix,
+    documentId = null,
   } = opts;
 
   const sql = db();
@@ -183,7 +225,7 @@ export async function retrieve(opts: RetrieveOptions) {
   let usedVector = false;
 
   if (mode === "keyword-only") {
-    const keywordRows = await keywordCandidates(sql, scope, caseId, minCandidates);
+    const keywordRows = await keywordCandidates(sql, scope, caseId, minCandidates, documentId);
     rows = await rankKeywordRows(keywordRows as unknown as Record<string, unknown>[], terms);
     return { usedVector: false, terms, results: rows.slice(0, limit), allCandidates: rows.length };
   }
@@ -192,7 +234,7 @@ export async function retrieve(opts: RetrieveOptions) {
     const vec = await embedCached(question, instructionPrefix);
     if (vec) {
       const vecStr = `[${vec.join(",")}]`;
-      const candidates = await vectorCandidates(sql, vecStr, scope, caseId, 10);
+      const candidates = await vectorCandidates(sql, vecStr, scope, caseId, 10, documentId);
       if (candidates.length) {
         rows = (candidates as Row[]).map((r) => {
           const id = String(r.id ?? "");
@@ -212,7 +254,7 @@ export async function retrieve(opts: RetrieveOptions) {
   }
 
   if (!usedVector) {
-    const keywordRows = await keywordCandidates(sql, scope, caseId, minCandidates);
+    const keywordRows = await keywordCandidates(sql, scope, caseId, minCandidates, documentId);
     rows = await rankKeywordRows(keywordRows as unknown as Record<string, unknown>[], terms);
   }
 

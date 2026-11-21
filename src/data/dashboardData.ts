@@ -227,6 +227,7 @@ export const ACTIVE_DOCKET: ActiveDocketItem[] = [
 export const PUBLIC_CASE_LIBRARY: PublicPracticeCase[] = [
   {
     id: "pub-1",
+    caseId: "case-402",
     title: "The Midnight Highway Hit & Run",
     citation: "CR-SIM-2026/01",
     court: "Sessions Court Practice Room",
@@ -243,6 +244,7 @@ export const PUBLIC_CASE_LIBRARY: PublicPracticeCase[] = [
   },
   {
     id: "pub-2",
+    caseId: "shreya-singhal-2015",
     title: "FinTech Deepfake & Voice Clone Fraud",
     citation: "CY-SIM-2026/08",
     court: "Special Cyber & Financial Crimes Bench",
@@ -259,6 +261,7 @@ export const PUBLIC_CASE_LIBRARY: PublicPracticeCase[] = [
   },
   {
     id: "pub-3",
+    caseId: "hussainara-1979",
     title: "Constitutional Bail & Personal Liberty Moot",
     citation: "CONST-MOOT-2026/04",
     court: "Supreme Court Division Bench (Simulation)",
@@ -275,6 +278,7 @@ export const PUBLIC_CASE_LIBRARY: PublicPracticeCase[] = [
   },
   {
     id: "pub-4",
+    caseId: "case-402",
     title: "State of Maharashtra vs. Arjun Sharma",
     citation: "CRL.A. 402/2026",
     court: "Sessions Court, Mumbai",
@@ -291,6 +295,7 @@ export const PUBLIC_CASE_LIBRARY: PublicPracticeCase[] = [
   },
   {
     id: "pub-5",
+    caseId: "puttaswamy-2017",
     title: "NLU National Moot: Environmental Public Trust",
     citation: "MOOT/2026/NLU-12",
     court: "Supreme Court of India (Moot Coram)",
@@ -307,6 +312,7 @@ export const PUBLIC_CASE_LIBRARY: PublicPracticeCase[] = [
   },
   {
     id: "pub-6",
+    caseId: "delhi-liquor-2022",
     title: "K. R. Rao vs. CBI: Disproportionate Assets",
     citation: "CBI-SPL-31/2026",
     court: "Special CBI Court, Bengaluru",
@@ -320,6 +326,176 @@ export const PUBLIC_CASE_LIBRARY: PublicPracticeCase[] = [
     primaryStatute: "Prevention of Corruption Act Sec 13(1)(b)",
     estimatedMinutes: 45,
     practiceCount: 430,
+  },
+  {
+    id: "kesavananda-1973",
+    caseId: "kesavananda-1973",
+    title: "Kesavananda Bharati v. State of Kerala",
+    citation: "AIR 1973 SC 1461",
+    court: "Supreme Court of India, 13-Judge Bench",
+    difficulty: "Moot Level",
+    statuteBadges: ["Article 368", "Basic Structure", "Article 13"],
+    keyTheme: "Parliament's amending power",
+    summary:
+      "The largest bench ever constituted to decide whether Parliament's power to amend the Constitution under Article 368 is unlimited. The Court holds that the 'basic structure' of the Constitution cannot be altered.",
+    factsSnippet:
+      "24th, 25th, 29th and 42nd Amendments challenged. Argue the outer limit of Article 368 against the fundamental rights in Part III.",
+    primaryStatute: "Article 368 · Basic Structure Doctrine",
+    estimatedMinutes: 60,
+    practiceCount: 1450,
+  },
+  {
+    id: "adm-jabalpur-1976",
+    caseId: "adm-jabalpur-1976",
+    title: "ADM, Jabalpur v. Shivakant Shukla",
+    citation: "AIR 1976 SC 1207",
+    court: "Supreme Court of India, 5-Judge Bench (Emergency)",
+    difficulty: "Hard",
+    statuteBadges: ["Article 21", "Habeas Corpus", "Article 226"],
+    keyTheme: "Detention during the Emergency",
+    summary:
+      "During the 1975 Emergency, detenus challenged preventive detention. A 4-1 majority held that during a Proclamation of Emergency no citizen could move any court for habeas corpus, even on Article 21.",
+    factsSnippet:
+      "Defence argues the majority's reasoning cannot survive. Attack the suspension of the right to life and the conflation of Article 21 with the mercy power.",
+    primaryStatute: "Article 21 · Habeas Corpus",
+    estimatedMinutes: 45,
+    practiceCount: 980,
+  },
+  {
+    id: "maneka-gandhi-1978",
+    caseId: "maneka-gandhi-1978",
+    title: "Maneka Gandhi v. Union of India",
+    citation: "1978 AIR 597",
+    court: "Supreme Court of India, 7-Judge Bench",
+    difficulty: "Medium",
+    statuteBadges: ["Article 21", "Article 14", "Passport Act"],
+    keyTheme: "Procedure established by law",
+    summary:
+      "The petitioner's passport was impounded without a hearing. The Court expands Article 21: the procedure must be fair, just and reasonable, and not fanciful or oppressive.",
+    factsSnippet:
+      "Argue whether a statutory provision that denies natural justice can survive, and test the inter-relation between Articles 14, 19 and 21.",
+    primaryStatute: "Article 21 · Natural Justice",
+    estimatedMinutes: 40,
+    practiceCount: 760,
+  },
+  {
+    id: "hussainara-1979",
+    caseId: "hussainara-1979",
+    title: "Hussainara Khatoon v. Home Secretary, State of Bihar",
+    citation: "1979 AIR 1360",
+    court: "Supreme Court of India, 3-Judge Bench",
+    difficulty: "Medium",
+    statuteBadges: ["Article 21", "Article 39A", "BNSS Sec 480"],
+    keyTheme: "Undertrial rights and speedy trial",
+    summary:
+      "A flood of undertrial prisoners, many detained for periods longer than the maximum sentence, moved the Court. The right to a speedy trial is read into Article 21, and bail on personal bond is ordered.",
+    factsSnippet:
+      "Defend a person in jail for years without conviction. Press the state on free legal aid, personal bond and the statutory bar on bail.",
+    primaryStatute: "Article 21 · Speedy Trial",
+    estimatedMinutes: 35,
+    practiceCount: 840,
+  },
+  {
+    id: "vishaka-1997",
+    caseId: "vishaka-1997",
+    title: "Vishaka v. State of Rajasthan",
+    citation: "AIR 1997 SC 3011",
+    court: "Supreme Court of India, 3-Judge Bench",
+    difficulty: "Medium",
+    statuteBadges: ["Article 14", "Article 19(1)(g)", "Article 21"],
+    keyTheme: "Workplace sexual harassment",
+    summary:
+      "Absence of domestic law on sexual harassment at work led the Court to frame binding guidelines under Article 32, reading gender equality and the right to work with dignity into the Constitution.",
+    factsSnippet:
+      "Draft and attack the Vishaka guidelines: the Internal Complaints Committee, the employer's duty, and the definition of 'workplace'.",
+    primaryStatute: "Article 21 · Gender Equality",
+    estimatedMinutes: 40,
+    practiceCount: 910,
+  },
+  {
+    id: "dk-basu-1996",
+    caseId: "dk-basu-1996",
+    title: "D.K. Basu v. State of West Bengal",
+    citation: "AIR 1997 SC 610",
+    court: "Supreme Court of India, 2-Judge Bench",
+    difficulty: "Medium",
+    statuteBadges: ["Article 21", "Article 22", "BNSS Sec 46"],
+    keyTheme: "Arrest safeguards and custodial torture",
+    summary:
+      "The Court laid down eleven binding safeguards for arrest and detention — arrest memos, notification to a friend or relative, medical examination and legal aid — to check custodial violence.",
+    factsSnippet:
+      "Impeach a confession and a seizure that breached the arrest protocol. Cross-examine the investigating officer on the memo and the diary entry.",
+    primaryStatute: "Article 21 · Arrest Protocol",
+    estimatedMinutes: 40,
+    practiceCount: 1120,
+  },
+  {
+    id: "shreya-singhal-2015",
+    caseId: "shreya-singhal-2015",
+    title: "Shreya Singhal v. Union of India",
+    citation: "2015 INSC 257",
+    court: "Supreme Court of India, 2-Judge Bench",
+    difficulty: "Hard",
+    statuteBadges: ["Article 19(1)(a)", "IT Act Sec 66A", "IT Act Sec 69A"],
+    keyTheme: "Online free speech",
+    summary:
+      "Section 66A of the IT Act criminalised 'offensive' online messages. The Court struck it down in its entirety as violative of Article 19(1)(a), and read down Section 69A blocking powers.",
+    factsSnippet:
+      "Argue vagueness and overbreadth, the chilling effect on speech, and the procedural safeguards required before the state blocks online content.",
+    primaryStatute: "Article 19(1)(a) · IT Act Sec 66A",
+    estimatedMinutes: 45,
+    practiceCount: 1330,
+  },
+  {
+    id: "puttaswamy-2017",
+    caseId: "puttaswamy-2017",
+    title: "K.S. Puttaswamy (Retd.) v. Union of India",
+    citation: "2017 INSC 801",
+    court: "Supreme Court of India, 9-Judge Bench",
+    difficulty: "Moot Level",
+    statuteBadges: ["Article 21", "Article 14", "Aadhaar"],
+    keyTheme: "Right to privacy",
+    summary:
+      "A nine-judge bench unanimously holds that privacy is a fundamental right intrinsic to life and personal liberty under Article 21, overruling M.P. Sharma and Kharak Singh.",
+    factsSnippet:
+      "Argue the three-part test for any privacy intrusion — legality, legitimacy and proportionality — and apply it to Aadhaar and data collection.",
+    primaryStatute: "Article 21 · Right to Privacy",
+    estimatedMinutes: 60,
+    practiceCount: 1680,
+  },
+  {
+    id: "mukesh-nirbhaya-2017",
+    caseId: "mukesh-nirbhaya-2017",
+    title: "Mukesh v. State (NCT of Delhi)",
+    citation: "2017 INSC 448",
+    court: "Supreme Court of India, 3-Judge Bench",
+    difficulty: "Hard",
+    statuteBadges: ["IPC Sec 302", "IPC Sec 376", "BNSS Sec 103"],
+    keyTheme: "Criminal trial and the death penalty",
+    summary:
+      "The 2012 Delhi gang rape and murder. The Court upholds the death sentence, applying the 'rarest of rare' test, and examines circumstantial evidence, confessions and the juvenile accused.",
+    factsSnippet:
+      "Defence attacks the recovery and the confessional statements; prosecution relies on the DNA evidence and the dying declaration.",
+    primaryStatute: "IPC Sec 302 · Rape and Murder",
+    estimatedMinutes: 50,
+    practiceCount: 1520,
+  },
+  {
+    id: "navtej-johar-2018",
+    caseId: "navtej-johar-2018",
+    title: "Navtej Singh Johar v. Union of India",
+    citation: "2018 INSC 790",
+    court: "Supreme Court of India, 5-Judge Constitution Bench",
+    difficulty: "Moot Level",
+    statuteBadges: ["Article 14", "Article 15", "Article 21"],
+    keyTheme: "Consensual sex and human dignity",
+    summary:
+      "The Court reads down Section 377 of the Indian Penal Code insofar as it criminalised consensual sexual conduct between adults, holding that sexual orientation is intrinsic to dignity, privacy and liberty.",
+    factsSnippet:
+      "Argue that morality cannot be the basis for criminalising consenting adults, and test the transformative promise of Articles 14, 15 and 21.",
+    primaryStatute: "IPC Sec 377 · Article 21",
+    estimatedMinutes: 50,
+    practiceCount: 1290,
   },
 ];
 

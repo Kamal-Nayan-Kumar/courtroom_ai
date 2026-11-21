@@ -33,6 +33,8 @@ export interface ActiveDocketItem {
 
 export interface PublicPracticeCase {
   id: string;
+  /** Real case in the `cases` table that this card opens. */
+  caseId: string;
   title: string;
   citation: string;
   court: string;

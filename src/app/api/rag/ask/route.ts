@@ -2,6 +2,7 @@ import { db } from "@/lib/db";
 import { auth } from "@/lib/auth/server";
 import { chat } from "@/lib/llm";
 import { retrieve } from "@/lib/retrieval";
+import { resolveCaseId } from "@/lib/caseAliases";
 
 export const maxDuration = 60;
 
@@ -19,16 +20,28 @@ export async function POST(req: Request) {
 
   const body = (await req.json()) as { question?: string; caseId?: string; web?: boolean };
   const question = (body.question ?? "").trim().slice(0, 1500);
-  const caseId = body.caseId ?? null;
+  const caseId = body.caseId ? resolveCaseId(body.caseId) : null;
   if (!question) return Response.json({ error: "question required" }, { status: 400 });
 
-  // Retrieval is centralized in src/lib/retrieval.ts. The app uses case-or-null
-  // so playable cases can ground themselves in the judgment corpus (judgment
-  // chunks carry case_id IS NULL).
+  // A case built on a landmark judgment is scoped to that judgment, so its
+  // research is grounded in the case's own law rather than the whole corpus.
+  const sql = db();
+  let documentId: string | null = null;
+  if (caseId) {
+    const [row] = await sql`
+      SELECT source_document_id FROM cases WHERE id = ${caseId} LIMIT 1
+    `;
+    documentId = row?.source_document_id ?? null;
+  }
+
+  // Retrieval is centralized in src/lib/retrieval.ts. The app uses case-or-doc
+  // so playable cases ground themselves in their linked judgment (or, for
+  // cases without one, in the wider judgment corpus).
   const { results, usedVector } = await retrieve({
     question,
     caseId,
-    scope: "case-or-null",
+    scope: documentId ? "case-or-doc" : "case-or-null",
+    documentId,
     kwWeight: 0.4,
     cosineWeight: 0.6,
     limit: 6,

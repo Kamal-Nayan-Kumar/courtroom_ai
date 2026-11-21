@@ -1,5 +1,6 @@
 import { db } from "@/lib/db";
 import { auth } from "@/lib/auth/server";
+import { resolveCaseId } from "@/lib/caseAliases";
 
 
 export async function POST(req: Request) {
@@ -8,12 +9,7 @@ export async function POST(req: Request) {
   if (!userId) return Response.json({ error: "Not signed in" }, { status: 401 });
 
   const body = (await req.json()) as { caseId?: string; studentRole?: string; durationSec?: number };
-  let caseId = body.caseId;
-  if (caseId === "402") caseId = "case-402";
-  if (caseId === "184" || caseId === "case-184") caseId = "electoral-bonds-2024";
-  if (caseId === "pub-1") caseId = "delhi-liquor-2022";
-  if (caseId === "pub-2") caseId = "case-402";
-  if (caseId === "pub-3" || caseId === "pub-4") caseId = "electoral-bonds-2024";
+  const caseId = body.caseId ? resolveCaseId(body.caseId) : undefined;
   const studentRole = body.studentRole === "prosecution" ? "prosecution" : "defense";
   const duration = [120, 180, 300, 600].includes(body.durationSec ?? 180) ? (body.durationSec ?? 180) : 180;
   if (!caseId) return Response.json({ error: "caseId required" }, { status: 400 });

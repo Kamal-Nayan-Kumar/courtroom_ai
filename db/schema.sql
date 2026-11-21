@@ -20,6 +20,9 @@ CREATE TABLE IF NOT EXISTS cases (
   seeded BOOLEAN NOT NULL DEFAULT false,
   created_by TEXT,
   status TEXT NOT NULL DEFAULT 'open',
+  -- Practice cases built on a landmark judgment point at that judgment's
+  -- document so the case can reuse its chunks instead of duplicating them.
+  source_document_id UUID,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
