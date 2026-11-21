@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "eval": "node --experimental-strip-types scripts/eval-retrieval.mts",
+    "eval:check": "node --experimental-strip-types scripts/eval-retrieval.mts --check",
+    "test:e2e": "node scripts/e2e-smoke.mjs",
+    "verify": "npm run build && npx tsc --noEmit && npm run eval:check",
+    "verify:e2e": "npm run test:e2e"
   },
   "dependencies": {
     "@huggingface/transformers": "^4.3.2",

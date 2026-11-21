@@ -1,0 +1,430 @@
+{
+  "embedding_model": "qwen/qwen3-embedding-8b",
+  "embedding_dim": 4096,
+  "k": 5,
+  "timestamp": "2026-11-21T13:46:10.977Z",
+  "perCase": {
+    "delhi-liquor-2022": {
+      "label": "delhi-liquor-2022",
+      "questionCount": 12,
+      "chunkCount": 16,
+      "chunksWithEmbedding": 16,
+      "results_at_5": {
+        "keyword-only": {
+          "precision_at_k": 0.09999999999999999,
+          "recall_at_k": 0.4166666666666667,
+          "mrr": 0.3384785353535354,
+          "citation_accuracy": 0.25
+        },
+        "vector-only": {
+          "precision_at_k": 0.3333333333333334,
+          "recall_at_k": 0.9166666666666666,
+          "mrr": 0.8333333333333334,
+          "citation_accuracy": 0.75
+        },
+        "hybrid (0.4/0.6)": {
+          "precision_at_k": 0.38333333333333336,
+          "recall_at_k": 1,
+          "mrr": 1,
+          "citation_accuracy": 1
+        },
+        "hybrid (0.2/0.8)": {
+          "precision_at_k": 0.4000000000000001,
+          "recall_at_k": 1,
+          "mrr": 1,
+          "citation_accuracy": 1
+        },
+        "hybrid (0.6/0.4)": {
+          "precision_at_k": 0.3333333333333334,
+          "recall_at_k": 1,
+          "mrr": 1,
+          "citation_accuracy": 1
+        }
+      },
+      "results_at_10": {
+        "keyword-only": {
+          "precision_at_k": 0.05833333333333333,
+          "recall_at_k": 0.5,
+          "mrr": 0.3384785353535354,
+          "citation_accuracy": 0.25
+        },
+        "vector-only": {
+          "precision_at_k": 0.18333333333333335,
+          "recall_at_k": 0.9166666666666666,
+          "mrr": 0.8333333333333334,
+          "citation_accuracy": 0.75
+        },
+        "hybrid (0.4/0.6)": {
+          "precision_at_k": 0.19166666666666668,
+          "recall_at_k": 1,
+          "mrr": 1,
+          "citation_accuracy": 1
+        },
+        "hybrid (0.2/0.8)": {
+          "precision_at_k": 0.23333333333333336,
+          "recall_at_k": 1,
+          "mrr": 1,
+          "citation_accuracy": 1
+        },
+        "hybrid (0.6/0.4)": {
+          "precision_at_k": 0.18333333333333335,
+          "recall_at_k": 1,
+          "mrr": 1,
+          "citation_accuracy": 1
+        }
+      }
+    },
+    "electoral-bonds-2024": {
+      "label": "electoral-bonds-2024",
+      "questionCount": 8,
+      "chunkCount": 10,
+      "chunksWithEmbedding": 10,
+      "results_at_5": {
+        "keyword-only": {
+          "precision_at_k": 0.07500000000000001,
+          "recall_at_k": 0.375,
+          "mrr": 0.3125,
+          "citation_accuracy": 0.25
+        },
+        "vector-only": {
+          "precision_at_k": 0.19999999999999998,
+          "recall_at_k": 1,
+          "mrr": 0.8375,
+          "citation_accuracy": 0.75
+        },
+        "hybrid (0.4/0.6)": {
+          "precision_at_k": 0.25,
+          "recall_at_k": 1,
+          "mrr": 0.9375,
+          "citation_accuracy": 0.875
+        },
+        "hybrid (0.2/0.8)": {
+          "precision_at_k": 0.35,
+          "recall_at_k": 1,
+          "mrr": 0.875,
+          "citation_accuracy": 0.75
+        },
+        "hybrid (0.6/0.4)": {
+          "precision_at_k": 0.19999999999999998,
+          "recall_at_k": 0.875,
+          "mrr": 0.875,
+          "citation_accuracy": 0.875
+        }
+      },
+      "results_at_10": {
+        "keyword-only": {
+          "precision_at_k": 0.037500000000000006,
+          "recall_at_k": 0.375,
+          "mrr": 0.3125,
+          "citation_accuracy": 0.25
+        },
+        "vector-only": {
+          "precision_at_k": 0.13749999999999998,
+          "recall_at_k": 1,
+          "mrr": 0.8375,
+          "citation_accuracy": 0.75
+        },
+        "hybrid (0.4/0.6)": {
+          "precision_at_k": 0.15000000000000002,
+          "recall_at_k": 1,
+          "mrr": 0.9375,
+          "citation_accuracy": 0.875
+        },
+        "hybrid (0.2/0.8)": {
+          "precision_at_k": 0.21250000000000002,
+          "recall_at_k": 1,
+          "mrr": 0.875,
+          "citation_accuracy": 0.75
+        },
+        "hybrid (0.6/0.4)": {
+          "precision_at_k": 0.09999999999999999,
+          "recall_at_k": 0.875,
+          "mrr": 0.875,
+          "citation_accuracy": 0.875
+        }
+      }
+    },
+    "__cross_case__": {
+      "label": "cross-case (all judgments)",
+      "questionCount": 10,
+      "chunkCount": 9949,
+      "chunksWithEmbedding": 9949,
+      "results_at_5": {
+        "keyword-only": {
+          "precision_at_k": 0.6799999999999999,
+          "recall_at_k": 0.8,
+          "mrr": 0.8071428571428572,
+          "citation_accuracy": 0.8
+        },
+        "vector-only": {
+          "precision_at_k": 0.8400000000000001,
+          "recall_at_k": 0.9,
+          "mrr": 0.8395833333333333,
+          "citation_accuracy": 0.8
+        },
+        "hybrid (0.4/0.6)": {
+          "precision_at_k": 0.82,
+          "recall_at_k": 0.9,
+          "mrr": 0.8333333333333334,
+          "citation_accuracy": 0.8
+        },
+        "hybrid (0.2/0.8)": {
+          "precision_at_k": 0.82,
+          "recall_at_k": 0.9,
+          "mrr": 0.8392156862745098,
+          "citation_accuracy": 0.8
+        },
+        "hybrid (0.6/0.4)": {
+          "precision_at_k": 0.82,
+          "recall_at_k": 0.9,
+          "mrr": 0.8333333333333334,
+          "citation_accuracy": 0.8
+        }
+      },
+      "results_at_10": {
+        "keyword-only": {
+          "precision_at_k": 0.67,
+          "recall_at_k": 0.8,
+          "mrr": 0.8071428571428572,
+          "citation_accuracy": 0.8
+        },
+        "vector-only": {
+          "precision_at_k": 0.8300000000000001,
+          "recall_at_k": 0.9,
+          "mrr": 0.8395833333333333,
+          "citation_accuracy": 0.8
+        },
+        "hybrid (0.4/0.6)": {
+          "precision_at_k": 0.8300000000000001,
+          "recall_at_k": 0.9,
+          "mrr": 0.8333333333333334,
+          "citation_accuracy": 0.8
+        },
+        "hybrid (0.2/0.8)": {
+          "precision_at_k": 0.8400000000000001,
+          "recall_at_k": 0.9,
+          "mrr": 0.8392156862745098,
+          "citation_accuracy": 0.8
+        },
+        "hybrid (0.6/0.4)": {
+          "precision_at_k": 0.8300000000000001,
+          "recall_at_k": 0.9,
+          "mrr": 0.8333333333333334,
+          "citation_accuracy": 0.8
+        }
+      }
+    },
+    "__new_judgments__": {
+      "label": "cross-case (new landmark judgments)",
+      "questionCount": 20,
+      "chunkCount": 9949,
+      "chunksWithEmbedding": 9949,
+      "results_at_5": {
+        "keyword-only": {
+          "precision_at_k": 0.51,
+          "recall_at_k": 0.95,
+          "mrr": 0.7116666666666667,
+          "citation_accuracy": 0.55
+        },
+        "vector-only": {
+          "precision_at_k": 0.8300000000000001,
+          "recall_at_k": 1,
+          "mrr": 0.9099999999999999,
+          "citation_accuracy": 0.85
+        },
+        "hybrid (0.4/0.6)": {
+          "precision_at_k": 0.67,
+          "recall_at_k": 1,
+          "mrr": 0.8516666666666666,
+          "citation_accuracy": 0.75
+        },
+        "hybrid (0.2/0.8)": {
+          "precision_at_k": 0.67,
+          "recall_at_k": 1,
+          "mrr": 0.7766666666666667,
+          "citation_accuracy": 0.6
+        },
+        "hybrid (0.6/0.4)": {
+          "precision_at_k": 0.6799999999999999,
+          "recall_at_k": 1,
+          "mrr": 0.8266666666666665,
+          "citation_accuracy": 0.7
+        }
+      },
+      "results_at_10": {
+        "keyword-only": {
+          "precision_at_k": 0.505,
+          "recall_at_k": 0.95,
+          "mrr": 0.7116666666666667,
+          "citation_accuracy": 0.55
+        },
+        "vector-only": {
+          "precision_at_k": 0.85,
+          "recall_at_k": 1,
+          "mrr": 0.9099999999999999,
+          "citation_accuracy": 0.85
+        },
+        "hybrid (0.4/0.6)": {
+          "precision_at_k": 0.7550000000000001,
+          "recall_at_k": 1,
+          "mrr": 0.8516666666666666,
+          "citation_accuracy": 0.75
+        },
+        "hybrid (0.2/0.8)": {
+          "precision_at_k": 0.7550000000000001,
+          "recall_at_k": 1,
+          "mrr": 0.7766666666666667,
+          "citation_accuracy": 0.6
+        },
+        "hybrid (0.6/0.4)": {
+          "precision_at_k": 0.7450000000000002,
+          "recall_at_k": 1,
+          "mrr": 0.8266666666666665,
+          "citation_accuracy": 0.7
+        }
+      }
+    }
+  },
+  "summary": {
+    "keyword-only": {
+      "precision@5": 0.34125,
+      "recall@5": 0.6354166666666667,
+      "recall@10": 0.65625,
+      "mrr@10": 0.5424470147907647,
+      "citation_accuracy": 0.4625
+    },
+    "vector-only": {
+      "precision@5": 0.5508333333333334,
+      "recall@5": 0.9541666666666666,
+      "recall@10": 0.9541666666666666,
+      "mrr@10": 0.8551041666666668,
+      "citation_accuracy": 0.7875
+    },
+    "hybrid (0.4/0.6)": {
+      "precision@5": 0.5308333333333333,
+      "recall@5": 0.975,
+      "recall@10": 0.975,
+      "mrr@10": 0.905625,
+      "citation_accuracy": 0.85625
+    },
+    "hybrid (0.2/0.8)": {
+      "precision@5": 0.5599999999999999,
+      "recall@5": 0.975,
+      "recall@10": 0.975,
+      "mrr@10": 0.8727205882352942,
+      "citation_accuracy": 0.7875
+    },
+    "hybrid (0.6/0.4)": {
+      "precision@5": 0.5083333333333333,
+      "recall@5": 0.94375,
+      "recall@10": 0.94375,
+      "mrr@10": 0.88375,
+      "citation_accuracy": 0.84375
+    }
+  },
+  "holdings": {
+    "holdings_top3": 0.8,
+    "perCase": {
+      "kesavananda-1973": {
+        "question": "Can Parliament alter the basic structure of the Constitution under Article 368?",
+        "expectedLabel": "Majority holding: the basic structure limitation",
+        "hit": true,
+        "top3": [
+          "Majority holding: the basic structure limitation",
+          "Sankari Prasad and Sajjan Singh",
+          "Respondent's advocacy angles"
+        ]
+      },
+      "adm-jabalpur-1976": {
+        "question": "Could a citizen challenge his detention during the Emergency by filing habeas corpus?",
+        "expectedLabel": "Majority reasoning: locus standi and sole repository",
+        "hit": true,
+        "top3": [
+          "Factual background and the appeals",
+          "Questions before the Court",
+          "Majority reasoning: locus standi and sole repository"
+        ]
+      },
+      "maneka-gandhi-1978": {
+        "question": "Does Article 21 require the procedure established by law to be fair, just and reasonable?",
+        "expectedLabel": "Expanded Article 21: right, just and fair",
+        "hit": true,
+        "top3": [
+          "Expanded Article 21: right, just and fair",
+          "Issues before the seven-judge bench",
+          "Golden triangle: Articles 14, 19 and 21"
+        ]
+      },
+      "hussainara-1979": {
+        "question": "Are undertrial prisoners entitled to a speedy trial?",
+        "expectedLabel": "Holding - speedy trial",
+        "hit": true,
+        "top3": [
+          "Issues before the Court",
+          "Factual background",
+          "Holding - speedy trial"
+        ]
+      },
+      "vishaka-1997": {
+        "question": "What guidelines did the Supreme Court frame to prevent sexual harassment at the workplace?",
+        "expectedLabel": "Guidelines: definition, duties, prevention",
+        "hit": true,
+        "top3": [
+          "The legislative vacuum",
+          "Subsequent legislation: the 2013 Act",
+          "Guidelines: definition, duties, prevention"
+        ]
+      },
+      "dk-basu-1996": {
+        "question": "What safeguards must the police follow when arresting a person?",
+        "expectedLabel": "Eleven safeguards (substance)",
+        "hit": true,
+        "top3": [
+          "Advocacy angles: petitioner and State",
+          "Eleven safeguards (substance)",
+          "Issues framed"
+        ]
+      },
+      "shreya-singhal-2015": {
+        "question": "Is Section 66A of the Information Technology Act unconstitutional?",
+        "expectedLabel": "Holding: Section 66A Struck Down",
+        "hit": true,
+        "top3": [
+          "Holding: Section 66A Struck Down",
+          "Factual Background: Palghar Arrests and Writ Petitions",
+          "Section 79 and Intermediary Guidelines Read Down"
+        ]
+      },
+      "puttaswamy-2017": {
+        "question": "Is the right to privacy a fundamental right protected by Article 21?",
+        "expectedLabel": "Unanimous holding and opinions",
+        "hit": false,
+        "top3": [
+          "Questions before the Bench",
+          "Advocacy angles for counsel",
+          "Precedents displaced and affirmed"
+        ]
+      },
+      "mukesh-nirbhaya-2017": {
+        "question": "What sentence did the Supreme Court confirm in the Nirbhaya gang rape appeal?",
+        "expectedLabel": "rarest of rare",
+        "hit": false,
+        "top3": [
+          "Sentencing and the juvenile accused",
+          "2017 INSC 448 | Jharkhand (2015) 1 SCC 67 (para 63-65)",
+          "2017 INSC 448 | sentence awarded to the accused persons"
+        ]
+      },
+      "navtej-johar-2018": {
+        "question": "Did the Supreme Court strike down Section 377 of the Indian Penal Code?",
+        "expectedLabel": "The operative holding and its limits",
+        "hit": true,
+        "top3": [
+          "The operative holding and its limits",
+          "Questions for the Constitution Bench",
+          "Transformative constitutionalism and dignity"
+        ]
+      }
+    }
+  }
+}

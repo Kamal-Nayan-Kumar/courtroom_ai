@@ -1,0 +1,325 @@
+{
+  "embedding_model": "qwen/qwen3-embedding-8b",
+  "embedding_dim": 4096,
+  "k": 5,
+  "timestamp": "2026-11-21T12:50:23.706Z",
+  "perCase": {
+    "delhi-liquor-2022": {
+      "label": "delhi-liquor-2022",
+      "questionCount": 12,
+      "chunkCount": 16,
+      "chunksWithEmbedding": 16,
+      "results_at_5": {
+        "keyword-only": {
+          "precision_at_k": 0,
+          "recall_at_k": 0,
+          "mrr": 0,
+          "citation_accuracy": 0
+        },
+        "vector-only": {
+          "precision_at_k": 0.3166666666666667,
+          "recall_at_k": 1.5833333333333333,
+          "mrr": 0.8333333333333334,
+          "citation_accuracy": 0.75
+        },
+        "hybrid (0.4/0.6)": {
+          "precision_at_k": 0.3166666666666667,
+          "recall_at_k": 1.5833333333333333,
+          "mrr": 0.7638888888888888,
+          "citation_accuracy": 0.6666666666666666
+        },
+        "hybrid (0.2/0.8)": {
+          "precision_at_k": 0.3166666666666667,
+          "recall_at_k": 1.5833333333333333,
+          "mrr": 0.8333333333333334,
+          "citation_accuracy": 0.75
+        },
+        "hybrid (0.6/0.4)": {
+          "precision_at_k": 0.3166666666666667,
+          "recall_at_k": 1.5833333333333333,
+          "mrr": 0.7638888888888888,
+          "citation_accuracy": 0.6666666666666666
+        }
+      },
+      "results_at_10": {
+        "keyword-only": {
+          "precision_at_k": 0,
+          "recall_at_k": 0,
+          "mrr": 0,
+          "citation_accuracy": 0
+        },
+        "vector-only": {
+          "precision_at_k": 0.19166666666666668,
+          "recall_at_k": 1.9166666666666667,
+          "mrr": 0.8333333333333334,
+          "citation_accuracy": 0.75
+        },
+        "hybrid (0.4/0.6)": {
+          "precision_at_k": 0.19166666666666668,
+          "recall_at_k": 1.9166666666666667,
+          "mrr": 0.7638888888888888,
+          "citation_accuracy": 0.6666666666666666
+        },
+        "hybrid (0.2/0.8)": {
+          "precision_at_k": 0.19166666666666668,
+          "recall_at_k": 1.9166666666666667,
+          "mrr": 0.8333333333333334,
+          "citation_accuracy": 0.75
+        },
+        "hybrid (0.6/0.4)": {
+          "precision_at_k": 0.19166666666666668,
+          "recall_at_k": 1.9166666666666667,
+          "mrr": 0.7638888888888888,
+          "citation_accuracy": 0.6666666666666666
+        }
+      }
+    },
+    "electoral-bonds-2024": {
+      "label": "electoral-bonds-2024",
+      "questionCount": 8,
+      "chunkCount": 10,
+      "chunksWithEmbedding": 10,
+      "results_at_5": {
+        "keyword-only": {
+          "precision_at_k": 0,
+          "recall_at_k": 0,
+          "mrr": 0,
+          "citation_accuracy": 0
+        },
+        "vector-only": {
+          "precision_at_k": 0.19999999999999998,
+          "recall_at_k": 1,
+          "mrr": 0.8375,
+          "citation_accuracy": 0.75
+        },
+        "hybrid (0.4/0.6)": {
+          "precision_at_k": 0.19999999999999998,
+          "recall_at_k": 1,
+          "mrr": 0.7118055555555556,
+          "citation_accuracy": 0.625
+        },
+        "hybrid (0.2/0.8)": {
+          "precision_at_k": 0.175,
+          "recall_at_k": 0.875,
+          "mrr": 0.6493055555555556,
+          "citation_accuracy": 0.5
+        },
+        "hybrid (0.6/0.4)": {
+          "precision_at_k": 0.19999999999999998,
+          "recall_at_k": 1,
+          "mrr": 0.7118055555555556,
+          "citation_accuracy": 0.625
+        }
+      },
+      "results_at_10": {
+        "keyword-only": {
+          "precision_at_k": 0,
+          "recall_at_k": 0,
+          "mrr": 0,
+          "citation_accuracy": 0
+        },
+        "vector-only": {
+          "precision_at_k": 0.13749999999999998,
+          "recall_at_k": 1.375,
+          "mrr": 0.8375,
+          "citation_accuracy": 0.75
+        },
+        "hybrid (0.4/0.6)": {
+          "precision_at_k": 0.13749999999999998,
+          "recall_at_k": 1.375,
+          "mrr": 0.7118055555555556,
+          "citation_accuracy": 0.625
+        },
+        "hybrid (0.2/0.8)": {
+          "precision_at_k": 0.13749999999999998,
+          "recall_at_k": 1.375,
+          "mrr": 0.6493055555555556,
+          "citation_accuracy": 0.5
+        },
+        "hybrid (0.6/0.4)": {
+          "precision_at_k": 0.13749999999999998,
+          "recall_at_k": 1.375,
+          "mrr": 0.7118055555555556,
+          "citation_accuracy": 0.625
+        }
+      }
+    },
+    "__cross_case__": {
+      "label": "cross-case (all judgments)",
+      "questionCount": 10,
+      "chunkCount": 9949,
+      "chunksWithEmbedding": 9949,
+      "results_at_5": {
+        "keyword-only": {
+          "precision_at_k": 0.2,
+          "recall_at_k": 1,
+          "mrr": 0.2,
+          "citation_accuracy": 0.2
+        },
+        "vector-only": {
+          "precision_at_k": 0.8400000000000001,
+          "recall_at_k": 4.2,
+          "mrr": 0.8333333333333334,
+          "citation_accuracy": 0.8
+        },
+        "hybrid (0.4/0.6)": {
+          "precision_at_k": 0.82,
+          "recall_at_k": 4.1,
+          "mrr": 0.8333333333333334,
+          "citation_accuracy": 0.8
+        },
+        "hybrid (0.2/0.8)": {
+          "precision_at_k": 0.82,
+          "recall_at_k": 4.1,
+          "mrr": 0.8333333333333334,
+          "citation_accuracy": 0.8
+        },
+        "hybrid (0.6/0.4)": {
+          "precision_at_k": 0.82,
+          "recall_at_k": 4.1,
+          "mrr": 0.8333333333333334,
+          "citation_accuracy": 0.8
+        }
+      },
+      "results_at_10": {
+        "keyword-only": {
+          "precision_at_k": 0.2,
+          "recall_at_k": 2,
+          "mrr": 0.2,
+          "citation_accuracy": 0.2
+        },
+        "vector-only": {
+          "precision_at_k": 0.8300000000000001,
+          "recall_at_k": 8.3,
+          "mrr": 0.8333333333333334,
+          "citation_accuracy": 0.8
+        },
+        "hybrid (0.4/0.6)": {
+          "precision_at_k": 0.8300000000000001,
+          "recall_at_k": 8.3,
+          "mrr": 0.8333333333333334,
+          "citation_accuracy": 0.8
+        },
+        "hybrid (0.2/0.8)": {
+          "precision_at_k": 0.8300000000000001,
+          "recall_at_k": 8.3,
+          "mrr": 0.8333333333333334,
+          "citation_accuracy": 0.8
+        },
+        "hybrid (0.6/0.4)": {
+          "precision_at_k": 0.8300000000000001,
+          "recall_at_k": 8.3,
+          "mrr": 0.8333333333333334,
+          "citation_accuracy": 0.8
+        }
+      }
+    },
+    "__new_judgments__": {
+      "label": "cross-case (new landmark judgments)",
+      "questionCount": 20,
+      "chunkCount": 9949,
+      "chunksWithEmbedding": 9949,
+      "results_at_5": {
+        "keyword-only": {
+          "precision_at_k": 0,
+          "recall_at_k": 0,
+          "mrr": 0,
+          "citation_accuracy": 0
+        },
+        "vector-only": {
+          "precision_at_k": 0.8400000000000002,
+          "recall_at_k": 4.2,
+          "mrr": 0.9099999999999999,
+          "citation_accuracy": 0.85
+        },
+        "hybrid (0.4/0.6)": {
+          "precision_at_k": 0.7900000000000001,
+          "recall_at_k": 3.95,
+          "mrr": 0.8625,
+          "citation_accuracy": 0.75
+        },
+        "hybrid (0.2/0.8)": {
+          "precision_at_k": 0.7900000000000003,
+          "recall_at_k": 3.95,
+          "mrr": 0.8375,
+          "citation_accuracy": 0.7
+        },
+        "hybrid (0.6/0.4)": {
+          "precision_at_k": 0.7900000000000001,
+          "recall_at_k": 3.95,
+          "mrr": 0.8625,
+          "citation_accuracy": 0.75
+        }
+      },
+      "results_at_10": {
+        "keyword-only": {
+          "precision_at_k": 0,
+          "recall_at_k": 0,
+          "mrr": 0,
+          "citation_accuracy": 0
+        },
+        "vector-only": {
+          "precision_at_k": 0.8450000000000001,
+          "recall_at_k": 8.45,
+          "mrr": 0.9099999999999999,
+          "citation_accuracy": 0.85
+        },
+        "hybrid (0.4/0.6)": {
+          "precision_at_k": 0.8450000000000001,
+          "recall_at_k": 8.45,
+          "mrr": 0.8625,
+          "citation_accuracy": 0.75
+        },
+        "hybrid (0.2/0.8)": {
+          "precision_at_k": 0.8450000000000001,
+          "recall_at_k": 8.45,
+          "mrr": 0.8375,
+          "citation_accuracy": 0.7
+        },
+        "hybrid (0.6/0.4)": {
+          "precision_at_k": 0.8450000000000001,
+          "recall_at_k": 8.45,
+          "mrr": 0.8625,
+          "citation_accuracy": 0.75
+        }
+      }
+    }
+  },
+  "summary": {
+    "keyword-only": {
+      "precision@5": 0.05,
+      "recall@5": 0.25,
+      "recall@10": 0.5,
+      "mrr@10": 0.05,
+      "citation_accuracy": 0.05
+    },
+    "vector-only": {
+      "precision@5": 0.5491666666666668,
+      "recall@5": 2.7458333333333336,
+      "recall@10": 5.010416666666667,
+      "mrr@10": 0.8535416666666666,
+      "citation_accuracy": 0.7875
+    },
+    "hybrid (0.4/0.6)": {
+      "precision@5": 0.5316666666666667,
+      "recall@5": 2.658333333333333,
+      "recall@10": 5.010416666666667,
+      "mrr@10": 0.7928819444444444,
+      "citation_accuracy": 0.7104166666666667
+    },
+    "hybrid (0.2/0.8)": {
+      "precision@5": 0.5254166666666666,
+      "recall@5": 2.627083333333333,
+      "recall@10": 5.010416666666667,
+      "mrr@10": 0.7883680555555556,
+      "citation_accuracy": 0.6875
+    },
+    "hybrid (0.6/0.4)": {
+      "precision@5": 0.5316666666666667,
+      "recall@5": 2.658333333333333,
+      "recall@10": 5.010416666666667,
+      "mrr@10": 0.7928819444444444,
+      "citation_accuracy": 0.7104166666666667
+    }
+  }
+}

@@ -45,6 +45,9 @@ export async function POST(req: Request) {
     kwWeight: 0.4,
     cosineWeight: 0.6,
     limit: 6,
+    // Score a wider vector shortlist before blending; the old hardcoded 10
+    // caused relevant holdings to be cut before keyword scoring ran.
+    vectorCandidateLimit: 50,
   });
   const rows: AskedChunk[] = results.map((r) => ({
     id: String(r.id),

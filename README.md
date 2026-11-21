@@ -240,9 +240,40 @@ node scripts/run-legal-eval.mjs
 # Run regression tests
 node scripts/regression-tests.mjs
 
+# Unified retrieval evaluation (imports the app's src/lib/retrieval.ts)
+npm run eval                 # fetch metrics, write data/eval-results.json
+npm run eval:check           # fail on >0.02 metric regression or holdings_top3 < 0.8
+node scripts/eval-retrieval.mts --check --from data/eval-results.json  # re-check an artifact
+
+# Browser smoke suite (Playwright; falls back to /usr/bin/chromium)
+npm run test:e2e
+
+# Full offline gate: build + typecheck + eval regression (no running server needed)
+npm run verify
+
+# Browser smoke suite separately (requires a server at BASE_URL, default localhost:3000)
+npm run verify:e2e
+
 # Start Next.js development server
 npm run dev
 ```
+
+### Retrieval quality gates
+`scripts/eval-rag.mjs` used to reimplement retrieval, so its numbers did not
+describe the app. `scripts/eval-retrieval.mts` now imports the same `retrieve()`
+used by `/api/rag/ask` and evaluates five settings plus a holdings-level check:
+whether the curated dossier brief that answers each question is in the top 3.
+
+Two fixes came out of that measurement: keyword candidates are found with a
+case-insensitive SQL regex prefilter ranked by the number of distinct query
+terms matched before any cap (the old fallback scanned only the oldest 100
+chunks), and case-scoped retrieval leads with at most three curated holding
+briefs that clear a relevance threshold, so raw judgment fragments cannot crowd
+them out while irrelevant briefs cannot take the answer slots. The keyword-only
+and vector-only ablations disable label reranking, so those numbers are pure.
+Historical baselines:
+`data/eval/baseline-legacy-eval.json`, `data/eval/baseline-pre-unify.json`;
+current gate baseline: `data/eval/baseline-after-quality.json`.
 
 ---
 
