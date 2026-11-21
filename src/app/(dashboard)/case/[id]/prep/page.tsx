@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 import { useDashboard } from "@/context/DashboardContext";
 import { WitnessPrepQueueCard } from "@/components/dashboard/WitnessPrepQueueCard";
+import { CaseSwitcher } from "@/components/dashboard/CaseSwitcher";
 
 interface CaseDetail {
   case: { id: string; title: string; category: string; court: string; charges: string; summary: string };
@@ -176,6 +177,7 @@ export default function CasePrepStudioPage(props?: {
         <div className="flex items-center gap-2 flex-wrap">
           <Badge variant="outline" className="font-mono text-[10px] uppercase">{detail.case.category}</Badge>
           <span className="text-xs font-mono text-zinc-500">{detail.case.id}</span>
+          <CaseSwitcher mode="prep" currentCaseId={detail.case.id} />
         </div>
         <h1 className="text-xl sm:text-2xl font-bold text-zinc-950 tracking-tight">{detail.case.title}</h1>
         <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed">{detail.case.summary}</p>
@@ -286,7 +288,7 @@ export default function CasePrepStudioPage(props?: {
         </TabsContent>
 
         <TabsContent value="witness-lab" className="focus-visible:outline-none space-y-4">
-          <WitnessPrepQueueCard />
+          <WitnessPrepQueueCard caseId={detail.case.id} />
           <div className="grid md:grid-cols-2 gap-4">
             {witnesses.map((w) => {
               const thread = witnessThreads[w.name] ?? [];

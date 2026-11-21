@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { CaseSwitcher } from "@/components/dashboard/CaseSwitcher";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -94,14 +95,12 @@ export function CourtroomTopBar({
         <div className="flex items-center gap-2 shrink-0">
           <Badge
             variant="outline"
-            className="font-mono text-[11px] font-medium bg-zinc-50 border-zinc-300 text-zinc-800 shrink-0 px-2 py-0.5"
+            className="font-mono text-[11px] font-medium bg-zinc-50 border-zinc-300 text-zinc-800 shrink-0 max-w-[180px] truncate px-2 py-0.5"
+            title={caseTitle || "CRL.A. 402/2026"}
           >
-            CRL.A. 402/2026
+            {caseTitle || "CRL.A. 402/2026"}
           </Badge>
-
-          <span className="text-xs font-semibold text-zinc-900 truncate hidden lg:inline max-w-[320px]">
-            {caseTitle ?? "Courtroom Simulator"}
-          </span>
+          <CaseSwitcher mode="courtroom" currentCaseId={caseId} />
         </div>
       </div>
 

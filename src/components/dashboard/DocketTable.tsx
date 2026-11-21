@@ -35,6 +35,7 @@ import {
 } from "@/components/ui/select";
 import { useDashboard } from "@/context/DashboardContext";
 import { ActiveDocketItem } from "@/types/dashboard";
+import { resolveCaseId } from "@/lib/caseAliases";
 
 export function DocketTable() {
   const { activeDocket, showNotification, openNewCaseModal } = useDashboard();
@@ -282,7 +283,7 @@ export function DocketTable() {
                           size="sm"
                           className="h-8 text-xs font-semibold border-zinc-300 hover:border-zinc-950 hover:bg-zinc-50 transition-all shadow-2xs px-3"
                         >
-                          <Link href={`/case/${item.id === "case-184" ? "electoral-bonds-2024" : "delhi-liquor-2022"}/prep`}>
+                          <Link href={`/case/${encodeURIComponent(resolveCaseId(item.id))}/prep`}>
                             <span>Prepare Case</span>
                             <ArrowRight className="size-3.5 ml-1" />
                           </Link>
@@ -294,7 +295,7 @@ export function DocketTable() {
                         size="sm"
                         className="h-8 text-xs font-semibold border-zinc-300 hover:border-zinc-950 hover:bg-zinc-950 hover:text-white transition-all shadow-2xs px-3"
                       >
-                        <Link href={`/case/${item.id === "case-184" ? "electoral-bonds-2024" : "delhi-liquor-2022"}/courtroom`}>
+                        <Link href={`/case/${encodeURIComponent(resolveCaseId(item.id))}/courtroom`}>
                           <span>{getActionButtonText(item.stage)}</span>
                           <ArrowRight className="size-3.5 ml-1" />
                         </Link>

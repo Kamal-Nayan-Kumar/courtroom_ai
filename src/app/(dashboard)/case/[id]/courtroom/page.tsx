@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import { useStreamTurn } from "@/hooks/useStreamTurn";
 import { CourtroomTopBar } from "@/components/courtroom/CourtroomTopBar";
+import { CaseSwitcher } from "@/components/dashboard/CaseSwitcher";
 import { CaseDossierDrawer } from "@/components/courtroom/CaseDossierDrawer";
 import { CourtroomArena2D } from "@/components/courtroom/CourtroomArena2D";
 import { TranscriptPanel } from "@/components/courtroom/TranscriptPanel";
@@ -130,6 +131,20 @@ export default function CourtroomArenaPage() {
       }
     })();
     return () => { cancelled = true; };
+  }, [caseId]);
+
+  // Switching cases keeps this route component mounted, so clear the previous
+  // case's session/transcript instead of showing it under the new case.
+  useEffect(() => {
+    setSessionId(null);
+    setTranscript([]);
+    setScore(null);
+    setEnded(false);
+    setElapsed(0);
+    setInputValue("");
+    setActiveExhibit(null);
+    setActiveSpeaker("judge");
+    expiryRequested.current = false;
   }, [caseId]);
 
   const startSession = useCallback(async () => {
@@ -286,6 +301,10 @@ export default function CourtroomArenaPage() {
     return (
       <div className="h-screen w-screen overflow-y-auto bg-[#FAFAFA] flex items-center justify-center p-4">
         <div className="max-w-xl w-full bg-white border border-zinc-200 rounded-2xl p-6 sm:p-8 space-y-5 shadow-sm">
+          <div className="flex items-center justify-between gap-3 pb-3 border-b border-zinc-100">
+            <span className="text-xs font-semibold uppercase tracking-wide text-zinc-500">Choose your case</span>
+            <CaseSwitcher mode="courtroom" currentCaseId={detail.case.id} />
+          </div>
           <div className="space-y-1">
             <Badge variant="outline" className="font-mono text-[10px] uppercase">{detail.case.category}</Badge>
             <h1 className="text-xl sm:text-2xl font-bold text-zinc-950 tracking-tight">{detail.case.title}</h1>

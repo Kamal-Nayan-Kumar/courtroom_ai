@@ -24,7 +24,7 @@ import { Button } from "@/components/ui/button";
 import { useDashboard } from "@/context/DashboardContext";
 import { PREP_QUEUE_TASKS } from "@/data/dashboardData";
 
-export function WitnessPrepQueueCard() {
+export function WitnessPrepQueueCard({ caseId = "delhi-liquor-2022" }: { caseId?: string }) {
   const { setIsWitnessModalOpen, setIsBriefModalOpen, showNotification } = useDashboard();
 
   const handleAction = (type?: "coach-witness" | "review-brief" | "open-fir") => {
@@ -117,7 +117,7 @@ export function WitnessPrepQueueCard() {
                       }`}
                     >
                       {task.actionType === "coach-witness" || task.actionType === "review-brief" ? (
-                        <Link href="/case/delhi-liquor-2022/prep">
+                        <Link href={`/case/${encodeURIComponent(caseId)}/prep`}>
                           <span>{task.actionLabel}</span>
                           <ArrowRight className="size-3 ml-1" />
                         </Link>
@@ -149,7 +149,7 @@ export function WitnessPrepQueueCard() {
             size="sm"
             className="h-8 text-xs font-semibold bg-blue-900 hover:bg-blue-800 text-white shadow-2xs px-3.5"
           >
-            <Link href="/case/delhi-liquor-2022/prep">
+            <Link href={`/case/${encodeURIComponent(caseId)}/prep`}>
               Launch Witness Lab
             </Link>
           </Button>

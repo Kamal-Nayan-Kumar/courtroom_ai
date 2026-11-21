@@ -32,6 +32,7 @@ interface CaseHeaderStickyProps {
   readinessPercent: number;
   completedTasksCount: number;
   totalTasksCount: number;
+  caseId?: string;
 }
 
 export function CaseHeaderSticky({
@@ -40,6 +41,7 @@ export function CaseHeaderSticky({
   readinessPercent,
   completedTasksCount,
   totalTasksCount,
+  caseId,
 }: CaseHeaderStickyProps) {
   return (
     <div className="flex flex-col gap-3">
@@ -49,7 +51,7 @@ export function CaseHeaderSticky({
         <div className="flex flex-col gap-2 max-w-3xl">
           <div className="flex flex-wrap items-center gap-2">
             <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-zinc-950 text-white">
-              CRL.A. 402/2026
+              {caseId ?? "CRL.A. 402/2026"}
             </span>
             <span className="text-xs text-zinc-500 font-mono">
               Sessions Court, Mumbai · Courtroom No. 3
@@ -131,7 +133,7 @@ export function CaseHeaderSticky({
             size="sm"
             className="h-10 px-4 text-xs font-semibold bg-zinc-950 text-white hover:bg-zinc-800 shadow-md w-full"
           >
-            <Link href="/case/delhi-liquor-2022/courtroom" className="flex items-center gap-2 justify-center">
+            <Link href={`/case/${encodeURIComponent(caseId ?? "delhi-liquor-2022")}/courtroom`} className="flex items-center gap-2 justify-center">
               <span className="size-2 rounded-full bg-emerald-400 animate-pulse" />
               <span>Enter 2D Courtroom Session</span>
               <ArrowRight className="size-3.5 ml-0.5 text-zinc-300" />
